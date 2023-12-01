@@ -1,0 +1,97 @@
+\doxysection{importer.\+Validate.\+validate\+\_\+data Class Reference}
+\hypertarget{classimporter_1_1_validate_1_1validate__data}{}\label{classimporter_1_1_validate_1_1validate__data}\index{importer.Validate.validate\_data@{importer.Validate.validate\_data}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classimporter_1_1_validate_1_1validate__data_abaa748913ff8b834898879017f209d7c}{upc\+\_\+validation}} (self, df, release\+\_\+id)
+\item 
+\mbox{\hyperlink{classimporter_1_1_validate_1_1validate__data_aa9f2874229d1b2a12f3daf4bd9180990}{isrc\+\_\+validation}} (self, df, isrc)
+\item 
+\mbox{\hyperlink{classimporter_1_1_validate_1_1validate__data_aa13debdd327998bddc4b7482a7a47709}{territory\+\_\+validation}} (self, df, territory)
+\item 
+\mbox{\hyperlink{classimporter_1_1_validate_1_1validate__data_a56ed6869c83b1910a285a42a5b4f20d7}{delete\+\_\+rows}} (self, df, col, value)
+\item 
+\mbox{\hyperlink{classimporter_1_1_validate_1_1validate__data_a4f5618b62bb2e38cf019181ce35c5756}{validation}} (self, df)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}When data is processed, it reads all lines and verify it data is complete or not
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classimporter_1_1_validate_1_1validate__data_a56ed6869c83b1910a285a42a5b4f20d7}\label{classimporter_1_1_validate_1_1validate__data_a56ed6869c83b1910a285a42a5b4f20d7} 
+\index{importer.Validate.validate\_data@{importer.Validate.validate\_data}!delete\_rows@{delete\_rows}}
+\index{delete\_rows@{delete\_rows}!importer.Validate.validate\_data@{importer.Validate.validate\_data}}
+\doxysubsubsection{\texorpdfstring{delete\_rows()}{delete\_rows()}}
+{\footnotesize\ttfamily importer.\+Validate.\+validate\+\_\+data.\+delete\+\_\+rows (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{df,  }\item[{}]{col,  }\item[{}]{value }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb} Deletes rows which don't satisfy the OTTO standard
+
+Args:
+    df (pandas dataframe): processed file loaded as dataframe
+    col (str): column name
+    value (str): determines which lines should be deleted 
+Returns: lines_to_drop (list)
+\end{DoxyVerb}
+ \Hypertarget{classimporter_1_1_validate_1_1validate__data_aa9f2874229d1b2a12f3daf4bd9180990}\label{classimporter_1_1_validate_1_1validate__data_aa9f2874229d1b2a12f3daf4bd9180990} 
+\index{importer.Validate.validate\_data@{importer.Validate.validate\_data}!isrc\_validation@{isrc\_validation}}
+\index{isrc\_validation@{isrc\_validation}!importer.Validate.validate\_data@{importer.Validate.validate\_data}}
+\doxysubsubsection{\texorpdfstring{isrc\_validation()}{isrc\_validation()}}
+{\footnotesize\ttfamily importer.\+Validate.\+validate\+\_\+data.\+isrc\+\_\+validation (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{df,  }\item[{}]{isrc }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb} Sets 'undefined' value for null isrc_id
+
+Args:
+    df (pandas dataframe): processed file loaded as dataframe
+    isrc (str): release_id column
+Returns: 
+    isrc (str)
+\end{DoxyVerb}
+ \Hypertarget{classimporter_1_1_validate_1_1validate__data_aa13debdd327998bddc4b7482a7a47709}\label{classimporter_1_1_validate_1_1validate__data_aa13debdd327998bddc4b7482a7a47709} 
+\index{importer.Validate.validate\_data@{importer.Validate.validate\_data}!territory\_validation@{territory\_validation}}
+\index{territory\_validation@{territory\_validation}!importer.Validate.validate\_data@{importer.Validate.validate\_data}}
+\doxysubsubsection{\texorpdfstring{territory\_validation()}{territory\_validation()}}
+{\footnotesize\ttfamily importer.\+Validate.\+validate\+\_\+data.\+territory\+\_\+validation (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{df,  }\item[{}]{territory }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb} Sets 'undefined' value for null territory_code
+
+Args:
+    df (pandas dataframe): processed file loaded as dataframe
+    territory (str): release_id column
+Returns: 
+    territory (str)
+\end{DoxyVerb}
+ \Hypertarget{classimporter_1_1_validate_1_1validate__data_abaa748913ff8b834898879017f209d7c}\label{classimporter_1_1_validate_1_1validate__data_abaa748913ff8b834898879017f209d7c} 
+\index{importer.Validate.validate\_data@{importer.Validate.validate\_data}!upc\_validation@{upc\_validation}}
+\index{upc\_validation@{upc\_validation}!importer.Validate.validate\_data@{importer.Validate.validate\_data}}
+\doxysubsubsection{\texorpdfstring{upc\_validation()}{upc\_validation()}}
+{\footnotesize\ttfamily importer.\+Validate.\+validate\+\_\+data.\+upc\+\_\+validation (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{df,  }\item[{}]{release\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb} Sets 'undefined' value for null release_id
+
+Args:
+    df (pandas dataframe): processed file loaded as dataframe
+    release_id (str): release_id column
+Returns: 
+    release_id (str)
+\end{DoxyVerb}
+ \Hypertarget{classimporter_1_1_validate_1_1validate__data_a4f5618b62bb2e38cf019181ce35c5756}\label{classimporter_1_1_validate_1_1validate__data_a4f5618b62bb2e38cf019181ce35c5756} 
+\index{importer.Validate.validate\_data@{importer.Validate.validate\_data}!validation@{validation}}
+\index{validation@{validation}!importer.Validate.validate\_data@{importer.Validate.validate\_data}}
+\doxysubsubsection{\texorpdfstring{validation()}{validation()}}
+{\footnotesize\ttfamily importer.\+Validate.\+validate\+\_\+data.\+validation (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{df }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb} Executes de data validation
+
+Args:
+    df (pandas dataframe): processed file loaded as dataframe
+Returns: df (pandas dataframe)
+         status (str)
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/michellmonroy/\+Documents/dev-\/glider/glider/src/importer/\mbox{\hyperlink{_validate_8py}{Validate.\+py}}\end{DoxyCompactItemize}

@@ -1,0 +1,48 @@
+\doxysection{importer.\+Territory\+Code.\+Territory\+Code Class Reference}
+\hypertarget{classimporter_1_1_territory_code_1_1_territory_code}{}\label{classimporter_1_1_territory_code_1_1_territory_code}\index{importer.TerritoryCode.TerritoryCode@{importer.TerritoryCode.TerritoryCode}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classimporter_1_1_territory_code_1_1_territory_code_af0b9da6b061f287350c5dd941ef03681}{terr\+\_\+iso}} (self, country, iso)
+\item 
+\mbox{\hyperlink{classimporter_1_1_territory_code_1_1_territory_code_a35e760136879c2ef36041417c9fbf2c3}{territory\+\_\+code}} (self, df, \mbox{\hyperlink{namespaceimporter_1_1_territory_code_a60be8696291864fe281d22fd426dcca8}{territory\+\_\+iso\+\_\+code}}=\mbox{\hyperlink{namespaceimporter_1_1_territory_code_a60be8696291864fe281d22fd426dcca8}{territory\+\_\+iso\+\_\+code}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Maps the full country name to ISO-2 code
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classimporter_1_1_territory_code_1_1_territory_code_af0b9da6b061f287350c5dd941ef03681}\label{classimporter_1_1_territory_code_1_1_territory_code_af0b9da6b061f287350c5dd941ef03681} 
+\index{importer.TerritoryCode.TerritoryCode@{importer.TerritoryCode.TerritoryCode}!terr\_iso@{terr\_iso}}
+\index{terr\_iso@{terr\_iso}!importer.TerritoryCode.TerritoryCode@{importer.TerritoryCode.TerritoryCode}}
+\doxysubsubsection{\texorpdfstring{terr\_iso()}{terr\_iso()}}
+{\footnotesize\ttfamily importer.\+Territory\+Code.\+Territory\+Code.\+terr\+\_\+iso (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{country,  }\item[{}]{iso }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Takes each country name and searches their ISO-2 code in the territory_iso_code
+
+Args:
+    country (str): current country
+    iso (dict): ISO codes for countries
+Returns: ISO-2 code
+\end{DoxyVerb}
+ \Hypertarget{classimporter_1_1_territory_code_1_1_territory_code_a35e760136879c2ef36041417c9fbf2c3}\label{classimporter_1_1_territory_code_1_1_territory_code_a35e760136879c2ef36041417c9fbf2c3} 
+\index{importer.TerritoryCode.TerritoryCode@{importer.TerritoryCode.TerritoryCode}!territory\_code@{territory\_code}}
+\index{territory\_code@{territory\_code}!importer.TerritoryCode.TerritoryCode@{importer.TerritoryCode.TerritoryCode}}
+\doxysubsubsection{\texorpdfstring{territory\_code()}{territory\_code()}}
+{\footnotesize\ttfamily importer.\+Territory\+Code.\+Territory\+Code.\+territory\+\_\+code (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{df,  }\item[{}]{territory\+\_\+iso\+\_\+code = {\ttfamily \mbox{\hyperlink{namespaceimporter_1_1_territory_code_a60be8696291864fe281d22fd426dcca8}{territory\+\_\+iso\+\_\+code}}} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Applies terr_iso for all territory column
+
+Args:
+    df (pandas dataframe): current file loaded as dataframe
+    territory_iso_code (dict): ISO codes for countries
+Returns: df (pandas dataframe)
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/michellmonroy/\+Documents/dev-\/glider/glider/src/importer/\mbox{\hyperlink{_territory_code_8py}{Territory\+Code.\+py}}\end{DoxyCompactItemize}

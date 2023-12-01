@@ -1,0 +1,43 @@
+\doxysection{importer.\+Excel\+\_\+to\+\_\+csv Namespace Reference}
+\hypertarget{namespaceimporter_1_1_excel__to__csv}{}\label{namespaceimporter_1_1_excel__to__csv}\index{importer.Excel\_to\_csv@{importer.Excel\_to\_csv}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceimporter_1_1_excel__to__csv_a7d7fe2e8609a1de4af3532de4e2a1a11}{upload\+\_\+info\+\_\+mongo}} (event, path, file\+\_\+id, filename)
+\item 
+\mbox{\hyperlink{namespaceimporter_1_1_excel__to__csv_aa217279e5837dc39a9ad6a2372e67c88}{pass\+\_\+excel\+\_\+to\+\_\+csv}} (event, files, xls, s3)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceimporter_1_1_excel__to__csv_aa217279e5837dc39a9ad6a2372e67c88}\label{namespaceimporter_1_1_excel__to__csv_aa217279e5837dc39a9ad6a2372e67c88} 
+\index{importer.Excel\_to\_csv@{importer.Excel\_to\_csv}!pass\_excel\_to\_csv@{pass\_excel\_to\_csv}}
+\index{pass\_excel\_to\_csv@{pass\_excel\_to\_csv}!importer.Excel\_to\_csv@{importer.Excel\_to\_csv}}
+\doxysubsubsection{\texorpdfstring{pass\_excel\_to\_csv()}{pass\_excel\_to\_csv()}}
+{\footnotesize\ttfamily importer.\+Excel\+\_\+to\+\_\+csv.\+pass\+\_\+excel\+\_\+to\+\_\+csv (\begin{DoxyParamCaption}\item[{}]{event,  }\item[{}]{files,  }\item[{}]{xls,  }\item[{}]{s3 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Transform xsl file into csv file(s) according sheets number 
+
+Args:
+    event (dict): is a dictionary with all client and sales information
+    files (dict): is a dictionary with file information
+    xls (ExcelFile obj): file loaded as Excel file
+    s3 (boto3 client): AWS client connection
+Returns: event (dict)
+\end{DoxyVerb}
+ \Hypertarget{namespaceimporter_1_1_excel__to__csv_a7d7fe2e8609a1de4af3532de4e2a1a11}\label{namespaceimporter_1_1_excel__to__csv_a7d7fe2e8609a1de4af3532de4e2a1a11} 
+\index{importer.Excel\_to\_csv@{importer.Excel\_to\_csv}!upload\_info\_mongo@{upload\_info\_mongo}}
+\index{upload\_info\_mongo@{upload\_info\_mongo}!importer.Excel\_to\_csv@{importer.Excel\_to\_csv}}
+\doxysubsubsection{\texorpdfstring{upload\_info\_mongo()}{upload\_info\_mongo()}}
+{\footnotesize\ttfamily importer.\+Excel\+\_\+to\+\_\+csv.\+upload\+\_\+info\+\_\+mongo (\begin{DoxyParamCaption}\item[{}]{event,  }\item[{}]{path,  }\item[{}]{file\+\_\+id,  }\item[{}]{filename }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Upload file information from xls file to new CSV file 
+
+Args:
+    event (dict): 
+    path (str): s3 path where file is storage
+    file_id (str): current/new file_id assigned for mongodb
+    filename (str): current file
+Returns: None
+\end{DoxyVerb}
+ 

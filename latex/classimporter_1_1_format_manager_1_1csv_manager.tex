@@ -1,0 +1,32 @@
+\doxysection{importer.\+Format\+Manager.\+csv\+Manager Class Reference}
+\hypertarget{classimporter_1_1_format_manager_1_1csv_manager}{}\label{classimporter_1_1_format_manager_1_1csv_manager}\index{importer.FormatManager.csvManager@{importer.FormatManager.csvManager}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classimporter_1_1_format_manager_1_1csv_manager_ac8303337d55850dedaaf567008fc5c89}{df\+\_\+csv}} (event, type\+\_\+format, file, session, write\+\_\+\+DF)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classimporter_1_1_format_manager_1_1csv_manager_ac8303337d55850dedaaf567008fc5c89}\label{classimporter_1_1_format_manager_1_1csv_manager_ac8303337d55850dedaaf567008fc5c89} 
+\index{importer.FormatManager.csvManager@{importer.FormatManager.csvManager}!df\_csv@{df\_csv}}
+\index{df\_csv@{df\_csv}!importer.FormatManager.csvManager@{importer.FormatManager.csvManager}}
+\doxysubsubsection{\texorpdfstring{df\_csv()}{df\_csv()}}
+{\footnotesize\ttfamily importer.\+Format\+Manager.\+csv\+Manager.\+df\+\_\+csv (\begin{DoxyParamCaption}\item[{}]{event,  }\item[{}]{type\+\_\+format,  }\item[{}]{file,  }\item[{}]{session,  }\item[{}]{write\+\_\+\+DF }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Executes full procedure
+
+Args:
+    event (dict): is a dictionary with all client and sales information
+    type_format (str): format name 
+    file (dict): features required by file
+    session (boto3 obj): AWS client connection
+    write_DF (class): mapper columns method
+Returns: data_otto (pandas dataframe)
+         status (str)
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/michellmonroy/\+Documents/dev-\/glider/glider/src/importer/\mbox{\hyperlink{_format_manager_8py}{Format\+Manager.\+py}}\end{DoxyCompactItemize}

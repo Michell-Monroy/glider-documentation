@@ -1,0 +1,69 @@
+\doxysection{importer.\+generator.\+Generator Class Reference}
+\hypertarget{classimporter_1_1generator_1_1_generator}{}\label{classimporter_1_1generator_1_1_generator}\index{importer.generator.Generator@{importer.generator.Generator}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_a002fa32526c86bd1354a9ca2bb215c0f}{get\+\_\+data}} (self, key, bucket, s3\+\_\+client)
+\item 
+\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_af78d72e33ac6ab994d52f52a7372c28b}{get\+Df}} (self, ACCESS\+\_\+\+ID, ACCESS\+\_\+\+KEY, RESULTS\+\_\+\+BUCKET, path)
+\item 
+\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_ae9ebd61be9921100c78f2cf6dbe4277b}{unique\+\_\+values\+\_\+from\+\_\+isrc}} (self, df, release, isrc, field)
+\item 
+\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_a6bd555bbd475937269fca1fc360ce732}{generate}} (self, ACCESS\+\_\+\+ID, ACCESS\+\_\+\+KEY, RESULTS\+\_\+\+BUCKET, path, client)
+\item 
+\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_aa9c6ca030ec047608b845d41cb5cdbc0}{update\+\_\+data}} (self, line, collection)
+\item 
+\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_a0ed6b63f59d6e3341a2ba7a0ed906c94}{upload\+\_\+catalog}} (self, df)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}    args: 
+        s3_path: an array with path to files to generate the catalogue from.
+    returns: None.
+    raises: EmptyException if initialized empty.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classimporter_1_1generator_1_1_generator_a6bd555bbd475937269fca1fc360ce732}\label{classimporter_1_1generator_1_1_generator_a6bd555bbd475937269fca1fc360ce732} 
+\index{importer.generator.Generator@{importer.generator.Generator}!generate@{generate}}
+\index{generate@{generate}!importer.generator.Generator@{importer.generator.Generator}}
+\doxysubsubsection{\texorpdfstring{generate()}{generate()}}
+{\footnotesize\ttfamily importer.\+generator.\+Generator.\+generate (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{ACCESS\+\_\+\+ID,  }\item[{}]{ACCESS\+\_\+\+KEY,  }\item[{}]{RESULTS\+\_\+\+BUCKET,  }\item[{}]{path,  }\item[{}]{client }\end{DoxyParamCaption})}
+
+\Hypertarget{classimporter_1_1generator_1_1_generator_a002fa32526c86bd1354a9ca2bb215c0f}\label{classimporter_1_1generator_1_1_generator_a002fa32526c86bd1354a9ca2bb215c0f} 
+\index{importer.generator.Generator@{importer.generator.Generator}!get\_data@{get\_data}}
+\index{get\_data@{get\_data}!importer.generator.Generator@{importer.generator.Generator}}
+\doxysubsubsection{\texorpdfstring{get\_data()}{get\_data()}}
+{\footnotesize\ttfamily importer.\+generator.\+Generator.\+get\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{key,  }\item[{}]{bucket,  }\item[{}]{s3\+\_\+client }\end{DoxyParamCaption})}
+
+\Hypertarget{classimporter_1_1generator_1_1_generator_af78d72e33ac6ab994d52f52a7372c28b}\label{classimporter_1_1generator_1_1_generator_af78d72e33ac6ab994d52f52a7372c28b} 
+\index{importer.generator.Generator@{importer.generator.Generator}!getDf@{getDf}}
+\index{getDf@{getDf}!importer.generator.Generator@{importer.generator.Generator}}
+\doxysubsubsection{\texorpdfstring{getDf()}{getDf()}}
+{\footnotesize\ttfamily importer.\+generator.\+Generator.\+get\+Df (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{ACCESS\+\_\+\+ID,  }\item[{}]{ACCESS\+\_\+\+KEY,  }\item[{}]{RESULTS\+\_\+\+BUCKET,  }\item[{}]{path }\end{DoxyParamCaption})}
+
+\Hypertarget{classimporter_1_1generator_1_1_generator_ae9ebd61be9921100c78f2cf6dbe4277b}\label{classimporter_1_1generator_1_1_generator_ae9ebd61be9921100c78f2cf6dbe4277b} 
+\index{importer.generator.Generator@{importer.generator.Generator}!unique\_values\_from\_isrc@{unique\_values\_from\_isrc}}
+\index{unique\_values\_from\_isrc@{unique\_values\_from\_isrc}!importer.generator.Generator@{importer.generator.Generator}}
+\doxysubsubsection{\texorpdfstring{unique\_values\_from\_isrc()}{unique\_values\_from\_isrc()}}
+{\footnotesize\ttfamily importer.\+generator.\+Generator.\+unique\+\_\+values\+\_\+from\+\_\+isrc (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{df,  }\item[{}]{release,  }\item[{}]{isrc,  }\item[{}]{field }\end{DoxyParamCaption})}
+
+\Hypertarget{classimporter_1_1generator_1_1_generator_aa9c6ca030ec047608b845d41cb5cdbc0}\label{classimporter_1_1generator_1_1_generator_aa9c6ca030ec047608b845d41cb5cdbc0} 
+\index{importer.generator.Generator@{importer.generator.Generator}!update\_data@{update\_data}}
+\index{update\_data@{update\_data}!importer.generator.Generator@{importer.generator.Generator}}
+\doxysubsubsection{\texorpdfstring{update\_data()}{update\_data()}}
+{\footnotesize\ttfamily importer.\+generator.\+Generator.\+update\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{line,  }\item[{}]{collection }\end{DoxyParamCaption})}
+
+\Hypertarget{classimporter_1_1generator_1_1_generator_a0ed6b63f59d6e3341a2ba7a0ed906c94}\label{classimporter_1_1generator_1_1_generator_a0ed6b63f59d6e3341a2ba7a0ed906c94} 
+\index{importer.generator.Generator@{importer.generator.Generator}!upload\_catalog@{upload\_catalog}}
+\index{upload\_catalog@{upload\_catalog}!importer.generator.Generator@{importer.generator.Generator}}
+\doxysubsubsection{\texorpdfstring{upload\_catalog()}{upload\_catalog()}}
+{\footnotesize\ttfamily importer.\+generator.\+Generator.\+upload\+\_\+catalog (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{df }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/michellmonroy/\+Documents/dev-\/glider/glider/src/importer/\mbox{\hyperlink{generator_8py}{generator.\+py}}\end{DoxyCompactItemize}

@@ -1,0 +1,41 @@
+\doxysection{importer.\+Receive\+Path Namespace Reference}
+\hypertarget{namespaceimporter_1_1_receive_path}{}\label{namespaceimporter_1_1_receive_path}\index{importer.ReceivePath@{importer.ReceivePath}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceimporter_1_1_receive_path_a59b883b05912f7b86ef411641f0182e8}{replace\+\_\+file}} (bucket, path, file, s3)
+\item 
+\mbox{\hyperlink{namespaceimporter_1_1_receive_path_aa2e669a7c3135476cff24b6c6b8014da}{receive\+\_\+path}} (event, s3\+\_\+client)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceimporter_1_1_receive_path_aa2e669a7c3135476cff24b6c6b8014da}\label{namespaceimporter_1_1_receive_path_aa2e669a7c3135476cff24b6c6b8014da} 
+\index{importer.ReceivePath@{importer.ReceivePath}!receive\_path@{receive\_path}}
+\index{receive\_path@{receive\_path}!importer.ReceivePath@{importer.ReceivePath}}
+\doxysubsubsection{\texorpdfstring{receive\_path()}{receive\_path()}}
+{\footnotesize\ttfamily importer.\+Receive\+Path.\+receive\+\_\+path (\begin{DoxyParamCaption}\item[{}]{event,  }\item[{}]{s3\+\_\+client }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Reviews if file exists in s3 and takes actions if it doesn't or file extension is not allowed
+
+Args:
+    event (dict): is a dictionary with all client and sales information
+    s3_client (boto3 obj): AWS client connection
+Returns: (dict)
+\end{DoxyVerb}
+ \Hypertarget{namespaceimporter_1_1_receive_path_a59b883b05912f7b86ef411641f0182e8}\label{namespaceimporter_1_1_receive_path_a59b883b05912f7b86ef411641f0182e8} 
+\index{importer.ReceivePath@{importer.ReceivePath}!replace\_file@{replace\_file}}
+\index{replace\_file@{replace\_file}!importer.ReceivePath@{importer.ReceivePath}}
+\doxysubsubsection{\texorpdfstring{replace\_file()}{replace\_file()}}
+{\footnotesize\ttfamily importer.\+Receive\+Path.\+replace\+\_\+file (\begin{DoxyParamCaption}\item[{}]{bucket,  }\item[{}]{path,  }\item[{}]{file,  }\item[{}]{s3 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Removes blank spaces in the filename by underscores and update information in S3
+
+Args:
+    bucket (str): bucket where parquet file is storage
+    path (str): s3 path where parquet file is storage
+    file (str): current filename
+    s3 (boto3 obj): AWS client connection
+Returns: new filename (str)
+\end{DoxyVerb}
+ 

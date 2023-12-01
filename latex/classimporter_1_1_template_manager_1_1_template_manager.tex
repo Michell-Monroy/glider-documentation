@@ -1,0 +1,82 @@
+\doxysection{importer.\+Template\+Manager.\+Template\+Manager Class Reference}
+\hypertarget{classimporter_1_1_template_manager_1_1_template_manager}{}\label{classimporter_1_1_template_manager_1_1_template_manager}\index{importer.TemplateManager.TemplateManager@{importer.TemplateManager.TemplateManager}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classimporter_1_1_template_manager_1_1_template_manager_aa81ee9ac84d1a817e1a954cdd4b7249c}{preprocessing}} (dir\+\_\+file, type\+\_\+format, file\+\_\+features, session, rel\+\_\+col)
+\item 
+\mbox{\hyperlink{classimporter_1_1_template_manager_1_1_template_manager_a6c65f471d1720ebff57e9de05447b9b2}{get\+Type}} (df, type\+\_\+format, filename)
+\item 
+\mbox{\hyperlink{classimporter_1_1_template_manager_1_1_template_manager_abeda32cb7c20b294ffb3a0553f4d11ad}{get\+Date}} (df, type\+\_\+format, filename)
+\item 
+\mbox{\hyperlink{classimporter_1_1_template_manager_1_1_template_manager_aa1a90e7feff3997960606d0fdc511868}{full\+\_\+type}} (type)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Does specifics procedures for several templates. According the current format, it executes the right template from templates folder
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classimporter_1_1_template_manager_1_1_template_manager_aa1a90e7feff3997960606d0fdc511868}\label{classimporter_1_1_template_manager_1_1_template_manager_aa1a90e7feff3997960606d0fdc511868} 
+\index{importer.TemplateManager.TemplateManager@{importer.TemplateManager.TemplateManager}!full\_type@{full\_type}}
+\index{full\_type@{full\_type}!importer.TemplateManager.TemplateManager@{importer.TemplateManager.TemplateManager}}
+\doxysubsubsection{\texorpdfstring{full\_type()}{full\_type()}}
+{\footnotesize\ttfamily importer.\+Template\+Manager.\+Template\+Manager.\+full\+\_\+type (\begin{DoxyParamCaption}\item[{}]{type }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Sets full name for 'type' column
+
+Args:
+    type (str): A single letter 
+Returns: full type (str)
+\end{DoxyVerb}
+ \Hypertarget{classimporter_1_1_template_manager_1_1_template_manager_abeda32cb7c20b294ffb3a0553f4d11ad}\label{classimporter_1_1_template_manager_1_1_template_manager_abeda32cb7c20b294ffb3a0553f4d11ad} 
+\index{importer.TemplateManager.TemplateManager@{importer.TemplateManager.TemplateManager}!getDate@{getDate}}
+\index{getDate@{getDate}!importer.TemplateManager.TemplateManager@{importer.TemplateManager.TemplateManager}}
+\doxysubsubsection{\texorpdfstring{getDate()}{getDate()}}
+{\footnotesize\ttfamily importer.\+Template\+Manager.\+Template\+Manager.\+get\+Date (\begin{DoxyParamCaption}\item[{}]{df,  }\item[{}]{type\+\_\+format,  }\item[{}]{filename }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Assign a date column according to format
+
+Args:
+    df (pandas dataframe): current file loaded as dataframe
+    type_format (str): format name of current file
+    filename (dict): current filename
+Returns: None
+\end{DoxyVerb}
+ \Hypertarget{classimporter_1_1_template_manager_1_1_template_manager_a6c65f471d1720ebff57e9de05447b9b2}\label{classimporter_1_1_template_manager_1_1_template_manager_a6c65f471d1720ebff57e9de05447b9b2} 
+\index{importer.TemplateManager.TemplateManager@{importer.TemplateManager.TemplateManager}!getType@{getType}}
+\index{getType@{getType}!importer.TemplateManager.TemplateManager@{importer.TemplateManager.TemplateManager}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily importer.\+Template\+Manager.\+Template\+Manager.\+get\+Type (\begin{DoxyParamCaption}\item[{}]{df,  }\item[{}]{type\+\_\+format,  }\item[{}]{filename }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Assign a custom column according to format
+
+Args:
+    df (pandas dataframe): current file loaded as dataframe
+    type_format (str): format name of current file
+    filename (dict): current filename
+Returns: None
+\end{DoxyVerb}
+ \Hypertarget{classimporter_1_1_template_manager_1_1_template_manager_aa81ee9ac84d1a817e1a954cdd4b7249c}\label{classimporter_1_1_template_manager_1_1_template_manager_aa81ee9ac84d1a817e1a954cdd4b7249c} 
+\index{importer.TemplateManager.TemplateManager@{importer.TemplateManager.TemplateManager}!preprocessing@{preprocessing}}
+\index{preprocessing@{preprocessing}!importer.TemplateManager.TemplateManager@{importer.TemplateManager.TemplateManager}}
+\doxysubsubsection{\texorpdfstring{preprocessing()}{preprocessing()}}
+{\footnotesize\ttfamily importer.\+Template\+Manager.\+Template\+Manager.\+preprocessing (\begin{DoxyParamCaption}\item[{}]{dir\+\_\+file,  }\item[{}]{type\+\_\+format,  }\item[{}]{file\+\_\+features,  }\item[{}]{session,  }\item[{}]{rel\+\_\+col }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Read the current file whit some tech details according to format
+
+Args:
+    dir_file (str): s3 path where file is storage
+    type_format (str): format name of current file
+    file_features (dict): features required to load file
+    session (boto3 obj): AWS client connection
+    rel_col (str): indicates release_id column name
+Returns: None
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/michellmonroy/\+Documents/dev-\/glider/glider/src/importer/\mbox{\hyperlink{_template_manager_8py}{Template\+Manager.\+py}}\end{DoxyCompactItemize}

@@ -1,0 +1,201 @@
+\doxysection{importer.\+Identify\+Format Namespace Reference}
+\hypertarget{namespaceimporter_1_1_identify_format}{}\label{namespaceimporter_1_1_identify_format}\index{importer.IdentifyFormat@{importer.IdentifyFormat}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceimporter_1_1_identify_format_a482e747dcffb74b23e2a24d828658bdc}{download\+\_\+obj}} (event, file)
+\item 
+\mbox{\hyperlink{namespaceimporter_1_1_identify_format_a31efc6bbc9f3ec7c500a3a756efaad8d}{csv\+Headers}} (event, file)
+\item 
+\mbox{\hyperlink{namespaceimporter_1_1_identify_format_a32be73f5a214d83810e6451914cbdc08}{identify\+Headers}} (headers, \mbox{\hyperlink{namespaceimporter_1_1_identify_format_a0207b3aa7ebf0e43d9830a179b917a0d}{collection}})
+\item 
+\mbox{\hyperlink{namespaceimporter_1_1_identify_format_a15570bb0e03a40059c773832ed82f530}{type\+\_\+schema}} (schema)
+\item 
+\mbox{\hyperlink{namespaceimporter_1_1_identify_format_a3371091bd79a1894f162950d7b3326aa}{cols\+\_\+otto}} (schema, otto\+Mapping)
+\item 
+\mbox{\hyperlink{namespaceimporter_1_1_identify_format_abbce3715159bdeb7ab493532484a02a0}{identify\+\_\+format}} (event, context=None)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceimporter_1_1_identify_format_a1483de9d4129b80e27834d5ab4da3a83}{s3\+\_\+file\+\_\+obj}} = None
+\begin{DoxyCompactList}\small\item\em It will contain the file content downloaded from s3. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceimporter_1_1_identify_format_a1a2827869ca7f6504b7f7e84cd8b1a87}{ENV}} = os.\+environ.\+get("{}ENVIRONMENT"{})
+\begin{DoxyCompactList}\small\item\em Environment where code is running (Development/\+Production) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceimporter_1_1_identify_format_afab6f18bba80cbf85f2f3b4976b913db}{ACCESS\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em Access keys for AWS. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceimporter_1_1_identify_format_a68e86917675e7e02335ee98409929f71}{ACCESS\+\_\+\+KEY}}
+\begin{DoxyCompactList}\small\item\em Access keys for AWS. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceimporter_1_1_identify_format_a83166f48189474d70e7a4b175fe4f3a0}{mongo\+\_\+conn}} = \mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection}{mongo\+\_\+connection}}()
+\begin{DoxyCompactList}\small\item\em Class to connect to mongodb. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceimporter_1_1_identify_format_a0207b3aa7ebf0e43d9830a179b917a0d}{collection}} = mongo\+\_\+conn.\+mongo\+\_\+conn\+\_\+formats()
+\begin{DoxyCompactList}\small\item\em Mongo collection to search formats. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceimporter_1_1_identify_format_abd455f2860dc8e5b571ac1b436dc7171}{snap\+\_\+collection}} = mongo\+\_\+conn.\+mongo\+\_\+conn\+\_\+snapshots()
+\begin{DoxyCompactList}\small\item\em Mongo collection to upload snapshots. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceimporter_1_1_identify_format_a76469f9a4d8258e4a540abc23edb3a84}{s3\+\_\+client}} = boto3.\+client("{}s3"{}, aws\+\_\+access\+\_\+key\+\_\+id=\mbox{\hyperlink{namespaceimporter_1_1_identify_format_afab6f18bba80cbf85f2f3b4976b913db}{ACCESS\+\_\+\+ID}}, aws\+\_\+secret\+\_\+access\+\_\+key= \mbox{\hyperlink{namespaceimporter_1_1_identify_format_a68e86917675e7e02335ee98409929f71}{ACCESS\+\_\+\+KEY}})
+\begin{DoxyCompactList}\small\item\em Connection for AWS using boto3. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceimporter_1_1_identify_format_a3371091bd79a1894f162950d7b3326aa}\label{namespaceimporter_1_1_identify_format_a3371091bd79a1894f162950d7b3326aa} 
+\index{importer.IdentifyFormat@{importer.IdentifyFormat}!cols\_otto@{cols\_otto}}
+\index{cols\_otto@{cols\_otto}!importer.IdentifyFormat@{importer.IdentifyFormat}}
+\doxysubsubsection{\texorpdfstring{cols\_otto()}{cols\_otto()}}
+{\footnotesize\ttfamily importer.\+Identify\+Format.\+cols\+\_\+otto (\begin{DoxyParamCaption}\item[{}]{schema,  }\item[{}]{otto\+Mapping }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Builds the relation between main features of each column in the file and the mapping template
+
+Args:
+    schema (list): contains the columns features from current file
+    ottoMapping (list): contains the columns features from the desired template 
+Returns: match (list)
+\end{DoxyVerb}
+ \Hypertarget{namespaceimporter_1_1_identify_format_a31efc6bbc9f3ec7c500a3a756efaad8d}\label{namespaceimporter_1_1_identify_format_a31efc6bbc9f3ec7c500a3a756efaad8d} 
+\index{importer.IdentifyFormat@{importer.IdentifyFormat}!csvHeaders@{csvHeaders}}
+\index{csvHeaders@{csvHeaders}!importer.IdentifyFormat@{importer.IdentifyFormat}}
+\doxysubsubsection{\texorpdfstring{csvHeaders()}{csvHeaders()}}
+{\footnotesize\ttfamily importer.\+Identify\+Format.\+csv\+Headers (\begin{DoxyParamCaption}\item[{}]{event,  }\item[{}]{file }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Takes the s3_file content and decoding it to get headers
+
+Args:
+    event (dict): is a dictionary with all client and sales information
+    file (str): current filename
+Returns: headers (list)
+\end{DoxyVerb}
+ \Hypertarget{namespaceimporter_1_1_identify_format_a482e747dcffb74b23e2a24d828658bdc}\label{namespaceimporter_1_1_identify_format_a482e747dcffb74b23e2a24d828658bdc} 
+\index{importer.IdentifyFormat@{importer.IdentifyFormat}!download\_obj@{download\_obj}}
+\index{download\_obj@{download\_obj}!importer.IdentifyFormat@{importer.IdentifyFormat}}
+\doxysubsubsection{\texorpdfstring{download\_obj()}{download\_obj()}}
+{\footnotesize\ttfamily importer.\+Identify\+Format.\+download\+\_\+obj (\begin{DoxyParamCaption}\item[{}]{event,  }\item[{}]{file }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Receives file info and reads the firsts 1024 bytes to determinate the encoding
+
+Args:
+    event (dict): is a dictionary with all client and sales information
+    file (str): current filename
+Returns: s3_file (str)
+         charenc (str)
+\end{DoxyVerb}
+ \Hypertarget{namespaceimporter_1_1_identify_format_abbce3715159bdeb7ab493532484a02a0}\label{namespaceimporter_1_1_identify_format_abbce3715159bdeb7ab493532484a02a0} 
+\index{importer.IdentifyFormat@{importer.IdentifyFormat}!identify\_format@{identify\_format}}
+\index{identify\_format@{identify\_format}!importer.IdentifyFormat@{importer.IdentifyFormat}}
+\doxysubsubsection{\texorpdfstring{identify\_format()}{identify\_format()}}
+{\footnotesize\ttfamily importer.\+Identify\+Format.\+identify\+\_\+format (\begin{DoxyParamCaption}\item[{}]{event,  }\item[{}]{context = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Executes full procedure filter csv, txt and xls files
+
+Args:
+    event (dict): is a dictionary with all client and sales information
+    context (none): it's required just for lambda execution
+Returns: (dict)
+\end{DoxyVerb}
+ \Hypertarget{namespaceimporter_1_1_identify_format_a32be73f5a214d83810e6451914cbdc08}\label{namespaceimporter_1_1_identify_format_a32be73f5a214d83810e6451914cbdc08} 
+\index{importer.IdentifyFormat@{importer.IdentifyFormat}!identifyHeaders@{identifyHeaders}}
+\index{identifyHeaders@{identifyHeaders}!importer.IdentifyFormat@{importer.IdentifyFormat}}
+\doxysubsubsection{\texorpdfstring{identifyHeaders()}{identifyHeaders()}}
+{\footnotesize\ttfamily importer.\+Identify\+Format.\+identify\+Headers (\begin{DoxyParamCaption}\item[{}]{headers,  }\item[{}]{collection }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Searches format using headers and takes template information. Also builds a list with main features of each column
+
+Args:
+    headers (list): contains the X firsts lines from current file
+    collection (mongo collection): Mongo collection where formats templates are storage
+Returns: template_format (dict)
+\end{DoxyVerb}
+ \Hypertarget{namespaceimporter_1_1_identify_format_a15570bb0e03a40059c773832ed82f530}\label{namespaceimporter_1_1_identify_format_a15570bb0e03a40059c773832ed82f530} 
+\index{importer.IdentifyFormat@{importer.IdentifyFormat}!type\_schema@{type\_schema}}
+\index{type\_schema@{type\_schema}!importer.IdentifyFormat@{importer.IdentifyFormat}}
+\doxysubsubsection{\texorpdfstring{type\_schema()}{type\_schema()}}
+{\footnotesize\ttfamily importer.\+Identify\+Format.\+type\+\_\+schema (\begin{DoxyParamCaption}\item[{}]{schema }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Takes the schema field from database and gets the main features of each column
+
+Args:
+    schema (list): contains the columns features from current file
+    collection (mongo collection): Mongo collection where formats templates are storage
+Returns: template_format (dict)
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespaceimporter_1_1_identify_format_afab6f18bba80cbf85f2f3b4976b913db}\label{namespaceimporter_1_1_identify_format_afab6f18bba80cbf85f2f3b4976b913db} 
+\index{importer.IdentifyFormat@{importer.IdentifyFormat}!ACCESS\_ID@{ACCESS\_ID}}
+\index{ACCESS\_ID@{ACCESS\_ID}!importer.IdentifyFormat@{importer.IdentifyFormat}}
+\doxysubsubsection{\texorpdfstring{ACCESS\_ID}{ACCESS\_ID}}
+{\footnotesize\ttfamily importer.\+Identify\+Format.\+ACCESS\+\_\+\+ID}
+
+
+
+Access keys for AWS. 
+
+\Hypertarget{namespaceimporter_1_1_identify_format_a68e86917675e7e02335ee98409929f71}\label{namespaceimporter_1_1_identify_format_a68e86917675e7e02335ee98409929f71} 
+\index{importer.IdentifyFormat@{importer.IdentifyFormat}!ACCESS\_KEY@{ACCESS\_KEY}}
+\index{ACCESS\_KEY@{ACCESS\_KEY}!importer.IdentifyFormat@{importer.IdentifyFormat}}
+\doxysubsubsection{\texorpdfstring{ACCESS\_KEY}{ACCESS\_KEY}}
+{\footnotesize\ttfamily importer.\+Identify\+Format.\+ACCESS\+\_\+\+KEY}
+
+
+
+Access keys for AWS. 
+
+\Hypertarget{namespaceimporter_1_1_identify_format_a0207b3aa7ebf0e43d9830a179b917a0d}\label{namespaceimporter_1_1_identify_format_a0207b3aa7ebf0e43d9830a179b917a0d} 
+\index{importer.IdentifyFormat@{importer.IdentifyFormat}!collection@{collection}}
+\index{collection@{collection}!importer.IdentifyFormat@{importer.IdentifyFormat}}
+\doxysubsubsection{\texorpdfstring{collection}{collection}}
+{\footnotesize\ttfamily importer.\+Identify\+Format.\+collection = mongo\+\_\+conn.\+mongo\+\_\+conn\+\_\+formats()}
+
+
+
+Mongo collection to search formats. 
+
+\Hypertarget{namespaceimporter_1_1_identify_format_a1a2827869ca7f6504b7f7e84cd8b1a87}\label{namespaceimporter_1_1_identify_format_a1a2827869ca7f6504b7f7e84cd8b1a87} 
+\index{importer.IdentifyFormat@{importer.IdentifyFormat}!ENV@{ENV}}
+\index{ENV@{ENV}!importer.IdentifyFormat@{importer.IdentifyFormat}}
+\doxysubsubsection{\texorpdfstring{ENV}{ENV}}
+{\footnotesize\ttfamily importer.\+Identify\+Format.\+ENV = os.\+environ.\+get("{}ENVIRONMENT"{})}
+
+
+
+Environment where code is running (Development/\+Production) 
+
+\Hypertarget{namespaceimporter_1_1_identify_format_a83166f48189474d70e7a4b175fe4f3a0}\label{namespaceimporter_1_1_identify_format_a83166f48189474d70e7a4b175fe4f3a0} 
+\index{importer.IdentifyFormat@{importer.IdentifyFormat}!mongo\_conn@{mongo\_conn}}
+\index{mongo\_conn@{mongo\_conn}!importer.IdentifyFormat@{importer.IdentifyFormat}}
+\doxysubsubsection{\texorpdfstring{mongo\_conn}{mongo\_conn}}
+{\footnotesize\ttfamily importer.\+Identify\+Format.\+mongo\+\_\+conn = \mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection}{mongo\+\_\+connection}}()}
+
+
+
+Class to connect to mongodb. 
+
+\Hypertarget{namespaceimporter_1_1_identify_format_a76469f9a4d8258e4a540abc23edb3a84}\label{namespaceimporter_1_1_identify_format_a76469f9a4d8258e4a540abc23edb3a84} 
+\index{importer.IdentifyFormat@{importer.IdentifyFormat}!s3\_client@{s3\_client}}
+\index{s3\_client@{s3\_client}!importer.IdentifyFormat@{importer.IdentifyFormat}}
+\doxysubsubsection{\texorpdfstring{s3\_client}{s3\_client}}
+{\footnotesize\ttfamily importer.\+Identify\+Format.\+s3\+\_\+client = boto3.\+client("{}s3"{}, aws\+\_\+access\+\_\+key\+\_\+id=\mbox{\hyperlink{namespaceimporter_1_1_identify_format_afab6f18bba80cbf85f2f3b4976b913db}{ACCESS\+\_\+\+ID}}, aws\+\_\+secret\+\_\+access\+\_\+key= \mbox{\hyperlink{namespaceimporter_1_1_identify_format_a68e86917675e7e02335ee98409929f71}{ACCESS\+\_\+\+KEY}})}
+
+
+
+Connection for AWS using boto3. 
+
+\Hypertarget{namespaceimporter_1_1_identify_format_a1483de9d4129b80e27834d5ab4da3a83}\label{namespaceimporter_1_1_identify_format_a1483de9d4129b80e27834d5ab4da3a83} 
+\index{importer.IdentifyFormat@{importer.IdentifyFormat}!s3\_file\_obj@{s3\_file\_obj}}
+\index{s3\_file\_obj@{s3\_file\_obj}!importer.IdentifyFormat@{importer.IdentifyFormat}}
+\doxysubsubsection{\texorpdfstring{s3\_file\_obj}{s3\_file\_obj}}
+{\footnotesize\ttfamily importer.\+Identify\+Format.\+s3\+\_\+file\+\_\+obj = None}
+
+
+
+It will contain the file content downloaded from s3. 
+
+\Hypertarget{namespaceimporter_1_1_identify_format_abd455f2860dc8e5b571ac1b436dc7171}\label{namespaceimporter_1_1_identify_format_abd455f2860dc8e5b571ac1b436dc7171} 
+\index{importer.IdentifyFormat@{importer.IdentifyFormat}!snap\_collection@{snap\_collection}}
+\index{snap\_collection@{snap\_collection}!importer.IdentifyFormat@{importer.IdentifyFormat}}
+\doxysubsubsection{\texorpdfstring{snap\_collection}{snap\_collection}}
+{\footnotesize\ttfamily importer.\+Identify\+Format.\+snap\+\_\+collection = mongo\+\_\+conn.\+mongo\+\_\+conn\+\_\+snapshots()}
+
+
+
+Mongo collection to upload snapshots. 
+

@@ -1,0 +1,31 @@
+\doxysection{Qobuz\+Template.\+py}
+\hypertarget{_qobuz_template_8py_source}{}\label{_qobuz_template_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/QobuzTemplate.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/QobuzTemplate.py}}
+\mbox{\hyperlink{_qobuz_template_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1templates_1_1_qobuz_template}{00001}}\ \textcolor{keyword}{import}\ re}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00002}00002\ \textcolor{keyword}{import}\ awswrangler\ \textcolor{keyword}{as}\ wr}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00003}00003\ \textcolor{keyword}{from}\ datetime\ \textcolor{keyword}{import}\ datetime}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00005}\mbox{\hyperlink{classimporter_1_1templates_1_1_qobuz_template_1_1_qobuz_template}{00005}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_qobuz_template_1_1_qobuz_template}{QobuzTemplate}}:}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00006}\mbox{\hyperlink{classimporter_1_1templates_1_1_qobuz_template_1_1_qobuz_template_a6cba05653031b58a1ddf925a796af323}{00006}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_qobuz_template_1_1_qobuz_template_a6cba05653031b58a1ddf925a796af323}{type}}(self,\ asset\_type,\ filename):}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00007}00007\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}download"{}}\ \textcolor{keywordflow}{in}\ filename:}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00008}00008\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ asset\_type==\textcolor{stringliteral}{"{}track"{}}:}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00009}00009\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{'T'}}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00010}00010\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ asset\_type==\textcolor{stringliteral}{"{}album"{}}:}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00011}00011\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{'A'}}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{'S'}}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00014}\mbox{\hyperlink{classimporter_1_1templates_1_1_qobuz_template_1_1_qobuz_template_a8ce338bf83fc3d444f6a4426ae5579d9}{00014}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_qobuz_template_1_1_qobuz_template_a8ce338bf83fc3d444f6a4426ae5579d9}{assetType}}(self,\ df,\ filename):}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Add\ a\ new\ column\ to\ insert\ type}}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00016}00016\ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}asset\_type"{}}]\ =\ df.apply(\textcolor{keyword}{lambda}\ Row:\ self.\mbox{\hyperlink{classimporter_1_1templates_1_1_qobuz_template_1_1_qobuz_template_a6cba05653031b58a1ddf925a796af323}{type}}(Row[\textcolor{stringliteral}{'album\ or\ track'}],\ filename),\ axis=1)}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00019}\mbox{\hyperlink{classimporter_1_1templates_1_1_qobuz_template_1_1_qobuz_template_a1c3735b8ae5ca2094c69ec3523ace313}{00019}}\ \ \ \ \ \textcolor{keyword}{def\ }date(self,\ filename):}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ "{}qobuz-\/eu-\/gyrost-\/202205-\/streaming.tsv"{}}}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00021}00021\ \ \ \ \ \ \ \ \ date\ =\ re.findall(\textcolor{stringliteral}{r'-\/20\(\backslash\)d\{4\}'},\ filename)[0]}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00022}00022\ \ \ \ \ \ \ \ \ date\ =\ date.replace(\textcolor{stringliteral}{"{}-\/"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ date\_str\ =\ date[:4]+\textcolor{stringliteral}{"{}-\/"{}}+date[4:6]}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df["{}date\_from\_file"{}]\ =\ date\_str}}
+\DoxyCodeLine{\Hypertarget{_qobuz_template_8py_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ date\_str}
+
+\end{DoxyCode}

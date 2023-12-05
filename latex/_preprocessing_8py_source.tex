@@ -1,0 +1,26 @@
+\doxysection{Preprocessing.\+py}
+\hypertarget{_preprocessing_8py_source}{}\label{_preprocessing_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/Preprocessing.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/Preprocessing.py}}
+\mbox{\hyperlink{_preprocessing_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1templates_1_1_preprocessing}{00001}}\ \textcolor{keyword}{import}\ awswrangler\ \textcolor{keyword}{as}\ wr}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00003}\mbox{\hyperlink{classimporter_1_1templates_1_1_preprocessing_1_1_preprocessing_data}{00003}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_preprocessing_1_1_preprocessing_data}{PreprocessingData}}:}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00004}\mbox{\hyperlink{classimporter_1_1templates_1_1_preprocessing_1_1_preprocessing_data_ae7b407d0f8cd059619fa608435fe2164}{00004}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_preprocessing_1_1_preprocessing_data_ae7b407d0f8cd059619fa608435fe2164}{preprocessing}}(self,\ filename,\ features,\ session,\ rel\_col):}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00005}00005\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00006}00006\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ args:}}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00007}00007\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ filename:\ -\/str-\/\ s3\ full\ path\ of\ filename}}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00008}00008\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ features:\ -\/dict-\/\ which\ contains\ delimiter,\ skip\_rows\ and\ encoding}}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00009}00009\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ session:\ -\/class-\/\ s3\ connexion\ }}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00010}00010\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00011}00011\ \ \ \ \ \ \ \ \ delimiter\ =\ features[\textcolor{stringliteral}{"{}delimiter"{}}]}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00012}00012\ \ \ \ \ \ \ \ \ skip\_rows\ =\ features[\textcolor{stringliteral}{"{}skip\_rows"{}}]}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00013}00013\ \ \ \ \ \ \ \ \ encoding\ =\ features[\textcolor{stringliteral}{"{}encoding"{}}]}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ df\ =\ wr.s3.read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding,\ dtype=\{rel\_col:str\},\ low\_memory=\textcolor{keyword}{False},\ boto3\_session=session)}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}:}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ encoding\ =\ \textcolor{stringliteral}{"{}utf-\/8"{}}}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ df\ =\ wr.s3.read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding,\ low\_memory=\textcolor{keyword}{False},\ boto3\_session=session)}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df\ =\ read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding,\ low\_memory=False)\#,\ keep\_default\_na=False,\ low\_memory=False)}}
+\DoxyCodeLine{\Hypertarget{_preprocessing_8py_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
+
+\end{DoxyCode}

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['filenotloaded_0',['FileNotLoaded',['../classimporter_1_1_error_handler_1_1_file_not_loaded.html',1,'importer::ErrorHandler']]],
-  ['filenotsupported_1',['FileNotSupported',['../classimporter_1_1_error_handler_1_1_file_not_supported.html',1,'importer::ErrorHandler']]]
+  ['csvmanager_0',['csvManager',['../classimporter_1_1_format_manager_1_1csv_manager.html',1,'importer::FormatManager']]],
+  ['currencynotfound_1',['CurrencyNotFound',['../classimporter_1_1_error_handler_1_1_currency_not_found.html',1,'importer::ErrorHandler']]]
 ];

@@ -1,0 +1,87 @@
+\doxysection{Tools.\+py}
+\hypertarget{_tools_8py_source}{}\label{_tools_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/upload\_module/common/Tools.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/upload\_module/common/Tools.py}}
+\mbox{\hyperlink{_tools_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00001}\mbox{\hyperlink{namespace_tools}{00001}}\ \textcolor{keyword}{import}\ os,\ json}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00002}00002\ \textcolor{keyword}{import}\ boto3}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00003}00003\ \textcolor{keyword}{import}\ requests}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00004}00004\ \textcolor{keyword}{from}\ datetime\ \textcolor{keyword}{import}\ date,\ datetime}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00005}00005\ \textcolor{keyword}{from}\ dotenv\ \textcolor{keyword}{import}\ load\_dotenv}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00007}00007\ load\_dotenv()}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00010}\mbox{\hyperlink{namespace_tools_ad58b878025eb36a8a8d2a24bca814007}{00010}}\ ACCESS\_ID,\ ACCESS\_KEY\ =\ os.environ.get(\textcolor{stringliteral}{"{}AWS\_KEY\_ID"{}}),\ os.environ.get(\textcolor{stringliteral}{"{}AWS\_KEY\_SECRET"{}})}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00013}\mbox{\hyperlink{namespace_tools_a04e8fd646d40750171dd0ec44028966c}{00013}}\ s3\_client\ =\ boto3.client(\textcolor{stringliteral}{"{}s3"{}},\ aws\_access\_key\_id=ACCESS\_ID,\ aws\_secret\_access\_key=\ ACCESS\_KEY)}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00015}\mbox{\hyperlink{namespace_tools_a662180edd0dcdf7c3c40e323bd403e32}{00015}}\ \textcolor{keyword}{def\ }gen\_file\_list\_drive(final\_path):}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00016}00016\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Receives\ the\ final\ path\ where\ files\ were\ uploaded\ and\ make\ a\ list\ of\ them.}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00017}00017\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00018}00018\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00019}00019\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ final\_path\ (str):\ s3\ path\ where\ files\ were\ uploaded}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00020}00020\ \textcolor{stringliteral}{\ \ \ \ Returns:\ files\ (list)}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00021}00021\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00022}00022\ \ \ \ \ files\ =\ []}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00023}00023\ \ \ \ \ bucket\ =\ final\_path.split(\textcolor{stringliteral}{"{}/"{}},1)[0]}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00024}00024\ \ \ \ \ path\ =\ final\_path.split(\textcolor{stringliteral}{"{}/"{}},1)[1]}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00025}00025\ \ \ \ \ obj\ =\ s3\_client.list\_objects(Bucket\ =\ bucket,\ Prefix=path)}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{for}\ file\ \textcolor{keywordflow}{in}\ obj[\textcolor{stringliteral}{"{}Contents"{}}]:}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ file[\textcolor{stringliteral}{"{}Key"{}}].endswith(\textcolor{stringliteral}{"{}/"{}}):}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ full\_path\ =\ bucket+\textcolor{stringliteral}{"{}/"{}}+file[\textcolor{stringliteral}{"{}Key"{}}]}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ files.append(full\_path)}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{return}\ files}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00034}\mbox{\hyperlink{namespace_tools_ade912b615c9fe6084d5613970ea2c697}{00034}}\ \textcolor{keyword}{def\ }gen\_file\_list\_event(event,\ final\_path):}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00035}00035\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Checks\ which\ files\ in\ the\ input\ were\ uploaded\ successful.}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00036}00036\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00037}00037\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00038}00038\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ event\ (dict):\ is\ a\ dictionary\ with\ all\ client\ and\ files\ information}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00039}00039\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ final\_path\ (str):\ s3\ path\ where\ files\ were\ uploaded}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00040}00040\ \textcolor{stringliteral}{\ \ \ \ Returns:\ files\_out\ (list)}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00041}00041\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00042}00042\ \ \ \ \ files\_out\ =\ []}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00043}00043\ \ \ \ \ files\ =\ event[\textcolor{stringliteral}{"{}file"{}}]}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{if}\ type(event[\textcolor{stringliteral}{"{}file"{}}])\ ==\ str:}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00045}00045\ \ \ \ \ \ \ \ \ files\ =\ [event[\textcolor{stringliteral}{"{}file"{}}]]}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{for}\ file\ \textcolor{keywordflow}{in}\ files:}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00047}00047\ \ \ \ \ \ \ \ \ full\_path\ =\ final\_path+file}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00048}00048\ \ \ \ \ \ \ \ \ files\_out.append(full\_path)}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{return}\ files\_out}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00051}\mbox{\hyperlink{namespace_tools_a4a2fc3639f32fea0faf391441582425c}{00051}}\ \textcolor{keyword}{def\ }send\_notification(module,\ webhook\_url,\ status,\ files=None,\ error=None):}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00052}00052\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Sends\ a\ success/fail\ notification\ to\ some\ webhook.}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00053}00053\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00054}00054\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00055}00055\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ module\ (str):\ current\ module}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00056}00056\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ webhook\_url\ (str):\ webhook\ url\ }}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00057}00057\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ status\ (str):\ final\ status\ of\ execution}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00058}00058\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ files\ (list):\ files\ uploaded\ to\ s3.\ None\ when\ status\ =!\ successful}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00059}00059\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ error\ (str):\ error\ show\ while\ procedure\ fails.\ None\ when\ status\ =\ successful}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00060}00060\ \textcolor{stringliteral}{\ \ \ \ Returns:\ Nothing}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00061}00061\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00062}00062\ \ \ \ \ now\ =\ datetime.now()}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00063}00063\ \ \ \ \ date\ =\ now.strftime(\textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%dT\%H:\%M:\%SZ"{}})}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{if}\ status\ ==\ \textcolor{stringliteral}{"{}Successful"{}}:}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00065}00065\ \ \ \ \ \ \ \ \ message\ =\ \{}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}date"{}}:\ date,}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}module"{}}:\ module,}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}status"{}}:\ \textcolor{stringliteral}{"{}Finished"{}},}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}message"{}}:\ \textcolor{stringliteral}{"{}Files\ uploader\ has\ finished.\ Reports\ are\ on\ S3."{}},\ }
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}files"{}}:\ files}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00073}00073\ \ \ \ \ \ \ \ \ message\ =\ \{}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}date"{}}:\ date,}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}module"{}}:\ module,}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}status"{}}:\ \textcolor{stringliteral}{"{}Failed"{}},}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}message"{}}:\ \textcolor{stringliteral}{"{}Files\ could\ not\ be\ uploaded.\ Copy\ the\ error\ bellow\ and\ contact\ support\ to\ fix\ it."{}},\ }
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}error"{}}:\ error}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00079}00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00080}00080\ \ \ \ \ req\ =\ requests.post(webhook\_url,\ data=json.dumps(message,\ indent=4),\ headers=\{\textcolor{stringliteral}{"{}Content-\/type"{}}:\ \textcolor{stringliteral}{"{}application/json"{}}\})}
+\DoxyCodeLine{\Hypertarget{_tools_8py_source_l00081}00081\ \ \ \ \ print(\textcolor{stringliteral}{"{}Request\ sent\ to\ OAS\ Webhook"{}})}
+
+\end{DoxyCode}

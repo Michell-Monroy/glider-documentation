@@ -1,0 +1,104 @@
+\doxysection{File\+Cleaning.\+py}
+\hypertarget{_file_cleaning_8py_source}{}\label{_file_cleaning_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/upload\_module/gdrive/FileCleaning.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/upload\_module/gdrive/FileCleaning.py}}
+\mbox{\hyperlink{_file_cleaning_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00001}\mbox{\hyperlink{namespace_file_cleaning}{00001}}\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00002}00002\ \textcolor{keyword}{import}\ sys}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00003}00003\ \textcolor{keyword}{import}\ json}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00004}00004\ \textcolor{keyword}{import}\ boto3}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00005}00005\ \textcolor{keyword}{import}\ traceback}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00006}00006\ \textcolor{keyword}{from}\ datetime\ \textcolor{keyword}{import}\ datetime}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00007}00007\ \textcolor{keyword}{from}\ dotenv\ \textcolor{keyword}{import}\ load\_dotenv}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00008}00008\ \textcolor{keyword}{from}\ DownloadFiles\ \textcolor{keyword}{import}\ download\_file\_or\_folder}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00009}\mbox{\hyperlink{namespace_file_cleaning_a28cf7c53a562300c88eee1881d6a59c7}{00009}}\ f\_path\ =\ \_\_file\_\_}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00010}\mbox{\hyperlink{namespace_file_cleaning_afe4c614d77426d1210eaf7b4de535f95}{00010}}\ index\ =\ f\_path.find(\textcolor{stringliteral}{"{}upload\_module/"{}})}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00011}00011\ f\_path\ =\ f\_path[:index+len(\textcolor{stringliteral}{"{}upload\_module/"{}})]}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00012}00012\ sys.path.insert(1,\ f\_path+\textcolor{stringliteral}{"{}common"{}})}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00013}00013\ \textcolor{keyword}{from}\ UploadFilesS3\ \textcolor{keyword}{import}\ clean\_files}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00014}00014\ \textcolor{keyword}{from}\ Tools\ \textcolor{keyword}{import}\ gen\_file\_list\_drive,\ gen\_file\_list\_event,\ send\_notification}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00016}00016\ load\_dotenv()}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00018}\mbox{\hyperlink{namespace_file_cleaning_ad78133ddf067d6287b92b99b1a3d9ded}{00018}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_file_cleaning_ad78133ddf067d6287b92b99b1a3d9ded}{get\_path}}(local\_path):}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00019}00019\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00020}00020\ \textcolor{stringliteral}{\ \ \ \ Adds\ the\ last\ folder\ downloaded\ to\ root\ path}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00021}00021\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00022}00022\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ local\_path\ (str):\ Root\ path\ where\ is\ saved\ files}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00023}00023\ \textcolor{stringliteral}{\ \ \ \ Returns\ :\ The\ actual\ folder\ where\ files\ where\ downloaded}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00024}00024\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00025}00025\ \ \ \ \ path\_child\ =\ os.popen(\textcolor{stringliteral}{"{}ls\ \{\}"{}}.format(local\_path)).read()}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00026}00026\ \ \ \ \ local\_path\_full\ =\ local\_path+path\_child}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00027}00027\ \ \ \ \ local\_path\_full\ =\ local\_path\_full.strip(\textcolor{stringliteral}{"{}\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00028}00028\ \ \ \ \ local\_path\_renamed\ =\ local\_path\_full.replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}\_"{}})}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00029}00029\ \ \ \ \ os.rename(local\_path\_full,\ local\_path\_renamed)}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{if}\ os.path.isdir(local\_path\_renamed):}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ local\_path\_renamed+\textcolor{stringliteral}{"{}/"{}}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{return}\ local\_path}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00034}\mbox{\hyperlink{namespace_file_cleaning_aad23b60ef1b17c292670df901ed0b365}{00034}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_file_cleaning_aad23b60ef1b17c292670df901ed0b365}{download\_local\_file}}(event,\ local\_path):}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00035}00035\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00036}00036\ \textcolor{stringliteral}{\ \ \ \ Downloads\ files\ uploaded\ directly\ via\ Otto\ Light\ interface\ in\ a\ temporal\ folder}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00037}00037\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00038}00038\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ event\ (dict):\ Contains\ the\ bucket\ and\ folder\ info\ where\ file\ was\ uploaded}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00039}00039\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ local\_path\ (str):\ Root\ path\ where\ is\ saved\ files}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00040}00040\ \textcolor{stringliteral}{\ \ \ \ Returns\ :\ Nothing}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00041}00041\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00042}00042\ \ \ \ \ \textcolor{comment}{\#\ Access\ keys\ for\ AWS}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00043}00043\ \ \ \ \ ACCESS\_ID,\ ACCESS\_KEY\ =\ os.environ.get(\textcolor{stringliteral}{"{}AWS\_KEY\_ID"{}}),\ os.environ.get(\textcolor{stringliteral}{"{}AWS\_KEY\_SECRET"{}})}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00044}00044\ \ \ \ \ \textcolor{comment}{\#\ Connection\ for\ AWS\ using\ boto3}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00045}00045\ \ \ \ \ s3\_client\ =\ boto3.client(\textcolor{stringliteral}{"{}s3"{}},\ aws\_access\_key\_id=ACCESS\_ID,\ aws\_secret\_access\_key=ACCESS\_KEY)}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00046}00046\ \ \ \ \ bucket\ =\ event[\textcolor{stringliteral}{"{}bucket"{}}]}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00047}00047\ \ \ \ \ s3\_path\ =\ event[\textcolor{stringliteral}{"{}path"{}}]}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00048}00048\ \ \ \ \ file\ =\ event[\textcolor{stringliteral}{"{}file"{}}]}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{if}\ type(file)\ ==\ list:}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00050}00050\ \ \ \ \ \ \ \ \ uploaded\_files\ =\ local\_path+\textcolor{stringliteral}{"{}uploaded\_files/"{}}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ os.path.exists(uploaded\_files):}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ os.mkdir(uploaded\_files)}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ file:}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ s3\_client.download\_file(bucket,\ s3\_path+\textcolor{stringliteral}{"{}/"{}}+i,\ uploaded\_files+i)}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ s3\_client.download\_file(bucket,\ s3\_path+\textcolor{stringliteral}{"{}/"{}}+file,\ local\_path+file)}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00060}\mbox{\hyperlink{namespace_file_cleaning_abc5bc9e9571d7d6aef34767ce03e9af9}{00060}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_file_cleaning_abc5bc9e9571d7d6aef34767ce03e9af9}{run\_file\_cleaning}}(event):}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00061}00061\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00062}00062\ \textcolor{stringliteral}{\ \ \ \ Transform\ Gdrive\ link\ to\ ID\ drive\ to\ be\ downloaded\ by\ Google\ API\ and\ execute\ all\ procedure}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00063}00063\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00064}00064\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ event\ (dict):\ Shared\ link\ of\ the\ folder/file\ to\ download}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00065}00065\ \textcolor{stringliteral}{\ \ \ \ Returns\ :\ The\ actual\ folder\ where\ files\ where\ downloaded}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00066}00066\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00067}00067\ \ \ \ \ \_ROOT\_DIR\ =\ os.path.expanduser(\textcolor{stringliteral}{'\string~'})}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00068}00068\ \ \ \ \ path\ =\ \_ROOT\_DIR+\textcolor{stringliteral}{"{}/GDrive\_downloads/"{}}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00069}00069\ \ \ \ \ os.makedirs(path,\ exist\_ok=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00070}00070\ \ \ \ \ webhook\_url\ =\ event[\textcolor{stringliteral}{"{}on\_finish"{}}]}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ event[\textcolor{stringliteral}{"{}drive\_link"{}}]\ !=\ \textcolor{stringliteral}{"{}"{}}:}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ drive\_link\ =\ event[\textcolor{stringliteral}{"{}drive\_link"{}}]}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}folder"{}}\ \textcolor{keywordflow}{in}\ drive\_link:}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Example:\ https://drive.google.com/drive/folders/1l6A3zjNGw6qWJQ-\/mkeep4W4ooCw7uy6W?usp=share\_link}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ drive\_link\ =\ drive\_link.split(\textcolor{stringliteral}{"{}folders/"{}})[-\/1].split(\textcolor{stringliteral}{"{}?usp"{}})[0]}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ \textcolor{stringliteral}{"{}file"{}}\ \textcolor{keywordflow}{in}\ drive\_link:}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Example:\ https://drive.google.com/file/d/1o2q6RFa6wi7XMSJcZJhLtr-\/pNJxWQsVl/view?usp=share\_link}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ drive\_link\ =\ drive\_link.split(\textcolor{stringliteral}{"{}d/"{}})[-\/1].split(\textcolor{stringliteral}{"{}/"{}})[0]}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ download\_file\_or\_folder(drive\_link,\ path)}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:\ \ }
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_file_cleaning_aad23b60ef1b17c292670df901ed0b365}{download\_local\_file}}(event,\ path)}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00083}00083\ \ \ \ \ \ \ \ \ local\_path\ =\ \mbox{\hyperlink{namespace_file_cleaning_ad78133ddf067d6287b92b99b1a3d9ded}{get\_path}}(path)}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00084}00084\ \ \ \ \ \ \ \ \ print(local\_path)}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ path\_output\ =\ clean\_files(event,\ local\_path)}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00086}00086\ \ \ \ \ \ \ \ \ os.system(\textcolor{stringliteral}{"{}rm\ -\/r\ \{\}*"{}}.format(path))}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00087}00087\ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}Files\ uploaded\ to\ \{path\_output\}"{}})}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ event[\textcolor{stringliteral}{"{}file"{}}]\ ==\ \textcolor{stringliteral}{"{}"{}}:}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ files\ =\ gen\_file\_list\_drive(path\_output)}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ files\ =\ gen\_file\_list\_event(event,\ path\_output)}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00092}00092\ \ \ \ \ \ \ \ \ send\_notification(event[\textcolor{stringliteral}{"{}module"{}}],\ webhook\_url,\ \textcolor{stringliteral}{"{}Successful"{}},\ files=files)}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00093}00093\ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e:}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00094}00094\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}An\ error\ occurred:\ \{\}"{}}.format(e))}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(sys.exc\_info()[2])}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(traceback.format\_exc())}}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00097}00097\ \ \ \ \ \ \ \ \ m\ =\ \textcolor{stringliteral}{"{}\{\}\(\backslash\)n\{\}"{}}.format(sys.exc\_info()[2],\ traceback.format\_exc())}
+\DoxyCodeLine{\Hypertarget{_file_cleaning_8py_source_l00098}00098\ \ \ \ \ \ \ \ \ send\_notification(event[\textcolor{stringliteral}{"{}module"{}}],\ webhook\_url,\ \textcolor{stringliteral}{"{}Failed"{}},\ error=m)}
+
+\end{DoxyCode}

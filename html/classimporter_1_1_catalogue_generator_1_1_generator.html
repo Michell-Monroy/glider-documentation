@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Glider: importer.CatalogueGenerator.Generator Class Reference</title>
+<title>glider-full-doc: importer.CatalogueGenerator.Generator Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Glider
+   <div id="projectname">glider-full-doc
    </div>
   </td>
  </tr>
@@ -98,9 +98,11 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><pre class="fragment">    args: 
         s3_path: an array with path to files to generate the catalogue from.
-    returns: None.
+    Returns: Nothing.
     raises: EmptyException if initialized empty.
-</pre> </div><h2 class="groupheader">Member Function Documentation</h2>
+</pre> 
+<p class="definition">Definition at line <a class="el" href="_catalogue_generator_8py_source.html#l00025">25</a> of file <a class="el" href="_catalogue_generator_8py_source.html">CatalogueGenerator.py</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ac59946e19d09f1112659290beba2a5f0" name="ac59946e19d09f1112659290beba2a5f0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac59946e19d09f1112659290beba2a5f0">&#9670;&#160;</a></span>generate()</h2>
 
@@ -153,8 +155,15 @@ Public Member Functions</h2></td></tr>
 <pre class="fragment">    args:
     json line to update.
     Collection were catalogue is saved
-    returns: None Just update or uploading new items to catalog
+    Returns: Nothing Just update or uploading new items to catalog
 </pre> 
+<p class="definition">Definition at line <a class="el" href="_catalogue_generator_8py_source.html#l00092">92</a> of file <a class="el" href="_catalogue_generator_8py_source.html">CatalogueGenerator.py</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classimporter_1_1_catalogue_generator_1_1_generator_ac59946e19d09f1112659290beba2a5f0_cgraph.png" border="0" usemap="#aclassimporter_1_1_catalogue_generator_1_1_generator_ac59946e19d09f1112659290beba2a5f0_cgraph" alt=""/></div>
+</div>
+
 </div>
 </div>
 <a id="a5a6ce93b1ee92166aee368b2b672958b" name="a5a6ce93b1ee92166aee368b2b672958b"></a>
@@ -200,6 +209,13 @@ Public Member Functions</h2></td></tr>
         Path an array with path to files to generate the catalogue from.
     returns: a pandas dataframe 
 </pre> 
+<p class="definition">Definition at line <a class="el" href="_catalogue_generator_8py_source.html#l00038">38</a> of file <a class="el" href="_catalogue_generator_8py_source.html">CatalogueGenerator.py</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classimporter_1_1_catalogue_generator_1_1_generator_a5a6ce93b1ee92166aee368b2b672958b_icgraph.png" border="0" usemap="#aclassimporter_1_1_catalogue_generator_1_1_generator_a5a6ce93b1ee92166aee368b2b672958b_icgraph" alt=""/></div>
+</div>
+
 </div>
 </div>
 <a id="a0db6b59c6ed68cd2c996cd35170a9bad" name="a0db6b59c6ed68cd2c996cd35170a9bad"></a>
@@ -249,6 +265,18 @@ Public Member Functions</h2></td></tr>
         list of values
     returns: unique values in list df["date"].replace("2022-01-28T00:00:00.000Z", "2022-02-28T00:00:00.000Z", inplace=True)
 </pre> 
+<p class="definition">Definition at line <a class="el" href="_catalogue_generator_8py_source.html#l00051">51</a> of file <a class="el" href="_catalogue_generator_8py_source.html">CatalogueGenerator.py</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classimporter_1_1_catalogue_generator_1_1_generator_a0db6b59c6ed68cd2c996cd35170a9bad_cgraph.png" border="0" usemap="#aclassimporter_1_1_catalogue_generator_1_1_generator_a0db6b59c6ed68cd2c996cd35170a9bad_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classimporter_1_1_catalogue_generator_1_1_generator_a0db6b59c6ed68cd2c996cd35170a9bad_icgraph.png" border="0" usemap="#aclassimporter_1_1_catalogue_generator_1_1_generator_a0db6b59c6ed68cd2c996cd35170a9bad_icgraph" alt=""/></div>
+</div>
+
 </div>
 </div>
 <a id="a8ee7dd50590bc66a95578119a2e0b9a9" name="a8ee7dd50590bc66a95578119a2e0b9a9"></a>
@@ -300,6 +328,13 @@ Public Member Functions</h2></td></tr>
         Path an array with path to files to generate the catalogue from.
     returns: a Pandas dataframe with grouped by release ID only with only isrc/release title/track title/label/artist columns
 </pre> 
+<p class="definition">Definition at line <a class="el" href="_catalogue_generator_8py_source.html#l00078">78</a> of file <a class="el" href="_catalogue_generator_8py_source.html">CatalogueGenerator.py</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classimporter_1_1_catalogue_generator_1_1_generator_a8ee7dd50590bc66a95578119a2e0b9a9_icgraph.png" border="0" usemap="#aclassimporter_1_1_catalogue_generator_1_1_generator_a8ee7dd50590bc66a95578119a2e0b9a9_icgraph" alt=""/></div>
+</div>
+
 </div>
 </div>
 <a id="a4cf58ea914ec13d4fa35a4585fb1334f" name="a4cf58ea914ec13d4fa35a4585fb1334f"></a>
@@ -335,8 +370,15 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <pre class="fragment">    args:
     pandas dataframe
-    returns: None. Makes mongo connection and applies update_data function to all dataframe 
+    Returns: Nothing. Makes mongo connection and applies update_data function to all dataframe 
 </pre> 
+<p class="definition">Definition at line <a class="el" href="_catalogue_generator_8py_source.html#l00120">120</a> of file <a class="el" href="_catalogue_generator_8py_source.html">CatalogueGenerator.py</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classimporter_1_1_catalogue_generator_1_1_generator_a4cf58ea914ec13d4fa35a4585fb1334f_icgraph.png" border="0" usemap="#aclassimporter_1_1_catalogue_generator_1_1_generator_a4cf58ea914ec13d4fa35a4585fb1334f_icgraph" alt=""/></div>
+</div>
+
 </div>
 </div>
 <a id="a3e2898a27d7cbc30efa9f4273f1460c4" name="a3e2898a27d7cbc30efa9f4273f1460c4"></a>
@@ -368,10 +410,17 @@ Public Member Functions</h2></td></tr>
         lambda default args
     returns: Prints the JSON version (TODO: save to file)
 </pre> 
+<p class="definition">Definition at line <a class="el" href="_catalogue_generator_8py_source.html#l00147">147</a> of file <a class="el" href="_catalogue_generator_8py_source.html">CatalogueGenerator.py</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classimporter_1_1_catalogue_generator_1_1_generator_a3e2898a27d7cbc30efa9f4273f1460c4_cgraph.png" border="0" usemap="#aclassimporter_1_1_catalogue_generator_1_1_generator_a3e2898a27d7cbc30efa9f4273f1460c4_cgraph" alt=""/></div>
+</div>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/Users/michellmonroy/Documents/dev-glider/glider/src/importer/<a class="el" href="_catalogue_generator_8py.html">CatalogueGenerator.py</a></li>
+<li>/Users/michellmonroy/Documents/dev-glider/glider/src/importer/<a class="el" href="_catalogue_generator_8py_source.html">CatalogueGenerator.py</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

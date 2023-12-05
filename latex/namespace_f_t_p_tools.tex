@@ -1,0 +1,138 @@
+\doxysection{FTPTools Namespace Reference}
+\hypertarget{namespace_f_t_p_tools}{}\label{namespace_f_t_p_tools}\index{FTPTools@{FTPTools}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_f_t_p_tools_ab1c6eaf63f758e25a31c3b76928e3548}{ftp\+\_\+connection}} (keys)
+\item 
+\mbox{\hyperlink{namespace_f_t_p_tools_a21e0c529021c46f5e0f738faabbace6d}{get\+\_\+date}} (file\+\_\+date, last\+\_\+request)
+\item 
+\mbox{\hyperlink{namespace_f_t_p_tools_a80ef4ee2efd0854d53caa22f06b0ee5a}{change\+\_\+period}} (start\+\_\+date)
+\item 
+\mbox{\hyperlink{namespace_f_t_p_tools_ac9c326cc0f8aa29e22b9c7ed8a3b9bb8}{find\+\_\+path}} (ftp, path, period)
+\item 
+\mbox{\hyperlink{namespace_f_t_p_tools_a8f0ba22e45d6c1f531f9f9ffd7687152}{define\+\_\+path}} (ftp, path, period)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+dict \mbox{\hyperlink{namespace_f_t_p_tools_a8956ea6e8cb384c20d503390341ca7ad}{months\+\_\+mapping}}
+\begin{DoxyCompactList}\small\item\em Determines the digit according to month in the current file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_f_t_p_tools_a80ef4ee2efd0854d53caa22f06b0ee5a}\label{namespace_f_t_p_tools_a80ef4ee2efd0854d53caa22f06b0ee5a} 
+\index{FTPTools@{FTPTools}!change\_period@{change\_period}}
+\index{change\_period@{change\_period}!FTPTools@{FTPTools}}
+\doxysubsubsection{\texorpdfstring{change\_period()}{change\_period()}}
+{\footnotesize\ttfamily FTPTools.\+change\+\_\+period (\begin{DoxyParamCaption}\item[{}]{start\+\_\+date }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_f_t_p_tools_8py_source_l00077}{77}} of file \mbox{\hyperlink{_f_t_p_tools_8py_source}{FTPTools.\+py}}.
+
+Here is the caller graph for this function\+:
+% FIG 0
+\Hypertarget{namespace_f_t_p_tools_a8f0ba22e45d6c1f531f9f9ffd7687152}\label{namespace_f_t_p_tools_a8f0ba22e45d6c1f531f9f9ffd7687152} 
+\index{FTPTools@{FTPTools}!define\_path@{define\_path}}
+\index{define\_path@{define\_path}!FTPTools@{FTPTools}}
+\doxysubsubsection{\texorpdfstring{define\_path()}{define\_path()}}
+{\footnotesize\ttfamily FTPTools.\+define\+\_\+path (\begin{DoxyParamCaption}\item[{}]{ftp,  }\item[{}]{path,  }\item[{}]{period }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Defines the full path according find_path function.
+Args:
+    ftp (ftp object): ftp client connection
+    path (str): FTP server remote path 
+Returns : full_path (str) 
+          new_period (str)
+          If it doesn't exist: 
+          rel_path (str)
+          period (str)  
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_f_t_p_tools_8py_source_l00115}{115}} of file \mbox{\hyperlink{_f_t_p_tools_8py_source}{FTPTools.\+py}}.
+
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{namespace_f_t_p_tools_ac9c326cc0f8aa29e22b9c7ed8a3b9bb8}\label{namespace_f_t_p_tools_ac9c326cc0f8aa29e22b9c7ed8a3b9bb8} 
+\index{FTPTools@{FTPTools}!find\_path@{find\_path}}
+\index{find\_path@{find\_path}!FTPTools@{FTPTools}}
+\doxysubsubsection{\texorpdfstring{find\_path()}{find\_path()}}
+{\footnotesize\ttfamily FTPTools.\+find\+\_\+path (\begin{DoxyParamCaption}\item[{}]{ftp,  }\item[{}]{path,  }\item[{}]{period }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Finds if there exists a folder with te current date in "YYYYMM" format.
+If it doesn't exist searches the previous month folder
+Args:
+    ftp (ftp object): ftp client connection
+    path (str): FTP server remote path 
+Returns : rel_path (str)
+          period (str)
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_f_t_p_tools_8py_source_l00094}{94}} of file \mbox{\hyperlink{_f_t_p_tools_8py_source}{FTPTools.\+py}}.
+
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{namespace_f_t_p_tools_ab1c6eaf63f758e25a31c3b76928e3548}\label{namespace_f_t_p_tools_ab1c6eaf63f758e25a31c3b76928e3548} 
+\index{FTPTools@{FTPTools}!ftp\_connection@{ftp\_connection}}
+\index{ftp\_connection@{ftp\_connection}!FTPTools@{FTPTools}}
+\doxysubsubsection{\texorpdfstring{ftp\_connection()}{ftp\_connection()}}
+{\footnotesize\ttfamily FTPTools.\+ftp\+\_\+connection (\begin{DoxyParamCaption}\item[{}]{keys }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Connects with ftp client
+Args:
+    keys (dict): Contains the client info connect to his FTP client
+Returns : ftp connection
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_f_t_p_tools_8py_source_l00009}{9}} of file \mbox{\hyperlink{_f_t_p_tools_8py_source}{FTPTools.\+py}}.
+
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{namespace_f_t_p_tools_a21e0c529021c46f5e0f738faabbace6d}\label{namespace_f_t_p_tools_a21e0c529021c46f5e0f738faabbace6d} 
+\index{FTPTools@{FTPTools}!get\_date@{get\_date}}
+\index{get\_date@{get\_date}!FTPTools@{FTPTools}}
+\doxysubsubsection{\texorpdfstring{get\_date()}{get\_date()}}
+{\footnotesize\ttfamily FTPTools.\+get\+\_\+date (\begin{DoxyParamCaption}\item[{}]{file\+\_\+date,  }\item[{}]{last\+\_\+request }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Checks if the file dates are post than last request date
+Args:
+    file_date (str): File date extracted from to ftp server
+    last_request (date): Last request date extracted from our db
+Returns : True if the file date is post than last request date.
+          False if it doesn't
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_f_t_p_tools_8py_source_l00035}{35}} of file \mbox{\hyperlink{_f_t_p_tools_8py_source}{FTPTools.\+py}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespace_f_t_p_tools_a8956ea6e8cb384c20d503390341ca7ad}\label{namespace_f_t_p_tools_a8956ea6e8cb384c20d503390341ca7ad} 
+\index{FTPTools@{FTPTools}!months\_mapping@{months\_mapping}}
+\index{months\_mapping@{months\_mapping}!FTPTools@{FTPTools}}
+\doxysubsubsection{\texorpdfstring{months\_mapping}{months\_mapping}}
+{\footnotesize\ttfamily dict FTPTools.\+months\+\_\+mapping}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ \{\textcolor{stringliteral}{"{}jan"{}}:\ \textcolor{stringliteral}{"{}01"{}},\ \textcolor{stringliteral}{"{}feb"{}}:\ \textcolor{stringliteral}{"{}02"{}},\ \textcolor{stringliteral}{"{}mar"{}}:\ \textcolor{stringliteral}{"{}03"{}},\ \textcolor{stringliteral}{"{}apr"{}}:\ \textcolor{stringliteral}{"{}04"{}},\ \textcolor{stringliteral}{"{}may"{}}:\ \textcolor{stringliteral}{"{}05"{}},\ \textcolor{stringliteral}{"{}jun"{}}:\ \textcolor{stringliteral}{"{}06"{}},}
+\DoxyCodeLine{00002\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}jul"{}}:\ \textcolor{stringliteral}{"{}07"{}},\ \textcolor{stringliteral}{"{}aug"{}}:\ \textcolor{stringliteral}{"{}08"{}},\ \textcolor{stringliteral}{"{}sep"{}}:\ \textcolor{stringliteral}{"{}09"{}},\ \textcolor{stringliteral}{"{}oct"{}}:\ \textcolor{stringliteral}{"{}10"{}},\ \textcolor{stringliteral}{"{}nov"{}}:\textcolor{stringliteral}{"{}11"{}},\ \textcolor{stringliteral}{"{}dec"{}}:\ \textcolor{stringliteral}{"{}12"{}}\}}
+
+\end{DoxyCode}
+
+
+Determines the digit according to month in the current file. 
+
+
+
+Definition at line \mbox{\hyperlink{_f_t_p_tools_8py_source_l00006}{6}} of file \mbox{\hyperlink{_f_t_p_tools_8py_source}{FTPTools.\+py}}.
+

@@ -1,0 +1,88 @@
+\doxysection{Receive\+Path.\+py}
+\hypertarget{_receive_path_8py_source}{}\label{_receive_path_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/ReceivePath.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/ReceivePath.py}}
+\mbox{\hyperlink{_receive_path_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1_receive_path}{00001}}\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00002}00002\ \textcolor{keyword}{import}\ boto3}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00003}00003\ \textcolor{keyword}{import}\ sys}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00004}00004\ \textcolor{keyword}{import}\ traceback}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00005}00005\ \textcolor{keyword}{from}\ os.path\ \textcolor{keyword}{import}\ join,\ dirname}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00006}00006\ \textcolor{keyword}{from}\ dotenv\ \textcolor{keyword}{import}\ load\_dotenv}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00007}00007\ \textcolor{keyword}{from}\ pathlib\ \textcolor{keyword}{import}\ Path}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00008}00008\ \textcolor{keyword}{from}\ ErrorHandler\ \textcolor{keyword}{import}\ *}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00010}00010\ \textcolor{comment}{\#\ dotenv\_path\ =\ Path("{}src/importer/.env"{})}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00011}00011\ load\_dotenv()}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00013}\mbox{\hyperlink{namespaceimporter_1_1_receive_path_a59b883b05912f7b86ef411641f0182e8}{00013}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceimporter_1_1_receive_path_a59b883b05912f7b86ef411641f0182e8}{replace\_file}}(bucket,\ path,\ file,\ s3):}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00014}00014\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Removes\ blank\ spaces\ in\ the\ filename\ by\ underscores\ and\ update\ information\ in\ S3}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00015}00015\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00016}00016\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00017}00017\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ bucket\ (str):\ bucket\ where\ parquet\ file\ is\ storage}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00018}00018\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ path\ (str):\ s3\ path\ where\ parquet\ file\ is\ storage}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00019}00019\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ file\ (str):\ current\ filename}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00020}00020\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ s3\ (boto3\ obj):\ AWS\ client\ connection}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00021}00021\ \textcolor{stringliteral}{\ \ \ \ Returns:\ new\ filename\ (str)}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00022}00022\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00023}00023\ \ \ \ \ new\_filename\ =\ file.replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}\_"{}})}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00024}00024\ \ \ \ \ print(\textcolor{stringliteral}{"{}File\ Renamed:\ \{\}"{}}.format(new\_filename))}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00025}00025\ \ \ \ \ response\ =\ s3.list\_objects\_v2(Bucket=\ bucket,\ Prefix\ =\ path+\textcolor{stringliteral}{"{}/"{}}+file)}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00026}00026\ \ \ \ \ source\_key\ =\ response[\textcolor{stringliteral}{"{}Contents"{}}][0][\textcolor{stringliteral}{"{}Key"{}}]}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00027}00027\ \ \ \ \ copy\_source\ =\ \{\textcolor{stringliteral}{'Bucket'}:\ bucket,\ \textcolor{stringliteral}{'Key'}:\ path+\textcolor{stringliteral}{"{}/"{}}+file\}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00028}00028\ \ \ \ \ s3.copy\_object(Bucket\ =\ bucket,\ CopySource\ =\ copy\_source,\ Key\ =\ path+\textcolor{stringliteral}{"{}/"{}}+new\_filename)}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00029}00029\ \ \ \ \ s3.delete\_object(Bucket\ =\ bucket,\ Key\ =\ source\_key)}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{return}\ new\_filename}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00032}\mbox{\hyperlink{namespaceimporter_1_1_receive_path_aa2e669a7c3135476cff24b6c6b8014da}{00032}}\ \textcolor{keyword}{def\ }receive\_path(event,\ s3\_client):}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00033}00033\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Reviews\ if\ file\ exists\ in\ s3\ and\ takes\ actions\ if\ it\ doesn't\ or\ file\ extension\ is\ not\ allowed}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00034}00034\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00035}00035\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00036}00036\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ event\ (dict):\ is\ a\ dictionary\ with\ all\ client\ and\ sales\ information}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00037}00037\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ s3\_client\ (boto3\ obj):\ AWS\ client\ connection}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00038}00038\ \textcolor{stringliteral}{\ \ \ \ Returns:\ (dict)}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00039}00039\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00040}00040\ \ \ \ \ bucket\_in\ =\ event[\textcolor{stringliteral}{'bucket'}][0]}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00041}00041\ \ \ \ \ path\_in\ =\ event[\textcolor{stringliteral}{"{}path"{}}][0]}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00042}00042\ \ \ \ \ bucket\_out\ =\ event[\textcolor{stringliteral}{"{}bucket"{}}][1]}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00043}00043\ \ \ \ \ path\_out\ =\ event[\textcolor{stringliteral}{"{}path"{}}][1]}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00044}00044\ \ \ \ \ response\_in\ =\ s3\_client.list\_objects(Bucket\ =\ bucket\_in,\ Prefix=path\_in)}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00045}00045\ \ \ \ \ response\_out\ =\ s3\_client.list\_objects(Bucket\ =\ bucket\_out,\ Prefix=path\_out)}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00046}00046\ \ \ \ \ \textcolor{comment}{\#\ Verifies\ if\ input\ path\ exist}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}Contents"{}}\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ response\_in:}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception\ (\textcolor{stringliteral}{"{}Path\ invalid."{}})}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00049}00049\ \ \ \ \ \textcolor{comment}{\#Create\ a\ new\ folder\ for\ client\ if\ it\ does\ not\ exist}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}Contents"{}}\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ response\_out:}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00051}00051\ \ \ \ \ \ \ \ \ s3\_client.put\_object(Bucket=bucket\_out,\ Key=(path\_out+\textcolor{stringliteral}{'/'}))}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00052}00052\ \ \ \ \ possible\_files=[\textcolor{stringliteral}{"{}.csv"{}},\ \textcolor{stringliteral}{"{}.tsv"{}},\ \textcolor{stringliteral}{"{}.xls"{}},\ \textcolor{stringliteral}{"{}.xlsx"{}},\ \textcolor{stringliteral}{"{}.txt"{}},\ \textcolor{stringliteral}{"{}.xml"{}}]}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00053}00053\ \ \ \ \ status\ =\ \textcolor{stringliteral}{"{}OK"{}}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{for}\ file\ \textcolor{keywordflow}{in}\ event[\textcolor{stringliteral}{"{}files"{}}]:}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ file\_extension\ =\ os.path.splitext(file[\textcolor{stringliteral}{"{}file"{}}])[1]}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ file\_extension\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ possible\_files:}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}FILE\ \{\}\ NOT\ SUPPORTED."{}}.format(file[\textcolor{stringliteral}{"{}file"{}}]))}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ no\_processed[file\_db\_id]=\{"{}file"{}:file["{}file"{}],\ "{}error"{}:\ error\}}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ \mbox{\hyperlink{classimporter_1_1_error_handler_1_1_file_not_supported}{FileNotSupported}}()}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ s3\_client.head\_object(Bucket=bucket\_in,\ Key=path\_in+\textcolor{stringliteral}{"{}/"{}}+file[\textcolor{stringliteral}{"{}file"{}}])}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}\ "{}}\ \textcolor{keywordflow}{in}\ file[\textcolor{stringliteral}{"{}file"{}}]:}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file[\textcolor{stringliteral}{"{}file"{}}]\ =\ \mbox{\hyperlink{namespaceimporter_1_1_receive_path_a59b883b05912f7b86ef411641f0182e8}{replace\_file}}(bucket\_in,\ path\_in,\ file[\textcolor{stringliteral}{"{}file"{}}],\ s3\_client)}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e:}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}File\ \{\}\ will\ be\ discarded\ due\ \{\}"{}}.format(file[\textcolor{stringliteral}{"{}file"{}}],\ e))}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ m\ =\ \textcolor{stringliteral}{"{}\{\}\(\backslash\)n\{\}"{}}.format(sys.exc\_info()[2],\ traceback.format\_exc())}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ file\_db\_id\ =\ file[\textcolor{stringliteral}{"{}file\_id"{}}]}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ event[\textcolor{stringliteral}{"{}files"{}}].remove(file)}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ eh\ \ =\ \mbox{\hyperlink{classimporter_1_1_error_handler_1_1_error_handler}{ErrorHandler}}()}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ error\ =\ eh.handle(e,\ m,\ file\_db\_id)}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ status\ =\ \textcolor{stringliteral}{"{}Warning.\ Some\ files\ can\ not\ be\ found"{}}}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00073}00073\ \ \ \ \ \textcolor{keywordflow}{return}\ \{}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}status"{}}:\ status,}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}tag"{}}:\ event[\textcolor{stringliteral}{"{}tag"{}}],}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}cat\_gen"{}}:\ event[\textcolor{stringliteral}{"{}cat\_gen"{}}],}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}bucket"{}}:\ event[\textcolor{stringliteral}{'bucket'}],}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}path"{}}:\ event[\textcolor{stringliteral}{'path'}],}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}client\_id"{}}:\ event[\textcolor{stringliteral}{"{}client\_id"{}}],}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}files"{}}:\ event[\textcolor{stringliteral}{"{}files"{}}],}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'currency'}:\ event[\textcolor{stringliteral}{'currency'}]}
+\DoxyCodeLine{\Hypertarget{_receive_path_8py_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}

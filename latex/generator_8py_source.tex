@@ -1,0 +1,190 @@
+\doxysection{generator.\+py}
+\hypertarget{generator_8py_source}{}\label{generator_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/generator.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/generator.py}}
+\mbox{\hyperlink{generator_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1generator}{00001}}\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00002}00002\ \textcolor{keyword}{import}\ io}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00003}00003\ \textcolor{keyword}{import}\ json}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00004}00004\ \textcolor{keyword}{import}\ copy}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00005}00005\ \textcolor{keyword}{import}\ boto3}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00006}00006\ \textcolor{keyword}{import}\ pandas\ \textcolor{keyword}{as}\ pd}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00007}00007\ \textcolor{keyword}{import}\ ssl}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00008}00008\ \textcolor{keyword}{from}\ pymongo\ \textcolor{keyword}{import}\ MongoClient}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00009}00009\ \textcolor{keyword}{from}\ dotenv\ \textcolor{keyword}{import}\ load\_dotenv}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00010}00010\ \textcolor{keyword}{from}\ pathlib\ \textcolor{keyword}{import}\ Path}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00011}00011\ \textcolor{keyword}{import}\ sys}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00012}00012\ \textcolor{keyword}{import}\ traceback}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00014}00014\ \textcolor{comment}{\#\ dotenv\_path\ =\ Path("{}src/importer/.env"{})}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00015}00015\ load\_dotenv()}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00017}00017\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00018}00018\ \textcolor{stringliteral}{This\ class\ has\ the\ functionality\ to\ grab\ a\ specific\ group\ of\ sales\ files}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00019}00019\ \textcolor{stringliteral}{in\ OTTO\ format\ from\ S3\ and\ generate\ a\ JSON\ catalogue\ file.}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00020}00020\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00021}\mbox{\hyperlink{namespaceimporter_1_1generator_aabc59d504a8eb4802ca38260cef8ecfb}{00021}}\ s3\_file\_obj\ =\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00022}\mbox{\hyperlink{classimporter_1_1generator_1_1_empty_exception}{00022}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1generator_1_1_empty_exception}{EmptyException}}(Exception):}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00023}00023\ \ \ \ \ \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00025}\mbox{\hyperlink{classimporter_1_1generator_1_1_generator}{00025}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1generator_1_1_generator}{Generator}}:\ }
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00027}00027\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00028}00028\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ args:\ }}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00029}00029\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ s3\_path:\ an\ array\ with\ path\ to\ files\ to\ generate\ the\ catalogue\ from.}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00030}00030\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ Nothing.}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00031}00031\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ raises:\ EmptyException\ if\ initialized\ empty.}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00032}00032\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00033}00033\ \ \ \ \ \textcolor{comment}{\#\ def\ \_\_init\_\_(self,\ s3\_path):\ }}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00034}00034\ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ self.s3\_path\ =\ s3\_path}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00035}00035\ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ if\ not\ isinstance(s3\_path,\ list):\ }}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00036}00036\ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ raise\ EmptyException('No\ s3\ path\ passed/list\ required')}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00038}\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_a002fa32526c86bd1354a9ca2bb215c0f}{00038}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_a002fa32526c86bd1354a9ca2bb215c0f}{get\_data}}(self,\ key,\ bucket,\ s3\_client):}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ s3\_client\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ s3\_client\ =\ boto3.client(\textcolor{stringliteral}{'s3'})}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ obj\ =\ s3\_client.get\_object(Bucket=bucket,\ Key=key)}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pd.read\_parquet(io.BytesIO(obj[\textcolor{stringliteral}{'Body'}].read()))}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00044}00044\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00045}00045\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ args:\ }}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00046}00046\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ AWS\ acccesses.}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00047}00047\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Bucket\ in\ which\ results\ are\ saved.}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00048}00048\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Path\ an\ array\ with\ path\ to\ files\ to\ generate\ the\ catalogue\ from.}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00049}00049\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ returns:\ a\ pandas\ dataframe\ }}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00050}00050\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00051}\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_af78d72e33ac6ab994d52f52a7372c28b}{00051}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_af78d72e33ac6ab994d52f52a7372c28b}{getDf}}(self,\ ACCESS\_ID,\ ACCESS\_KEY,\ RESULTS\_BUCKET,\ path):}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00052}00052\ \ \ \ \ \ \ \ \ s3\_client\ =\ boto3.client(\textcolor{stringliteral}{"{}s3"{}},\ aws\_access\_key\_id=ACCESS\_ID,\ aws\_secret\_access\_key=ACCESS\_KEY)}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ df\_pl\ =\ pd.DataFrame()}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00054}00054\ \ \ \ \ \ \ \ \ response\ =\ s3\_client.list\_objects(Bucket\ =\ RESULTS\_BUCKET,\ Prefix=path)}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(response[\textcolor{stringliteral}{"{}Contents"{}}])\ >\ 2:}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ today\ =\ datetime.datetime.today().strftime('\%Y-\/\%m-\/\%d\ \%H:\%M:\%S')}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ get\_last\_modified\ =\ \textcolor{keyword}{lambda}\ x:\ int(x[\textcolor{stringliteral}{'LastModified'}].strftime(\textcolor{stringliteral}{'\%s'}))}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ last\_added\ =\ [obj[\textcolor{stringliteral}{'Key'}]\ \textcolor{keywordflow}{for}\ obj\ \textcolor{keywordflow}{in}\ sorted(response[\textcolor{stringliteral}{"{}Contents"{}}],\ key=get\_last\_modified)\ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}/"{}}\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ obj][-\/1]}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}The\ last\ file\ added\ is\ \{\}"{}}.format(last\_added))}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ df\ =\ self.\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_a002fa32526c86bd1354a9ca2bb215c0f}{get\_data}}(last\_added,RESULTS\_BUCKET,s3\_client)}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ return\ df}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ file\ \textcolor{keywordflow}{in}\ response[\textcolor{stringliteral}{"{}Contents"{}}]:}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ file[\textcolor{stringliteral}{"{}Key"{}}].endswith(\textcolor{stringliteral}{"{}/"{}}):}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}File\ \{\}\ is\ gonna\ generate\ the\ catalog"{}}.format(file[\textcolor{stringliteral}{"{}Key"{}}]))}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ df\ =\ self.\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_a002fa32526c86bd1354a9ca2bb215c0f}{get\_data}}(file[\textcolor{stringliteral}{"{}Key"{}}],RESULTS\_BUCKET,s3\_client)}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(df)}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df\_pl\ =\ pd.concat([df,df\_pl])}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00070}00070\ \ \ \ \ \ \ \ \ df.fillna(\textcolor{stringliteral}{"{}undefined"{}},\ inplace=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00072}00072\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00073}00073\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ args:\ }}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00074}00074\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ list\ of\ values}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00075}00075\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ returns:\ unique\ values\ in\ list\ df["{}date"{}].replace("{}2022-\/01-\/28T00:00:00.000Z"{},\ "{}2022-\/02-\/28T00:00:00.000Z"{},\ inplace=True)}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00076}00076\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00077}\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_ae9ebd61be9921100c78f2cf6dbe4277b}{00077}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_ae9ebd61be9921100c78f2cf6dbe4277b}{unique\_values\_from\_isrc}}(self,\ df,\ release,\ isrc,\ field):}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00078}00078\ \ \ \ \ \ \ \ \ unique\ =\ []}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ isrc:}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ value\ =\ df[(df.release\_id==release)\ \&\ (df.isrc\_id==i)][field]}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ unique.append(value.unique()[0])}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ unique}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00083}00083\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00084}00084\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ args:\ }}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00085}00085\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ AWS\ acccesses.}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00086}00086\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Bucket\ in\ which\ results\ are\ saved.}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00087}00087\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Path\ an\ array\ with\ path\ to\ files\ to\ generate\ the\ catalogue\ from.}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00088}00088\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ returns:\ a\ Pandas\ dataframe\ with\ grouped\ by\ release\ ID\ only\ with\ only\ isrc/release\ title/track\ title/label/artist\ columns}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00089}00089\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00090}\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_a6bd555bbd475937269fca1fc360ce732}{00090}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_a6bd555bbd475937269fca1fc360ce732}{generate}}(self,\ ACCESS\_ID,\ ACCESS\_KEY,\ RESULTS\_BUCKET,\ path,\ client):\ }
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00091}00091\ \ \ \ \ \ \ \ \ df\_pl\ =\ self.\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_af78d72e33ac6ab994d52f52a7372c28b}{getDf}}(ACCESS\_ID,\ ACCESS\_KEY,\ RESULTS\_BUCKET,\ path)}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00092}00092\ \ \ \ \ \ \ \ \ columns\_to\_drop\ =\ [\textcolor{stringliteral}{'quantity'},\ \textcolor{stringliteral}{'total\_foreign'},\ \textcolor{stringliteral}{'currency'},\ \textcolor{stringliteral}{'date'},\ \textcolor{stringliteral}{'type'},\ \textcolor{stringliteral}{'service\_id'},\ \textcolor{stringliteral}{'filename'},\ \textcolor{stringliteral}{'exchange\_rate'},\ \textcolor{stringliteral}{'territory\_code'},\ \textcolor{stringliteral}{'total\_local'},\ \textcolor{stringliteral}{'track\_title'},\ \textcolor{stringliteral}{'release\_title'}]}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00093}00093\ \ \ \ \ \ \ \ \ columns\_to\_convert\ =\ [\textcolor{stringliteral}{"{}release\_title"{}},\ \textcolor{stringliteral}{"{}track\_title"{}},\ \textcolor{stringliteral}{"{}label\_id"{}},\ \textcolor{stringliteral}{"{}artists"{}}]}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00094}00094\ \ \ \ \ \ \ \ \ aggregated\ =\ df\_pl.groupby(\textcolor{stringliteral}{'release\_id'})[\textcolor{stringliteral}{"{}isrc\_id"{}}].apply(list).reset\_index(name=\textcolor{stringliteral}{"{}isrc\_id"{}})}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00095}00095\ \ \ \ \ \ \ \ \ aggregated[\textcolor{stringliteral}{"{}isrc\_id"{}}]\ =\ aggregated.apply(\textcolor{keyword}{lambda}\ Row:\ list(set(Row[\textcolor{stringliteral}{"{}isrc\_id"{}}])),\ axis=1)}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ col\ \textcolor{keywordflow}{in}\ columns\_to\_convert:}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ aggregated[col]\ =\ aggregated.apply(\textcolor{keyword}{lambda}\ Row:\ self.\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_ae9ebd61be9921100c78f2cf6dbe4277b}{unique\_values\_from\_isrc}}(df\_pl,\ Row[\textcolor{stringliteral}{"{}release\_id"{}}],Row[\textcolor{stringliteral}{"{}isrc\_id"{}}],\ col),\ axis=1)}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00098}00098\ \ \ \ \ \ \ \ \ aggregated[\textcolor{stringliteral}{"{}client\_id"{}}]\ =\ client}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#generate\ returns\ something\ simil1ar\ to:\ }}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}8052405144171}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00101}00101\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \{"{}release\_id"{}:"{}8024709032027"{},}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00102}00102\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}isrc\_id"{}:["{}US29B0747640"{},"{}US29B0747642"{},"{}US29B0747652"{},"{}US29B0747644"{},"{}US29B0747656"{},"{}US29B0747646"{},"{}US29B0747650"{},"{}US29B0747648"{},"{}US29B0748238"{},"{}US29B0747654"{}],}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00103}00103\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}release\_title"{}:["{}L'Hymne\ A\ L'Amour"{},"{}L'Hymne\ A\ L'Amour"{},"{}L'Hymne\ A\ L'Amour"{},"{}L'Hymne\ A\ L'Amour"{},"{}L'Hymne\ A\ L'Amour"{},"{}L'Hymne\ A\ L'Amour"{},"{}L'Hymne\ A\ L'Amour"{},"{}L'Hymne\ A\ L'Amour"{},"{}L'Hymne\ A\ L'Amour"{},"{}L'Hymne\ A\ L'Amour"{}],}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00104}00104\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}track\_title"{}:["{}Il\ Postino"{},"{}Para\ Jobim"{},"{}Soledad"{},"{}Romance\ Del\ Diablo"{},"{}L'Hymne\ A\ L'Amour"{},"{}Waltz\ For\ Debby"{},"{}Triunfal"{},"{}Milonga\ Is\ Coming"{},"{}Sinfonia\ in\ G\ minor,\ BWV\ 797"{},"{}Operation\ Tango"{}],}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00105}00105\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}label\_id"{}:["{}CAM\ JAZZ"{},"{}CAM\ JAZZ"{},"{}CAM\ JAZZ"{},"{}CAM\ JAZZ"{},"{}CAM\ JAZZ"{},"{}CAM\ JAZZ"{},"{}CAM\ JAZZ"{},"{}CAM\ JAZZ"{},"{}CAM\ JAZZ"{},"{}CAM\ JAZZ"{}],}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00106}00106\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}artists"{}:["{}Richard\ Galliano\ featuring\ Gary\ Burton"{},"{}Richard\ Galliano\ featuring\ Gary\ Burton"{},"{}Richard\ Galliano\ featuring\ Gary\ Burton"{},"{}Richard\ Galliano\ featuring\ Gary\ Burton"{},"{}Richard\ Galliano\ featuring\ Gary\ Burton"{},"{}Richard\ Galliano\ featuring\ Gary\ Burton"{},"{}Richard\ Galliano\ featuring\ Gary\ Burton"{},"{}Richard\ Galliano\ featuring\ Gary\ Burton"{},"{}Richard\ Galliano\ featuring\ Gary\ Burton"{},"{}Richard\ Galliano\ featuring\ Gary\ Burton"{}]\}}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00107}00107\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ aggregated}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00111}00111\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00112}00112\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ args:}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00113}00113\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ json\ line\ to\ update.}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00114}00114\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Collection\ were\ catalogue\ is\ saved}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00115}00115\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ Nothing\ Just\ update\ or\ uploading\ new\ items\ to\ catalog}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00116}00116\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00118}\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_aa9c6ca030ec047608b845d41cb5cdbc0}{00118}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_aa9c6ca030ec047608b845d41cb5cdbc0}{update\_data}}(self,\ line,\ collection):}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00119}00119\ \ \ \ \ \ \ \ \ release\_found\ =\ collection.find\_one(\{\textcolor{stringliteral}{"{}release\_id"{}}:\ line[\textcolor{stringliteral}{"{}release\_id"{}}]\})}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00120}00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ release\_found:}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}UPDATING\ \{\}\ DATA\ TO\ MONGO"{}}.format(line[\textcolor{stringliteral}{"{}release\_id"{}}]))}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ release\_copy\ =\ copy.deepcopy(release\_found)}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ release\_copy[\textcolor{stringliteral}{"{}isrc\_id"{}}].extend([element\ \textcolor{keywordflow}{for}\ element\ \textcolor{keywordflow}{in}\ line[\textcolor{stringliteral}{"{}isrc\_id"{}}]\ \textcolor{keywordflow}{if}\ element\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ release\_copy[\textcolor{stringliteral}{"{}isrc\_id"{}}]])}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ itemns\_to\_add\ =\ [line[\textcolor{stringliteral}{"{}isrc\_id"{}}].index(element)\ \textcolor{keywordflow}{for}\ element\ \textcolor{keywordflow}{in}\ line[\textcolor{stringliteral}{"{}isrc\_id"{}}]\ \textcolor{keywordflow}{if}\ element\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ release\_found[\textcolor{stringliteral}{"{}isrc\_id"{}}]]}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ release\_found[\textcolor{stringliteral}{"{}isrc\_id"{}}].extend([line[\textcolor{stringliteral}{"{}isrc\_id"{}}][element]\ \textcolor{keywordflow}{for}\ element\ \textcolor{keywordflow}{in}\ itemns\_to\_add])}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ release\_found[\textcolor{stringliteral}{"{}release\_title"{}}].extend([line[\textcolor{stringliteral}{"{}release\_title"{}}][element]\ \textcolor{keywordflow}{for}\ element\ \textcolor{keywordflow}{in}\ itemns\_to\_add])}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ release\_found[\textcolor{stringliteral}{"{}track\_title"{}}].extend([line[\textcolor{stringliteral}{"{}track\_title"{}}][element]\ \textcolor{keywordflow}{for}\ element\ \textcolor{keywordflow}{in}\ itemns\_to\_add])}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ release\_found[\textcolor{stringliteral}{"{}label\_id"{}}].extend([line[\textcolor{stringliteral}{"{}label\_id"{}}][element]\ \textcolor{keywordflow}{for}\ element\ \textcolor{keywordflow}{in}\ itemns\_to\_add])}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ release\_found[\textcolor{stringliteral}{"{}artists"{}}].extend([line[\textcolor{stringliteral}{"{}artists"{}}][element]\ \textcolor{keywordflow}{for}\ element\ \textcolor{keywordflow}{in}\ itemns\_to\_add])}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ collection.update\_one(\{\textcolor{stringliteral}{"{}release\_id"{}}:\ line[\textcolor{stringliteral}{"{}release\_id"{}}]\},\{\textcolor{stringliteral}{"{}\$set"{}}:\ \{\textcolor{stringliteral}{"{}isrc\_id"{}}:release\_found[\textcolor{stringliteral}{"{}isrc\_id"{}}],}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}release\_title"{}}:release\_found[\textcolor{stringliteral}{"{}release\_title"{}}],}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}track\_title"{}}:release\_found[\textcolor{stringliteral}{"{}track\_title"{}}],}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}label\_id"{}}:release\_found[\textcolor{stringliteral}{"{}label\_id"{}}],}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}artists"{}}:release\_found[\textcolor{stringliteral}{"{}artists"{}}],}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}client\_id"{}}:line[\textcolor{stringliteral}{"{}client\_id"{}}]\}\})}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}UPLOADING\ \{\}\ DATA\ TO\ MONGO"{}}.format(line[\textcolor{stringliteral}{"{}release\_id"{}}]))}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ collection.insert\_one(line)}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00139}00139\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00140}00140\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ args:}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00141}00141\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ pandas\ dataframe}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00142}00142\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ Nothing.\ Makes\ mongo\ connection\ and\ applies\ update\_data\ function\ to\ all\ dataframe\ }}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00143}00143\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00145}\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_a0ed6b63f59d6e3341a2ba7a0ed906c94}{00145}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_a0ed6b63f59d6e3341a2ba7a0ed906c94}{upload\_catalog}}(self,\ df):}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00146}00146\ \ \ \ \ \ \ \ \ uri\ =\ os.environ.get(\textcolor{stringliteral}{"{}MONGO\_GLIDER"{}})}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00147}00147\ \ \ \ \ \ \ \ \ db\_name\ =\ os.environ.get(\textcolor{stringliteral}{"{}DB"{}})}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00148}00148\ \ \ \ \ \ \ \ \ collection\_name\ =\ os.environ.get(\textcolor{stringliteral}{"{}CAT\_COLLECTION"{}})}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00149}00149\ \ \ \ \ \ \ \ \ client\ =\ MongoClient(uri,\ ssl\_cert\_reqs=ssl.CERT\_NONE)}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00150}00150\ \ \ \ \ \ \ \ \ db\ =\ client[db\_name]}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00151}00151\ \ \ \ \ \ \ \ \ collection\ =\ db[collection\_name]}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00152}00152\ \ \ \ \ \ \ \ \ jsonfile\ =\ df.to\_json(orient=\textcolor{stringliteral}{"{}records"{}})}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00153}00153\ \ \ \ \ \ \ \ \ df\_json\ =\ json.loads(jsonfile)\ }
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00154}00154\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df\_json\ =\ df.apply(lambda\ x:\ x.to\_dict(),\ axis=1).to\_list()}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(df\_json)}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00156}00156\ \ \ \ \ \ \ \ \ [self.\mbox{\hyperlink{classimporter_1_1generator_1_1_generator_aa9c6ca030ec047608b845d41cb5cdbc0}{update\_data}}(x,\ collection)\ \textcolor{keywordflow}{for}\ x\ \textcolor{keywordflow}{in}\ df\_json]}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00157}00157\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00158}00158\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00159}00159\ \textcolor{stringliteral}{\ \ \ \ args:\ }}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00160}00160\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ lambda\ default\ args}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00161}00161\ \textcolor{stringliteral}{\ \ \ \ returns:\ Prints\ the\ JSON\ version\ (TODO:\ save\ to\ file)}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00162}00162\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00163}\mbox{\hyperlink{namespaceimporter_1_1generator_aec440f5efe5da40ab3598fee00de49aa}{00163}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceimporter_1_1generator_aec440f5efe5da40ab3598fee00de49aa}{lambda\_handler}}(event,\ context):}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00164}00164\ \ \ \ \ \textcolor{keywordflow}{if}\ event[\textcolor{stringliteral}{"{}status"{}}]\ !=\ \textcolor{stringliteral}{'Snapshots\ Created'}:}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00165}00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\textcolor{stringliteral}{"{}status"{}}:\ \textcolor{stringliteral}{"{}Catalog\ could\ not\ be\ updated"{}}\}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00166}00166\ \ \ \ \ ID\ =\ os.environ.get(\textcolor{stringliteral}{"{}AWS\_KEY\_ID"{}})}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00167}00167\ \ \ \ \ KEY\ =\ os.environ.get(\textcolor{stringliteral}{"{}AWS\_SECRET\_KEY"{}})}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00168}00168\ \ \ \ \ \textcolor{comment}{\#\ RESULTS\_BUCKET\ =\ os.environ.get("{}RESULTS\_BUCKET"{})}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00169}00169\ \ \ \ \ RESULTS\_BUCKET\ =\ event[\textcolor{stringliteral}{"{}results\_bucket"{}}]}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00170}00170\ \ \ \ \ RESULTS\_PATH\ =\ event[\textcolor{stringliteral}{"{}results\_path"{}}]}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00171}00171\ \ \ \ \ CLIENT\_ID\ =\ event[\textcolor{stringliteral}{"{}client\_id"{}}]}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00172}00172\ \ \ \ \ \textcolor{keywordflow}{try}:\ }
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00173}00173\ \ \ \ \ \ \ \ \ catalog\_generator\ =\ \mbox{\hyperlink{classimporter_1_1generator_1_1_generator}{Generator}}()}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00174}00174\ \ \ \ \ \ \ \ \ aggregated\ =\ catalog\_generator.generate(ID,\ KEY,\ RESULTS\_BUCKET,\ RESULTS\_PATH,\ CLIENT\_ID)}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00175}00175\ \ \ \ \ \ \ \ \ print(aggregated)}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00176}00176\ \ \ \ \ \ \ \ \ json\_df\ =\ aggregated.to\_json(orient=\textcolor{stringliteral}{"{}records"{}})}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00177}00177\ \ \ \ \ \ \ \ \ print(json\_df)}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00178}00178\ \ \ \ \ \ \ \ \ catalog\_generator.upload\_catalog(aggregated)}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00179}00179\ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e:}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00180}00180\ \ \ \ \ \ \ \ \ print(sys.exc\_info()[2])}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00181}00181\ \ \ \ \ \ \ \ \ print(traceback.format\_exc())}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\textcolor{stringliteral}{"{}status"{}}:\ str(e)\}}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00183}00183\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{generator_8py_source_l00184}00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\textcolor{stringliteral}{"{}status"{}}:\ \textcolor{stringliteral}{"{}Catalog\ updated"{}}\}}
+
+\end{DoxyCode}

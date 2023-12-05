@@ -1,6 +1,11 @@
 var searchData=
 [
-  ['pass_5fexcel_5fto_5fcsv_0',['pass_excel_to_csv',['../namespaceimporter_1_1_excel__to__csv.html#aa217279e5837dc39a9ad6a2372e67c88',1,'importer::Excel_to_csv']]],
-  ['preprocessing_1',['preprocessing',['../classimporter_1_1_template_manager_1_1_template_manager.html#aa81ee9ac84d1a817e1a954cdd4b7249c',1,'importer::TemplateManager::TemplateManager']]],
-  ['process_5ffiles_5fparallel_2',['process_files_parallel',['../namespaceimporter_1_1_process_files.html#a39df1e941c21939e1a4f7aa0a6f52250',1,'importer::ProcessFiles']]]
+  ['main_0',['main',['../namespace_generate_token.html#a751a4c038569c905b3ae8157d9b41244',1,'GenerateToken']]],
+  ['matching_5fsales_1',['matching_sales',['../namespaceimporter_1_1_sanitization_lines.html#ad3c63c93fd757148baf3ec09623de835',1,'importer::SanitizationLines']]],
+  ['mongo_5fconn_2',['mongo_conn',['../classimporter_1_1_mongo_connection_1_1mongo__connection.html#aad633bd7c5f99cfbc30fb2fe6d7c5811',1,'importer::MongoConnection::mongo_connection']]],
+  ['mongo_5fconn_5fcatalogue_3',['mongo_conn_catalogue',['../classimporter_1_1_mongo_connection_1_1mongo__connection.html#a0266431c353fbc9912c14717274fab90',1,'importer::MongoConnection::mongo_connection']]],
+  ['mongo_5fconn_5fformats_4',['mongo_conn_formats',['../classimporter_1_1_mongo_connection_1_1mongo__connection.html#aa97641c8736fd3276e6f4795cef0efee',1,'importer::MongoConnection::mongo_connection']]],
+  ['mongo_5fconn_5fftp_5',['mongo_conn_ftp',['../classimporter_1_1_mongo_connection_1_1mongo__connection.html#a9b80df879d9934de9a133103b296a001',1,'importer::MongoConnection::mongo_connection']]],
+  ['mongo_5fconn_5fsales_6',['mongo_conn_sales',['../classimporter_1_1_mongo_connection_1_1mongo__connection.html#a35971c611f845a9f3d69fa4b26aff1c3',1,'importer::MongoConnection::mongo_connection']]],
+  ['mongo_5fconn_5fsnapshots_7',['mongo_conn_snapshots',['../classimporter_1_1_mongo_connection_1_1mongo__connection.html#a9c2473d09d1f936e039217b3d02fe3de',1,'importer::MongoConnection::mongo_connection']]]
 ];

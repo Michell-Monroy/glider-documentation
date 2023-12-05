@@ -1,0 +1,186 @@
+\doxysection{Upload\+Files\+S3 Namespace Reference}
+\hypertarget{namespace_upload_files_s3}{}\label{namespace_upload_files_s3}\index{UploadFilesS3@{UploadFilesS3}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_upload_files_s3_a53527bad53ef51b87eaa9a615234915f}{folder\+\_\+or\+\_\+file}} (local\+\_\+path, files\+\_\+list)
+\item 
+\mbox{\hyperlink{namespace_upload_files_s3_ad8ee5fc983089b09c062686f088481f5}{upload\+\_\+files\+\_\+s3}} (bucket, s3\+\_\+path, local\+\_\+path, file)
+\item 
+\mbox{\hyperlink{namespace_upload_files_s3_a5e54705d1df269ba071186263a8ba47b}{transform\+\_\+fx\+\_\+rates\+\_\+file}} (local\+\_\+path, file)
+\item 
+\mbox{\hyperlink{namespace_upload_files_s3_af6778a0907dfbfa936478ee4fab9e8be}{extract\+\_\+file}} (bucket, s3\+\_\+path, local\+\_\+path, file, compression)
+\item 
+\mbox{\hyperlink{namespace_upload_files_s3_a57f56cd91f1a76d464bb3b0212658bd8}{clean\+\_\+files}} (event, local\+\_\+path)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_upload_files_s3_a0942f90da9c346ae24cc6056b8252f65}{ACCESS\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em Access keys for AWS. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_upload_files_s3_a1ae29c22755c359bc5ca28ecf915372b}{ACCESS\+\_\+\+KEY}}
+\begin{DoxyCompactList}\small\item\em Access keys for AWS. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_upload_files_s3_acbf83e060c95b2b1542b22febfde8ec3}{s3\+\_\+client}} = boto3.\+client("{}s3"{}, aws\+\_\+access\+\_\+key\+\_\+id=\mbox{\hyperlink{namespace_upload_files_s3_a0942f90da9c346ae24cc6056b8252f65}{ACCESS\+\_\+\+ID}}, aws\+\_\+secret\+\_\+access\+\_\+key= \mbox{\hyperlink{namespace_upload_files_s3_a1ae29c22755c359bc5ca28ecf915372b}{ACCESS\+\_\+\+KEY}})
+\begin{DoxyCompactList}\small\item\em Connection for AWS using boto3. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_upload_files_s3_ac4a6fbb6b0c8a9c699722ac2c717efc2}{date\+\_\+for\+\_\+path}} = date.\+today()
+\begin{DoxyCompactList}\small\item\em Sets the name for s3 path were files will be uploaded according to current date. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_upload_files_s3_a57f56cd91f1a76d464bb3b0212658bd8}\label{namespace_upload_files_s3_a57f56cd91f1a76d464bb3b0212658bd8} 
+\index{UploadFilesS3@{UploadFilesS3}!clean\_files@{clean\_files}}
+\index{clean\_files@{clean\_files}!UploadFilesS3@{UploadFilesS3}}
+\doxysubsubsection{\texorpdfstring{clean\_files()}{clean\_files()}}
+{\footnotesize\ttfamily Upload\+Files\+S3.\+clean\+\_\+files (\begin{DoxyParamCaption}\item[{}]{event,  }\item[{}]{local\+\_\+path }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Makes blank spaces deletion, extraction, conversion files and upload procedure for each file into the defined path
+
+Args:
+    event (dict): Contains the client info to save files in s3
+    local_path (str): Root path where is saved files
+Returns : Nothing.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_upload_files_s3_8py_source_l00095}{95}} of file \mbox{\hyperlink{_upload_files_s3_8py_source}{Upload\+Files\+S3.\+py}}.
+
+Here is the call graph for this function\+:
+% FIG 0
+\Hypertarget{namespace_upload_files_s3_af6778a0907dfbfa936478ee4fab9e8be}\label{namespace_upload_files_s3_af6778a0907dfbfa936478ee4fab9e8be} 
+\index{UploadFilesS3@{UploadFilesS3}!extract\_file@{extract\_file}}
+\index{extract\_file@{extract\_file}!UploadFilesS3@{UploadFilesS3}}
+\doxysubsubsection{\texorpdfstring{extract\_file()}{extract\_file()}}
+{\footnotesize\ttfamily Upload\+Files\+S3.\+extract\+\_\+file (\begin{DoxyParamCaption}\item[{}]{bucket,  }\item[{}]{s3\+\_\+path,  }\item[{}]{local\+\_\+path,  }\item[{}]{file,  }\item[{}]{compression }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Extract files from a compressed file, delete blank spaces  
+
+Args:
+    local_path (str): Root path where is saved files
+    files (str): File to decompress
+    compression (str): Type of compression (gz, zip)
+Returns : Nothing.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_upload_files_s3_8py_source_l00067}{67}} of file \mbox{\hyperlink{_upload_files_s3_8py_source}{Upload\+Files\+S3.\+py}}.
+
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{namespace_upload_files_s3_a53527bad53ef51b87eaa9a615234915f}\label{namespace_upload_files_s3_a53527bad53ef51b87eaa9a615234915f} 
+\index{UploadFilesS3@{UploadFilesS3}!folder\_or\_file@{folder\_or\_file}}
+\index{folder\_or\_file@{folder\_or\_file}!UploadFilesS3@{UploadFilesS3}}
+\doxysubsubsection{\texorpdfstring{folder\_or\_file()}{folder\_or\_file()}}
+{\footnotesize\ttfamily Upload\+Files\+S3.\+folder\+\_\+or\+\_\+file (\begin{DoxyParamCaption}\item[{}]{local\+\_\+path,  }\item[{}]{files\+\_\+list }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Moves all files (in fub folders) to root path
+
+Args:
+    local_path (str): Root path where is saved files
+    files_list (list): list where each file is allocated to be moved posteriorly
+Returns : Nothing.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_upload_files_s3_8py_source_l00024}{24}} of file \mbox{\hyperlink{_upload_files_s3_8py_source}{Upload\+Files\+S3.\+py}}.
+
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{namespace_upload_files_s3_a5e54705d1df269ba071186263a8ba47b}\label{namespace_upload_files_s3_a5e54705d1df269ba071186263a8ba47b} 
+\index{UploadFilesS3@{UploadFilesS3}!transform\_fx\_rates\_file@{transform\_fx\_rates\_file}}
+\index{transform\_fx\_rates\_file@{transform\_fx\_rates\_file}!UploadFilesS3@{UploadFilesS3}}
+\doxysubsubsection{\texorpdfstring{transform\_fx\_rates\_file()}{transform\_fx\_rates\_file()}}
+{\footnotesize\ttfamily Upload\+Files\+S3.\+transform\+\_\+fx\+\_\+rates\+\_\+file (\begin{DoxyParamCaption}\item[{}]{local\+\_\+path,  }\item[{}]{file }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Converts xls file (it contains fx rates for apple) to csv file
+
+Args:
+    local_path (str): Root path where is saved files
+    files (str): File to convert
+Returns : Nothing.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_upload_files_s3_8py_source_l00054}{54}} of file \mbox{\hyperlink{_upload_files_s3_8py_source}{Upload\+Files\+S3.\+py}}.
+
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{namespace_upload_files_s3_ad8ee5fc983089b09c062686f088481f5}\label{namespace_upload_files_s3_ad8ee5fc983089b09c062686f088481f5} 
+\index{UploadFilesS3@{UploadFilesS3}!upload\_files\_s3@{upload\_files\_s3}}
+\index{upload\_files\_s3@{upload\_files\_s3}!UploadFilesS3@{UploadFilesS3}}
+\doxysubsubsection{\texorpdfstring{upload\_files\_s3()}{upload\_files\_s3()}}
+{\footnotesize\ttfamily Upload\+Files\+S3.\+upload\+\_\+files\+\_\+s3 (\begin{DoxyParamCaption}\item[{}]{bucket,  }\item[{}]{s3\+\_\+path,  }\item[{}]{local\+\_\+path,  }\item[{}]{file }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Uploads all files to s3 path defined previously
+
+Args:
+    local_path (str): Root path where is saved files
+    files (str): File to upload
+Returns : Nothing.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_upload_files_s3_8py_source_l00042}{42}} of file \mbox{\hyperlink{_upload_files_s3_8py_source}{Upload\+Files\+S3.\+py}}.
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespace_upload_files_s3_a0942f90da9c346ae24cc6056b8252f65}\label{namespace_upload_files_s3_a0942f90da9c346ae24cc6056b8252f65} 
+\index{UploadFilesS3@{UploadFilesS3}!ACCESS\_ID@{ACCESS\_ID}}
+\index{ACCESS\_ID@{ACCESS\_ID}!UploadFilesS3@{UploadFilesS3}}
+\doxysubsubsection{\texorpdfstring{ACCESS\_ID}{ACCESS\_ID}}
+{\footnotesize\ttfamily Upload\+Files\+S3.\+ACCESS\+\_\+\+ID}
+
+
+
+Access keys for AWS. 
+
+
+
+Definition at line \mbox{\hyperlink{_upload_files_s3_8py_source_l00013}{13}} of file \mbox{\hyperlink{_upload_files_s3_8py_source}{Upload\+Files\+S3.\+py}}.
+
+\Hypertarget{namespace_upload_files_s3_a1ae29c22755c359bc5ca28ecf915372b}\label{namespace_upload_files_s3_a1ae29c22755c359bc5ca28ecf915372b} 
+\index{UploadFilesS3@{UploadFilesS3}!ACCESS\_KEY@{ACCESS\_KEY}}
+\index{ACCESS\_KEY@{ACCESS\_KEY}!UploadFilesS3@{UploadFilesS3}}
+\doxysubsubsection{\texorpdfstring{ACCESS\_KEY}{ACCESS\_KEY}}
+{\footnotesize\ttfamily Upload\+Files\+S3.\+ACCESS\+\_\+\+KEY}
+
+
+
+Access keys for AWS. 
+
+
+
+Definition at line \mbox{\hyperlink{_upload_files_s3_8py_source_l00013}{13}} of file \mbox{\hyperlink{_upload_files_s3_8py_source}{Upload\+Files\+S3.\+py}}.
+
+\Hypertarget{namespace_upload_files_s3_ac4a6fbb6b0c8a9c699722ac2c717efc2}\label{namespace_upload_files_s3_ac4a6fbb6b0c8a9c699722ac2c717efc2} 
+\index{UploadFilesS3@{UploadFilesS3}!date\_for\_path@{date\_for\_path}}
+\index{date\_for\_path@{date\_for\_path}!UploadFilesS3@{UploadFilesS3}}
+\doxysubsubsection{\texorpdfstring{date\_for\_path}{date\_for\_path}}
+{\footnotesize\ttfamily Upload\+Files\+S3.\+date\+\_\+for\+\_\+path = date.\+today()}
+
+
+
+Sets the name for s3 path were files will be uploaded according to current date. 
+
+
+
+Definition at line \mbox{\hyperlink{_upload_files_s3_8py_source_l00019}{19}} of file \mbox{\hyperlink{_upload_files_s3_8py_source}{Upload\+Files\+S3.\+py}}.
+
+\Hypertarget{namespace_upload_files_s3_acbf83e060c95b2b1542b22febfde8ec3}\label{namespace_upload_files_s3_acbf83e060c95b2b1542b22febfde8ec3} 
+\index{UploadFilesS3@{UploadFilesS3}!s3\_client@{s3\_client}}
+\index{s3\_client@{s3\_client}!UploadFilesS3@{UploadFilesS3}}
+\doxysubsubsection{\texorpdfstring{s3\_client}{s3\_client}}
+{\footnotesize\ttfamily Upload\+Files\+S3.\+s3\+\_\+client = boto3.\+client("{}s3"{}, aws\+\_\+access\+\_\+key\+\_\+id=\mbox{\hyperlink{namespace_upload_files_s3_a0942f90da9c346ae24cc6056b8252f65}{ACCESS\+\_\+\+ID}}, aws\+\_\+secret\+\_\+access\+\_\+key= \mbox{\hyperlink{namespace_upload_files_s3_a1ae29c22755c359bc5ca28ecf915372b}{ACCESS\+\_\+\+KEY}})}
+
+
+
+Connection for AWS using boto3. 
+
+
+
+Definition at line \mbox{\hyperlink{_upload_files_s3_8py_source_l00016}{16}} of file \mbox{\hyperlink{_upload_files_s3_8py_source}{Upload\+Files\+S3.\+py}}.
+

@@ -1,0 +1,137 @@
+\doxysection{FTPTools.\+py}
+\hypertarget{_f_t_p_tools_8py_source}{}\label{_f_t_p_tools_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/upload\_module/ftp/FTPTools.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/upload\_module/ftp/FTPTools.py}}
+\mbox{\hyperlink{_f_t_p_tools_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00001}\mbox{\hyperlink{namespace_f_t_p_tools}{00001}}\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00002}00002\ \textcolor{keyword}{import}\ ftplib}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00003}00003\ \textcolor{keyword}{from}\ datetime\ \textcolor{keyword}{import}\ datetime,\ date,\ timedelta}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00006}\mbox{\hyperlink{namespace_f_t_p_tools_a8956ea6e8cb384c20d503390341ca7ad}{00006}}\ months\_mapping\ =\ \{\textcolor{stringliteral}{"{}jan"{}}:\ \textcolor{stringliteral}{"{}01"{}},\ \textcolor{stringliteral}{"{}feb"{}}:\ \textcolor{stringliteral}{"{}02"{}},\ \textcolor{stringliteral}{"{}mar"{}}:\ \textcolor{stringliteral}{"{}03"{}},\ \textcolor{stringliteral}{"{}apr"{}}:\ \textcolor{stringliteral}{"{}04"{}},\ \textcolor{stringliteral}{"{}may"{}}:\ \textcolor{stringliteral}{"{}05"{}},\ \textcolor{stringliteral}{"{}jun"{}}:\ \textcolor{stringliteral}{"{}06"{}},}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00007}00007\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}jul"{}}:\ \textcolor{stringliteral}{"{}07"{}},\ \textcolor{stringliteral}{"{}aug"{}}:\ \textcolor{stringliteral}{"{}08"{}},\ \textcolor{stringliteral}{"{}sep"{}}:\ \textcolor{stringliteral}{"{}09"{}},\ \textcolor{stringliteral}{"{}oct"{}}:\ \textcolor{stringliteral}{"{}10"{}},\ \textcolor{stringliteral}{"{}nov"{}}:\textcolor{stringliteral}{"{}11"{}},\ \textcolor{stringliteral}{"{}dec"{}}:\ \textcolor{stringliteral}{"{}12"{}}\}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00009}\mbox{\hyperlink{namespace_f_t_p_tools_ab1c6eaf63f758e25a31c3b76928e3548}{00009}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_f_t_p_tools_ab1c6eaf63f758e25a31c3b76928e3548}{ftp\_connection}}(keys):}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00010}00010\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00011}00011\ \textcolor{stringliteral}{\ \ \ \ Connects\ with\ ftp\ client}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00012}00012\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00013}00013\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ keys\ (dict):\ Contains\ the\ client\ info\ connect\ to\ his\ FTP\ client}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00014}00014\ \textcolor{stringliteral}{\ \ \ \ Returns\ :\ ftp\ connection}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00015}00015\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00016}00016\ \ \ \ \ server\ =\ keys[\textcolor{stringliteral}{"{}server"{}}]}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00017}00017\ \ \ \ \ port\ =\ keys[\textcolor{stringliteral}{"{}port"{}}]}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00018}00018\ \ \ \ \ user\ =\ keys[\textcolor{stringliteral}{"{}user"{}}]}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00019}00019\ \ \ \ \ password\ =\ keys[\textcolor{stringliteral}{"{}password"{}}]}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00020}00020\ \ \ \ \ protocol\ =\ keys[\textcolor{stringliteral}{"{}protocol"{}}]}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00022}00022\ \ \ \ \ server\ =\ server.replace(\textcolor{stringliteral}{"{}ftpes://"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00023}00023\ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}tls"{}}\ \textcolor{keywordflow}{in}\ protocol.lower():}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ ftp\ =\ ftplib.FTP\_TLS(server)}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ ftp.login(user,\ password)}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ ftp.prot\_p()}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ ftp\ =\ ftplib.FTP(server,\ port)}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ ftp.login(user,\ password)}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ftp}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{except}:}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}FTP\ connection\ failed"{}})}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00035}\mbox{\hyperlink{namespace_f_t_p_tools_a21e0c529021c46f5e0f738faabbace6d}{00035}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_f_t_p_tools_a21e0c529021c46f5e0f738faabbace6d}{get\_date}}(file\_date,\ last\_request):}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00036}00036\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00037}00037\ \textcolor{stringliteral}{\ \ \ \ Checks\ if\ the\ file\ dates\ are\ post\ than\ last\ request\ date}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00038}00038\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00039}00039\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ file\_date\ (str):\ File\ date\ extracted\ from\ to\ ftp\ server}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00040}00040\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ last\_request\ (date):\ Last\ request\ date\ extracted\ from\ our\ db}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00041}00041\ \textcolor{stringliteral}{\ \ \ \ Returns\ :\ True\ if\ the\ file\ date\ is\ post\ than\ last\ request\ date.}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00042}00042\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ False\ if\ it\ doesn't}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00043}00043\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00044}00044\ \ \ \ \ \textcolor{comment}{\#\ last\_request\ =\ datetime.strptime(last\_request,\ "{}\%Y-\/\%m-\/\%dT\%H:\%M:\%SZ"{})}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ last\_request:}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00047}00047\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}:"{}}\ \textcolor{keywordflow}{in}\ file\_date[-\/1]:}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00049}00049\ \ \ \ \ \ \ \ \ today\ =\ date.today()}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00050}00050\ \ \ \ \ \ \ \ \ year\ =\ today.year}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00051}00051\ \ \ \ \ \ \ \ \ month\ =\ months\_mapping[file\_date[0].lower()]}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00052}00052\ \ \ \ \ \ \ \ \ date\_full\ =\ f\textcolor{stringliteral}{"{}\{year\}-\/\{month\}-\/\{file\_date[1]\}T\{file\_date[2]\}:00"{}}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ date\_full\ =\ datetime.strptime(date\_full,\ \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%dT\%H:\%M:\%S"{}})}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ month\ =\ months\_mapping[file\_date[0].lower()]}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ date\_full\ =\ f\textcolor{stringliteral}{"{}\{file\_date[2]\}-\/\{month\}-\/\{file\_date[1]\}T00:00"{}}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ date\_full\ =\ datetime.strptime(date\_full,\ \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%dT\%H:\%M:\%S"{}})}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{if}\ date\_full\ >\ last\_request:}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00063}00063\ \textcolor{comment}{\#\ def\ get\_period(last=None):}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00064}00064\ \textcolor{comment}{\#\ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00065}00065\ \textcolor{comment}{\#\ \ \ \ \ converts\ the\ current\ day\ to\ "{}YYYYMM"{}\ string\ to\ use\ as\ parameter\ in\ }}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00066}00066\ \textcolor{comment}{\#\ \ \ \ \ define\_path\ function}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00067}00067\ \textcolor{comment}{\#\ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00068}00068\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ last\ (None/int):\ Number\ of\ weeks\ to\ subtract\ to\ current\ day}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00069}00069\ \textcolor{comment}{\#\ \ \ \ \ Returns\ :\ Date\ as\ "{}YYYYMM"{}\ string}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00070}00070\ \textcolor{comment}{\#\ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00071}00071\ \textcolor{comment}{\#\ \ \ \ \ current\_date\ =\ date.today()}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00072}00072\ \textcolor{comment}{\#\ \ \ \ \ if\ last:}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00073}00073\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ current\_date\ =\ current\_date\ -\/\ timedelta(weeks=last)}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00074}00074\ \textcolor{comment}{\#\ \ \ \ \ period\ =\ date.strftime(current\_date,\ "{}\%Y\%m\%d"{})}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00075}00075\ \textcolor{comment}{\#\ \ \ \ \ return\ period[:6]}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00077}\mbox{\hyperlink{namespace_f_t_p_tools_a80ef4ee2efd0854d53caa22f06b0ee5a}{00077}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_f_t_p_tools_a80ef4ee2efd0854d53caa22f06b0ee5a}{change\_period}}(start\_date):}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00078}00078\ \ \ \ \ y\ =\ int(start\_date[:4])}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00079}00079\ \ \ \ \ m\ =\ int(start\_date[4:])}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00080}00080\ \ \ \ \ start\_date\ =\ date(y,\ m,\ 1)}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00081}00081\ \ \ \ \ year\ =\ start\_date.year}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00082}00082\ \ \ \ \ month\ =\ start\_date.month}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{if}\ month\ ==\ 12:}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00084}00084\ \ \ \ \ \ \ \ \ year\ +=\ 1}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ month\ =\ 1}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00087}00087\ \ \ \ \ \ \ \ \ month\ +=\ 1}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00089}00089\ \ \ \ \ \textcolor{keywordflow}{if}\ month\ <\ 10:}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00090}00090\ \ \ \ \ \ \ \ \ month\ =\ \textcolor{stringliteral}{"{}0"{}}+str(month)}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00091}00091\ \ \ \ \ period\ =\ f\textcolor{stringliteral}{"{}\{year\}\{month\}"{}}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00092}00092\ \ \ \ \ \textcolor{keywordflow}{return}\ period}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00094}\mbox{\hyperlink{namespace_f_t_p_tools_ac9c326cc0f8aa29e22b9c7ed8a3b9bb8}{00094}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_f_t_p_tools_ac9c326cc0f8aa29e22b9c7ed8a3b9bb8}{find\_path}}(ftp,\ path,\ period):}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00095}00095\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00096}00096\ \textcolor{stringliteral}{\ \ \ \ Finds\ if\ there\ exists\ a\ folder\ with\ te\ current\ date\ in\ "{}YYYYMM"{}\ format.}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00097}00097\ \textcolor{stringliteral}{\ \ \ \ If\ it\ doesn't\ exist\ searches\ the\ previous\ month\ folder}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00098}00098\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00099}00099\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ ftp\ (ftp\ object):\ ftp\ client\ connection}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00100}00100\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ path\ (str):\ FTP\ server\ remote\ path\ }}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00101}00101\ \textcolor{stringliteral}{\ \ \ \ Returns\ :\ rel\_path\ (str)}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00102}00102\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ period\ (str)}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00103}00103\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00104}00104\ \ \ \ \ ftp.cwd(\textcolor{stringliteral}{"{}/"{}})}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00105}00105\ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00106}00106\ \ \ \ \ \ \ \ \ sub\_path=\mbox{\hyperlink{namespace_f_t_p_tools_a80ef4ee2efd0854d53caa22f06b0ee5a}{change\_period}}(period)}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00107}00107\ \ \ \ \ \ \ \ \ rel\_path\ =\ path+\textcolor{stringliteral}{"{}/"{}}+sub\_path}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00108}00108\ \ \ \ \ \ \ \ \ ftp.cwd(rel\_path)}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rel\_path,\ sub\_path}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00110}00110\ \ \ \ \ \textcolor{keywordflow}{except}:}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00111}00111\ \ \ \ \ \ \ \ \ rel\_path\ =\ path}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rel\_path,\ period}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00113}00113\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00115}\mbox{\hyperlink{namespace_f_t_p_tools_a8f0ba22e45d6c1f531f9f9ffd7687152}{00115}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_f_t_p_tools_a8f0ba22e45d6c1f531f9f9ffd7687152}{define\_path}}(ftp,\ path,\ period):}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00116}00116\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00117}00117\ \textcolor{stringliteral}{\ \ \ \ Defines\ the\ full\ path\ according\ find\_path\ function.}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00118}00118\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00119}00119\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ ftp\ (ftp\ object):\ ftp\ client\ connection}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00120}00120\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ path\ (str):\ FTP\ server\ remote\ path\ }}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00121}00121\ \textcolor{stringliteral}{\ \ \ \ Returns\ :\ full\_path\ (str)\ }}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00122}00122\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_period\ (str)}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00123}00123\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ If\ it\ doesn't\ exist:\ }}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00124}00124\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ rel\_path\ (str)}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00125}00125\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ period\ (str)\ \ }}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00126}00126\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{try}:\ }
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00128}00128\ \ \ \ \ \ \ \ \ full\_path,\ new\_period\ =\ \mbox{\hyperlink{namespace_f_t_p_tools_ac9c326cc0f8aa29e22b9c7ed8a3b9bb8}{find\_path}}(ftp,\ path,\ period)}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ full\_path,\ new\_period}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00130}00130\ \ \ \ \ \textcolor{keywordflow}{except}:}
+\DoxyCodeLine{\Hypertarget{_f_t_p_tools_8py_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ path,\ period}
+
+\end{DoxyCode}

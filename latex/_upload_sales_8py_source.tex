@@ -1,0 +1,176 @@
+\doxysection{Upload\+Sales.\+py}
+\hypertarget{_upload_sales_8py_source}{}\label{_upload_sales_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/UploadSales.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/UploadSales.py}}
+\mbox{\hyperlink{_upload_sales_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1_upload_sales}{00001}}\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00002}00002\ \textcolor{keyword}{import}\ ssl}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00003}00003\ \textcolor{keyword}{import}\ boto3}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00004}00004\ \textcolor{keyword}{import}\ awswrangler\ \textcolor{keyword}{as}\ wr}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00005}00005\ \textcolor{keyword}{import}\ multiprocessing\ \textcolor{keyword}{as}\ mp}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00006}00006\ \textcolor{keyword}{from}\ multiprocessing.pool\ \textcolor{keyword}{import}\ Pool}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00007}00007\ \textcolor{keyword}{from}\ itertools\ \textcolor{keyword}{import}\ repeat}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00008}00008\ \textcolor{keyword}{from}\ pymongo\ \textcolor{keyword}{import}\ MongoClient,\ DeleteOne}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00009}00009\ \textcolor{keyword}{from}\ pymongo.errors\ \textcolor{keyword}{import}\ BulkWriteError}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00010}00010\ \textcolor{keyword}{from}\ MongoConnection\ \textcolor{keyword}{import}\ mongo\_connection}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00011}00011\ \textcolor{keyword}{from}\ dotenv\ \textcolor{keyword}{import}\ load\_dotenv,\ dotenv\_values}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00012}00012\ load\_dotenv()}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00015}\mbox{\hyperlink{namespaceimporter_1_1_upload_sales_ac6363662b020bb46d3b31e2f9c6ccfc2}{00015}}\ collection\_name\ =\ os.environ.get(\textcolor{stringliteral}{"{}COLLECTION"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00016}\mbox{\hyperlink{namespaceimporter_1_1_upload_sales_a3956d56a9e9085b5cdcbd6d4cc415613}{00016}}\ mongo\_conn\ =\ \mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection}{mongo\_connection}}()}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00019}\mbox{\hyperlink{namespaceimporter_1_1_upload_sales_af1641f0cb371c0936e5db207f6a5ddf4}{00019}}\ collection\ =\ mongo\_conn.mongo\_conn\_sales()}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00021}\mbox{\hyperlink{namespaceimporter_1_1_upload_sales_aa1ecc69330ee384cdad22635dd1b2b8b}{00021}}\ catalogue\_collection\ =\ mongo\_conn.mongo\_conn\_catalogue()}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00022}00022\ \textcolor{comment}{\#\ releases\ =\ list(catalogue\_collection.find(\{\},\ \{"{}\_id"{}:0,\ "{}upc"{}:1,"{}title"{}:1,"{}label"{}:1,"{}artist"{}:1,"{}tracks.isrc"{}:1,\ "{}tracks.title"{}:1,\ "{}tracks.artist"{}:1,\ "{}catalogId"{}:\ 1\}))}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00024}\mbox{\hyperlink{namespaceimporter_1_1_upload_sales_ad521bee3217da21b864556909a608866}{00024}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceimporter_1_1_upload_sales_ad521bee3217da21b864556909a608866}{upload\_data\_mongo}}(df):}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00025}00025\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ Uploads\ batch\ lines\ to\ mongodb}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00026}00026\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00027}00027\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00028}00028\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ df\ (dataframe):\ Dataframe\ with\ sales\ matched\ by\ catalogue}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00029}00029\ \textcolor{stringliteral}{\ \ \ \ Returns:\ Nothing}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00030}00030\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00031}00031\ \ \ \ \ lines\ =\ df.apply(\textcolor{keyword}{lambda}\ x:\ x.to\_dict(),\ axis=1).to\_list()}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{if}\ len(lines)\ >\ 0:}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ collection.insert\_many(lines)}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00034}00034\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00035}\mbox{\hyperlink{namespaceimporter_1_1_upload_sales_a4aad626dced3231dee66904c828e72d0}{00035}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceimporter_1_1_upload_sales_a4aad626dced3231dee66904c828e72d0}{find\_upc}}(upcs,\ df):}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00036}00036\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ Makes\ catalogue\ matching\ using\ upc\ as\ key}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00037}00037\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00038}00038\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00039}00039\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ upcs\ (list):\ A\ list\ which\ contains\ all\ unique\ UPCs\ in\ the\ current\ batch}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00040}00040\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ df\ (dataframe):\ Dataframe\ with\ sales\ matched\ by\ catalogue}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00041}00041\ \textcolor{stringliteral}{\ \ \ \ Returns:\ Nothing}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00042}00042\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{for}\ upc\ \textcolor{keywordflow}{in}\ upcs:}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ upc\_found\ =\ [element\ for\ element\ in\ releases\ if\ element['upc']\ ==\ upc]}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ len(upc\_found)\ >\ 0:}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00046}00046\ \ \ \ \ \ \ \ \ upc\_found\ =\ catalogue\_collection.find\_one(\{\textcolor{stringliteral}{"{}upc"{}}:\{\textcolor{stringliteral}{"{}\$regex"{}}:upc\}\},\{\textcolor{stringliteral}{"{}\_id"{}}:0,\ \textcolor{stringliteral}{"{}upc"{}}:1,\textcolor{stringliteral}{"{}title"{}}:1,\textcolor{stringliteral}{"{}label"{}}:1,\textcolor{stringliteral}{"{}artist"{}}:1,\ \textcolor{stringliteral}{"{}catalogId"{}}:\ 1\})}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00047}00047\ \ \ \ \ \ \ \ \ ind\ =\ df[df[\textcolor{stringliteral}{"{}release\_id"{}}]\ ==\ upc].index}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ upc\_found:}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ df.loc[ind,\ \textcolor{stringliteral}{"{}release\_title"{}}]\ =\ upc\_found[\textcolor{stringliteral}{"{}title"{}}]}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ df.loc[ind,\ \textcolor{stringliteral}{"{}label\_id"{}}]\ =\ upc\_found[\textcolor{stringliteral}{"{}label"{}}]}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ df.loc[ind,\ \textcolor{stringliteral}{"{}catalogue\_id"{}}]\ =\ upc\_found[\textcolor{stringliteral}{"{}catalogId"{}}]}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ df.loc[ind,\ \textcolor{stringliteral}{"{}clean"{}}]\ =\ 1}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ df.loc[ind,\ \textcolor{stringliteral}{"{}release\_id"{}}]\ =\ upc\_found[\textcolor{stringliteral}{"{}upc"{}}]}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceimporter_1_1_upload_sales_ad521bee3217da21b864556909a608866}{upload\_data\_mongo}}(df.loc[ind,:])}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceimporter_1_1_upload_sales_ad521bee3217da21b864556909a608866}{upload\_data\_mongo}}(df.loc[ind,:])}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00057}00057\ \ \ \ \ \textcolor{comment}{\#\ return\ df}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00059}\mbox{\hyperlink{namespaceimporter_1_1_upload_sales_a3926ea6cbe6a64e372e611d9ea949061}{00059}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceimporter_1_1_upload_sales_a3926ea6cbe6a64e372e611d9ea949061}{find\_irsc}}(isrc,\ df):}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00060}00060\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ Makes\ catalogue\ matching\ using\ isrc\ as\ key}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00061}00061\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00062}00062\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00063}00063\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ isrc\ (list):\ A\ list\ which\ contains\ all\ unique\ ISRCs\ in\ the\ current\ batch}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00064}00064\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ df\ (dataframe):\ Dataframe\ with\ sales\ matched\ by\ catalogue}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00065}00065\ \textcolor{stringliteral}{\ \ \ \ Returns:\ Nothing}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00066}00066\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{if}\ len(isrc)\ <\ 12:}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00068}00068\ \ \ \ \ \ \ \ \ aux\ =\ df[df[\textcolor{stringliteral}{"{}isrc\_id"{}}]\ ==\ isrc][\textcolor{stringliteral}{"{}release\_id"{}}].unique()}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00069}00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceimporter_1_1_upload_sales_a4aad626dced3231dee66904c828e72d0}{find\_upc}}(aux,\ df)}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ upc\_found\ =\ catalogue\_collection.find\_one(\{\textcolor{stringliteral}{"{}tracks.isrc"{}}:isrc\},\{\textcolor{stringliteral}{"{}\_id"{}}:0,\ \textcolor{stringliteral}{"{}upc"{}}:1,\textcolor{stringliteral}{"{}title"{}}:1,\textcolor{stringliteral}{"{}label"{}}:1,\textcolor{stringliteral}{"{}artist"{}}:1,\textcolor{stringliteral}{"{}tracks.isrc"{}}:1,\ \textcolor{stringliteral}{"{}tracks.title"{}}:1,\ \textcolor{stringliteral}{"{}tracks.artist"{}}:1,\ \textcolor{stringliteral}{"{}catalogId"{}}:\ 1\})}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00072}00072\ \ \ \ \ \ \ \ \ ind\ =\ df[df[\textcolor{stringliteral}{"{}isrc\_id"{}}]\ ==\ isrc].index}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ upc\_found:}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ isrc\_found\ =\ [element\ \textcolor{keywordflow}{for}\ element\ \textcolor{keywordflow}{in}\ upc\_found[\textcolor{stringliteral}{"{}tracks"{}}]\ \textcolor{keywordflow}{if}\ element[\textcolor{stringliteral}{"{}isrc"{}}]\ ==\ isrc]}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ df.loc[ind,\ \textcolor{stringliteral}{"{}release\_id"{}}]\ =\ upc\_found[\textcolor{stringliteral}{"{}upc"{}}]}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ df.loc[ind,\ \textcolor{stringliteral}{"{}release\_title"{}}]\ =\ upc\_found[\textcolor{stringliteral}{"{}title"{}}]}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ df.loc[ind,\ \textcolor{stringliteral}{"{}label\_id"{}}]\ =\ upc\_found[\textcolor{stringliteral}{"{}label"{}}]}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ df.loc[ind,\ \textcolor{stringliteral}{"{}track\_title"{}}]\ =\ isrc\_found[0][\textcolor{stringliteral}{"{}title"{}}]}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ df.loc[ind,\ \textcolor{stringliteral}{"{}artists"{}}]\ =\ isrc\_found[0][\textcolor{stringliteral}{"{}artist"{}}]}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ df.loc[ind,\ \textcolor{stringliteral}{"{}catalogue\_id"{}}]\ =\ upc\_found[\textcolor{stringliteral}{"{}catalogId"{}}]}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ df.loc[ind,\ \textcolor{stringliteral}{"{}clean"{}}]\ =\ 1}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00082}00082\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceimporter_1_1_upload_sales_ad521bee3217da21b864556909a608866}{upload\_data\_mongo}}(df.loc[ind,:])}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00083}00083\ \ \ \ \ \textcolor{comment}{\#\ return\ df}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00085}\mbox{\hyperlink{namespaceimporter_1_1_upload_sales_ae8ff370b67dbe59f8a3f9e72df7d8e53}{00085}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceimporter_1_1_upload_sales_ae8ff370b67dbe59f8a3f9e72df7d8e53}{delete\_files\_mongoDB}}(files):}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00086}00086\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ Deletes\ all\ files\ in\ the\ current\ batch\ from\ database\ (in\ case\ of\ they\ exist)\ to\ avoid\ overwriting}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00087}00087\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00088}00088\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00089}00089\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ files\ (list):\ A\ list\ which\ contains\ all\ filenames\ in\ the\ current\ batch\ splitted\ by\ formats}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00090}00090\ \textcolor{stringliteral}{\ \ \ \ Returns:\ }}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00091}00091\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ files\_delete\ (list):\ A\ list\ with\ filenames\ in\ the\ current\ batch}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00092}00092\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00093}00093\ \ \ \ \ files\_delete\ =\ [i[\textcolor{stringliteral}{"{}file"{}}]\ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ files]}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00094}00094\ \ \ \ \ r\ =\ collection.delete\_many(\{\textcolor{stringliteral}{"{}file"{}}:\ \{\textcolor{stringliteral}{"{}\$in"{}}:\ files\_delete\}\})}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00095}00095\ \ \ \ \ \textcolor{keywordflow}{if}\ r.deleted\_count\ >=\ 1:}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00096}00096\ \ \ \ \ \ \ \ \ response\ =\ f\textcolor{stringliteral}{"{}\{r.deleted\_count\}\ sales\ lines\ deleted"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00098}00098\ \ \ \ \ \ \ \ \ response\ =\ \textcolor{stringliteral}{"{}No\ files\ deleted"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00099}00099\ \ \ \ \ print(response)}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00100}00100\ \ \ \ \ \textcolor{keywordflow}{return}\ files\_delete}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00102}\mbox{\hyperlink{namespaceimporter_1_1_upload_sales_adf404a8b0ccb62b31539a80032bb012d}{00102}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceimporter_1_1_upload_sales_adf404a8b0ccb62b31539a80032bb012d}{delete\_duplicates}}():}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00103}00103\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ Deletes\ all\ duplicated\ sales\ lines\ from\ database\ (in\ case\ of\ they\ exist)\ caused\ by\ parallel\ processing}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00104}00104\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00105}00105\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00106}00106\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Nothing}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00107}00107\ \textcolor{stringliteral}{\ \ \ \ Returns:\ }}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00108}00108\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Nothing}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00109}00109\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00110}00110\ \ \ \ \ pipeline\ =\ [}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00111}00111\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}\$group"{}}:\ \{\textcolor{stringliteral}{"{}\_id"{}}:\ \{\textcolor{stringliteral}{"{}file"{}}:\ \textcolor{stringliteral}{"{}\$file"{}},\ \textcolor{stringliteral}{"{}line"{}}:\ \textcolor{stringliteral}{"{}\$line"{}}\},\ \textcolor{stringliteral}{"{}unique\_ids"{}}:\ \{\textcolor{stringliteral}{"{}\$push"{}}:\ \textcolor{stringliteral}{"{}\$\_id"{}}\},\ \textcolor{stringliteral}{"{}clean\_ids"{}}:\ \{\textcolor{stringliteral}{"{}\$push"{}}:\ \textcolor{stringliteral}{"{}\$clean"{}}\},\ \textcolor{stringliteral}{"{}count"{}}:\ \{\textcolor{stringliteral}{"{}\$sum"{}}:\ 1\}\}\},}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00112}00112\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}\$match"{}}:\ \{\textcolor{stringliteral}{"{}count"{}}:\ \{\ \textcolor{stringliteral}{"{}\$gte"{}}:\ 2\ \}\}\}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00113}00113\ \ \ \ \ ]}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00114}00114\ \ \ \ \ cursor\ =\ collection.aggregate(pipeline,\ allowDiskUse\ =\ \textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00115}00115\ \ \ \ \ response\ =\ []}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00116}00116\ \ \ \ \ \textcolor{keywordflow}{for}\ doc\ \textcolor{keywordflow}{in}\ cursor:}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00117}00117\ \ \ \ \ \ \ \ \ response.append(doc[\textcolor{stringliteral}{"{}unique\_ids"{}}][1:])}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00118}00118\ \ \ \ \ to\_del\ =\ [item\ \textcolor{keywordflow}{for}\ sublist\ \textcolor{keywordflow}{in}\ response\ \textcolor{keywordflow}{for}\ item\ \textcolor{keywordflow}{in}\ sublist]}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00120}00120\ \ \ \ \ flat\_list\ =\ [DeleteOne(\{\textcolor{stringliteral}{"{}\_id"{}}:i\})\ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ to\_del]}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00121}00121\ \ \ \ \ collection.bulk\_write(flat\_list,\ ordered=\textcolor{keyword}{False})}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00122}00122\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00124}\mbox{\hyperlink{namespaceimporter_1_1_upload_sales_a76844e23af72d88d7fefd49bf1428ad7}{00124}}\ \textcolor{keyword}{def\ }upload\_main(event,\ s3\_session):}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00125}00125\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ Orchestra\ every\ function\ and\ executes\ find\_irsc\ function\ using\ multiprocessing\ }}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00126}00126\ \textcolor{stringliteral}{\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00127}00127\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00128}00128\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ event\ (dict):\ Dictionary\ result\ of\ ProcessFiles.py}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00129}00129\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ s3\_session:\ (boto3.session\ object):\ S3\ session\ to\ connect\ to\ AWS\ bucket}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00130}00130\ \textcolor{stringliteral}{\ \ \ \ Returns:\ Nothing}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00131}00131\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00132}00132\ \ \ \ \ cat\_gen\ =\ event[\textcolor{stringliteral}{"{}cat\_gen"{}}]}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00133}00133\ \ \ \ \ tag\ =\ event[\textcolor{stringliteral}{"{}tag"{}}]}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00134}00134\ \ \ \ \ all\_files\ =\ []}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00135}00135\ \ \ \ \ s3\_filename\ =\ \textcolor{stringliteral}{"{}s3://"{}}+event[\textcolor{stringliteral}{"{}results\_bucket"{}}]+\textcolor{stringliteral}{"{}/"{}}+event[\textcolor{stringliteral}{"{}results\_path"{}}]+\textcolor{stringliteral}{"{}/"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00136}00136\ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ event[\textcolor{stringliteral}{"{}format"{}}]:}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00137}00137\ \ \ \ \ \ \ \ \ q\ =\ \mbox{\hyperlink{namespaceimporter_1_1_upload_sales_ae8ff370b67dbe59f8a3f9e72df7d8e53}{delete\_files\_mongoDB}}(event[\textcolor{stringliteral}{"{}format"{}}][i][\textcolor{stringliteral}{"{}files"{}}])}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ j\ \textcolor{keywordflow}{in}\ q:}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ j\ =\ j+\textcolor{stringliteral}{"{}.parquet"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ all\_files.append(s3\_filename+j)}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00141}00141\ \ \ \ \ dfs\ =\ wr.s3.read\_parquet(all\_files,\ boto3\_session=s3\_session,\ chunked=500000)}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00142}00142\ \ \ \ \ batch\ =\ 1}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00143}00143\ \ \ \ \ \textcolor{keywordflow}{for}\ df\ \textcolor{keywordflow}{in}\ dfs:}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00144}00144\ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}quantity"{}}]\ =\ df[\textcolor{stringliteral}{"{}quantity"{}}].fillna(0)}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00145}00145\ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}total\_local"{}}]\ =\ df[\textcolor{stringliteral}{"{}total\_local"{}}].fillna(0.0)}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00146}00146\ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}quantity"{}}]\ =\ df[\textcolor{stringliteral}{"{}quantity"{}}].astype(\textcolor{stringliteral}{"{}int"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00147}00147\ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}total\_local"{}}]\ =\ df[\textcolor{stringliteral}{"{}total\_local"{}}].astype(\textcolor{stringliteral}{"{}float"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00148}00148\ \ \ \ \ \ \ \ \ df.fillna(\textcolor{stringliteral}{"{}undefined"{}},\ inplace=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00149}00149\ \ \ \ \ \ \ \ \ df.reset\_index(drop=\textcolor{keyword}{True},\ inplace=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00150}00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ str(cat\_gen)\ ==\ \textcolor{stringliteral}{"{}False"{}}\ \textcolor{keywordflow}{and}\ str(tag)\ !=\ \textcolor{stringliteral}{"{}test"{}}:\ \textcolor{comment}{\#\ Launches\ catalogue\ matching}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}\{'*'*15\}\ Catalogue\ Matching\ Starting\ \{'*'*15\}"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}catalogue\_id"{}}]\ =\ \textcolor{stringliteral}{"{}no\_catalogue\_id"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}clean"{}}]\ =\ 0}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ mp.freeze\_support()}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ isrcs\ =\ list(df[\textcolor{stringliteral}{"{}isrc\_id"{}}].unique())}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ pool\ =\ mp.Pool(processes=6)}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ pool.starmap(find\_irsc,\ zip(isrcs,\ repeat(df)))}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ pool.close()}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ pool.join()}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00160}00160\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:\ \textcolor{comment}{\#\ Just\ uploads\ sales\ lines}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}\{'*'*15\}\ Uploading\ Data\ to\ Mongo\ \{'*'*15\}"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceimporter_1_1_upload_sales_ad521bee3217da21b864556909a608866}{upload\_data\_mongo}}(df)}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00163}00163\ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}Batch:\ \{batch\}\ finished.\ Lines\ uploaded\ to\ \{collection\_name\}"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00164}00164\ \ \ \ \ \ \ \ \ batch+=1}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00165}00165\ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00166}00166\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceimporter_1_1_upload_sales_adf404a8b0ccb62b31539a80032bb012d}{delete\_duplicates}}()}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00167}00167\ \ \ \ \ \textcolor{keywordflow}{except}\ Exception:}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00168}00168\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}No\ files\ duplicated"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{\Hypertarget{_upload_sales_8py_source_l00170}00170\ }
+
+\end{DoxyCode}

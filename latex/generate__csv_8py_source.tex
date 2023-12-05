@@ -1,0 +1,115 @@
+\doxysection{generate\+\_\+csv.\+py}
+\hypertarget{generate__csv_8py_source}{}\label{generate__csv_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/generate\_csv.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/generate\_csv.py}}
+\mbox{\hyperlink{generate__csv_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1generate__csv}{00001}}\ \textcolor{comment}{\#\ from\ datetime\ import\ datetime}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00002}00002\ \textcolor{comment}{\#\ import\ traceback}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00003}00003\ \textcolor{comment}{\#\ from\ pymongo\ import\ MongoClient}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00004}00004\ \textcolor{comment}{\#\ import\ pandas\ as\ pd}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00005}00005\ \textcolor{comment}{\#\ import\ sys}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00006}00006\ \textcolor{comment}{\#\ import\ os}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00008}00008\ \textcolor{comment}{\#\ \#\ path\ =\ "{}\string~/Desktop/"{}}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00009}00009\ \textcolor{comment}{\#\ path\ =\ os.getcwd()}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00011}00011\ \textcolor{comment}{\#\ def\ getCSV(date):}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00012}00012\ \textcolor{comment}{\#\ \ \ \ \ date\ =\ datetime.strptime(date,\ "{}\%Y-\/\%m-\/\%d"{})}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00013}00013\ \textcolor{comment}{\#\ \ \ \ \ template\_format\ =\ collection.find(\{"{}accounting\_date"{}:\ date\})}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00014}00014\ \textcolor{comment}{\#\ \ \ \ \ lines\ =\ []}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00015}00015\ \textcolor{comment}{\#\ \ \ \ \ print("{}file,quantity,isrc\_id,release\_id,release\_title,track\_title,artists,label\_id,territory\_code,type,service\_id,date,accounting\_date,foreign\_currency,total\_foreign,exchange\_rate,local\_currency,total\_local"{})}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00016}00016\ \textcolor{comment}{\#\ \ \ \ \ for\ i\ in\ template\_format:}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00017}00017\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ if\ "{}copy"{}\ in\ i["{}file"{}]:}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00018}00018\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ continue}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00019}00019\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ try:}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00020}00020\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ file\ =\ i["{}file"{}]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00021}00021\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ quantity\ =\ i["{}quantity"{}]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00022}00022\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ isrc\_id\ =\ i["{}isrc\_id"{}]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00023}00023\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ release\_id\ =\ i["{}release\_id"{}]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00024}00024\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ except\ KeyError\ as\ e:}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00025}00025\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ if\ 'release\_id'\ in\ str(e):}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00026}00026\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ release\_id\ =\ "{}undefined"{}\ }}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00027}00027\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ release\_title\ =\ str(i["{}release\_title"{}]).replace('"{}',\ "{}'"{})}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00028}00028\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ track\_title\ =\ str(i["{}track\_title"{}]).replace('"{}',\ "{}'"{})}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00029}00029\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ artists\ =\ i["{}artists"{}]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00030}00030\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ label\_id\ =\ i["{}label\_id"{}]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00031}00031\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ territory\_code\ =\ i["{}territory\_code"{}]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00032}00032\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ types\ =\ i["{}type"{}]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00033}00033\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ service\_id\ =\ i["{}service\_id"{}]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00034}00034\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ date\_str\ =\ i["{}date"{}]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00035}00035\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ accounting\_date\ =\ i["{}accounting\_date"{}]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00036}00036\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ foreign\_currency\ =\ i["{}foreign\_currency"{}]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00037}00037\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ total\_foreign\ =\ i["{}total\_foreign"{}]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00038}00038\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ exchange\_rate\ =\ i["{}exchange\_rate"{}]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00039}00039\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ local\_currency\ =\ i["{}local\_currency"{}]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00040}00040\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ total\_local\ =\ i["{}total\_local"{}]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00041}00041\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ print('"{}\{\}"{},\{\},"{}\{\}"{},"{}\{\}"{},"{}\{\}"{},"{}\{\}"{},"{}\{\}"{},"{}\{\}"{},"{}\{\}"{},"{}\{\}"{},"{}\{\}"{},"{}\{\}"{},"{}\{\}"{},"{}\{\}"{},\{\},\{\},"{}\{\}"{},\{\}'.format(file,quantity,isrc\_id,release\_id,release\_title,track\_title,artists,label\_id,territory\_code,types,service\_id,date\_str,accounting\_date,foreign\_currency,total\_foreign,exchange\_rate,local\_currency,total\_local))}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00042}00042\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \#\ print(sys.exc\_info()[2])}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00043}00043\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \#\ print(traceback.format\_exc())}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00044}00044\ \textcolor{comment}{\#\ \ \ \ \ \#\ \ \ \ \ line\ =\ \{}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00045}00045\ \textcolor{comment}{\#\ \ \ \ \ \#\ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00046}00046\ \textcolor{comment}{\#\ \ \ \ \ \#\ \ \ \ \ lines.append(line)}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00047}00047\ \textcolor{comment}{\#\ \ \ \ \ \#\ df\ =\ \ pd.DataFrame(lines,\ columns=["{}file"{},"{}quantity"{},"{}isrc\_id"{},"{}release\_id"{},"{}release\_title"{},"{}track\_title"{},"{}artists"{},"{}label\_id"{},"{}territory\_code"{},"{}type"{},"{}service\_id"{},"{}date"{},"{}accounting\_date"{},"{}foreign\_currency"{},"{}total\_foreign"{},"{}exchange\_rate"{},"{}local\_currency"{},"{}total\_local"{}])}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00048}00048\ \textcolor{comment}{\#\ \ \ \ \ \#\ df.fillna("{}undefined"{},\ inplace=True)}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00049}00049\ \textcolor{comment}{\#\ \ \ \ \ \#\ df["{}quantity"{}]\ =\ df["{}quantity"{}].apply(lambda\ x:\ str(x).replace("{}.0"{},\ "{}"{}))}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00050}00050\ \textcolor{comment}{\#\ \ \ \ \ \#\ df["{}quantity"{}]\ =\ df["{}quantity"{}].astype("{}int64"{})}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00051}00051\ \textcolor{comment}{\#\ \ \ \ \ \#\ df.to\_csv(path+name,\ index=False)}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00053}00053\ \textcolor{comment}{\#\ date\ =\ sys.argv[1]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00054}00054\ \textcolor{comment}{\#\ \#\ filename\ =\ sys.argv[2]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00055}00055\ \textcolor{comment}{\#\ \#\ data\_collection\ =\ sys.argv[3]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00056}00056\ \textcolor{comment}{\#\ uri\ =\ os.environ.get("{}MONGO\_GLIDER"{})}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00057}00057\ \textcolor{comment}{\#\ db\_name\ =\ os.environ.get("{}DB"{})}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00058}00058\ \textcolor{comment}{\#\ collection\_name\ =\ os.environ.get("{}COLLECTION"{})}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00059}00059\ \textcolor{comment}{\#\ \#\ download\_path\ =\ os.environ.get("{}DOWNLOADS\_FOLDER"{})}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00060}00060\ \textcolor{comment}{\#\ client\ =\ MongoClient(uri)}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00061}00061\ \textcolor{comment}{\#\ db\ =\ client[db\_name]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00062}00062\ \textcolor{comment}{\#\ collection\ =\ db[collection\_name]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00065}00065\ \textcolor{comment}{\#\ \#\ print("{}Date\ =\ \{d\}\ Filename\ =\ \{f\}\ collection\ =\ \{c\}"{}.format(d=date,\ f=filename,\ c=data\_collection))}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00067}00067\ \textcolor{comment}{\#\ getCSV(date)}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00069}00069\ \textcolor{comment}{\#\ \#\ python\ src/importer/generate\_csv.py\ "{}2022-\/04-\/25"{}\ "{}Test22.csv"{}\ "{}Test\_Apr22"{}\ }}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00070}00070\ \textcolor{comment}{\#\ \#\ time\ python\ src/importer/generate\_csv.py\ "{}2022-\/09-\/05"{}\ "{}test\_sep22.csv"{}\ }}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00071}00071\ \textcolor{comment}{\#\ \#\ time\ python\ src/importer/generate\_csv.py\ "{}2022-\/09-\/05"{}\ >\ test\_sep22.csv}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00073}00073\ \textcolor{keyword}{from}\ datetime\ \textcolor{keyword}{import}\ datetime}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00074}00074\ \textcolor{keyword}{from}\ pymongo\ \textcolor{keyword}{import}\ MongoClient}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00075}00075\ \textcolor{keyword}{import}\ sys}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00076}00076\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00077}00077\ \textcolor{keyword}{import}\ json}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00078}00078\ \textcolor{keyword}{from}\ bson.json\_util\ \textcolor{keyword}{import}\ dumps}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00080}\mbox{\hyperlink{namespaceimporter_1_1generate__csv_a02036b7eab9b4ec74b3e5be659ee6bb4}{00080}}\ path\ =\ os.getcwd()}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00083}\mbox{\hyperlink{namespaceimporter_1_1generate__csv_ae11f17618163f91fcbfeb0d095033306}{00083}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceimporter_1_1generate__csv_ae11f17618163f91fcbfeb0d095033306}{get\_rels}}(date):}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00084}00084\ \ \ \ \ f\ =\ open(\textcolor{stringliteral}{"{}date.json"{}},\ \textcolor{stringliteral}{"{}w"{}})}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00085}00085\ \ \ \ \ date\ =\ datetime.strptime(date,\ \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%d"{}})}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00086}00086\ \ \ \ \ template\_format\ =\ collection.find(\{\textcolor{stringliteral}{"{}accounting\_date"{}}:\ date\},\{\textcolor{stringliteral}{"{}\_id"{}}:0\})}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00087}00087\ \ \ \ \ \textcolor{comment}{\#\ print("{}file\(\backslash\)tquantity\(\backslash\)tisrc\_id\(\backslash\)trelease\_id\(\backslash\)trelease\_title\(\backslash\)ttrack\_title\(\backslash\)tartists\(\backslash\)tlabel\_id\(\backslash\)tterritory\_code\(\backslash\)ttype\(\backslash\)tservice\_id\(\backslash\)tdate\(\backslash\)taccounting\_date\(\backslash\)tforeign\_currency\(\backslash\)ttotal\_foreign\(\backslash\)texchange\_rate\(\backslash\)tlocal\_currency\(\backslash\)ttotal\_local"{})}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00088}00088\ \ \ \ \ f.write(\textcolor{stringliteral}{"{}["{}})}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00089}00089\ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ template\_format:}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00090}00090\ \ \ \ \ \ \ \ \ f.write(json.dumps(i,default=str))}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00091}00091\ \ \ \ \ \ \ \ \ f.write(\textcolor{stringliteral}{"{},\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00092}00092\ \ \ \ \ f.write(\textcolor{stringliteral}{"{}\{\ \}"{}})}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00093}00093\ \ \ \ \ f.write(\textcolor{stringliteral}{"{}]"{}})}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00094}00094\ \ \ \ \ \textcolor{comment}{\#\ print("{}\{\ \}"{})}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00095}00095\ \ \ \ \ \textcolor{comment}{\#\ print("{}]"{})}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00097}\mbox{\hyperlink{namespaceimporter_1_1generate__csv_a9c49705759678e377b2b838213fc48df}{00097}}\ date\ =\ sys.argv[1]}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00098}00098\ \textcolor{comment}{\#\ filename\ =\ sys.argv[2]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00099}00099\ \textcolor{comment}{\#\ data\_collection\ =\ sys.argv[3]}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00100}\mbox{\hyperlink{namespaceimporter_1_1generate__csv_a7bba2ac7affa4c2f2f02ced98f54db32}{00100}}\ uri\ =\ os.environ.get(\textcolor{stringliteral}{"{}MONGO\_GLIDER"{}})}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00101}\mbox{\hyperlink{namespaceimporter_1_1generate__csv_ab7be433ed6a5daf30fd5904116ee01c0}{00101}}\ db\_name\ =\ os.environ.get(\textcolor{stringliteral}{"{}DB"{}})}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00102}\mbox{\hyperlink{namespaceimporter_1_1generate__csv_aa92c24bca5eb5713c3c036afc80cd7e2}{00102}}\ collection\_name\ =\ os.environ.get(\textcolor{stringliteral}{"{}COLLECTION"{}})}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00103}00103\ \textcolor{comment}{\#\ download\_path\ =\ os.environ.get("{}DOWNLOADS\_FOLDER"{})}}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00104}\mbox{\hyperlink{namespaceimporter_1_1generate__csv_a945f7ae16497cd6d8bd6346bc2e2ae1c}{00104}}\ client\ =\ MongoClient(uri)}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00105}\mbox{\hyperlink{namespaceimporter_1_1generate__csv_a2dfb975983a6211c978c3a54e7f2ccd6}{00105}}\ db\ =\ client[db\_name]}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00106}\mbox{\hyperlink{namespaceimporter_1_1generate__csv_aeb9b55cb57c9952fad71900fd87f3caf}{00106}}\ collection\ =\ db[collection\_name]}
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{generate__csv_8py_source_l00109}00109\ \mbox{\hyperlink{namespaceimporter_1_1generate__csv_ae11f17618163f91fcbfeb0d095033306}{get\_rels}}(date)}
+
+\end{DoxyCode}

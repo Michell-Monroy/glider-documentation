@@ -1,0 +1,16 @@
+\doxysection{KKBOXTemplate.\+py}
+\hypertarget{_k_k_b_o_x_template_8py_source}{}\label{_k_k_b_o_x_template_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/KKBOXTemplate.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/KKBOXTemplate.py}}
+\mbox{\hyperlink{_k_k_b_o_x_template_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_k_k_b_o_x_template_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1templates_1_1_k_k_b_o_x_template}{00001}}\ \textcolor{keyword}{import}\ re}
+\DoxyCodeLine{\Hypertarget{_k_k_b_o_x_template_8py_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_k_k_b_o_x_template_8py_source_l00003}\mbox{\hyperlink{classimporter_1_1templates_1_1_k_k_b_o_x_template_1_1_k_k_b_o_x_template}{00003}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_k_k_b_o_x_template_1_1_k_k_b_o_x_template}{KKBOXTemplate}}:}
+\DoxyCodeLine{\Hypertarget{_k_k_b_o_x_template_8py_source_l00004}\mbox{\hyperlink{classimporter_1_1templates_1_1_k_k_b_o_x_template_1_1_k_k_b_o_x_template_a6abb0dcdafb35140d0eafb4a21ae22c0}{00004}}\ \ \ \ \ \textcolor{keyword}{def\ }date(self,\ filename):}
+\DoxyCodeLine{\Hypertarget{_k_k_b_o_x_template_8py_source_l00005}00005\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ "{}gyrostream-\/pty-\/ltd\_kkbox\_KKBOXHK\_202202\_Monthly-\/Sales\_(1).csv"{}}}
+\DoxyCodeLine{\Hypertarget{_k_k_b_o_x_template_8py_source_l00006}00006\ \ \ \ \ \ \ \ \ date\ =\ re.findall(\textcolor{stringliteral}{r'\_\(\backslash\)d\{6\}\_'},\ filename)[0]}
+\DoxyCodeLine{\Hypertarget{_k_k_b_o_x_template_8py_source_l00007}00007\ \ \ \ \ \ \ \ \ date\ =\ date.replace(\textcolor{stringliteral}{"{}\_"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_k_k_b_o_x_template_8py_source_l00008}00008\ \ \ \ \ \ \ \ \ date\_str\ =\ date[:4]+\textcolor{stringliteral}{"{}-\/"{}}+date[4:]+\textcolor{stringliteral}{"{}-\/01"{}}}
+\DoxyCodeLine{\Hypertarget{_k_k_b_o_x_template_8py_source_l00009}00009\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df["{}date\_from\_file"{}]\ =\ date\_str}}
+\DoxyCodeLine{\Hypertarget{_k_k_b_o_x_template_8py_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ date\_str}
+
+\end{DoxyCode}

@@ -1,0 +1,49 @@
+\doxysection{Audio\+Mack\+Template.\+py}
+\hypertarget{_audio_mack_template_8py_source}{}\label{_audio_mack_template_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/AudioMackTemplate.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/AudioMackTemplate.py}}
+\mbox{\hyperlink{_audio_mack_template_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1templates_1_1_audio_mack_template}{00001}}\ \textcolor{keyword}{import}\ re}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00002}00002\ \textcolor{keyword}{import}\ awswrangler\ \textcolor{keyword}{as}\ wr}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00004}\mbox{\hyperlink{classimporter_1_1templates_1_1_audio_mack_template_1_1_audio_mack_template}{00004}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_audio_mack_template_1_1_audio_mack_template}{AudioMackTemplate}}:}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00005}\mbox{\hyperlink{classimporter_1_1templates_1_1_audio_mack_template_1_1_audio_mack_template_aa0e58c2fa3b3891a4f3a99edc74e7f14}{00005}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_audio_mack_template_1_1_audio_mack_template_aa0e58c2fa3b3891a4f3a99edc74e7f14}{preprocessing}}(self,\ filename,\ features,\ session,\ rel\_col):}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00006}00006\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00007}00007\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ args:}}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00008}00008\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ filename:\ -\/str-\/\ s3\ full\ path\ of\ filename}}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00009}00009\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ features:\ -\/dict-\/\ which\ contains\ delimiter,\ skip\_rows\ and\ encoding}}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00010}00010\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ session:\ -\/class-\/\ s3\ connexion\ }}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00011}00011\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00012}00012\ \ \ \ \ \ \ \ \ delimiter\ =\ features[\textcolor{stringliteral}{"{}delimiter"{}}]}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00013}00013\ \ \ \ \ \ \ \ \ skip\_rows\ =\ features[\textcolor{stringliteral}{"{}skip\_rows"{}}]}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ df\ =\ wr.s3.read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ dtype=\{rel\_col:str\},\ low\_memory=\textcolor{keyword}{False},\ boto3\_session=session)}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}:}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ df\ =\ wr.s3.read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ low\_memory=\textcolor{keyword}{False},\ boto3\_session=session)}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df\ =\ read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding,\ low\_memory=False)\#,\ keep\_default\_na=False,\ low\_memory=False)}}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00021}\mbox{\hyperlink{classimporter_1_1templates_1_1_audio_mack_template_1_1_audio_mack_template_ae972f830b83e7c2df43ea61e95070420}{00021}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_audio_mack_template_1_1_audio_mack_template_ae972f830b83e7c2df43ea61e95070420}{date\_by\_month}}(self,\ filename):}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00022}00022\ \ \ \ \ \ \ \ \ month\ =\ \{\textcolor{stringliteral}{"{}jan"{}}:\ \textcolor{stringliteral}{"{}01"{}},\ \textcolor{stringliteral}{"{}feb"{}}:\ \textcolor{stringliteral}{"{}02"{}},\ \textcolor{stringliteral}{"{}mar"{}}:\ \textcolor{stringliteral}{"{}03"{}},\ \textcolor{stringliteral}{"{}apr"{}}:\ \textcolor{stringliteral}{"{}04"{}},\ \textcolor{stringliteral}{"{}may"{}}:\ \textcolor{stringliteral}{"{}05"{}},\ \textcolor{stringliteral}{"{}jun"{}}:\ \textcolor{stringliteral}{"{}06"{}},}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}jul"{}}:\ \textcolor{stringliteral}{"{}07"{}},\ \textcolor{stringliteral}{"{}aug"{}}:\ \textcolor{stringliteral}{"{}08"{}},\ \textcolor{stringliteral}{"{}sep"{}}:\ \textcolor{stringliteral}{"{}09"{}},\ \textcolor{stringliteral}{"{}oct"{}}:\ \textcolor{stringliteral}{"{}10"{}},\ \textcolor{stringliteral}{"{}nov"{}}:\textcolor{stringliteral}{"{}11"{}},\ \textcolor{stringliteral}{"{}dec"{}}:\ \textcolor{stringliteral}{"{}12"{}}\}}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00024}00024\ \ \ \ \ \ \ \ \ m\ =\ re.findall(\textcolor{stringliteral}{r'\(\backslash\)\_[a-\/z]*'},\ filename)[0]}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00025}00025\ \ \ \ \ \ \ \ \ m\ =\ m.replace(\textcolor{stringliteral}{"{}\_"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00026}00026\ \ \ \ \ \ \ \ \ s\ =\ m.strip()[:3]}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ dig\_month\ =\ month[s]}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ year\ =\ re.findall(\textcolor{stringliteral}{r'2\(\backslash\)d\{1\}'},\ filename)[0]}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ date\_str\ =\ \textcolor{stringliteral}{"{}20"{}}+year+\textcolor{stringliteral}{"{}-\/"{}}+dig\_month+\textcolor{stringliteral}{"{}-\/01"{}}}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ date\_str}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00033}\mbox{\hyperlink{classimporter_1_1templates_1_1_audio_mack_template_1_1_audio_mack_template_a786a6b0961116f0338ee0eeae3428077}{00033}}\ \ \ \ \ \textcolor{keyword}{def\ }date(self,\ filename):}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ "{}Audiomack\_202207.csv"{}\ or\ \#\ "{}Audiomack\_Sept22.csv"{}}}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00035}00035\ \ \ \ \ \ \ \ \ filename\ =\ filename.lower()}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ date\ =\ re.findall(\textcolor{stringliteral}{r'\_20\(\backslash\)d\{4\}'},\ filename)[0]}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ date\ =\ date.replace(\textcolor{stringliteral}{"{}\_"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ date\_str\ =\ date[:4]+\textcolor{stringliteral}{"{}-\/"{}}+date[4:]+\textcolor{stringliteral}{"{}-\/01"{}}}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ date\_str}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}:}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ date\_str\ =\ self.\mbox{\hyperlink{classimporter_1_1templates_1_1_audio_mack_template_1_1_audio_mack_template_ae972f830b83e7c2df43ea61e95070420}{date\_by\_month}}(filename)}
+\DoxyCodeLine{\Hypertarget{_audio_mack_template_8py_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ date\_str}
+
+\end{DoxyCode}

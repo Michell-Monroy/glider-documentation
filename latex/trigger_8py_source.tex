@@ -1,0 +1,41 @@
+\doxysection{trigger.\+py}
+\hypertarget{trigger_8py_source}{}\label{trigger_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/trigger.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/trigger.py}}
+\mbox{\hyperlink{trigger_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1trigger}{00001}}\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00002}00002\ \textcolor{keyword}{import}\ boto3}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00003}00003\ \textcolor{keyword}{import}\ json}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00004}00004\ \textcolor{keyword}{import}\ time}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00005}00005\ \textcolor{keyword}{from}\ dotenv\ \textcolor{keyword}{import}\ load\_dotenv}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00006}00006\ load\_dotenv()}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00008}\mbox{\hyperlink{namespaceimporter_1_1trigger_abc624cd8704f08fb82abdce191dd0f39}{00008}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceimporter_1_1trigger_abc624cd8704f08fb82abdce191dd0f39}{trigger\_step\_function\_ingest}}(status,\ client\_id,\ results\_bucket,\ results\_path):}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00009}00009\ \ \ \ \ ACCESS\_ID\ =\ os.environ.get(\textcolor{stringliteral}{"{}AWS\_KEY\_ID"{}})}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00010}00010\ \ \ \ \ ACCESS\_KEY\ =\ os.environ.get(\textcolor{stringliteral}{"{}AWS\_KEY\_SECRET"{}})}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00011}00011\ \ \ \ \ REGION\ =\ os.environ.get(\textcolor{stringliteral}{"{}REGION"{}})}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00012}00012\ \ \ \ \ step\_functions\_client\ =\ boto3.client(\textcolor{stringliteral}{"{}stepfunctions"{}},\ aws\_access\_key\_id=ACCESS\_ID,\ aws\_secret\_access\_key=ACCESS\_KEY,\ region\_name=REGION)}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00013}00013\ \ \ \ \ input\_parameters\ =\ \{}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}status"{}}:\ status,}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}client\_id"{}}:\ client\_id,}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}results\_bucket"{}}:\ results\_bucket,}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}results\_path"{}}:\ results\_path}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00019}00019\ \ \ \ \ client\_id\ =\ client\_id.replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}-\/"{}})}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00020}00020\ \ \ \ \ path\ =\ results\_path.replace(\textcolor{stringliteral}{"{}/"{}},\ \textcolor{stringliteral}{"{}-\/"{}})}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00021}00021\ \ \ \ \ execution\_name\ =\ \textcolor{stringliteral}{'\{\}-\/\{\}-\/\{\}-\/\{\}'}.format(path,client\_id,\textcolor{stringliteral}{'ottito'},\ int(time.time()))}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00022}00022\ \ \ \ \ response\ =\ step\_functions\_client.start\_execution(}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ stateMachineArn=os.environ.get(\textcolor{stringliteral}{'RESULTS\_STEP\_FUNCTION\_ARN'}),}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00024}00024\ \ \ \ \ \ \ \ \ name=execution\_name,}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00025}00025\ \ \ \ \ \ \ \ \ input=json.dumps(input\_parameters)}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00026}00026\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00028}\mbox{\hyperlink{namespaceimporter_1_1trigger_a9ecea969a415a05222c35fe78fcf806b}{00028}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceimporter_1_1trigger_a9ecea969a415a05222c35fe78fcf806b}{lambda\_handler}}(event,\ context):}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00029}00029\ \ \ \ \ status\ =\ event[\textcolor{stringliteral}{"{}status"{}}]}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00030}00030\ \ \ \ \ client\_id\ =\ event[\textcolor{stringliteral}{"{}client\_id"{}}]}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00031}00031\ \ \ \ \ \textcolor{comment}{\#\ formats\ =\ event["{}format"{}]}}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00032}00032\ \ \ \ \ results\_bucket\ =\ event[\textcolor{stringliteral}{"{}results\_bucket"{}}]}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00033}00033\ \ \ \ \ results\_path\ =\ event[\textcolor{stringliteral}{"{}results\_path"{}}]}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00034}00034\ \ \ \ \ \mbox{\hyperlink{namespaceimporter_1_1trigger_abc624cd8704f08fb82abdce191dd0f39}{trigger\_step\_function\_ingest}}(status,\ client\_id,\ results\_bucket,\ results\_path)}
+\DoxyCodeLine{\Hypertarget{trigger_8py_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Catalog\ in\ progress"{}}}
+
+\end{DoxyCode}

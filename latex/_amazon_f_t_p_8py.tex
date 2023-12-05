@@ -1,0 +1,37 @@
+\doxysection{/\+Users/michellmonroy/\+Documents/dev-\/glider/glider/src/upload\+\_\+module/ftp/\+Amazon\+FTP.py File Reference}
+\hypertarget{_amazon_f_t_p_8py}{}\label{_amazon_f_t_p_8py}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/upload\_module/ftp/AmazonFTP.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/upload\_module/ftp/AmazonFTP.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_amazon_f_t_p}{Amazon\+FTP}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_amazon_f_t_p_adaa915732ac8ab2ebefaad64dc64ac6a}{Amazon\+FTP.\+change\+\_\+period}} (start\+\_\+date)
+\item 
+\mbox{\hyperlink{namespace_amazon_f_t_p_ac87f30117a4614fe47bc1e0e9883e694}{Amazon\+FTP.\+rename\+\_\+sales}} (filename, folder)
+\item 
+\mbox{\hyperlink{namespace_amazon_f_t_p_accb1a1e5026527c551e9aa5cb85db933}{Amazon\+FTP.\+find\+\_\+monthly}} (r\+\_\+path, folder)
+\item 
+\mbox{\hyperlink{namespace_amazon_f_t_p_a8826d16fe5b7aa6ea52d2ab9813126e4}{Amazon\+FTP.\+download\+\_\+amz\+\_\+reports}} (event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_amazon_f_t_p_a5d538e1552eebb8a24c5b0e10a9ce419}{Amazon\+FTP.\+f\+\_\+path}} = \+\_\+\+\_\+file\+\_\+\+\_\+
+\item 
+\mbox{\hyperlink{namespace_amazon_f_t_p_a37bda958a4790b32c658d88a723512e5}{Amazon\+FTP.\+index}} = f\+\_\+path.\+find("{}upload\+\_\+module/"{})
+\item 
+\mbox{\hyperlink{namespace_amazon_f_t_p_a67a5766806042353e13092fcd8a601e8}{Amazon\+FTP.\+mongo\+\_\+conn}} = mongo\+\_\+connection()
+\begin{DoxyCompactList}\small\item\em Class to connect to mongodb. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_amazon_f_t_p_a8fdb63ff289903ae6801cf9355710d0a}{Amazon\+FTP.\+collection}} = mongo\+\_\+conn.\+mongo\+\_\+conn\+\_\+ftp()
+\begin{DoxyCompactList}\small\item\em Mongo collection to search client ftp credentials. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_amazon_f_t_p_ab7016201da316309d8bf1cf86f86ed34}{Amazon\+FTP.\+\_\+\+ROOT\+\_\+\+DIR}} = os.\+path.\+expanduser(\textquotesingle{}\texorpdfstring{$\sim$}{\string~}\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Sets the root path. \end{DoxyCompactList}\item 
+str \mbox{\hyperlink{namespace_amazon_f_t_p_a49956a76b2cc96a89c6c614aae48eebe}{Amazon\+FTP.\+destination}} = \mbox{\hyperlink{namespace_amazon_f_t_p_ab7016201da316309d8bf1cf86f86ed34}{\+\_\+\+ROOT\+\_\+\+DIR}}+"{}/ftp\+\_\+downloads/"{}
+\begin{DoxyCompactList}\small\item\em Sets the path were files will be downloaded temporally. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_amazon_f_t_p_a98dbd1c20dbda5ebe95b0400726eaf4f}{Amazon\+FTP.\+exist\+\_\+ok}}
+\item 
+\mbox{\hyperlink{namespace_amazon_f_t_p_a2af4be4ba15f44ddf5310bbfbc85ae3a}{Amazon\+FTP.\+client}} = None
+\end{DoxyCompactItemize}

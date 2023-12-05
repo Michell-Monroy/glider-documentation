@@ -1,0 +1,15 @@
+\doxysection{Napster\+Template.\+py}
+\hypertarget{_napster_template_8py_source}{}\label{_napster_template_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/NapsterTemplate.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/NapsterTemplate.py}}
+\mbox{\hyperlink{_napster_template_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_napster_template_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1templates_1_1_napster_template}{00001}}\ \textcolor{keyword}{import}\ re}
+\DoxyCodeLine{\Hypertarget{_napster_template_8py_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_napster_template_8py_source_l00003}\mbox{\hyperlink{classimporter_1_1templates_1_1_napster_template_1_1_napster_template}{00003}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_napster_template_1_1_napster_template}{NapsterTemplate}}:}
+\DoxyCodeLine{\Hypertarget{_napster_template_8py_source_l00004}\mbox{\hyperlink{classimporter_1_1templates_1_1_napster_template_1_1_napster_template_aa86c9d4abc32c00d860d7c1b63c820dd}{00004}}\ \ \ \ \ \textcolor{keyword}{def\ }date(self,\ filename):}
+\DoxyCodeLine{\Hypertarget{_napster_template_8py_source_l00005}00005\ \ \ \ \ \ \ \ \ date\ =\ re.findall(\textcolor{stringliteral}{r'\_20\(\backslash\)d\{6\}'},\ filename)[0]}
+\DoxyCodeLine{\Hypertarget{_napster_template_8py_source_l00006}00006\ \ \ \ \ \ \ \ \ date\ =\ date.replace(\textcolor{stringliteral}{"{}\_"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_napster_template_8py_source_l00007}00007\ \ \ \ \ \ \ \ \ date\_str\ =\ date[:4]+\textcolor{stringliteral}{"{}-\/"{}}+date[4:6]+\textcolor{stringliteral}{"{}-\/"{}}+date[6:]}
+\DoxyCodeLine{\Hypertarget{_napster_template_8py_source_l00008}00008\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df["{}date\_from\_file"{}]\ =\ date\_str}}
+\DoxyCodeLine{\Hypertarget{_napster_template_8py_source_l00009}00009\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ date\_str}
+
+\end{DoxyCode}

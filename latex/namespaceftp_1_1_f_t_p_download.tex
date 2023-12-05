@@ -1,0 +1,150 @@
+\doxysection{ftp.\+FTPDownload Namespace Reference}
+\hypertarget{namespaceftp_1_1_f_t_p_download}{}\label{namespaceftp_1_1_f_t_p_download}\index{ftp.FTPDownload@{ftp.FTPDownload}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_f_t_p_download_a3f4e5c6a7167c9aa15d50ce91b7f130b}{download\+\_\+file}} (remote\+\_\+dir, local\+\_\+dir, file)
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_f_t_p_download_aad0ddd0609fa0af098e7b08621670b54}{download\+\_\+dir}} (\mbox{\hyperlink{namespaceftp_1_1_f_t_p_download_a100f659377b34a8780e5f5643d71f946}{ftp}}, remote\+\_\+dir, local\+\_\+dir)
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_f_t_p_download_a70268643182ffcce1a9a8b0a21709a92}{ftp\+\_\+download}} (event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_f_t_p_download_a7db61a6a6cf816716c23ac7201f5dc64}{f\+\_\+path}} = \+\_\+\+\_\+file\+\_\+\+\_\+
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_f_t_p_download_ab0de3a19bbee2afcce39828f6893cdbc}{index}} = f\+\_\+path.\+find("{}upload\+\_\+module/"{})
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_f_t_p_download_a815b324f031cb30bd3449e6e15942a9d}{mongo\+\_\+conn}} = mongo\+\_\+connection()
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_f_t_p_download_a025d8c4deac74ae3e5c991965397ed1f}{collection}} = mongo\+\_\+conn.\+mongo\+\_\+conn\+\_\+ftp()
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_f_t_p_download_a100f659377b34a8780e5f5643d71f946}{ftp}} = None
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_f_t_p_download_a3cd6fae222cd6cc5ff159391d68165f3}{last\+\_\+request}} = None
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceftp_1_1_f_t_p_download_aad0ddd0609fa0af098e7b08621670b54}\label{namespaceftp_1_1_f_t_p_download_aad0ddd0609fa0af098e7b08621670b54} 
+\index{ftp.FTPDownload@{ftp.FTPDownload}!download\_dir@{download\_dir}}
+\index{download\_dir@{download\_dir}!ftp.FTPDownload@{ftp.FTPDownload}}
+\doxysubsubsection{\texorpdfstring{download\_dir()}{download\_dir()}}
+{\footnotesize\ttfamily ftp.\+FTPDownload.\+download\+\_\+dir (\begin{DoxyParamCaption}\item[{}]{ftp,  }\item[{}]{remote\+\_\+dir,  }\item[{}]{local\+\_\+dir }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Calls download_file function in a loop to download subfolders
+Args:
+    ftp (func): ftp session
+    remote_dir (str): ftp dir where file is saved
+    local_dir (str): local path where files will be saved
+Returns : Nothing
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_f_t_p_download_8py_source_l00039}{39}} of file \mbox{\hyperlink{_f_t_p_download_8py_source}{FTPDownload.\+py}}.
+
+Here is the call graph for this function\+:
+% FIG 0
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{namespaceftp_1_1_f_t_p_download_a3f4e5c6a7167c9aa15d50ce91b7f130b}\label{namespaceftp_1_1_f_t_p_download_a3f4e5c6a7167c9aa15d50ce91b7f130b} 
+\index{ftp.FTPDownload@{ftp.FTPDownload}!download\_file@{download\_file}}
+\index{download\_file@{download\_file}!ftp.FTPDownload@{ftp.FTPDownload}}
+\doxysubsubsection{\texorpdfstring{download\_file()}{download\_file()}}
+{\footnotesize\ttfamily ftp.\+FTPDownload.\+download\+\_\+file (\begin{DoxyParamCaption}\item[{}]{remote\+\_\+dir,  }\item[{}]{local\+\_\+dir,  }\item[{}]{file }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Downloads files from ftp remote dir in a temporal folder
+Args:
+    remote_dir (str): ftp dir where file is saved
+    local_dir (str): local path where files will be saved
+    file (str): filename to download
+Returns : Nothing
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_f_t_p_download_8py_source_l00024}{24}} of file \mbox{\hyperlink{_f_t_p_download_8py_source}{FTPDownload.\+py}}.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{namespaceftp_1_1_f_t_p_download_a70268643182ffcce1a9a8b0a21709a92}\label{namespaceftp_1_1_f_t_p_download_a70268643182ffcce1a9a8b0a21709a92} 
+\index{ftp.FTPDownload@{ftp.FTPDownload}!ftp\_download@{ftp\_download}}
+\index{ftp\_download@{ftp\_download}!ftp.FTPDownload@{ftp.FTPDownload}}
+\doxysubsubsection{\texorpdfstring{ftp\_download()}{ftp\_download()}}
+{\footnotesize\ttfamily ftp.\+FTPDownload.\+ftp\+\_\+download (\begin{DoxyParamCaption}\item[{}]{event }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Connects with ftp client and execute all download procedure. Finally calls clean_files
+function to upload files to s3
+Args:
+    event (dict): Contains the client info to save files in s3
+Returns : Nothing
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_f_t_p_download_8py_source_l00079}{79}} of file \mbox{\hyperlink{_f_t_p_download_8py_source}{FTPDownload.\+py}}.
+
+Here is the call graph for this function\+:
+% FIG 3
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespaceftp_1_1_f_t_p_download_a025d8c4deac74ae3e5c991965397ed1f}\label{namespaceftp_1_1_f_t_p_download_a025d8c4deac74ae3e5c991965397ed1f} 
+\index{ftp.FTPDownload@{ftp.FTPDownload}!collection@{collection}}
+\index{collection@{collection}!ftp.FTPDownload@{ftp.FTPDownload}}
+\doxysubsubsection{\texorpdfstring{collection}{collection}}
+{\footnotesize\ttfamily ftp.\+FTPDownload.\+collection = mongo\+\_\+conn.\+mongo\+\_\+conn\+\_\+ftp()}
+
+
+
+Definition at line \mbox{\hyperlink{_f_t_p_download_8py_source_l00019}{19}} of file \mbox{\hyperlink{_f_t_p_download_8py_source}{FTPDownload.\+py}}.
+
+\Hypertarget{namespaceftp_1_1_f_t_p_download_a7db61a6a6cf816716c23ac7201f5dc64}\label{namespaceftp_1_1_f_t_p_download_a7db61a6a6cf816716c23ac7201f5dc64} 
+\index{ftp.FTPDownload@{ftp.FTPDownload}!f\_path@{f\_path}}
+\index{f\_path@{f\_path}!ftp.FTPDownload@{ftp.FTPDownload}}
+\doxysubsubsection{\texorpdfstring{f\_path}{f\_path}}
+{\footnotesize\ttfamily ftp.\+FTPDownload.\+f\+\_\+path = \+\_\+\+\_\+file\+\_\+\+\_\+}
+
+
+
+Definition at line \mbox{\hyperlink{_f_t_p_download_8py_source_l00008}{8}} of file \mbox{\hyperlink{_f_t_p_download_8py_source}{FTPDownload.\+py}}.
+
+\Hypertarget{namespaceftp_1_1_f_t_p_download_a100f659377b34a8780e5f5643d71f946}\label{namespaceftp_1_1_f_t_p_download_a100f659377b34a8780e5f5643d71f946} 
+\index{ftp.FTPDownload@{ftp.FTPDownload}!ftp@{ftp}}
+\index{ftp@{ftp}!ftp.FTPDownload@{ftp.FTPDownload}}
+\doxysubsubsection{\texorpdfstring{ftp}{ftp}}
+{\footnotesize\ttfamily ftp.\+FTPDownload.\+ftp = None}
+
+
+
+Definition at line \mbox{\hyperlink{_f_t_p_download_8py_source_l00021}{21}} of file \mbox{\hyperlink{_f_t_p_download_8py_source}{FTPDownload.\+py}}.
+
+\Hypertarget{namespaceftp_1_1_f_t_p_download_ab0de3a19bbee2afcce39828f6893cdbc}\label{namespaceftp_1_1_f_t_p_download_ab0de3a19bbee2afcce39828f6893cdbc} 
+\index{ftp.FTPDownload@{ftp.FTPDownload}!index@{index}}
+\index{index@{index}!ftp.FTPDownload@{ftp.FTPDownload}}
+\doxysubsubsection{\texorpdfstring{index}{index}}
+{\footnotesize\ttfamily ftp.\+FTPDownload.\+index = f\+\_\+path.\+find("{}upload\+\_\+module/"{})}
+
+
+
+Definition at line \mbox{\hyperlink{_f_t_p_download_8py_source_l00009}{9}} of file \mbox{\hyperlink{_f_t_p_download_8py_source}{FTPDownload.\+py}}.
+
+\Hypertarget{namespaceftp_1_1_f_t_p_download_a3cd6fae222cd6cc5ff159391d68165f3}\label{namespaceftp_1_1_f_t_p_download_a3cd6fae222cd6cc5ff159391d68165f3} 
+\index{ftp.FTPDownload@{ftp.FTPDownload}!last\_request@{last\_request}}
+\index{last\_request@{last\_request}!ftp.FTPDownload@{ftp.FTPDownload}}
+\doxysubsubsection{\texorpdfstring{last\_request}{last\_request}}
+{\footnotesize\ttfamily ftp.\+FTPDownload.\+last\+\_\+request = None}
+
+
+
+Definition at line \mbox{\hyperlink{_f_t_p_download_8py_source_l00022}{22}} of file \mbox{\hyperlink{_f_t_p_download_8py_source}{FTPDownload.\+py}}.
+
+\Hypertarget{namespaceftp_1_1_f_t_p_download_a815b324f031cb30bd3449e6e15942a9d}\label{namespaceftp_1_1_f_t_p_download_a815b324f031cb30bd3449e6e15942a9d} 
+\index{ftp.FTPDownload@{ftp.FTPDownload}!mongo\_conn@{mongo\_conn}}
+\index{mongo\_conn@{mongo\_conn}!ftp.FTPDownload@{ftp.FTPDownload}}
+\doxysubsubsection{\texorpdfstring{mongo\_conn}{mongo\_conn}}
+{\footnotesize\ttfamily ftp.\+FTPDownload.\+mongo\+\_\+conn = mongo\+\_\+connection()}
+
+
+
+Definition at line \mbox{\hyperlink{_f_t_p_download_8py_source_l00018}{18}} of file \mbox{\hyperlink{_f_t_p_download_8py_source}{FTPDownload.\+py}}.
+

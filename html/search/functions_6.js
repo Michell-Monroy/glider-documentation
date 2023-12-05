@@ -1,13 +1,15 @@
 var searchData=
 [
-  ['generate_0',['generate',['../classimporter_1_1_catalogue_generator_1_1_generator.html#ac59946e19d09f1112659290beba2a5f0',1,'importer.CatalogueGenerator.Generator.generate()'],['../classimporter_1_1generator_1_1_generator.html#a6bd555bbd475937269fca1fc360ce732',1,'importer.generator.Generator.generate()']]],
-  ['generate_5fcatalogue_1',['generate_catalogue',['../namespaceimporter_1_1_catalogue_generator.html#aad0c385f77924eff8691f70f341b3ee0',1,'importer::CatalogueGenerator']]],
-  ['get_5fdata_2',['get_data',['../classimporter_1_1generator_1_1_generator.html#a002fa32526c86bd1354a9ca2bb215c0f',1,'importer.generator.Generator.get_data()'],['../classimporter_1_1_catalogue_generator_1_1_generator.html#a5a6ce93b1ee92166aee368b2b672958b',1,'importer.CatalogueGenerator.Generator.get_data()'],['../namespaceimporter_1_1_create_snapshots.html#a7914ca118e4fd4de28fcde5343b3a575',1,'importer.CreateSnapshots.get_data()']]],
-  ['get_5fhuman_5ferror_3',['get_human_error',['../classimporter_1_1_error_handler_1_1_error_handler.html#afd7e8b25dce933738031377aabd60d72',1,'importer::ErrorHandler::ErrorHandler']]],
-  ['get_5fperiod_4',['get_period',['../namespaceimporter_1_1_process_files.html#a365a82dd6c067872b31b5745387b967a',1,'importer::ProcessFiles']]],
-  ['get_5frels_5',['get_rels',['../namespaceimporter_1_1generate__csv.html#ae11f17618163f91fcbfeb0d095033306',1,'importer::generate_csv']]],
-  ['getdate_6',['getDate',['../classimporter_1_1_template_manager_1_1_template_manager.html#abeda32cb7c20b294ffb3a0553f4d11ad',1,'importer::TemplateManager::TemplateManager']]],
-  ['getdf_7',['getdf',['../classimporter_1_1generator_1_1_generator.html#af78d72e33ac6ab994d52f52a7372c28b',1,'importer.generator.Generator.getDf()'],['../classimporter_1_1_catalogue_generator_1_1_generator.html#a0db6b59c6ed68cd2c996cd35170a9bad',1,'importer.CatalogueGenerator.Generator.getDf()']]],
-  ['gettype_8',['getType',['../classimporter_1_1_template_manager_1_1_template_manager.html#a6c65f471d1720ebff57e9de05447b9b2',1,'importer::TemplateManager::TemplateManager']]],
-  ['group_5fby_5ffield_9',['group_by_field',['../namespaceimporter_1_1_create_snapshots.html#a56f0db3e03f459fc489bfc65e34fae47',1,'importer::CreateSnapshots']]]
+  ['find_5firsc_0',['find_irsc',['../namespaceimporter_1_1_upload_sales.html#a3926ea6cbe6a64e372e611d9ea949061',1,'importer::UploadSales']]],
+  ['find_5fmonthly_1',['find_monthly',['../namespace_amazon_f_t_p.html#accb1a1e5026527c551e9aa5cb85db933',1,'AmazonFTP']]],
+  ['find_5fpath_2',['find_path',['../namespace_f_t_p_tools.html#ac9c326cc0f8aa29e22b9c7ed8a3b9bb8',1,'FTPTools']]],
+  ['find_5fupc_3',['find_upc',['../namespaceimporter_1_1_upload_sales.html#a4aad626dced3231dee66904c828e72d0',1,'importer::UploadSales']]],
+  ['fix_5fdate_4',['fix_date',['../classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template.html#a00f9f16319072105bd2e2d86181fe573',1,'importer.templates.TencentTemplate.TencentTemplate.fix_date()'],['../namespaceimporter_1_1_process_files.html#a2e5c236e9f31d8d7e663e21919696006',1,'importer.ProcessFiles.fix_date()']]],
+  ['fix_5fupc_5',['fix_upc',['../classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template.html#afaf600e0d906649d130effdecf4cc8bc',1,'importer::templates::TencentTemplate::TencentTemplate']]],
+  ['folder_5for_5ffile_6',['folder_or_file',['../namespace_upload_files_s3.html#a53527bad53ef51b87eaa9a615234915f',1,'UploadFilesS3']]],
+  ['ftp_5fconnection_7',['ftp_connection',['../namespace_f_t_p_tools.html#ab1c6eaf63f758e25a31c3b76928e3548',1,'FTPTools']]],
+  ['ftp_5fdownload_8',['ftp_download',['../namespace_f_t_p_download.html#a7219592285bb678c5b00e067e6741bf6',1,'FTPDownload']]],
+  ['ftp_5fexecution_9',['ftp_execution',['../namespace_f_t_p_module.html#a75346cfd1a111fc2b4cad326361c2b33',1,'FTPModule']]],
+  ['ftypes_10',['ftypes',['../classimporter_1_1_columns_manager_1_1get___d_f__otto.html#a4d125694a0e6bebcc0f4c7c66c10e201',1,'importer::ColumnsManager::get_DF_otto']]],
+  ['full_5ftype_11',['full_type',['../classimporter_1_1_template_manager_1_1_template_manager.html#aa1a90e7feff3997960606d0fdc511868',1,'importer::TemplateManager::TemplateManager']]]
 ];

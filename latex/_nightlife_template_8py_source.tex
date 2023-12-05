@@ -1,0 +1,20 @@
+\doxysection{Nightlife\+Template.\+py}
+\hypertarget{_nightlife_template_8py_source}{}\label{_nightlife_template_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/NightlifeTemplate.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/NightlifeTemplate.py}}
+\mbox{\hyperlink{_nightlife_template_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_nightlife_template_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1templates_1_1_nightlife_template}{00001}}\ \textcolor{keyword}{import}\ re}
+\DoxyCodeLine{\Hypertarget{_nightlife_template_8py_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_nightlife_template_8py_source_l00003}\mbox{\hyperlink{classimporter_1_1templates_1_1_nightlife_template_1_1_nightlife_template}{00003}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_nightlife_template_1_1_nightlife_template}{NightlifeTemplate}}:}
+\DoxyCodeLine{\Hypertarget{_nightlife_template_8py_source_l00004}\mbox{\hyperlink{classimporter_1_1templates_1_1_nightlife_template_1_1_nightlife_template_a4d466bf21ca1ac63a169cc9e3ed1762f}{00004}}\ \ \ \ \ \textcolor{keyword}{def\ }date(self,\ filename):}
+\DoxyCodeLine{\Hypertarget{_nightlife_template_8py_source_l00005}00005\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ "{}Nightlife\_2022\_Q4.csv"{}}}
+\DoxyCodeLine{\Hypertarget{_nightlife_template_8py_source_l00006}00006\ \ \ \ \ \ \ \ \ quarter\ =\ \{\textcolor{stringliteral}{"{}Q1"{}}:\ \textcolor{stringliteral}{"{}01"{}},\ \textcolor{stringliteral}{"{}Q2"{}}:\ \textcolor{stringliteral}{"{}04"{}},\ \textcolor{stringliteral}{"{}Q3"{}}:\ \textcolor{stringliteral}{"{}07"{}},\ \textcolor{stringliteral}{"{}Q4"{}}:\ \textcolor{stringliteral}{"{}10"{}}\}}
+\DoxyCodeLine{\Hypertarget{_nightlife_template_8py_source_l00007}00007\ \ \ \ \ \ \ \ \ year\ =\ re.findall(\textcolor{stringliteral}{r'\_20\(\backslash\)d\{2\}'},\ filename)[0]}
+\DoxyCodeLine{\Hypertarget{_nightlife_template_8py_source_l00008}00008\ \ \ \ \ \ \ \ \ year\ =\ year.replace(\textcolor{stringliteral}{"{}\_"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_nightlife_template_8py_source_l00009}00009\ \ \ \ \ \ \ \ \ q\ =\ re.findall(\textcolor{stringliteral}{r'\_Q\(\backslash\)d\{1\}'},\ filename)[0]}
+\DoxyCodeLine{\Hypertarget{_nightlife_template_8py_source_l00010}00010\ \ \ \ \ \ \ \ \ q\ =\ q.replace(\textcolor{stringliteral}{"{}\_"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_nightlife_template_8py_source_l00011}00011\ \ \ \ \ \ \ \ \ month\ =\ quarter[q]}
+\DoxyCodeLine{\Hypertarget{_nightlife_template_8py_source_l00012}00012\ \ \ \ \ \ \ \ \ date\_str\ =\ year+\textcolor{stringliteral}{"{}-\/"{}}+month+\textcolor{stringliteral}{"{}-\/01"{}}}
+\DoxyCodeLine{\Hypertarget{_nightlife_template_8py_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df["{}date\_from\_file"{}]\ =\ date\_str}}
+\DoxyCodeLine{\Hypertarget{_nightlife_template_8py_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ date\_str}
+
+\end{DoxyCode}

@@ -1,0 +1,73 @@
+\doxysection{Excel\+\_\+to\+\_\+csv.\+py}
+\hypertarget{_excel__to__csv_8py_source}{}\label{_excel__to__csv_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/Excel\_to\_csv.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/Excel\_to\_csv.py}}
+\mbox{\hyperlink{_excel__to__csv_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1_excel__to__csv}{00001}}\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00002}00002\ \textcolor{keyword}{from}\ dotenv\ \textcolor{keyword}{import}\ load\_dotenv}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00003}00003\ \textcolor{keyword}{from}\ pandas\ \textcolor{keyword}{import}\ read\_excel}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00004}00004\ \textcolor{keyword}{from}\ MongoConnection\ \textcolor{keyword}{import}\ mongo\_connection}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00006}00006\ load\_dotenv()}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00008}\mbox{\hyperlink{namespaceimporter_1_1_excel__to__csv_a7d7fe2e8609a1de4af3532de4e2a1a11}{00008}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceimporter_1_1_excel__to__csv_a7d7fe2e8609a1de4af3532de4e2a1a11}{upload\_info\_mongo}}(event,\ path,\ file\_id,\ filename):}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00009}00009\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Upload\ file\ information\ from\ xls\ file\ to\ new\ CSV\ file\ }}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00010}00010\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00011}00011\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00012}00012\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ event\ (dict):\ }}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00013}00013\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ path\ (str):\ s3\ path\ where\ file\ is\ storage}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00014}00014\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ file\_id\ (str):\ current/new\ file\_id\ assigned\ for\ mongodb}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00015}00015\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ filename\ (str):\ current\ file}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00016}00016\ \textcolor{stringliteral}{\ \ \ \ Returns:\ Nothing}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00017}00017\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00018}00018\ \ \ \ \ mongo\_conn\ =\ \mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection}{mongo\_connection}}()}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00019}00019\ \ \ \ \ \textcolor{comment}{\#\ Mongo\ collection\ to\ upload\ snapshots}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00020}00020\ \ \ \ \ collection\ =\ mongo\_conn.mongo\_conn\_snapshots()}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00021}00021\ \ \ \ \ new\_file\ =\ \{}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00022}00022\ \ \ \ \ \textcolor{stringliteral}{"{}file\_db\_id"{}}:\ file\_id,}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00023}00023\ \ \ \ \ \textcolor{stringliteral}{"{}status"{}}:\ \textcolor{stringliteral}{"{}processing"{}},}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00024}00024\ \ \ \ \ \textcolor{stringliteral}{"{}client\_id"{}}:\ event[\textcolor{stringliteral}{"{}client\_id"{}}],}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00025}00025\ \ \ \ \ \textcolor{stringliteral}{"{}name"{}}:\ filename,}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00026}00026\ \ \ \ \ \textcolor{stringliteral}{"{}s3\_path"{}}:\ path+\textcolor{stringliteral}{"{}/"{}}+filename}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{if}\ collection.count\_documents(\{\textcolor{stringliteral}{"{}file\_db\_id"{}}:\ file\_id,\textcolor{stringliteral}{"{}name"{}}:\ filename\})\ >=\ 1:}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ collection.delete\_many(\{\textcolor{stringliteral}{"{}file\_db\_id"{}}:\ file\_id,\ \textcolor{stringliteral}{"{}name"{}}:\ filename\})}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ collection.insert\_one(new\_file)}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00032}00032\ \ \ \ \ \ \ \ \ collection.insert\_one(new\_file)}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00034}\mbox{\hyperlink{namespaceimporter_1_1_excel__to__csv_aa217279e5837dc39a9ad6a2372e67c88}{00034}}\ \textcolor{keyword}{def\ }pass\_excel\_to\_csv(event,\ files,\ xls,\ s3):}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00035}00035\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Transform\ xsl\ file\ into\ csv\ file(s)\ according\ sheets\ number\ }}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00036}00036\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00037}00037\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00038}00038\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ event\ (dict):\ is\ a\ dictionary\ with\ all\ client\ and\ sales\ information}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00039}00039\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ files\ (dict):\ is\ a\ dictionary\ with\ file\ information}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00040}00040\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ xls\ (ExcelFile\ obj):\ file\ loaded\ as\ Excel\ file}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00041}00041\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ s3\ (boto3\ client):\ AWS\ client\ connection}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00042}00042\ \textcolor{stringliteral}{\ \ \ \ Returns:\ event\ (dict)}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00043}00043\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00044}00044\ \ \ \ \ bucket\ =\ event[\textcolor{stringliteral}{"{}bucket"{}}][0]}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00045}00045\ \ \ \ \ path\ =\ event[\textcolor{stringliteral}{"{}path"{}}][0]}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00046}00046\ \ \ \ \ tmp\_name\ =\ \textcolor{stringliteral}{"{}/tmp/file.csv"{}}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00047}00047\ \ \ \ \ file\_id\ =\ files[\textcolor{stringliteral}{"{}file\_id"{}}]}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00048}00048\ \ \ \ \ filename\ =\ files[\textcolor{stringliteral}{"{}file"{}}]}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00049}00049\ \ \ \ \ filename\ =\ filename.split(\textcolor{stringliteral}{"{}.xls"{}})[0]}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00050}00050\ \ \ \ \ count=1}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{for}\ sheet\ \textcolor{keywordflow}{in}\ xls.sheet\_names:}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00052}00052\ \ \ \ \ \ \ \ \ df\ =\ read\_excel(xls,\ sheet\_name=sheet,\ engine=\textcolor{stringliteral}{'openpyxl'})}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(df)\ >\ 0:}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ new\_filename\ =\ filename+\textcolor{stringliteral}{"{}\_"{}}+sheet.replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}\_"{}})+\textcolor{stringliteral}{"{}.csv"{}}}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Creating\ new\ csv\ file:\ \{\}"{}}.format(new\_filename))}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ df.to\_csv(tmp\_name,\ index=\textcolor{keyword}{False})}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(tmp\_name,\ \textcolor{stringliteral}{'rb'})\ \textcolor{keyword}{as}\ f:}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ object\_data\ =\ f.read()}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s3.put\_object(Body=object\_data,\ Bucket=bucket,\ Key=path+\textcolor{stringliteral}{"{}/"{}}+new\_filename)}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceimporter_1_1_excel__to__csv_a7d7fe2e8609a1de4af3532de4e2a1a11}{upload\_info\_mongo}}(event,\ path,\ file\_id+\textcolor{stringliteral}{"{}-\/"{}}+str(count),\ new\_filename)}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ event[\textcolor{stringliteral}{"{}files"{}}].append(\{\textcolor{stringliteral}{"{}file\_id"{}}:file\_id+\textcolor{stringliteral}{"{}-\/"{}}+str(count),\ \textcolor{stringliteral}{"{}file"{}}:\ new\_filename,\ \textcolor{stringliteral}{"{}root\_id"{}}:files[\textcolor{stringliteral}{"{}file\_id"{}}]\})}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ count\ +=\ 1}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Sheet\ '\{\}'\ not\ created\ cause\ it\ is\ empty"{}}.format(sheet))}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00065}00065\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00066}00066\ \ \ \ \ \textcolor{keywordflow}{return}\ event}
+\DoxyCodeLine{\Hypertarget{_excel__to__csv_8py_source_l00067}00067\ }
+
+\end{DoxyCode}

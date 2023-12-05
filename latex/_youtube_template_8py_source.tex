@@ -1,0 +1,39 @@
+\doxysection{Youtube\+Template.\+py}
+\hypertarget{_youtube_template_8py_source}{}\label{_youtube_template_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/YoutubeTemplate.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/YoutubeTemplate.py}}
+\mbox{\hyperlink{_youtube_template_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1templates_1_1_youtube_template}{00001}}\ \textcolor{keyword}{import}\ re}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00002}00002\ \textcolor{keyword}{import}\ awswrangler\ \textcolor{keyword}{as}\ wr}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00003}00003\ \textcolor{keyword}{from}\ pandas\ \textcolor{keyword}{import}\ to\_datetime}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00005}\mbox{\hyperlink{classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template}{00005}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template}{YoutubeTemplate}}:}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00006}\mbox{\hyperlink{classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template_af0e0ff4b6503189e26c956e5bdd585e0}{00006}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template_af0e0ff4b6503189e26c956e5bdd585e0}{type}}(self,\ asset\_type):}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00007}00007\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}Sound\ Recording"{}}\ \textcolor{keywordflow}{in}\ asset\_type:}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00008}00008\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{'Youtube\ Content\ ID'}}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00009}00009\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ \textcolor{stringliteral}{"{}Art\ Track"{}}\ \textcolor{keywordflow}{in}\ asset\_type\ \textcolor{keywordflow}{or}\ \textcolor{stringliteral}{"{}Music\ Video"{}}\ \textcolor{keywordflow}{in}\ asset\_type:}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00010}00010\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{'Youtube\ Music'}}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ return\ 'Youtube'}}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00013}\mbox{\hyperlink{classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template_aa7a9d51e3d6d4e3a9f4c2bb7ccc7f254}{00013}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template_aa7a9d51e3d6d4e3a9f4c2bb7ccc7f254}{preprocessing}}(self,\ filename,\ features,\ session,\ rel\_col):}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00014}00014\ \ \ \ \ \ \ \ \ delimiter\ =\ features[\textcolor{stringliteral}{"{}delimiter"{}}]}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00015}00015\ \ \ \ \ \ \ \ \ skip\_rows\ =\ features[\textcolor{stringliteral}{"{}skip\_rows"{}}]}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00016}00016\ \ \ \ \ \ \ \ \ encoding\ =\ features[\textcolor{stringliteral}{"{}encoding"{}}]}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00017}00017\ \ \ \ \ \ \ \ \ df\ =\ wr.s3.read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding,\ dtype=\{rel\_col:str\},\ keep\_default\_na=\textcolor{keyword}{False},\ low\_memory=\textcolor{keyword}{False},\ boto3\_session=session)}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}Month"{}}]\ =\ to\_datetime(df[\textcolor{stringliteral}{"{}Month"{}}],\ format=\textcolor{stringliteral}{'\%Y\%m'})}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}:}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}Day"{}}]\ =\ to\_datetime(df[\textcolor{stringliteral}{"{}Day"{}}],\ format=\textcolor{stringliteral}{'\%Y\%m\%d'})}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00022}00022\ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}gettypeyt"{}}]\ =\ df.apply(\textcolor{keyword}{lambda}\ Row:\ self.\mbox{\hyperlink{classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template_af0e0ff4b6503189e26c956e5bdd585e0}{type}}(Row[\textcolor{stringliteral}{'Asset\ Type'}]),\ axis=1)}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}Asset\ Type"{}}]\ =\ df[\textcolor{stringliteral}{"{}gettypeyt"{}}]}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00024}00024\ \ \ \ \ \ \ \ \ df.drop(\textcolor{stringliteral}{"{}gettypeyt"{}},\ axis=1,\ inplace=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00026}00026\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00027}\mbox{\hyperlink{classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template_a9b830c6f2195be5135534744ed96fd7b}{00027}}\ \ \ \ \ \textcolor{keyword}{def\ }date(self,\ filename):}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ "{}YouTube\_GSDistroPartners\_M\_20220801\_asset\_raw\_v1-\/1.csv"{}}}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ date\ =\ re.findall(\textcolor{stringliteral}{r'M\_20\(\backslash\)d\{6\}'},\ filename)[0]}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ date\ =\ date.replace(\textcolor{stringliteral}{"{}M\_"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ date\_str\ =\ date[:4]+\textcolor{stringliteral}{"{}-\/"{}}+date[4:6]}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df["{}date\_from\_file"{}]\ =\ date\_str}}
+\DoxyCodeLine{\Hypertarget{_youtube_template_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ date\_str}
+
+\end{DoxyCode}

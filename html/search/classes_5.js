@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['templatemanager_0',['TemplateManager',['../classimporter_1_1_template_manager_1_1_template_manager.html',1,'importer::TemplateManager']]],
-  ['territorycode_1',['TerritoryCode',['../classimporter_1_1_territory_code_1_1_territory_code.html',1,'importer::TerritoryCode']]]
+  ['facebooktemplate_0',['FacebookTemplate',['../classimporter_1_1templates_1_1_facebook_template_1_1_facebook_template.html',1,'importer::templates::FacebookTemplate']]],
+  ['filenotloaded_1',['FileNotLoaded',['../classimporter_1_1_error_handler_1_1_file_not_loaded.html',1,'importer::ErrorHandler']]],
+  ['filenotsupported_2',['FileNotSupported',['../classimporter_1_1_error_handler_1_1_file_not_supported.html',1,'importer::ErrorHandler']]],
+  ['fugatemplate_3',['FugaTemplate',['../classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html',1,'importer::templates::FugaTemplate']]]
 ];

@@ -1,0 +1,105 @@
+\doxysection{Error\+Handler.\+py}
+\hypertarget{_error_handler_8py_source}{}\label{_error_handler_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/ErrorHandler.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/ErrorHandler.py}}
+\mbox{\hyperlink{_error_handler_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1_error_handler}{00001}}\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00002}00002\ \textcolor{keyword}{from}\ datetime\ \textcolor{keyword}{import}\ datetime\ \textcolor{keyword}{as}\ dt}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00003}00003\ \textcolor{keyword}{from}\ pymongo\ \textcolor{keyword}{import}\ MongoClient}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00004}00004\ \textcolor{keyword}{import}\ ssl}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00005}00005\ \textcolor{keyword}{from}\ dotenv\ \textcolor{keyword}{import}\ load\_dotenv,\ dotenv\_values}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00006}00006\ \textcolor{keyword}{from}\ MongoConnection\ \textcolor{keyword}{import}\ mongo\_connection}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00007}00007\ load\_dotenv()}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00009}\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_error_handler}{00009}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_error_handler}{ErrorHandler}}:}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00010}00010\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Updates\ file\ info\ in\ our\ database\ with\ the\ error\ found\ in\ it\ (if\ it's\ applicable)}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00011}00011\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00013}\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_error_handler_a533b5184140c6fe8bcbacd2b45122c14}{00013}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_error_handler_a533b5184140c6fe8bcbacd2b45122c14}{handle}}(self,\ e,\ message,\ file\_db\_id):}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Add\ status\_cause\ and\ error\_message\ fields\ to\ file\ info\ \ }}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00015}00015\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00016}00016\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00017}00017\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ e\ (str):\ error\ found}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00018}00018\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ message\ (str):\ error\ message\ generated\ by\ python}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00019}00019\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ file\_db\_id\ (str):\ file\ id\ assigned\ in\ mongodb}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00020}00020\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ error\_cause\ (str)}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00021}00021\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00022}00022\ \ \ \ \ \ \ \ \ mongo\_conn\ =\ \mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection}{mongo\_connection}}()}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ collection\ =\ mongo\_conn.mongo\_conn\_snapshots()}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00024}00024\ \ \ \ \ \ \ \ \ error\_cause\ =\ self.\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_error_handler_afd7e8b25dce933738031377aabd60d72}{get\_human\_error}}(e)}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00025}00025\ \ \ \ \ \ \ \ \ collection.update\_one(\{\textcolor{stringliteral}{"{}file\_db\_id"{}}:file\_db\_id\},\{\textcolor{stringliteral}{"{}\$set"{}}:\ \{\textcolor{stringliteral}{"{}status"{}}:\ \textcolor{stringliteral}{"{}failed"{}},\ \textcolor{stringliteral}{"{}status\_cause"{}}:\ error\_cause,\ \textcolor{stringliteral}{"{}error\_message"{}}:\ message,\ \textcolor{stringliteral}{"{}updated\_at"{}}:\ dt.now()\}\})}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ collection.update\_one(\{"{}file\_db\_id"{}:file\_db\_id\},\{"{}\$set"{}:\ \{"{}updated\_at"{}:\ dt.now().replace(hour=0,\ minute=0,\ second=0,\ microsecond=0)\}\})}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ error\_cause}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00028}00028\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00029}\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_error_handler_afd7e8b25dce933738031377aabd60d72}{00029}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_error_handler_afd7e8b25dce933738031377aabd60d72}{get\_human\_error}}(self,\ e):}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Gets\ a\ message\ error\ according\ to\ king\ of\ issue}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00031}00031\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00032}00032\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00033}00033\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ e\ (str):\ error\ found}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00034}00034\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ error\ (str)}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00035}00035\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ error\_type\ =\ type(e)}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ str(error\_type)\ ==\ \textcolor{stringliteral}{"{}<class\ 'botocore.exceptions.ClientError'>"{}}:}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{stringliteral}{"{}S3:\ File\ does\ not\ exist.\ Are\ you\ sure\ this\ is\ the\ correct\ file"{}})}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ str(error\_type)\ ==\ \textcolor{stringliteral}{"{}<class\ 'botocore.exceptions.PartialCredentialsError'>"{}}:}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{stringliteral}{"{}S3:\ Partial\ credentials\ found\ in\ explicit.\ aws\_access\_key\_id\ or\ aws\_secret\_access\_key\ no\ founded"{}})}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ str(e)\ ==\ \textcolor{stringliteral}{"{}Path\ invalid."{}}:}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{stringliteral}{"{}S3:\ Input\ path\ does\ not\ exist\ in\ s3\ Bucket.\ Are\ you\ sure\ this\ is\ the\ correct\ path?"{}})}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ str(error\_type)\ ==\ \textcolor{stringliteral}{"{}<class\ 'pymongo.errors.ServerSelectionTimeoutError'>"{}}:}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{stringliteral}{"{}MDB:\ Saving\ the\ information\ is\ taking\ too\ long.\ Connection\ refused"{}})}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ str(error\_type)\ ==\ \textcolor{stringliteral}{"{}<class\ 'IndexError'>"{}}:}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{stringliteral}{"{}MDB:\ No\ formats\ matches\ with\ your\ file"{}})}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ str(e)\ ==\ \textcolor{stringliteral}{"{}Error\ in\ currency.\ Execution\ aborted"{}}:}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{stringliteral}{"{}PD:\ Currency\ not\ found\ in\ your\ file"{}})}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ str(e)\ ==\ \textcolor{stringliteral}{"{}Validation\ Error.\ Execution\ aborted"{}}:}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{stringliteral}{"{}PD:\ Something\ was\ wrong.\ Data\ validation\ failed."{}})}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ str(error\_type)\ ==\ \textcolor{stringliteral}{"{}<class\ 'NameError'>"{}}:}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{stringliteral}{"{}Python:\ There\ is\ a\ word\ not\ defined"{}})}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ str(error\_type)\ ==\ \textcolor{stringliteral}{"{}<class\ 'KeyError'>"{}}:}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{stringliteral}{"{}Python:\ There\ is\ a\ wrong\ word"{}})}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ \textcolor{stringliteral}{"{}Expecting\ value:\ line\ 1\ column"{}}\ \textcolor{keywordflow}{in}\ str(e):}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{stringliteral}{"{}Maybe\ there\ is\ a\ malformed\ format"{}})}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ \textcolor{stringliteral}{"{}cannot\ unpack\ non-\/iterable"{}}\ \textcolor{keywordflow}{in}\ str(e):}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Maybe\ something\ is\ wrong\ in\ headers"{}}\ }
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ str(e)}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00061}00061\ \textcolor{comment}{\#\ class\ DataBuildFailed(Exception):}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00062}00062\ \textcolor{comment}{\#\ \#\ \ \ \ \ \#\ def\ \_\_init\_\_(self):}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00063}00063\ \textcolor{comment}{\#\ \#\ \ \ \ \ \#\ \ \ \ \ return\ None}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00064}00064\ \textcolor{comment}{\#\ \ \ \ \ \#\ def\ \_\_str\_\_():\ }}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00065}00065\ \textcolor{comment}{\#\ \ \ \ \ print("{}Data\ Build\ Failed.\ Please\ review\ data"{})}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00067}\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_file_not_supported}{00067}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_file_not_supported}{FileNotSupported}}(Exception):}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00068}00068\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ }}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00069}00069\ \textcolor{stringliteral}{\ \ \ \ It's\ launched\ when\ a\ not\ allowed\ file\ is\ ingested\ }}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00070}00070\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00071}\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_file_not_supported_a38976a8a20b75ded52adf4432c08f84b}{00071}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_file_not_supported_a38976a8a20b75ded52adf4432c08f84b}{\_\_init\_\_}}(self,\ message="{}File\ extension\ is\ not\ supported.\ Verify\ if\ it\ is\ the\ correct\ file"{}):}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00072}\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_file_not_supported_a7d26c17f5e6d5429a9f9f0a3f79a71f7}{00072}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_file_not_supported_a7d26c17f5e6d5429a9f9f0a3f79a71f7}{message}}\ =\ message}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00073}00073\ \ \ \ \ \ \ \ \ super().\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_file_not_supported_a38976a8a20b75ded52adf4432c08f84b}{\_\_init\_\_}}(self.\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_file_not_supported_a7d26c17f5e6d5429a9f9f0a3f79a71f7}{message}})}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00075}\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_file_not_loaded}{00075}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_file_not_loaded}{FileNotLoaded}}(Exception):}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00076}00076\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ }}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00077}00077\ \textcolor{stringliteral}{\ \ \ \ It's\ launched\ when\ a\ file\ could\ not\ be\ loaded\ or\ it\ has\ a\ undefined\ encoding}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00078}00078\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00079}\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_file_not_loaded_ae52514dff6fd35ce4c3f3f4c55ab0473}{00079}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_file_not_loaded_ae52514dff6fd35ce4c3f3f4c55ab0473}{\_\_init\_\_}}(self,\ message="{}File\ couldn't\ be\ loaded.\ Verify\ that\ file\ is\ an\ accepted\ format"{}):}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00080}\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_file_not_loaded_a781daee0609381b732bda61e6c5acabd}{00080}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_file_not_loaded_a781daee0609381b732bda61e6c5acabd}{message}}\ =\ message}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00081}00081\ \ \ \ \ \ \ \ \ super().\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_file_not_loaded_ae52514dff6fd35ce4c3f3f4c55ab0473}{\_\_init\_\_}}(self.\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_file_not_loaded_a781daee0609381b732bda61e6c5acabd}{message}})}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00083}\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_currency_not_found}{00083}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_currency_not_found}{CurrencyNotFound}}(Exception):}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00084}00084\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ }}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00085}00085\ \textcolor{stringliteral}{\ \ \ \ It's\ launched\ when\ a\ file\ contains\ one\ or\ more\ not\ defined\ currencies}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00086}00086\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00087}\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_currency_not_found_a5be566c01b3d5cb0203ae8e5781a4ee9}{00087}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_currency_not_found_a5be566c01b3d5cb0203ae8e5781a4ee9}{\_\_init\_\_}}(self,\ message="{}There\ are\ currencies\ not\ found\ in\ your\ file.\ Please\ check\ currencies"{}):}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00088}\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_currency_not_found_ac048642dd97d35e4dc101a279dc78823}{00088}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_currency_not_found_ac048642dd97d35e4dc101a279dc78823}{message}}\ =\ message}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00089}00089\ \ \ \ \ \ \ \ \ super().\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_currency_not_found_a5be566c01b3d5cb0203ae8e5781a4ee9}{\_\_init\_\_}}(self.\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_currency_not_found_ac048642dd97d35e4dc101a279dc78823}{message}})}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00091}\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_validation_failed}{00091}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_validation_failed}{ValidationFailed}}(Exception):}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00092}00092\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ }}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00093}00093\ \textcolor{stringliteral}{\ \ \ \ It's\ launched\ when\ something's\ wrong\ in\ the\ data\ validation\ procedure}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00094}00094\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00095}\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_validation_failed_a317b976b925dd5730d3fd081c793552e}{00095}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_validation_failed_a317b976b925dd5730d3fd081c793552e}{\_\_init\_\_}}(self,\ message="{}Something's\ wrong\ in\ validation\ step.\ Verify\ your\ data"{}):}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00096}\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_validation_failed_ab943d765212e138b6c1a2b8d048e3bbe}{00096}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_validation_failed_ab943d765212e138b6c1a2b8d048e3bbe}{message}}\ =\ message}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00097}00097\ \ \ \ \ \ \ \ \ super().\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_validation_failed_a317b976b925dd5730d3fd081c793552e}{\_\_init\_\_}}(self.\mbox{\hyperlink{classimporter_1_1_error_handler_1_1_validation_failed_ab943d765212e138b6c1a2b8d048e3bbe}{message}})}
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_error_handler_8py_source_l00099}00099\ }
+
+\end{DoxyCode}

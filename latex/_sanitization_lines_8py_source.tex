@@ -1,0 +1,46 @@
+\doxysection{Sanitization\+Lines.\+py}
+\hypertarget{_sanitization_lines_8py_source}{}\label{_sanitization_lines_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/SanitizationLines.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/SanitizationLines.py}}
+\mbox{\hyperlink{_sanitization_lines_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1_sanitization_lines}{00001}}\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00003}\mbox{\hyperlink{namespaceimporter_1_1_sanitization_lines_ad3c63c93fd757148baf3ec09623de835}{00003}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceimporter_1_1_sanitization_lines_ad3c63c93fd757148baf3ec09623de835}{matching\_sales}}(sales,\ catalog\_collection,\ releases):}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00004}00004\ \ \ \ \ \textcolor{keywordflow}{if}\ str(sales[\textcolor{stringliteral}{"{}release\_id"{}}])\ ==\ \textcolor{stringliteral}{"{}"{}}\ \textcolor{keywordflow}{or}\ str(sales[\textcolor{stringliteral}{"{}release\_id"{}}]).lower()\ ==\ \textcolor{stringliteral}{"{}nan"{}}\ \textcolor{keywordflow}{or}\ str(sales[\textcolor{stringliteral}{"{}release\_id"{}}])\ ==\ \textcolor{stringliteral}{"{}undefined"{}}:}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00005}00005\ \ \ \ \ \ \ \ \ upc\_found\ =\ catalog\_collection.find\_one(\{\textcolor{stringliteral}{"{}tracks.isrc"{}}:sales[\textcolor{stringliteral}{"{}isrc\_id"{}}]\},\{\textcolor{stringliteral}{"{}\_id"{}}:0,\ \textcolor{stringliteral}{"{}upc"{}}:1,\textcolor{stringliteral}{"{}title"{}}:1,\textcolor{stringliteral}{"{}label"{}}:1,\textcolor{stringliteral}{"{}artist"{}}:1,\textcolor{stringliteral}{"{}tracks.isrc"{}}:1,\ \textcolor{stringliteral}{"{}tracks.title"{}}:1,\ \textcolor{stringliteral}{"{}tracks.artist"{}}:1,\ \textcolor{stringliteral}{"{}catalogId"{}}:\ 1\})}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00006}00006\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ upc\_found:}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00007}00007\ \ \ \ \ \ \ \ \ \ \ \ \ isrc\_found\ =\ [element\ \textcolor{keywordflow}{for}\ element\ \textcolor{keywordflow}{in}\ upc\_found[\textcolor{stringliteral}{"{}tracks"{}}]\ \textcolor{keywordflow}{if}\ element[\textcolor{stringliteral}{"{}isrc"{}}]\ ==\ sales[\textcolor{stringliteral}{"{}isrc\_id"{}}]]}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00008}00008\ \ \ \ \ \ \ \ \ \ \ \ \ sales[\textcolor{stringliteral}{"{}release\_id"{}}]\ =\ upc\_found[\textcolor{stringliteral}{"{}upc"{}}]}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00009}00009\ \ \ \ \ \ \ \ \ \ \ \ \ sales[\textcolor{stringliteral}{"{}release\_title"{}}]\ =\ upc\_found[\textcolor{stringliteral}{"{}title"{}}]}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00010}00010\ \ \ \ \ \ \ \ \ \ \ \ \ sales[\textcolor{stringliteral}{"{}label\_id"{}}]\ =\ upc\_found[\textcolor{stringliteral}{"{}label"{}}]}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00011}00011\ \ \ \ \ \ \ \ \ \ \ \ \ sales[\textcolor{stringliteral}{"{}track\_title"{}}]\ =\ isrc\_found[0][\textcolor{stringliteral}{"{}title"{}}]}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00012}00012\ \ \ \ \ \ \ \ \ \ \ \ \ sales[\textcolor{stringliteral}{"{}artists"{}}]\ =\ isrc\_found[0][\textcolor{stringliteral}{"{}artist"{}}]}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ sales[\textcolor{stringliteral}{"{}catalogue\_id"{}}]\ =\ upc\_found[\textcolor{stringliteral}{"{}catalogId"{}}]}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ sales[\textcolor{stringliteral}{"{}clean"{}}]\ =\ 1}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00015}00015\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00016}00016\ \ \ \ \ \ \ \ \ upc\_found\ =\ [element\ \textcolor{keywordflow}{for}\ element\ \textcolor{keywordflow}{in}\ releases\ \textcolor{keywordflow}{if}\ element[\textcolor{stringliteral}{'upc'}]\ ==\ sales[\textcolor{stringliteral}{"{}release\_id"{}}]]\textcolor{comment}{\#\ and\ element["{}tracks"{}]\ ==\ track\_sales]}}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(upc\_found)\ >\ 0:}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(sales[\textcolor{stringliteral}{"{}isrc\_id"{}}])\ >=\ 10:}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ isrc\_found\ =\ [element\ \textcolor{keywordflow}{for}\ element\ \textcolor{keywordflow}{in}\ upc\_found[0][\textcolor{stringliteral}{"{}tracks"{}}]\ \textcolor{keywordflow}{if}\ element[\textcolor{stringliteral}{"{}isrc"{}}]\ ==\ sales[\textcolor{stringliteral}{"{}isrc\_id"{}}]]}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sales[\textcolor{stringliteral}{"{}release\_title"{}}]\ =\ upc\_found[0][\textcolor{stringliteral}{"{}title"{}}]}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sales[\textcolor{stringliteral}{"{}label\_id"{}}]\ =\ upc\_found[0][\textcolor{stringliteral}{"{}label"{}}]}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sales[\textcolor{stringliteral}{"{}track\_title"{}}]\ =\ isrc\_found[0][\textcolor{stringliteral}{"{}title"{}}]}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sales[\textcolor{stringliteral}{"{}artists"{}}]\ =\ isrc\_found[0][\textcolor{stringliteral}{"{}artist"{}}]}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sales[\textcolor{stringliteral}{"{}catalogue\_id"{}}]\ =\ upc\_found[0][\textcolor{stringliteral}{"{}catalogId"{}}]}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sales[\textcolor{stringliteral}{"{}clean"{}}]\ =\ 1}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sales[\textcolor{stringliteral}{"{}release\_title"{}}]\ =\ upc\_found[0][\textcolor{stringliteral}{"{}title"{}}]}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sales[\textcolor{stringliteral}{"{}label\_id"{}}]\ =\ upc\_found[0][\textcolor{stringliteral}{"{}label"{}}]}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sales[\textcolor{stringliteral}{"{}artists"{}}]\ =\ upc\_found[0][\textcolor{stringliteral}{"{}artist"{}}]}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sales[\textcolor{stringliteral}{"{}catalogue\_id"{}}]\ =\ upc\_found[0][\textcolor{stringliteral}{"{}catalogId"{}}]}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sales[\textcolor{stringliteral}{"{}clean"{}}]\ =\ 1}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00033}\mbox{\hyperlink{namespaceimporter_1_1_sanitization_lines_adbd3ac8f52d9f599fba1f0c206097665}{00033}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceimporter_1_1_sanitization_lines_adbd3ac8f52d9f599fba1f0c206097665}{sanitization}}(lines,\ catalog\_collection,\ releases):\ }
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{for}\ line\ \textcolor{keywordflow}{in}\ lines:}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ line[\textcolor{stringliteral}{"{}catalogue\_id"{}}]\ =\ \textcolor{stringliteral}{"{}no\ catalogue"{}}}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceimporter_1_1_sanitization_lines_ad3c63c93fd757148baf3ec09623de835}{matching\_sales}}(line,\ catalog\_collection,\ releases)}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}:}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue}}
+\DoxyCodeLine{\Hypertarget{_sanitization_lines_8py_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{return}\ lines}
+
+\end{DoxyCode}

@@ -1,0 +1,40 @@
+\doxysection{Tencent\+Template.\+py}
+\hypertarget{_tencent_template_8py_source}{}\label{_tencent_template_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/TencentTemplate.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/TencentTemplate.py}}
+\mbox{\hyperlink{_tencent_template_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1templates_1_1_tencent_template}{00001}}\ \textcolor{keyword}{import}\ re}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00002}00002\ \textcolor{keyword}{import}\ awswrangler\ \textcolor{keyword}{as}\ wr}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00004}\mbox{\hyperlink{classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template}{00004}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template}{TencentTemplate}}:}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00006}\mbox{\hyperlink{classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template_ad237bed0778d3d9032a6bb79f7d9cb8f}{00006}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template_ad237bed0778d3d9032a6bb79f7d9cb8f}{preprocessing}}(self,\ filename,\ features,\ session,\ rel\_col):}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00007}00007\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00008}00008\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ args:}}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00009}00009\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ filename:\ -\/str-\/\ s3\ full\ path\ of\ filename}}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00010}00010\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ features:\ -\/dict-\/\ which\ contains\ delimiter,\ skip\_rows\ and\ encoding}}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00011}00011\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ session:\ -\/class-\/\ s3\ connexion\ }}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00012}00012\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00013}00013\ \ \ \ \ \ \ \ \ delimiter\ =\ features[\textcolor{stringliteral}{"{}delimiter"{}}]}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00014}00014\ \ \ \ \ \ \ \ \ skip\_rows\ =\ features[\textcolor{stringliteral}{"{}skip\_rows"{}}]}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00015}00015\ \ \ \ \ \ \ \ \ encoding\ =\ features[\textcolor{stringliteral}{"{}encoding"{}}]}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00016}00016\ \ \ \ \ \ \ \ \ df\ =\ wr.s3.read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding,\ dtype=\{rel\_col:str\},\ low\_memory=\textcolor{keyword}{False},\ boto3\_session=session)}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00017}00017\ \ \ \ \ \ \ \ \ df[rel\_col]\ =\ df.apply(\textcolor{keyword}{lambda}\ Row:\ self.\mbox{\hyperlink{classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template_afaf600e0d906649d130effdecf4cc8bc}{fix\_upc}}(Row[rel\_col]),\ axis=1)}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00020}\mbox{\hyperlink{classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template_afaf600e0d906649d130effdecf4cc8bc}{00020}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template_afaf600e0d906649d130effdecf4cc8bc}{fix\_upc}}(self,\ upc):}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00021}00021\ \ \ \ \ \ \ \ \ upc\ =\ upc.replace(\textcolor{stringliteral}{"{}UPC-\/"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ upc}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00024}\mbox{\hyperlink{classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template_a00f9f16319072105bd2e2d86181fe573}{00024}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template_a00f9f16319072105bd2e2d86181fe573}{fix\_date}}(self,\ start\_date):}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(start\_date)}}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00026}00026\ \ \ \ \ \ \ \ \ start\_date\ =\ str(start\_date)}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ start\_date\_fix\ =\ start\_date.split(\textcolor{stringliteral}{"{}-\/"{}})[0]}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ start\_date\_fix}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00030}\mbox{\hyperlink{classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template_aa6d6874f9a85d061c796e287ae02e786}{00030}}\ \ \ \ \ \textcolor{keyword}{def\ }date(self,\ filename,\ df):}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ def\ assetType(self,\ df):}}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Add\ a\ new\ column\ to\ insert\ type}}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}iso\_date"{}}]\ =\ df.apply(\textcolor{keyword}{lambda}\ Row:\ self.\mbox{\hyperlink{classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template_a00f9f16319072105bd2e2d86181fe573}{fix\_date}}(Row[\textcolor{stringliteral}{'start\_date'}]),\ axis=1)}
+\DoxyCodeLine{\Hypertarget{_tencent_template_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df[\textcolor{stringliteral}{"{}iso\_date"{}}]}
+
+\end{DoxyCode}

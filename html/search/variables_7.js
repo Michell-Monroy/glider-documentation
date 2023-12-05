@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['path_0',['path',['../namespaceimporter_1_1generate__csv.html#a02036b7eab9b4ec74b3e5be659ee6bb4',1,'importer.generate_csv.path'],['../namespaceimporter_1_1glider__upload.html#abab82529b8e81f25fb85a5c6e975a151',1,'importer.glider_upload.path']]]
+  ['last_5frequest_0',['last_request',['../namespace_f_t_p_download.html#ad0dbaffa5f6aa0d1fa69fdbc94687414',1,'FTPDownload']]],
+  ['lines_5fto_5fdrop_1',['lines_to_drop',['../namespaceimporter_1_1_validate.html#aff5426919f4e36870beb576784e2d125',1,'importer::Validate']]]
 ];

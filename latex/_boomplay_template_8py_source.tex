@@ -1,0 +1,17 @@
+\doxysection{Boomplay\+Template.\+py}
+\hypertarget{_boomplay_template_8py_source}{}\label{_boomplay_template_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/BoomplayTemplate.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/BoomplayTemplate.py}}
+\mbox{\hyperlink{_boomplay_template_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_boomplay_template_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1templates_1_1_boomplay_template}{00001}}\ \textcolor{keyword}{import}\ re}
+\DoxyCodeLine{\Hypertarget{_boomplay_template_8py_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_boomplay_template_8py_source_l00003}\mbox{\hyperlink{classimporter_1_1templates_1_1_boomplay_template_1_1_boomplay_template}{00003}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_boomplay_template_1_1_boomplay_template}{BoomplayTemplate}}:}
+\DoxyCodeLine{\Hypertarget{_boomplay_template_8py_source_l00004}\mbox{\hyperlink{classimporter_1_1templates_1_1_boomplay_template_1_1_boomplay_template_ad084fbc3f79e9ca9ede436eb499594e1}{00004}}\ \ \ \ \ \textcolor{keyword}{def\ }date(self,\ filename):}
+\DoxyCodeLine{\Hypertarget{_boomplay_template_8py_source_l00005}00005\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 'gyrostream-\/pty-\/ltd\_boomplay\_202207\_Monthly-\/Sales\_TERR1.txt'}}
+\DoxyCodeLine{\Hypertarget{_boomplay_template_8py_source_l00006}00006\ \ \ \ \ \ \ \ \ date\ =\ re.findall(\textcolor{stringliteral}{r'\_20\(\backslash\)d\{4\}'},\ filename)[0]}
+\DoxyCodeLine{\Hypertarget{_boomplay_template_8py_source_l00007}00007\ \ \ \ \ \ \ \ \ date\ =\ date.replace(\textcolor{stringliteral}{"{}\_"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_boomplay_template_8py_source_l00008}00008\ \ \ \ \ \ \ \ \ date\_str\ =\ date[:4]+\textcolor{stringliteral}{"{}-\/"{}}+date[4:]+\textcolor{stringliteral}{"{}-\/01"{}}}
+\DoxyCodeLine{\Hypertarget{_boomplay_template_8py_source_l00009}00009\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df["{}date\_from\_file"{}]\ =\ date\_str}}
+\DoxyCodeLine{\Hypertarget{_boomplay_template_8py_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df["{}date\_from\_file"{}]\ =\ df["{}date\_from\_file"{}].astype("{}datetime64"{})}}
+\DoxyCodeLine{\Hypertarget{_boomplay_template_8py_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ date\_str}
+
+\end{DoxyCode}

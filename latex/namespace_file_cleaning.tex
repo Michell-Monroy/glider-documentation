@@ -1,0 +1,96 @@
+\doxysection{File\+Cleaning Namespace Reference}
+\hypertarget{namespace_file_cleaning}{}\label{namespace_file_cleaning}\index{FileCleaning@{FileCleaning}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_file_cleaning_ad78133ddf067d6287b92b99b1a3d9ded}{get\+\_\+path}} (local\+\_\+path)
+\item 
+\mbox{\hyperlink{namespace_file_cleaning_aad23b60ef1b17c292670df901ed0b365}{download\+\_\+local\+\_\+file}} (event, local\+\_\+path)
+\item 
+\mbox{\hyperlink{namespace_file_cleaning_abc5bc9e9571d7d6aef34767ce03e9af9}{run\+\_\+file\+\_\+cleaning}} (event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_file_cleaning_a28cf7c53a562300c88eee1881d6a59c7}{f\+\_\+path}} = \+\_\+\+\_\+file\+\_\+\+\_\+
+\item 
+\mbox{\hyperlink{namespace_file_cleaning_afe4c614d77426d1210eaf7b4de535f95}{index}} = f\+\_\+path.\+find("{}upload\+\_\+module/"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_file_cleaning_aad23b60ef1b17c292670df901ed0b365}\label{namespace_file_cleaning_aad23b60ef1b17c292670df901ed0b365} 
+\index{FileCleaning@{FileCleaning}!download\_local\_file@{download\_local\_file}}
+\index{download\_local\_file@{download\_local\_file}!FileCleaning@{FileCleaning}}
+\doxysubsubsection{\texorpdfstring{download\_local\_file()}{download\_local\_file()}}
+{\footnotesize\ttfamily File\+Cleaning.\+download\+\_\+local\+\_\+file (\begin{DoxyParamCaption}\item[{}]{event,  }\item[{}]{local\+\_\+path }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Downloads files uploaded directly via Otto Light interface in a temporal folder
+Args:
+    event (dict): Contains the bucket and folder info where file was uploaded
+    local_path (str): Root path where is saved files
+Returns : Nothing
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_file_cleaning_8py_source_l00034}{34}} of file \mbox{\hyperlink{_file_cleaning_8py_source}{File\+Cleaning.\+py}}.
+
+Here is the caller graph for this function\+:
+% FIG 0
+\Hypertarget{namespace_file_cleaning_ad78133ddf067d6287b92b99b1a3d9ded}\label{namespace_file_cleaning_ad78133ddf067d6287b92b99b1a3d9ded} 
+\index{FileCleaning@{FileCleaning}!get\_path@{get\_path}}
+\index{get\_path@{get\_path}!FileCleaning@{FileCleaning}}
+\doxysubsubsection{\texorpdfstring{get\_path()}{get\_path()}}
+{\footnotesize\ttfamily File\+Cleaning.\+get\+\_\+path (\begin{DoxyParamCaption}\item[{}]{local\+\_\+path }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Adds the last folder downloaded to root path
+Args:
+    local_path (str): Root path where is saved files
+Returns : The actual folder where files where downloaded
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_file_cleaning_8py_source_l00018}{18}} of file \mbox{\hyperlink{_file_cleaning_8py_source}{File\+Cleaning.\+py}}.
+
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{namespace_file_cleaning_abc5bc9e9571d7d6aef34767ce03e9af9}\label{namespace_file_cleaning_abc5bc9e9571d7d6aef34767ce03e9af9} 
+\index{FileCleaning@{FileCleaning}!run\_file\_cleaning@{run\_file\_cleaning}}
+\index{run\_file\_cleaning@{run\_file\_cleaning}!FileCleaning@{FileCleaning}}
+\doxysubsubsection{\texorpdfstring{run\_file\_cleaning()}{run\_file\_cleaning()}}
+{\footnotesize\ttfamily File\+Cleaning.\+run\+\_\+file\+\_\+cleaning (\begin{DoxyParamCaption}\item[{}]{event }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Transform Gdrive link to ID drive to be downloaded by Google API and execute all procedure
+Args:
+    event (dict): Shared link of the folder/file to download
+Returns : The actual folder where files where downloaded
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_file_cleaning_8py_source_l00060}{60}} of file \mbox{\hyperlink{_file_cleaning_8py_source}{File\+Cleaning.\+py}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespace_file_cleaning_a28cf7c53a562300c88eee1881d6a59c7}\label{namespace_file_cleaning_a28cf7c53a562300c88eee1881d6a59c7} 
+\index{FileCleaning@{FileCleaning}!f\_path@{f\_path}}
+\index{f\_path@{f\_path}!FileCleaning@{FileCleaning}}
+\doxysubsubsection{\texorpdfstring{f\_path}{f\_path}}
+{\footnotesize\ttfamily File\+Cleaning.\+f\+\_\+path = \+\_\+\+\_\+file\+\_\+\+\_\+}
+
+
+
+Definition at line \mbox{\hyperlink{_file_cleaning_8py_source_l00009}{9}} of file \mbox{\hyperlink{_file_cleaning_8py_source}{File\+Cleaning.\+py}}.
+
+\Hypertarget{namespace_file_cleaning_afe4c614d77426d1210eaf7b4de535f95}\label{namespace_file_cleaning_afe4c614d77426d1210eaf7b4de535f95} 
+\index{FileCleaning@{FileCleaning}!index@{index}}
+\index{index@{index}!FileCleaning@{FileCleaning}}
+\doxysubsubsection{\texorpdfstring{index}{index}}
+{\footnotesize\ttfamily File\+Cleaning.\+index = f\+\_\+path.\+find("{}upload\+\_\+module/"{})}
+
+
+
+Definition at line \mbox{\hyperlink{_file_cleaning_8py_source_l00010}{10}} of file \mbox{\hyperlink{_file_cleaning_8py_source}{File\+Cleaning.\+py}}.
+

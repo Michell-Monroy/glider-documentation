@@ -1,0 +1,63 @@
+\doxysection{Generate\+Token.\+py}
+\hypertarget{_generate_token_8py_source}{}\label{_generate_token_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/upload\_module/gdrive/GenerateToken.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/upload\_module/gdrive/GenerateToken.py}}
+\mbox{\hyperlink{_generate_token_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00001}\mbox{\hyperlink{namespace_generate_token}{00001}}\ \textcolor{keyword}{from}\ \_\_future\_\_\ \textcolor{keyword}{import}\ print\_function}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00003}00003\ \textcolor{keyword}{import}\ os.path}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00005}00005\ \textcolor{keyword}{from}\ google.auth.transport.requests\ \textcolor{keyword}{import}\ Request}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00006}00006\ \textcolor{keyword}{from}\ google.oauth2.credentials\ \textcolor{keyword}{import}\ Credentials}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00007}00007\ \textcolor{keyword}{from}\ google\_auth\_oauthlib.flow\ \textcolor{keyword}{import}\ InstalledAppFlow}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00008}00008\ \textcolor{keyword}{from}\ googleapiclient.discovery\ \textcolor{keyword}{import}\ build}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00009}00009\ \textcolor{keyword}{from}\ googleapiclient.errors\ \textcolor{keyword}{import}\ HttpError}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00011}00011\ \textcolor{comment}{\#\ If\ modifying\ these\ scopes,\ delete\ the\ file\ token.json.}}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00013}\mbox{\hyperlink{namespace_generate_token_a806b7eaca7eba30d5077cab4fe8af939}{00013}}\ SCOPES\ =\ [\textcolor{stringliteral}{"{}https://www.googleapis.com/auth/drive"{}},\ \textcolor{stringliteral}{"{}https://www.googleapis.com/auth/drive.file"{}},\ \textcolor{stringliteral}{"{}https://www.googleapis.com/auth/drive.readonly"{}},\ \textcolor{stringliteral}{"{}https://www.googleapis.com/auth/drive.metadata.readonly"{}},\ \textcolor{stringliteral}{"{}https://www.googleapis.com/auth/drive.appdata"{}},\ \textcolor{stringliteral}{"{}https://www.googleapis.com/auth/drive.metadata"{}},\ \textcolor{stringliteral}{"{}https://www.googleapis.com/auth/drive.photos.readonly"{}}]}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00015}\mbox{\hyperlink{namespace_generate_token_a751a4c038569c905b3ae8157d9b41244}{00015}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_generate_token_a751a4c038569c905b3ae8157d9b41244}{main}}():}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00016}00016\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Shows\ basic\ usage\ of\ the\ Drive\ v3\ API.}}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00017}00017\ \textcolor{stringliteral}{\ \ \ \ Prints\ the\ names\ and\ ids\ of\ the\ first\ 10\ files\ the\ user\ has\ access\ to.}}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00018}00018\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00019}00019\ \ \ \ \ creds\ =\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00020}00020\ \ \ \ \ \textcolor{comment}{\#\ The\ file\ token.json\ stores\ the\ user's\ access\ and\ refresh\ tokens,\ and\ is}}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00021}00021\ \ \ \ \ \textcolor{comment}{\#\ created\ automatically\ when\ the\ authorization\ flow\ completes\ for\ the\ first}}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00022}00022\ \ \ \ \ \textcolor{comment}{\#\ time.}}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00023}00023\ \ \ \ \ \textcolor{keywordflow}{if}\ os.path.exists(\textcolor{stringliteral}{'token.json'}):}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00024}00024\ \ \ \ \ \ \ \ \ creds\ =\ Credentials.from\_authorized\_user\_file(\textcolor{stringliteral}{'token.json'},\ SCOPES)}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00025}00025\ \ \ \ \ \textcolor{comment}{\#\ If\ there\ are\ no\ (valid)\ credentials\ available,\ let\ the\ user\ log\ in.}}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ creds\ \textcolor{keywordflow}{or}\ \textcolor{keywordflow}{not}\ creds.valid:}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ creds\ \textcolor{keywordflow}{and}\ creds.expired\ \textcolor{keywordflow}{and}\ creds.refresh\_token:}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ creds.refresh(Request())}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ flow\ =\ InstalledAppFlow.from\_client\_secrets\_file(}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'client\_secret.json'},\ SCOPES)}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ creds\ =\ flow.run\_local\_server(port=0)}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Save\ the\ credentials\ for\ the\ next\ run}}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(\textcolor{stringliteral}{'token.json'},\ \textcolor{stringliteral}{'w'})\ \textcolor{keyword}{as}\ token:}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ token.write(creds.to\_json())}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00037}00037\ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ service\ =\ build(\textcolor{stringliteral}{'drive'},\ \textcolor{stringliteral}{'v3'},\ credentials=creds)}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Call\ the\ Drive\ v3\ API}}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ results\ =\ service.files().list(}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ pageSize=10,\ fields=\textcolor{stringliteral}{"{}nextPageToken,\ files(id,\ name)"{}}).execute()}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00043}00043\ \ \ \ \ \ \ \ \ items\ =\ results.get(\textcolor{stringliteral}{'files'},\ [])}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ items:}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{'No\ files\ found.'})}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00048}00048\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{'Files:'})}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ item\ \textcolor{keywordflow}{in}\ items:}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{u'\{0\}\ (\{1\})'}.format(item[\textcolor{stringliteral}{'name'}],\ item[\textcolor{stringliteral}{'id'}]))}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{except}\ HttpError\ \textcolor{keyword}{as}\ error:}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ TODO(developer)\ -\/\ Handle\ errors\ from\ drive\ API.}}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{'An\ error\ occurred:\ \{error\}'})}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00056}00056\ \textcolor{keywordflow}{if}\ \_\_name\_\_\ ==\ \textcolor{stringliteral}{'\_\_main\_\_'}:}
+\DoxyCodeLine{\Hypertarget{_generate_token_8py_source_l00057}00057\ \ \ \ \ \mbox{\hyperlink{namespace_generate_token_a751a4c038569c905b3ae8157d9b41244}{main}}()}
+
+\end{DoxyCode}

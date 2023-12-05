@@ -1,0 +1,15 @@
+\doxysection{Joox\+Template.\+py}
+\hypertarget{_joox_template_8py_source}{}\label{_joox_template_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/JooxTemplate.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/JooxTemplate.py}}
+\mbox{\hyperlink{_joox_template_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_joox_template_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1templates_1_1_joox_template}{00001}}\ \textcolor{keyword}{import}\ re}
+\DoxyCodeLine{\Hypertarget{_joox_template_8py_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_joox_template_8py_source_l00003}\mbox{\hyperlink{classimporter_1_1templates_1_1_joox_template_1_1_joox_template}{00003}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_joox_template_1_1_joox_template}{JooxTemplate}}:}
+\DoxyCodeLine{\Hypertarget{_joox_template_8py_source_l00004}\mbox{\hyperlink{classimporter_1_1templates_1_1_joox_template_1_1_joox_template_aa026bdff24db65bd4dd87aca906a19ae}{00004}}\ \ \ \ \ \textcolor{keyword}{def\ }date(self,\ filename):}
+\DoxyCodeLine{\Hypertarget{_joox_template_8py_source_l00005}00005\ \ \ \ \ \ \ \ \ date\ =\ re.findall(\textcolor{stringliteral}{r'\_20\(\backslash\)d\{4\}\_'},\ filename)[0]}
+\DoxyCodeLine{\Hypertarget{_joox_template_8py_source_l00006}00006\ \ \ \ \ \ \ \ \ date\ =\ date.replace(\textcolor{stringliteral}{"{}\_"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_joox_template_8py_source_l00007}00007\ \ \ \ \ \ \ \ \ date\_str\ =\ date[:4]+\textcolor{stringliteral}{"{}-\/"{}}+date[4:]+\textcolor{stringliteral}{"{}-\/01"{}}}
+\DoxyCodeLine{\Hypertarget{_joox_template_8py_source_l00008}00008\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df["{}date\_from\_file"{}]\ =\ date\_str}}
+\DoxyCodeLine{\Hypertarget{_joox_template_8py_source_l00009}00009\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ date\_str}
+
+\end{DoxyCode}

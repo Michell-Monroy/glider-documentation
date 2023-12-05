@@ -1,0 +1,56 @@
+\doxysection{Spotify\+Template.\+py}
+\hypertarget{_spotify_template_8py_source}{}\label{_spotify_template_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/SpotifyTemplate.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/SpotifyTemplate.py}}
+\mbox{\hyperlink{_spotify_template_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1templates_1_1_spotify_template}{00001}}\ \textcolor{keyword}{import}\ re}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00002}00002\ \textcolor{keyword}{import}\ awswrangler\ \textcolor{keyword}{as}\ wr}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00004}\mbox{\hyperlink{classimporter_1_1templates_1_1_spotify_template_1_1_spotify_template}{00004}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_spotify_template_1_1_spotify_template}{SpotifyTemplate}}:}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00005}\mbox{\hyperlink{classimporter_1_1templates_1_1_spotify_template_1_1_spotify_template_a7e5f0e0c63d852add999dce105e57b81}{00005}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_spotify_template_1_1_spotify_template_a7e5f0e0c63d852add999dce105e57b81}{preprocessing}}(self,\ filename,\ features,\ session,\ rel\_col):}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00006}00006\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00007}00007\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ args:}}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00008}00008\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ filename:\ -\/str-\/\ s3\ full\ path\ of\ filename}}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00009}00009\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ features:\ -\/dict-\/\ which\ contains\ delimiter,\ skip\_rows\ and\ encoding}}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00010}00010\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ session:\ -\/class-\/\ s3\ connexion\ }}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00011}00011\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00012}00012\ \ \ \ \ \ \ \ \ delimiter\ =\ features[\textcolor{stringliteral}{"{}delimiter"{}}]}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00013}00013\ \ \ \ \ \ \ \ \ skip\_rows\ =\ features[\textcolor{stringliteral}{"{}skip\_rows"{}}]}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00014}00014\ \ \ \ \ \ \ \ \ encoding\ =\ features[\textcolor{stringliteral}{"{}encoding"{}}]}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00015}00015\ \ \ \ \ \ \ \ \ df\ =\ wr.s3.read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding,\ dtype=\{rel\_col:str\},\ boto3\_session=session)}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}discovery\_mode\_fee"{}}]\ =\ df[\textcolor{stringliteral}{"{}discovery\_mode\_fee"{}}]*(-\/1)}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}:}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}Discovery\ Mode\ Fee"{}}]\ =\ df[\textcolor{stringliteral}{"{}Discovery\ Mode\ Fee"{}}]*(-\/1)}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00022}\mbox{\hyperlink{classimporter_1_1templates_1_1_spotify_template_1_1_spotify_template_ac8e310f0519465ccbd1d888923d452fe}{00022}}\ \ \ \ \ \textcolor{keyword}{def\ }date(self,\ filename):}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ date\ =\ re.findall(\textcolor{stringliteral}{r'-\/20\(\backslash\)d\{4\}'},\ filename)[0]}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00024}00024\ \ \ \ \ \ \ \ \ date\ =\ date.replace(\textcolor{stringliteral}{"{}-\/"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00025}00025\ \ \ \ \ \ \ \ \ year\ =\ str(date[:4])}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00026}00026\ \ \ \ \ \ \ \ \ month\ =\ str(date[4:])}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ date\_str\ =\ year+\textcolor{stringliteral}{"{}-\/"{}}+month+\textcolor{stringliteral}{"{}-\/01"{}}}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ print(date\_str)}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df["{}date\_from\_file"{}]\ =\ date\_str}}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ date\_str}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00031}00031\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00032}\mbox{\hyperlink{classimporter_1_1templates_1_1_spotify_template_1_1_spotify_template_a508c90410f6649afeb8cd7226997a71b}{00032}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_spotify_template_1_1_spotify_template_a508c90410f6649afeb8cd7226997a71b}{dateTrends}}(self,\ filename):}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ date\ =\ re.findall(\textcolor{stringliteral}{r"{}\(\backslash\)d\{4\}-\/\(\backslash\)d\{2\}-\/\(\backslash\)d\{2\}"{}},\ filename)}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ date\ =\ str(date[0])}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00035}00035\ \ \ \ \ \ \ \ \ date\ =\ date.replace(\textcolor{stringliteral}{"{}streams-\/"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df["{}date\_from\_file"{}]\ =\ date}}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ date}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00039}\mbox{\hyperlink{classimporter_1_1templates_1_1_spotify_template_1_1_spotify_template_afc4b408cf596b8e81341091452e76fe6}{00039}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_spotify_template_1_1_spotify_template_afc4b408cf596b8e81341091452e76fe6}{territoryTrends}}(self,\ df,\ filename):}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00040}00040\ \ \ \ \ \ \ \ \ territory\ =\ re.findall(\textcolor{stringliteral}{r"{}\(\backslash\)w\{2,3\}\(\backslash\)."{}},\ filename)[0]}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ territory\ =\ territory.replace(\textcolor{stringliteral}{"{}."{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}territory\_from\_file"{}}]\ =\ territory}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00045}00045\ \ \ \ \ \textcolor{comment}{\#\ def\ date(filename):}}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00046}00046\ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ date\ =\ re.findall(r'\(\backslash\)d\{6\}',\ filename)[0]}}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00047}00047\ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ year\ =\ str(date[:4])}}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00048}00048\ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ month\ =\ str(date[4:])}}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00049}00049\ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ date\_str\ =\ year+month}}
+\DoxyCodeLine{\Hypertarget{_spotify_template_8py_source_l00050}00050\ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ return\ date\_str}}
+
+\end{DoxyCode}

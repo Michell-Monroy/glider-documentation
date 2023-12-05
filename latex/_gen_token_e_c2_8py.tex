@@ -1,0 +1,30 @@
+\doxysection{/\+Users/michellmonroy/\+Documents/dev-\/glider/glider/src/upload\+\_\+module/gdrive/\+Gen\+Token\+EC2.py File Reference}
+\hypertarget{_gen_token_e_c2_8py}{}\label{_gen_token_e_c2_8py}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/upload\_module/gdrive/GenTokenEC2.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/upload\_module/gdrive/GenTokenEC2.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_gen_token_e_c2}{Gen\+Token\+EC2}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_gen_token_e_c2_af4950311c9dc8c2f62aa6365000ff1e6}{Gen\+Token\+EC2.\+args}} = argparser.\+parse\+\_\+args()
+\item 
+\mbox{\hyperlink{namespace_gen_token_e_c2_ab2d9fa043c349c094f60743d481850db}{Gen\+Token\+EC2.\+noauth\+\_\+local\+\_\+webserver}}
+\item 
+\mbox{\hyperlink{namespace_gen_token_e_c2_aa060bb6f870ed2bf39d5a4be000a006c}{Gen\+Token\+EC2.\+full\+\_\+path}} = \+\_\+\+\_\+file\+\_\+\+\_\+
+\begin{DoxyCompactList}\small\item\em Determines the path where client\+\_\+secret.\+json will be created. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_gen_token_e_c2_aa58ab505489131b33e27a80234a590ec}{Gen\+Token\+EC2.\+rel\+\_\+path}} = full\+\_\+path.\+split("{}/"{})\mbox{[}\+:-\/1\mbox{]}
+\item 
+str \mbox{\hyperlink{namespace_gen_token_e_c2_aafe21dc03525ba445e1a9ae8654dc23c}{Gen\+Token\+EC2.\+CLIENT\+\_\+\+SECRET}} = \mbox{\hyperlink{namespace_gen_token_e_c2_aa58ab505489131b33e27a80234a590ec}{rel\+\_\+path}}+"{}/client\+\_\+secret.\+json"{}
+\begin{DoxyCompactList}\small\item\em Path where is storage client\+\_\+secret.\+json file. \end{DoxyCompactList}\item 
+list \mbox{\hyperlink{namespace_gen_token_e_c2_a755802a3153d3fb4a730c2b5875bdae0}{Gen\+Token\+EC2.\+SCOPES}}
+\begin{DoxyCompactList}\small\item\em Defines the api scopes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_gen_token_e_c2_a8ff13bdefe9e5af1df96ad31a221991b}{Gen\+Token\+EC2.\+store}} = file.\+Storage(\mbox{\hyperlink{namespace_gen_token_e_c2_aa58ab505489131b33e27a80234a590ec}{rel\+\_\+path}}+"{}/token.\+json"{})
+\begin{DoxyCompactList}\small\item\em Path where is storage token.\+json file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_gen_token_e_c2_a328162b2279f21a37d3cd61d3ff4ebbb}{Gen\+Token\+EC2.\+creds}} = store.\+get()
+\begin{DoxyCompactList}\small\item\em Reads the permissions defined in token.\+json. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_gen_token_e_c2_ace51a21da952a38c532754f8d32b14ee}{Gen\+Token\+EC2.\+flow}} = client.\+flow\+\_\+from\+\_\+clientsecrets(\mbox{\hyperlink{namespace_gen_token_e_c2_aafe21dc03525ba445e1a9ae8654dc23c}{CLIENT\+\_\+\+SECRET}}, \mbox{\hyperlink{namespace_gen_token_e_c2_a755802a3153d3fb4a730c2b5875bdae0}{SCOPES}})
+\item 
+\mbox{\hyperlink{namespace_gen_token_e_c2_a6ea89a64af9b71ec162df66d7353b7bf}{Gen\+Token\+EC2.\+drive\+\_\+service}} = build("{}drive"{}, "{}v3"{}, http=creds.\+authorize(Http()))
+\end{DoxyCompactItemize}

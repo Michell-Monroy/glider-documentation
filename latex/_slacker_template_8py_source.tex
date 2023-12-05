@@ -1,0 +1,15 @@
+\doxysection{Slacker\+Template.\+py}
+\hypertarget{_slacker_template_8py_source}{}\label{_slacker_template_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/SlackerTemplate.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/SlackerTemplate.py}}
+\mbox{\hyperlink{_slacker_template_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_slacker_template_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1templates_1_1_slacker_template}{00001}}\ \textcolor{keyword}{import}\ re}
+\DoxyCodeLine{\Hypertarget{_slacker_template_8py_source_l00002}00002\ \textcolor{keyword}{from}\ pandas\ \textcolor{keyword}{import}\ read\_csv}
+\DoxyCodeLine{\Hypertarget{_slacker_template_8py_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_slacker_template_8py_source_l00004}\mbox{\hyperlink{classimporter_1_1templates_1_1_slacker_template_1_1_slacker_template}{00004}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_slacker_template_1_1_slacker_template}{SlackerTemplate}}:}
+\DoxyCodeLine{\Hypertarget{_slacker_template_8py_source_l00005}\mbox{\hyperlink{classimporter_1_1templates_1_1_slacker_template_1_1_slacker_template_ac51d361248c3662dbf6cfceb0571bacc}{00005}}\ \ \ \ \ \textcolor{keyword}{def\ }date(self,\ filename):}
+\DoxyCodeLine{\Hypertarget{_slacker_template_8py_source_l00006}00006\ \ \ \ \ \ \ \ \ date\ =\ re.findall(\textcolor{stringliteral}{r'\_20\(\backslash\)d\{4\}\_'},\ filename)[0]}
+\DoxyCodeLine{\Hypertarget{_slacker_template_8py_source_l00007}00007\ \ \ \ \ \ \ \ \ date\ =\ date.replace(\textcolor{stringliteral}{"{}\_"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_slacker_template_8py_source_l00008}00008\ \ \ \ \ \ \ \ \ date\_str\ =\ date[:4]+\textcolor{stringliteral}{"{}-\/"{}}+date[4:]+\textcolor{stringliteral}{"{}-\/01"{}}}
+\DoxyCodeLine{\Hypertarget{_slacker_template_8py_source_l00009}00009\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ date\_str}
+
+\end{DoxyCode}

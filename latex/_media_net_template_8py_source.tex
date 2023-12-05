@@ -1,0 +1,19 @@
+\doxysection{Media\+Net\+Template.\+py}
+\hypertarget{_media_net_template_8py_source}{}\label{_media_net_template_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/MediaNetTemplate.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/MediaNetTemplate.py}}
+\mbox{\hyperlink{_media_net_template_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_media_net_template_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1templates_1_1_media_net_template}{00001}}\ \textcolor{keyword}{import}\ re}
+\DoxyCodeLine{\Hypertarget{_media_net_template_8py_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_media_net_template_8py_source_l00003}\mbox{\hyperlink{classimporter_1_1templates_1_1_media_net_template_1_1_media_net_template}{00003}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_media_net_template_1_1_media_net_template}{MediaNetTemplate}}:}
+\DoxyCodeLine{\Hypertarget{_media_net_template_8py_source_l00004}\mbox{\hyperlink{classimporter_1_1templates_1_1_media_net_template_1_1_media_net_template_aacd0751b77c9ad726e204c7776cd6067}{00004}}\ \ \ \ \ \textcolor{keyword}{def\ }date(self,\ filename):}
+\DoxyCodeLine{\Hypertarget{_media_net_template_8py_source_l00005}00005\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ "{}WW\_MediaNet\_GYROstream\_2022-\/08-\/01\_2022-\/08-\/31\_Plays.csv"{}}}
+\DoxyCodeLine{\Hypertarget{_media_net_template_8py_source_l00006}00006\ \ \ \ \ \ \ \ \ date\ =\ re.findall(\textcolor{stringliteral}{r'\_\(\backslash\)d\{4\}-\/\(\backslash\)d\{2\}-\/\(\backslash\)d\{2\}'},\ filename)[0]}
+\DoxyCodeLine{\Hypertarget{_media_net_template_8py_source_l00007}00007\ \ \ \ \ \ \ \ \ date=date.replace(\textcolor{stringliteral}{"{}\_"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_media_net_template_8py_source_l00008}00008\ \ \ \ \ \ \ \ \ date=date.replace(\textcolor{stringliteral}{"{}-\/"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_media_net_template_8py_source_l00009}00009\ \ \ \ \ \ \ \ \ year\ =\ date[:4]}
+\DoxyCodeLine{\Hypertarget{_media_net_template_8py_source_l00010}00010\ \ \ \ \ \ \ \ \ month\ =\ date[4:6]}
+\DoxyCodeLine{\Hypertarget{_media_net_template_8py_source_l00011}00011\ \ \ \ \ \ \ \ \ day\ =\ date[6:]}
+\DoxyCodeLine{\Hypertarget{_media_net_template_8py_source_l00012}00012\ \ \ \ \ \ \ \ \ date\_str\ =\ year+\textcolor{stringliteral}{"{}-\/"{}}+month+\textcolor{stringliteral}{"{}-\/"{}}+day}
+\DoxyCodeLine{\Hypertarget{_media_net_template_8py_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ date\_str}
+
+\end{DoxyCode}

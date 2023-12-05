@@ -1,0 +1,65 @@
+\doxysection{Fuga\+Template.\+py}
+\hypertarget{_fuga_template_8py_source}{}\label{_fuga_template_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/FugaTemplate.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/templates/FugaTemplate.py}}
+\mbox{\hyperlink{_fuga_template_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1templates_1_1_fuga_template}{00001}}\ \textcolor{keyword}{import}\ re}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00002}00002\ \textcolor{keyword}{import}\ awswrangler\ \textcolor{keyword}{as}\ wr}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00003}00003\ \textcolor{keyword}{from}\ datetime\ \textcolor{keyword}{import}\ datetime}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00005}\mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template}{00005}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template}{FugaTemplate}}:}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00006}\mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_a9e1a5af59b6a44271351e153cb96757a}{00006}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_a9e1a5af59b6a44271351e153cb96757a}{QuantityPreprocessing}}(self,\ product\_quantity,\ asset\_quantity):}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00007}00007\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}quantity:"{},product\_quantity,\ asset\_quantity)}}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00008}00008\ \ \ \ \ \ \ \ \ aux\ =\ int(product\_quantity)\ +\ int(asset\_quantity)}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00009}00009\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ aux}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00010}00010\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00011}\mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_a57d3fa6ea37887e632babc37d6a41e3d}{00011}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_a57d3fa6ea37887e632babc37d6a41e3d}{ArtistPreprocessing}}(self,\ asset\_product,\ asset\_artist):}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ str(asset\_artist)\ ==\ \textcolor{stringliteral}{"{}"{}}:}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ asset\_artist\ =\ str(asset\_product)}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ asset\_artist}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00015}00015\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00016}\mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_a4cd7467ec3202742cd8affc3edc6efc0}{00016}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_a4cd7467ec3202742cd8affc3edc6efc0}{preprocessing}}(self,\ filename,\ features,\ session,\ rel\_col):}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00018}00018\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ args:}}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00019}00019\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ filename:\ -\/str-\/\ s3\ full\ path\ of\ filename}}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00020}00020\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ features:\ -\/dict-\/\ which\ contains\ delimiter,\ skip\_rows\ and\ encoding}}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00021}00021\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ session:\ -\/class-\/\ s3\ connexion\ }}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00022}00022\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ delimiter\ =\ features[\textcolor{stringliteral}{"{}delimiter"{}}]}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00024}00024\ \ \ \ \ \ \ \ \ skip\_rows\ =\ features[\textcolor{stringliteral}{"{}skip\_rows"{}}]}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00025}00025\ \ \ \ \ \ \ \ \ encoding\ =\ features[\textcolor{stringliteral}{"{}encoding"{}}]}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00026}00026\ \ \ \ \ \ \ \ \ df\ =\ wr.s3.read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding,\ dtype=\{rel\_col:str\},\ boto3\_session=session)}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df\ =\ read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding)}}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ values\ =\ \{\textcolor{stringliteral}{"{}Asset\ Quantity"{}}:\ 0,\ \textcolor{stringliteral}{"{}Product\ Quantity"{}}:\ 0,\ \textcolor{stringliteral}{"{}Asset\ Artist"{}}:\ \textcolor{stringliteral}{"{}"{}}\}}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ df.fillna(value=values,\ inplace=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}Asset\ Quantity"{}}]\ =\ df.apply(\textcolor{keyword}{lambda}\ Row:\ self.\mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_a9e1a5af59b6a44271351e153cb96757a}{QuantityPreprocessing}}(Row[\textcolor{stringliteral}{'Product\ Quantity'}],\ Row[\textcolor{stringliteral}{'Asset\ Quantity'}]),\ axis=1)}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}Asset\ Artist"{}}]\ =\ df.apply(\textcolor{keyword}{lambda}\ Row:\ self.\mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_a57d3fa6ea37887e632babc37d6a41e3d}{ArtistPreprocessing}}(Row[\textcolor{stringliteral}{'Product\ Artist'}],\ Row[\textcolor{stringliteral}{'Asset\ Artist'}]),\ axis=1)}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00034}\mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_aa03af937ce97b51be3fa17ba2795850a}{00034}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_aa03af937ce97b51be3fa17ba2795850a}{type}}(self,\ asset\_product,\ sale\_type):}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ sale\_type==\textcolor{stringliteral}{"{}Download"{}}\ \textcolor{keywordflow}{and}\ asset\_product\ ==\ \textcolor{stringliteral}{"{}Asset"{}}:}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{'T'}}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ sale\_type==\textcolor{stringliteral}{"{}Download"{}}\ \textcolor{keywordflow}{and}\ asset\_product\ ==\ \textcolor{stringliteral}{"{}Product"{}}:}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{'A'}}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{'S'}}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00041}\mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_aebe3afb701d686e826782801e3ee9fd8}{00041}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_aebe3afb701d686e826782801e3ee9fd8}{assetType}}(self,\ df):}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Add\ a\ new\ column\ to\ insert\ type}}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00043}00043\ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}gettypefuga"{}}]\ =\ df.apply(\textcolor{keyword}{lambda}\ Row:\ self.\mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_aa03af937ce97b51be3fa17ba2795850a}{type}}(Row[\textcolor{stringliteral}{'asset/product'}],\ Row[\textcolor{stringliteral}{'sale\ type'}]),\ axis=1)}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00046}\mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_a58dd61a6e519b993ebf644e0c4f00a15}{00046}}\ \ \ \ \ \textcolor{keyword}{def\ }date(self,\ file\_name):}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00047}00047\ \ \ \ \ \ \ \ \ file\_name\ =\ file\_name.lower()}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00048}00048\ \ \ \ \ \ \ \ \ possible\_months\ =\ [\textcolor{stringliteral}{"{}january"{}},\ \textcolor{stringliteral}{"{}february"{}},\ \textcolor{stringliteral}{"{}march"{}},\ \textcolor{stringliteral}{"{}april"{}},\ \textcolor{stringliteral}{"{}may"{}},\ \textcolor{stringliteral}{"{}june"{}},}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}july"{}},\ \textcolor{stringliteral}{"{}august"{}},\ \textcolor{stringliteral}{"{}september"{}},\ \textcolor{stringliteral}{"{}october"{}},\ \textcolor{stringliteral}{"{}november"{}},\ \textcolor{stringliteral}{"{}december"{}}]}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ m\ \textcolor{keywordflow}{in}\ possible\_months:}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ m\ \textcolor{keywordflow}{in}\ file\_name:}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ month\ =\ m}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ date\ =\ file\_name.split(month)}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break}}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ date\ =\ date[-\/1]}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ year\ =\ [str(s)\ \textcolor{keywordflow}{for}\ s\ \textcolor{keywordflow}{in}\ re.findall(\textcolor{stringliteral}{r'-\/?\(\backslash\)d+\(\backslash\).?\(\backslash\)d*'},\ date)][0]}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ date\_month\ =\ datetime.strptime(month,\ \textcolor{stringliteral}{"{}\%B"{}})}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ date\_month\ =\ \textcolor{stringliteral}{"{}0"{}}+str(date\_month.month)}
+\DoxyCodeLine{\Hypertarget{_fuga_template_8py_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ year+date\_month}
+
+\end{DoxyCode}

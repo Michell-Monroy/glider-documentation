@@ -1,0 +1,17 @@
+digraph "importer.CreateSnapshots.results_grouped"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="importer.CreateSnapshots.results\l_grouped",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="importer.CreateSnapshots.get_data",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespaceimporter_1_1_create_snapshots.html#a7914ca118e4fd4de28fcde5343b3a575",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="importer.CreateSnapshots.group\l_by_field",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespaceimporter_1_1_create_snapshots.html#a56f0db3e03f459fc489bfc65e34fae47",tooltip=" "];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="importer.CreateSnapshots.build\l_snapshot",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespaceimporter_1_1_create_snapshots.html#a708f3c910c8c8ce8d7656985fd96b8c6",tooltip=" "];
+  Node1 -> Node5 [id="edge4_Node000001_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="importer.CreateSnapshots.upload\l_mongo",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespaceimporter_1_1_create_snapshots.html#a071e9ae52b38709ce3c8bd02a9bd9c29",tooltip=" "];
+}

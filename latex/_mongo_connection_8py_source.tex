@@ -1,0 +1,117 @@
+\doxysection{Mongo\+Connection.\+py}
+\hypertarget{_mongo_connection_8py_source}{}\label{_mongo_connection_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/MongoConnection.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/MongoConnection.py}}
+\mbox{\hyperlink{_mongo_connection_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1_mongo_connection}{00001}}\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00002}00002\ \textcolor{keyword}{import}\ ssl}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00003}00003\ \textcolor{keyword}{from}\ pymongo\ \textcolor{keyword}{import}\ MongoClient}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00004}00004\ \textcolor{keyword}{from}\ dotenv\ \textcolor{keyword}{import}\ load\_dotenv,\ dotenv\_values}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00005}00005\ load\_dotenv()}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00007}\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection}{00007}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection}{mongo\_connection}}:}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00008}00008\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00009}00009\ \textcolor{stringliteral}{\ \ \ \ Makes\ mongo\ connection\ and\ depending\ of\ case,\ returns\ the\ right\ collection}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00010}00010\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00011}\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection_afb9eb2c055084cf11357b9b60f15ac5a}{00011}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection_afb9eb2c055084cf11357b9b60f15ac5a}{\_\_init\_\_}}(self):}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00014}\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection_a35971c611f845a9f3d69fa4b26aff1c3}{00014}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection_a35971c611f845a9f3d69fa4b26aff1c3}{mongo\_conn\_sales}}(self):}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00016}00016\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Connect\ with\ sales\ collection}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00017}00017\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00018}00018\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00019}00019\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ None}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00020}00020\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns\ collection\ (str)}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00021}00021\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00022}00022\ \ \ \ \ \ \ \ \ client\ =\ self.mongo\_conn()}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ db\_name\ =\ os.environ.get(\textcolor{stringliteral}{"{}DB"{}})}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00024}00024\ \ \ \ \ \ \ \ \ collection\_name\ =\ os.environ.get(\textcolor{stringliteral}{"{}COLLECTION"{}})}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ client:}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ db\ =\ client[db\_name]}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ collection\ =\ db[collection\_name]\ \textcolor{comment}{\#collection\ to\ upload\ sales}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ collection}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00030}\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection_a0266431c353fbc9912c14717274fab90}{00030}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection_a0266431c353fbc9912c14717274fab90}{mongo\_conn\_catalogue}}(self):}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00032}00032\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Connect\ with\ catalogue\ collection}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00033}00033\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00034}00034\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00035}00035\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ None}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00036}00036\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns\ catalogue\_collection\ (str)}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00037}00037\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ client\ =\ self.\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection_aad633bd7c5f99cfbc30fb2fe6d7c5811}{mongo\_conn}}()}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00039}00039\ \ \ \ \ \ \ \ \ db\_name\ =\ os.environ.get(\textcolor{stringliteral}{"{}DB"{}})}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00040}00040\ \ \ \ \ \ \ \ \ catalog\_name\ =\ os.environ.get(\textcolor{stringliteral}{"{}AS\_COLLECTION"{}})}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ client:}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ db\ =\ client[db\_name]}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ catalogue\_collection\ =\ db[catalog\_name]}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ catalogue\_collection}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00046}\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection_a9c2473d09d1f936e039217b3d02fe3de}{00046}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection_a9c2473d09d1f936e039217b3d02fe3de}{mongo\_conn\_snapshots}}(self):}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00048}00048\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Connect\ with\ snapshots\ collection}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00049}00049\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00050}00050\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00051}00051\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ None}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00052}00052\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns\ collection\ (str)}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00053}00053\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00054}00054\ \ \ \ \ \ \ \ \ client\ =\ self.\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection_aad633bd7c5f99cfbc30fb2fe6d7c5811}{mongo\_conn}}()}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ db\_name\ =\ os.environ.get(\textcolor{stringliteral}{"{}SNAPSHOTS\_DB"{}})}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ collection\_name\ =\ os.environ.get(\textcolor{stringliteral}{"{}SNAPSHOTS"{}})}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ client:}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ db\ =\ client[db\_name]}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ collection\ =\ db[collection\_name]}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ collection}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00062}\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection_aa97641c8736fd3276e6f4795cef0efee}{00062}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection_aa97641c8736fd3276e6f4795cef0efee}{mongo\_conn\_formats}}(self):}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00064}00064\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Connect\ with\ formats\ collection}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00065}00065\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00066}00066\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00067}00067\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ None}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00068}00068\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns\ collection\ (str)}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00069}00069\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00070}00070\ \ \ \ \ \ \ \ \ client\ =\ self.\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection_aad633bd7c5f99cfbc30fb2fe6d7c5811}{mongo\_conn}}()}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ db\_name\ =\ os.environ.get(\textcolor{stringliteral}{"{}SNAPSHOTS\_DB"{}})}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00072}00072\ \ \ \ \ \ \ \ \ formats\_collection\ =\ os.environ.get(\textcolor{stringliteral}{"{}FORMATS"{}})}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ client:}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ db\ =\ client[db\_name]}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ collection\ =\ db[formats\_collection]}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ collection}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00078}\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection_a9b80df879d9934de9a133103b296a001}{00078}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection_a9b80df879d9934de9a133103b296a001}{mongo\_conn\_ftp}}(self):}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00080}00080\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Connect\ with\ ftp\ collection}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00081}00081\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00082}00082\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00083}00083\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ None}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00084}00084\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns\ collection\ (str)}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00085}00085\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00086}00086\ \ \ \ \ \ \ \ \ client\ =\ self.\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection_aad633bd7c5f99cfbc30fb2fe6d7c5811}{mongo\_conn}}()}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00087}00087\ \ \ \ \ \ \ \ \ db\_name\ =\ os.environ.get(\textcolor{stringliteral}{"{}DB"{}})}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00088}00088\ \ \ \ \ \ \ \ \ formats\_collection\ =\ os.environ.get(\textcolor{stringliteral}{"{}FTP\_ACCESS"{}})}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ client:}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ db\ =\ client[db\_name]}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ collection\ =\ db[formats\_collection]}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ collection}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00094}\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection_aad633bd7c5f99cfbc30fb2fe6d7c5811}{00094}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1_mongo_connection_1_1mongo__connection_aad633bd7c5f99cfbc30fb2fe6d7c5811}{mongo\_conn}}(self):}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00096}00096\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Connect\ with\ the\ main\ MongoDB\ database}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00097}00097\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00098}00098\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00099}00099\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ None}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00100}00100\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns\ client\ (mongo\ client)}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00101}00101\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00102}00102\ \ \ \ \ \ \ \ \ uri\ =\ os.environ.get(\textcolor{stringliteral}{"{}MONGO\_GLIDER"{}})}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ client\ =\ MongoClient(uri,ssl\_cert\_reqs=ssl.CERT\_NONE)}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}:}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ client\ =\ MongoClient(uri)}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ client:}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ client}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}Mongo\ Connection\ Fails."{}})}
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_mongo_connection_8py_source_l00111}00111\ \textcolor{comment}{\#\ def\ connection\_per\_module()}}
+
+\end{DoxyCode}

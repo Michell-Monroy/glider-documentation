@@ -1,0 +1,192 @@
+\doxysection{ftp.\+Amazon\+FTP Namespace Reference}
+\hypertarget{namespaceftp_1_1_amazon_f_t_p}{}\label{namespaceftp_1_1_amazon_f_t_p}\index{ftp.AmazonFTP@{ftp.AmazonFTP}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_amazon_f_t_p_a7343d7a78f7909ed1686150bdd1507d6}{change\+\_\+period}} (start\+\_\+date)
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_amazon_f_t_p_abb9ed35c8ca4e1a2641046475cf3b7b1}{rename\+\_\+sales}} (filename, folder)
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_amazon_f_t_p_ad8b7f3888b5223c5ff03d91f776d5c4e}{find\+\_\+monthly}} (r\+\_\+path, folder)
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_amazon_f_t_p_aaa079cbe3aaa3cb49d0ee535e1912cb5}{download\+\_\+amz\+\_\+reports}} (event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_amazon_f_t_p_a57f2e7818151cfadc8cb19f1fee18ff2}{f\+\_\+path}} = \+\_\+\+\_\+file\+\_\+\+\_\+
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_amazon_f_t_p_a1053c569137a886f9cbbb4dadd67d50c}{index}} = f\+\_\+path.\+find("{}upload\+\_\+module/"{})
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_amazon_f_t_p_af3ba359e248fd68b58fe96f29c96dd1a}{mongo\+\_\+conn}} = mongo\+\_\+connection()
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_amazon_f_t_p_add06b36013dc15bbd348effff7d929d4}{collection}} = mongo\+\_\+conn.\+mongo\+\_\+conn\+\_\+ftp()
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_amazon_f_t_p_abe887d2f0a848800f1687a089b154581}{\+\_\+\+ROOT\+\_\+\+DIR}} = os.\+path.\+expanduser(\textquotesingle{}\texorpdfstring{$\sim$}{\string~}\textquotesingle{})
+\item 
+str \mbox{\hyperlink{namespaceftp_1_1_amazon_f_t_p_a397b83ef294f9ead3c8aeae57c2bee81}{destination}} = \mbox{\hyperlink{namespaceftp_1_1_amazon_f_t_p_abe887d2f0a848800f1687a089b154581}{\+\_\+\+ROOT\+\_\+\+DIR}}+"{}/ftp\+\_\+downloads/"{}
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_amazon_f_t_p_a88ee10b38961405082d5b7e34c8593f3}{exist\+\_\+ok}}
+\item 
+\mbox{\hyperlink{namespaceftp_1_1_amazon_f_t_p_a782d865119afbe5bd2cbba62f5397428}{client}} = None
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceftp_1_1_amazon_f_t_p_a7343d7a78f7909ed1686150bdd1507d6}\label{namespaceftp_1_1_amazon_f_t_p_a7343d7a78f7909ed1686150bdd1507d6} 
+\index{ftp.AmazonFTP@{ftp.AmazonFTP}!change\_period@{change\_period}}
+\index{change\_period@{change\_period}!ftp.AmazonFTP@{ftp.AmazonFTP}}
+\doxysubsubsection{\texorpdfstring{change\_period()}{change\_period()}}
+{\footnotesize\ttfamily ftp.\+Amazon\+FTP.\+change\+\_\+period (\begin{DoxyParamCaption}\item[{}]{start\+\_\+date }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Sum one month to period extracted from MongoDB
+Args:
+    start_date (str): last period request (last period donwloaded)
+Returns : month after start_date
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_amazon_f_t_p_8py_source_l00027}{27}} of file \mbox{\hyperlink{_amazon_f_t_p_8py_source}{Amazon\+FTP.\+py}}.
+
+Here is the caller graph for this function\+:
+% FIG 0
+\Hypertarget{namespaceftp_1_1_amazon_f_t_p_aaa079cbe3aaa3cb49d0ee535e1912cb5}\label{namespaceftp_1_1_amazon_f_t_p_aaa079cbe3aaa3cb49d0ee535e1912cb5} 
+\index{ftp.AmazonFTP@{ftp.AmazonFTP}!download\_amz\_reports@{download\_amz\_reports}}
+\index{download\_amz\_reports@{download\_amz\_reports}!ftp.AmazonFTP@{ftp.AmazonFTP}}
+\doxysubsubsection{\texorpdfstring{download\_amz\_reports()}{download\_amz\_reports()}}
+{\footnotesize\ttfamily ftp.\+Amazon\+FTP.\+download\+\_\+amz\+\_\+reports (\begin{DoxyParamCaption}\item[{}]{event }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Connects with ftp client and execute all download procedure. Finally calls clean_files
+function to upload files to s3
+Args:
+    event (dict): Contains the client info to save files in s3
+Returns : Nothing
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_amazon_f_t_p_8py_source_l00086}{86}} of file \mbox{\hyperlink{_amazon_f_t_p_8py_source}{Amazon\+FTP.\+py}}.
+
+Here is the call graph for this function\+:
+% FIG 1
+\Hypertarget{namespaceftp_1_1_amazon_f_t_p_ad8b7f3888b5223c5ff03d91f776d5c4e}\label{namespaceftp_1_1_amazon_f_t_p_ad8b7f3888b5223c5ff03d91f776d5c4e} 
+\index{ftp.AmazonFTP@{ftp.AmazonFTP}!find\_monthly@{find\_monthly}}
+\index{find\_monthly@{find\_monthly}!ftp.AmazonFTP@{ftp.AmazonFTP}}
+\doxysubsubsection{\texorpdfstring{find\_monthly()}{find\_monthly()}}
+{\footnotesize\ttfamily ftp.\+Amazon\+FTP.\+find\+\_\+monthly (\begin{DoxyParamCaption}\item[{}]{r\+\_\+path,  }\item[{}]{folder }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Identifies the Monthly folder in each Country Code folder.
+Download the files according to perios got in change_period function.
+Args:
+    r_path (str): Remote FTP path
+    folder (str): Current folder (ISO country code)
+Returns : Nothing
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_amazon_f_t_p_8py_source_l00062}{62}} of file \mbox{\hyperlink{_amazon_f_t_p_8py_source}{Amazon\+FTP.\+py}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{namespaceftp_1_1_amazon_f_t_p_abb9ed35c8ca4e1a2641046475cf3b7b1}\label{namespaceftp_1_1_amazon_f_t_p_abb9ed35c8ca4e1a2641046475cf3b7b1} 
+\index{ftp.AmazonFTP@{ftp.AmazonFTP}!rename\_sales@{rename\_sales}}
+\index{rename\_sales@{rename\_sales}!ftp.AmazonFTP@{ftp.AmazonFTP}}
+\doxysubsubsection{\texorpdfstring{rename\_sales()}{rename\_sales()}}
+{\footnotesize\ttfamily ftp.\+Amazon\+FTP.\+rename\+\_\+sales (\begin{DoxyParamCaption}\item[{}]{filename,  }\item[{}]{folder }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Adds County Code (CC) to files to avoid overwriting
+Args:
+    filename (str): Current filename
+    folder (str): Current folder (ISO country code)
+Returns : filename and CC as sufix
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_amazon_f_t_p_8py_source_l00050}{50}} of file \mbox{\hyperlink{_amazon_f_t_p_8py_source}{Amazon\+FTP.\+py}}.
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespaceftp_1_1_amazon_f_t_p_abe887d2f0a848800f1687a089b154581}\label{namespaceftp_1_1_amazon_f_t_p_abe887d2f0a848800f1687a089b154581} 
+\index{ftp.AmazonFTP@{ftp.AmazonFTP}!\_ROOT\_DIR@{\_ROOT\_DIR}}
+\index{\_ROOT\_DIR@{\_ROOT\_DIR}!ftp.AmazonFTP@{ftp.AmazonFTP}}
+\doxysubsubsection{\texorpdfstring{\_ROOT\_DIR}{\_ROOT\_DIR}}
+{\footnotesize\ttfamily ftp.\+Amazon\+FTP.\+\_\+\+ROOT\+\_\+\+DIR = os.\+path.\+expanduser(\textquotesingle{}\texorpdfstring{$\sim$}{\string~}\textquotesingle{})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_amazon_f_t_p_8py_source_l00021}{21}} of file \mbox{\hyperlink{_amazon_f_t_p_8py_source}{Amazon\+FTP.\+py}}.
+
+\Hypertarget{namespaceftp_1_1_amazon_f_t_p_a782d865119afbe5bd2cbba62f5397428}\label{namespaceftp_1_1_amazon_f_t_p_a782d865119afbe5bd2cbba62f5397428} 
+\index{ftp.AmazonFTP@{ftp.AmazonFTP}!client@{client}}
+\index{client@{client}!ftp.AmazonFTP@{ftp.AmazonFTP}}
+\doxysubsubsection{\texorpdfstring{client}{client}}
+{\footnotesize\ttfamily ftp.\+Amazon\+FTP.\+client = None}
+
+
+
+Definition at line \mbox{\hyperlink{_amazon_f_t_p_8py_source_l00025}{25}} of file \mbox{\hyperlink{_amazon_f_t_p_8py_source}{Amazon\+FTP.\+py}}.
+
+\Hypertarget{namespaceftp_1_1_amazon_f_t_p_add06b36013dc15bbd348effff7d929d4}\label{namespaceftp_1_1_amazon_f_t_p_add06b36013dc15bbd348effff7d929d4} 
+\index{ftp.AmazonFTP@{ftp.AmazonFTP}!collection@{collection}}
+\index{collection@{collection}!ftp.AmazonFTP@{ftp.AmazonFTP}}
+\doxysubsubsection{\texorpdfstring{collection}{collection}}
+{\footnotesize\ttfamily ftp.\+Amazon\+FTP.\+collection = mongo\+\_\+conn.\+mongo\+\_\+conn\+\_\+ftp()}
+
+
+
+Definition at line \mbox{\hyperlink{_amazon_f_t_p_8py_source_l00019}{19}} of file \mbox{\hyperlink{_amazon_f_t_p_8py_source}{Amazon\+FTP.\+py}}.
+
+\Hypertarget{namespaceftp_1_1_amazon_f_t_p_a397b83ef294f9ead3c8aeae57c2bee81}\label{namespaceftp_1_1_amazon_f_t_p_a397b83ef294f9ead3c8aeae57c2bee81} 
+\index{ftp.AmazonFTP@{ftp.AmazonFTP}!destination@{destination}}
+\index{destination@{destination}!ftp.AmazonFTP@{ftp.AmazonFTP}}
+\doxysubsubsection{\texorpdfstring{destination}{destination}}
+{\footnotesize\ttfamily ftp.\+Amazon\+FTP.\+destination = \mbox{\hyperlink{namespaceftp_1_1_amazon_f_t_p_abe887d2f0a848800f1687a089b154581}{\+\_\+\+ROOT\+\_\+\+DIR}}+"{}/ftp\+\_\+downloads/"{}}
+
+
+
+Definition at line \mbox{\hyperlink{_amazon_f_t_p_8py_source_l00022}{22}} of file \mbox{\hyperlink{_amazon_f_t_p_8py_source}{Amazon\+FTP.\+py}}.
+
+\Hypertarget{namespaceftp_1_1_amazon_f_t_p_a88ee10b38961405082d5b7e34c8593f3}\label{namespaceftp_1_1_amazon_f_t_p_a88ee10b38961405082d5b7e34c8593f3} 
+\index{ftp.AmazonFTP@{ftp.AmazonFTP}!exist\_ok@{exist\_ok}}
+\index{exist\_ok@{exist\_ok}!ftp.AmazonFTP@{ftp.AmazonFTP}}
+\doxysubsubsection{\texorpdfstring{exist\_ok}{exist\_ok}}
+{\footnotesize\ttfamily ftp.\+Amazon\+FTP.\+exist\+\_\+ok}
+
+
+
+Definition at line \mbox{\hyperlink{_amazon_f_t_p_8py_source_l00023}{23}} of file \mbox{\hyperlink{_amazon_f_t_p_8py_source}{Amazon\+FTP.\+py}}.
+
+\Hypertarget{namespaceftp_1_1_amazon_f_t_p_a57f2e7818151cfadc8cb19f1fee18ff2}\label{namespaceftp_1_1_amazon_f_t_p_a57f2e7818151cfadc8cb19f1fee18ff2} 
+\index{ftp.AmazonFTP@{ftp.AmazonFTP}!f\_path@{f\_path}}
+\index{f\_path@{f\_path}!ftp.AmazonFTP@{ftp.AmazonFTP}}
+\doxysubsubsection{\texorpdfstring{f\_path}{f\_path}}
+{\footnotesize\ttfamily ftp.\+Amazon\+FTP.\+f\+\_\+path = \+\_\+\+\_\+file\+\_\+\+\_\+}
+
+
+
+Definition at line \mbox{\hyperlink{_amazon_f_t_p_8py_source_l00007}{7}} of file \mbox{\hyperlink{_amazon_f_t_p_8py_source}{Amazon\+FTP.\+py}}.
+
+\Hypertarget{namespaceftp_1_1_amazon_f_t_p_a1053c569137a886f9cbbb4dadd67d50c}\label{namespaceftp_1_1_amazon_f_t_p_a1053c569137a886f9cbbb4dadd67d50c} 
+\index{ftp.AmazonFTP@{ftp.AmazonFTP}!index@{index}}
+\index{index@{index}!ftp.AmazonFTP@{ftp.AmazonFTP}}
+\doxysubsubsection{\texorpdfstring{index}{index}}
+{\footnotesize\ttfamily ftp.\+Amazon\+FTP.\+index = f\+\_\+path.\+find("{}upload\+\_\+module/"{})}
+
+
+
+Definition at line \mbox{\hyperlink{_amazon_f_t_p_8py_source_l00008}{8}} of file \mbox{\hyperlink{_amazon_f_t_p_8py_source}{Amazon\+FTP.\+py}}.
+
+\Hypertarget{namespaceftp_1_1_amazon_f_t_p_af3ba359e248fd68b58fe96f29c96dd1a}\label{namespaceftp_1_1_amazon_f_t_p_af3ba359e248fd68b58fe96f29c96dd1a} 
+\index{ftp.AmazonFTP@{ftp.AmazonFTP}!mongo\_conn@{mongo\_conn}}
+\index{mongo\_conn@{mongo\_conn}!ftp.AmazonFTP@{ftp.AmazonFTP}}
+\doxysubsubsection{\texorpdfstring{mongo\_conn}{mongo\_conn}}
+{\footnotesize\ttfamily ftp.\+Amazon\+FTP.\+mongo\+\_\+conn = mongo\+\_\+connection()}
+
+
+
+Definition at line \mbox{\hyperlink{_amazon_f_t_p_8py_source_l00018}{18}} of file \mbox{\hyperlink{_amazon_f_t_p_8py_source}{Amazon\+FTP.\+py}}.
+

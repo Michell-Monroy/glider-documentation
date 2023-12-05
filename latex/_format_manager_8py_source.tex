@@ -1,0 +1,67 @@
+\doxysection{Format\+Manager.\+py}
+\hypertarget{_format_manager_8py_source}{}\label{_format_manager_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/FormatManager.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/importer/FormatManager.py}}
+\mbox{\hyperlink{_format_manager_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00001}\mbox{\hyperlink{namespaceimporter_1_1_format_manager}{00001}}\ \textcolor{comment}{\#\ from\ pandas\ import\ ExcelFile,\ DataFrame}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00002}00002\ \textcolor{keyword}{from}\ Validate\ \textcolor{keyword}{import}\ validate\_data}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00003}00003\ \textcolor{keyword}{from}\ ErrorHandler\ \textcolor{keyword}{import}\ ErrorHandler}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00004}00004\ \textcolor{keyword}{from}\ TemplateManager\ \textcolor{keyword}{import}\ TemplateManager\ }
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00006}\mbox{\hyperlink{classimporter_1_1_format_manager_1_1csv_manager}{00006}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1_format_manager_1_1csv_manager}{csvManager}}:}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00007}\mbox{\hyperlink{classimporter_1_1_format_manager_1_1csv_manager_ac8303337d55850dedaaf567008fc5c89}{00007}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1_format_manager_1_1csv_manager_ac8303337d55850dedaaf567008fc5c89}{df\_csv}}(event,\ type\_format,\ file,\ session,\ write\_DF):}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00008}00008\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Executes\ full\ procedure}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00009}00009\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00010}00010\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00011}00011\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ event\ (dict):\ is\ a\ dictionary\ with\ all\ client\ and\ sales\ information}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00012}00012\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ type\_format\ (str):\ format\ name\ }}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00013}00013\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ file\ (dict):\ features\ required\ by\ file}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00014}00014\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ session\ (boto3\ obj):\ AWS\ client\ connection}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00015}00015\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ write\_DF\ (class):\ mapper\ columns\ method}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00016}00016\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ data\_otto\ (pandas\ dataframe)}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00017}00017\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ status\ (str)}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00018}00018\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ filename\ =\ file[\textcolor{stringliteral}{"{}file"{}}]}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ dir\_file\ =\ \textcolor{stringliteral}{"{}s3://\{bucket\}/\{key\}/\{filename\}"{}}.format(bucket=event[\textcolor{stringliteral}{"{}bucket"{}}][0],\ key=event[\textcolor{stringliteral}{"{}path"{}}][0],\ filename=filename)}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ columns\_csv\ =\ event[\textcolor{stringliteral}{"{}format"{}}][type\_format][\textcolor{stringliteral}{"{}columns"{}}]}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ data\ =\ TemplateManager.preprocessing(dir\_file,\ type\_format,\ file,\ session,\ columns\_csv[0][\textcolor{stringliteral}{"{}value"{}}])}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}ORIGINAL\ DATA\ \(\backslash\)n\ \{\}"{}}.format(data.head()))}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ low\ =\ [x.lower()\ \textcolor{keywordflow}{for}\ x\ \textcolor{keywordflow}{in}\ data.columns.to\_list()]}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ data.columns\ =\ low}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ data\ =\ validate\_data().validate\_columns(data,\ columns\_csv)}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ data\_otto\ =\ write\_DF.ftypes(data,\ columns\_csv,\ type\_format,\ filename)}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ data\_otto[\textcolor{stringliteral}{"{}file"{}}]\ =\ filename}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ status\ =\ \textcolor{stringliteral}{"{}Ok"{}}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data\_otto,\ status}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ status:}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}File\ could\ not\ be\ loaded"{}},\ status}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00035}00035\ \textcolor{comment}{\#\ class\ xlsManager:}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00036}00036\ \textcolor{comment}{\#\ \ \ \ \ def\ df\_excel(event,\ s3\_object,\ formats,\ file,\ write\_DF):\ \#s3\_object=s3\_object,\ formats=str,\ file=dict,\ write\_DF=class}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00037}00037\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ filename\ =\ file["{}file"{}]}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00038}00038\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ sheet\ =\ file["{}sheet"{}]}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00039}00039\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ delimiter\ =\ event["{}format"{}][formats]["{}delimiter"{}]}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00040}00040\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ columns\_xls\ =\ event["{}format"{}][formats]["{}columns"{}]}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00041}00041\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ skip\_rows\ =\ file["{}skip\_rows"{}]}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00042}00042\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ xls\ =\ ExcelFile(s3\_object['Body'].read())}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00043}00043\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ name\ =\ filename.split("{}.xls"{})}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00044}00044\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ sheet\_empty\ =\ 0}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00045}00045\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ data\ =\ TemplateManager.preprocessing(xls,\ formats,\ sheet,\ delimiter,\ skip\_rows)}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00046}00046\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ print("{}ORIGINAL\ DATA\ \(\backslash\)n\ \{\}"{}.format(data.head()))}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00047}00047\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ low\ =\ [x.lower()\ for\ x\ in\ data.columns.to\_list()]}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00048}00048\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ data.columns\ =\ low}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00049}00049\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ data\ =\ validate\_data().validate\_columns(data,\ columns\_xls)}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00050}00050\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \#\ data\ =\ read\_excel(xls,\ sheet\_name=sheet,\ keep\_default\_na=False)}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00051}00051\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ if\ len(data)\ ==\ 0:}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00052}00052\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ sheet\_empty\ +=\ 1}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00053}00053\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \#\ print("{}sheet\ \{\}\ is\ empty"{}.format(sheet))}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00054}00054\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ return\ 0}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00055}00055\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ else:}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00056}00056\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \#\ write\_DF.format\_type(data,\ formats,\ filename)}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00057}00057\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ data\_otto\ =\ write\_DF.ftypes(data,\ columns\_xls,\ formats,\ filename)}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00058}00058\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ filename\ =\ filename+"{}-\/"{}+sheet.replace("{}\ "{},\ "{}\_"{})}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00059}00059\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ data\_otto["{}filename"{}]\ =\ filename}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00060}00060\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ xls.close()}}
+\DoxyCodeLine{\Hypertarget{_format_manager_8py_source_l00061}00061\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ return\ data\_otto,\ filename}}
+
+\end{DoxyCode}

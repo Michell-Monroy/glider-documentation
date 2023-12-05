@@ -1,0 +1,155 @@
+\doxysection{Upload\+Files\+S3.\+py}
+\hypertarget{_upload_files_s3_8py_source}{}\label{_upload_files_s3_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/upload\_module/common/UploadFilesS3.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/upload\_module/common/UploadFilesS3.py}}
+\mbox{\hyperlink{_upload_files_s3_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00001}\mbox{\hyperlink{namespace_upload_files_s3}{00001}}\ \textcolor{keyword}{import}\ os,\ sys,\ traceback}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00002}00002\ \textcolor{keyword}{import}\ gzip}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00003}00003\ \textcolor{keyword}{import}\ shutil}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00004}00004\ \textcolor{keyword}{import}\ zipfile}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00005}00005\ \textcolor{keyword}{import}\ boto3}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00006}00006\ \textcolor{keyword}{import}\ subprocess}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00007}00007\ \textcolor{keyword}{from}\ datetime\ \textcolor{keyword}{import}\ date,\ datetime}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00008}00008\ \textcolor{keyword}{from}\ dotenv\ \textcolor{keyword}{import}\ load\_dotenv}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00010}00010\ load\_dotenv()}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00013}\mbox{\hyperlink{namespace_upload_files_s3_a0942f90da9c346ae24cc6056b8252f65}{00013}}\ ACCESS\_ID,\ ACCESS\_KEY\ =\ os.environ.get(\textcolor{stringliteral}{"{}AWS\_KEY\_ID"{}}),\ os.environ.get(\textcolor{stringliteral}{"{}AWS\_KEY\_SECRET"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00016}\mbox{\hyperlink{namespace_upload_files_s3_acbf83e060c95b2b1542b22febfde8ec3}{00016}}\ s3\_client\ =\ boto3.client(\textcolor{stringliteral}{"{}s3"{}},\ aws\_access\_key\_id=ACCESS\_ID,\ aws\_secret\_access\_key=\ ACCESS\_KEY)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00019}\mbox{\hyperlink{namespace_upload_files_s3_ac4a6fbb6b0c8a9c699722ac2c717efc2}{00019}}\ date\_for\_path\ =\ date.today()}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00020}00020\ date\_for\_path\ =\ datetime.strftime(date\_for\_path,\ \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%d"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00022}00022\ \textcolor{keyword}{global}\ bucket,\ s3\_path}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00024}\mbox{\hyperlink{namespace_upload_files_s3_a53527bad53ef51b87eaa9a615234915f}{00024}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_upload_files_s3_a53527bad53ef51b87eaa9a615234915f}{folder\_or\_file}}(local\_path,\ files\_list):}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00025}00025\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00026}00026\ \textcolor{stringliteral}{\ \ \ \ Moves\ all\ files\ (in\ fub\ folders)\ to\ root\ path}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00027}00027\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00028}00028\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00029}00029\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ local\_path\ (str):\ Root\ path\ where\ is\ saved\ files}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00030}00030\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ files\_list\ (list):\ list\ where\ each\ file\ is\ allocated\ to\ be\ moved\ posteriorly}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00031}00031\ \textcolor{stringliteral}{\ \ \ \ Returns\ :\ Nothing.}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00032}00032\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{for}\ path,\ subdirs,\ files\ \textcolor{keywordflow}{in}\ os.walk(local\_path):}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ name\ \textcolor{keywordflow}{in}\ files:}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ files\_list.append(os.path.join(path,\ name))}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{for}\ file\ \textcolor{keywordflow}{in}\ files\_list:}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ shutil.move(file,\ local\_path)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}:}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00042}\mbox{\hyperlink{namespace_upload_files_s3_ad8ee5fc983089b09c062686f088481f5}{00042}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_upload_files_s3_ad8ee5fc983089b09c062686f088481f5}{upload\_files\_s3}}(bucket,\ s3\_path,\ local\_path,\ file):}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00043}00043\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00044}00044\ \textcolor{stringliteral}{\ \ \ \ Uploads\ all\ files\ to\ s3\ path\ defined\ previously}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00045}00045\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00046}00046\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00047}00047\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ local\_path\ (str):\ Root\ path\ where\ is\ saved\ files}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00048}00048\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ files\ (str):\ File\ to\ upload}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00049}00049\ \textcolor{stringliteral}{\ \ \ \ Returns\ :\ Nothing.}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00050}00050\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00051}00051\ \ \ \ \ full\_path\ =\ local\_path+file}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00052}00052\ \ \ \ \ s3\_client.upload\_file(full\_path,\ bucket,\ s3\_path+file)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00054}\mbox{\hyperlink{namespace_upload_files_s3_a5e54705d1df269ba071186263a8ba47b}{00054}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_upload_files_s3_a5e54705d1df269ba071186263a8ba47b}{transform\_fx\_rates\_file}}(local\_path,\ file):}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00055}00055\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00056}00056\ \textcolor{stringliteral}{\ \ \ \ Converts\ xls\ file\ (it\ contains\ fx\ rates\ for\ apple)\ to\ csv\ file}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00057}00057\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00058}00058\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00059}00059\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ local\_path\ (str):\ Root\ path\ where\ is\ saved\ files}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00060}00060\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ files\ (str):\ File\ to\ convert}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00061}00061\ \textcolor{stringliteral}{\ \ \ \ Returns\ :\ Nothing.}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00062}00062\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00063}00063\ \ \ \ \ file\_o\ =\ file.replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}\_"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00064}00064\ \ \ \ \ file\_o\ =\ file\_o.replace(\textcolor{stringliteral}{"{}.xlsx"{}},\ \textcolor{stringliteral}{"{}.csv"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00065}00065\ \ \ \ \ subprocess.call([\textcolor{stringliteral}{"{}ssconvert"{}},file,local\_path+file\_o],cwd=local\_path)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00067}\mbox{\hyperlink{namespace_upload_files_s3_af6778a0907dfbfa936478ee4fab9e8be}{00067}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_upload_files_s3_af6778a0907dfbfa936478ee4fab9e8be}{extract\_file}}(bucket,\ s3\_path,\ local\_path,\ file,\ compression):}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00068}00068\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00069}00069\ \textcolor{stringliteral}{\ \ \ \ Extract\ files\ from\ a\ compressed\ file,\ delete\ blank\ spaces\ \ }}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00070}00070\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00071}00071\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00072}00072\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ local\_path\ (str):\ Root\ path\ where\ is\ saved\ files}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00073}00073\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ files\ (str):\ File\ to\ decompress}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00074}00074\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ compression\ (str):\ Type\ of\ compression\ (gz,\ zip)}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00075}00075\ \textcolor{stringliteral}{\ \ \ \ Returns\ :\ Nothing.}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00076}00076\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{if}\ compression\ ==\ \textcolor{stringliteral}{"{}.zip"{}}:}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00078}00078\ \ \ \ \ \ \ \ \ file\_replaced\ =\ file.replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}\_"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00079}00079\ \ \ \ \ \ \ \ \ z\ =\ zipfile.ZipFile(local\_path+file)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ f\ \textcolor{keywordflow}{in}\ z.filelist:}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ f.filename\ =\ f.filename.replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}\_"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ z.extract(f,\ local\_path)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00083}00083\ \ \ \ \ \ \ \ \ file\_upload\ =\ file\_replaced.replace(\textcolor{stringliteral}{"{}.zip"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00084}00084\ \ \ \ \ \ \ \ \ print(file\_upload)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_upload_files_s3_ad8ee5fc983089b09c062686f088481f5}{upload\_files\_s3}}(bucket,\ s3\_path,\ local\_path,\ file\_upload)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{elif}\ compression\ ==\ \textcolor{stringliteral}{"{}.gz"{}}:}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00087}00087\ \ \ \ \ \ \ \ \ file\_o\ =\ file.replace(\textcolor{stringliteral}{"{}.gz"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00088}00088\ \ \ \ \ \ \ \ \ file\_o\ =\ file\_o.replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}\_"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00089}00089\ \ \ \ \ \ \ \ \ print(file\_o)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ gzip.open(local\_path+file,\ \textcolor{stringliteral}{'rb'})\ \textcolor{keyword}{as}\ f\_in:}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(local\_path+file\_o,\ \textcolor{stringliteral}{'wb'})\ \textcolor{keyword}{as}\ f\_out:}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shutil.copyfileobj(f\_in,\ f\_out)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00093}00093\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_upload_files_s3_ad8ee5fc983089b09c062686f088481f5}{upload\_files\_s3}}(bucket,\ s3\_path,\ local\_path,\ file\_o)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00095}\mbox{\hyperlink{namespace_upload_files_s3_a57f56cd91f1a76d464bb3b0212658bd8}{00095}}\ \textcolor{keyword}{def\ }clean\_files(event,\ local\_path):}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00096}00096\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00097}00097\ \textcolor{stringliteral}{\ \ \ \ Makes\ blank\ spaces\ deletion,\ extraction,\ conversion\ files\ and\ upload\ procedure\ for\ each\ file\ into\ the\ defined\ path}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00098}00098\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00099}00099\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00100}00100\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ event\ (dict):\ Contains\ the\ client\ info\ to\ save\ files\ in\ s3}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00101}00101\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ local\_path\ (str):\ Root\ path\ where\ is\ saved\ files}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00102}00102\ \textcolor{stringliteral}{\ \ \ \ Returns\ :\ Nothing.}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00103}00103\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00104}00104\ \ \ \ \ \textcolor{comment}{\#\ Bucket\ to\ upload\ files\ (it's\ fixed)}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00105}00105\ \ \ \ \ bucket\ =\ event[\textcolor{stringliteral}{"{}bucket"{}}]\ }
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00106}00106\ \ \ \ \ \textcolor{comment}{\#\ path\ to\ upload\ files,\ each\ moth\ it's\ a\ different\ path}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00107}00107\ \ \ \ \ path\ =\ event[\textcolor{stringliteral}{"{}path"{}}]}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00108}00108\ \ \ \ \ \textcolor{keywordflow}{if}\ path.endswith(\textcolor{stringliteral}{"{}/"{}}):}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00109}00109\ \ \ \ \ \ \ \ \ path\ =\ path[:-\/1]}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00110}00110\ \ \ \ \ s3\_path\ =\ \textcolor{stringliteral}{"{}\{\}/\{\}/"{}}.format(path,\ date\_for\_path)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00111}00111\ \ \ \ \ \textcolor{comment}{\#Create\ path\ if\ it\ doesn't\ exist}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00112}00112\ \ \ \ \ response\_in\ =\ s3\_client.list\_objects(Bucket\ =\ bucket,\ Prefix=s3\_path)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00113}00113\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}Contents"{}}\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ response\_in:}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ s3\_client.put\_object(Bucket=bucket,\ Key=(s3\_path))}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00115}00115\ \ \ \ \ csv\_files\ =\ []}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00116}00116\ \ \ \ \ \mbox{\hyperlink{namespace_upload_files_s3_a53527bad53ef51b87eaa9a615234915f}{folder\_or\_file}}(local\_path,\ csv\_files)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00117}00117\ \ \ \ \ files\_to\_upload\ =\ os.listdir(local\_path)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00118}00118\ \ \ \ \ files\_to\_upload.sort()}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00119}00119\ \ \ \ \ \textcolor{keywordflow}{for}\ file\ \textcolor{keywordflow}{in}\ files\_to\_upload:}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00120}00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ file\_replaced\ =\ file.replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}\_"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ print(file\_replaced)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ os.rename(local\_path+file,\ local\_path+file\_replaced)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ extensions\ =\ [\textcolor{stringliteral}{"{}.csv"{}},\ \textcolor{stringliteral}{"{}.xls"{}},\ \textcolor{stringliteral}{"{}.xlsx"{}},\ \textcolor{stringliteral}{"{}.txt"{}},\ \textcolor{stringliteral}{"{}.tsv"{}}]}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ ext\ =\ os.path.splitext(file)[1]}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ext\ ==\ \textcolor{stringliteral}{"{}.zip"{}}\ \textcolor{keywordflow}{or}\ ext\ ==\ \textcolor{stringliteral}{"{}.gz"{}}:}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_upload_files_s3_af6778a0907dfbfa936478ee4fab9e8be}{extract\_file}}(bucket,\ s3\_path,\ local\_path,\ file\_replaced,\ ext)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ext\ \textcolor{keywordflow}{in}\ extensions:}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}Exchange"{}}\ \textcolor{keywordflow}{in}\ file\_replaced:}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_upload_files_s3_a5e54705d1df269ba071186263a8ba47b}{transform\_fx\_rates\_file}}(local\_path,file\_replaced)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{stringliteral}{"{}.csv"{}}\ \textcolor{keywordflow}{in}\ file\_replaced)\ \textcolor{keywordflow}{and}\ (\textcolor{stringliteral}{"{}ZQGRO\_"{}}\ \textcolor{keywordflow}{in}\ file\_replaced)\ \textcolor{keywordflow}{and}\ (\textcolor{stringliteral}{"{}\_Summary\_Statement"{}}\ \textcolor{keywordflow}{in}\ file\_replaced):}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ subprocess.call([\textcolor{stringliteral}{"{}ssconvert"{}},file\_replaced,local\_path+file\_replaced],cwd=local\_path)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ (\textcolor{stringliteral}{"{}Napster"{}}\ \textcolor{keywordflow}{in}\ file\_replaced)\ \textcolor{keywordflow}{or}\ (\textcolor{stringliteral}{"{}revshare"{}}\ \textcolor{keywordflow}{in}\ file\_replaced)\ \textcolor{keywordflow}{or}\ (\textcolor{stringliteral}{"{}Audiomack"{}}\ \textcolor{keywordflow}{in}\ file\_replaced)\ \textcolor{keywordflow}{or}\ (\textcolor{stringliteral}{"{}WW\_MN"{}}\ \textcolor{keywordflow}{in}\ file\_replaced)\ \textcolor{keywordflow}{or}\ (\textcolor{stringliteral}{"{}KepachMusictas"{}}\ \textcolor{keywordflow}{in}\ file\_replaced):}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ subprocess.call([\textcolor{stringliteral}{"{}ssconvert"{}},file\_replaced,local\_path+file\_replaced],cwd=local\_path)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ ext\ ==\ \textcolor{stringliteral}{"{}.xls"{}}\ \textcolor{keywordflow}{or}\ ext\ ==\ \textcolor{stringliteral}{"{}.xlsx"{}}:}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file\_replaced\_1\ =\ file\_replaced.replace(\textcolor{stringliteral}{"{}.xlsx"{}},\ \textcolor{stringliteral}{"{}.csv"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(file\_replaced\_1)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ subprocess.call([\textcolor{stringliteral}{"{}ssconvert"{}},file\_replaced,local\_path+file\_replaced\_1],cwd=local\_path)\ \textcolor{comment}{\#\ path\ to\ your\ file\ must\ contain\ the\ xlsx\ and\ csv\ files}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file\_replaced\ =\ file\_replaced\_1}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_upload_files_s3_ad8ee5fc983089b09c062686f088481f5}{upload\_files\_s3}}(bucket,\ s3\_path,\ local\_path,\ file\_replaced)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}:}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}\{\}\ could\ not\ be\ uploaded"{}}.format(file\_replaced))}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ print(sys.exc\_info()[2])}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ print(traceback.format\_exc())}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue}}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00148}00148\ \ \ \ \ \textcolor{keywordflow}{return}\ bucket+\textcolor{stringliteral}{"{}/"{}}+s3\_path}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00149}00149\ \ \ \ \ }
+
+\end{DoxyCode}

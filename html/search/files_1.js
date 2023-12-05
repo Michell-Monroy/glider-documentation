@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['cataloguegenerator_2epy_0',['CatalogueGenerator.py',['../_catalogue_generator_8py.html',1,'']]],
-  ['columnsmanager_2epy_1',['ColumnsManager.py',['../_columns_manager_8py.html',1,'']]],
-  ['createsnapshots_2epy_2',['CreateSnapshots.py',['../_create_snapshots_8py.html',1,'']]]
+  ['amazonftp_2epy_0',['AmazonFTP.py',['../_amazon_f_t_p_8py.html',1,'']]],
+  ['amazontemplate_2epy_1',['AmazonTemplate.py',['../_amazon_template_8py.html',1,'']]],
+  ['anghamitemplate_2epy_2',['AnghamiTemplate.py',['../_anghami_template_8py.html',1,'']]],
+  ['audiomacktemplate_2epy_3',['AudioMackTemplate.py',['../_audio_mack_template_8py.html',1,'']]],
+  ['audiosaladtemplate_2epy_4',['AudioSaladTemplate.py',['../_audio_salad_template_8py.html',1,'']]],
+  ['awatemplate_2epy_5',['AwaTemplate.py',['../_awa_template_8py.html',1,'']]]
 ];

@@ -27,9 +27,15 @@ Definition at line \mbox{\hyperlink{_spotify_template_8py_source_l00004}{4}} of 
 \doxysubsubsection{\texorpdfstring{date()}{date()}}
 {\footnotesize\ttfamily importer.\+templates.\+Spotify\+Template.\+Spotify\+Template.\+date (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Sets date column given the filename (it contains the date)
+   For example SPOTIFY_gyrostream-track-for-breakage-202307.txt
+Args:
+    filename (str): current filename
+Returns: date_str (str)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_spotify_template_8py_source_l00022}{22}} of file \mbox{\hyperlink{_spotify_template_8py_source}{Spotify\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_spotify_template_8py_source_l00025}{25}} of file \mbox{\hyperlink{_spotify_template_8py_source}{Spotify\+Template.\+py}}.
 
 \Hypertarget{classimporter_1_1templates_1_1_spotify_template_1_1_spotify_template_a508c90410f6649afeb8cd7226997a71b}\label{classimporter_1_1templates_1_1_spotify_template_1_1_spotify_template_a508c90410f6649afeb8cd7226997a71b} 
 \index{importer.templates.SpotifyTemplate.SpotifyTemplate@{importer.templates.SpotifyTemplate.SpotifyTemplate}!dateTrends@{dateTrends}}
@@ -37,9 +43,14 @@ Definition at line \mbox{\hyperlink{_spotify_template_8py_source_l00022}{22}} of
 \doxysubsubsection{\texorpdfstring{dateTrends()}{dateTrends()}}
 {\footnotesize\ttfamily importer.\+templates.\+Spotify\+Template.\+Spotify\+Template.\+date\+Trends (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Sets date column given the filename (it contains the date)
+Args:
+    filename (str): current filename
+Returns: date (str)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_spotify_template_8py_source_l00032}{32}} of file \mbox{\hyperlink{_spotify_template_8py_source}{Spotify\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_spotify_template_8py_source_l00040}{40}} of file \mbox{\hyperlink{_spotify_template_8py_source}{Spotify\+Template.\+py}}.
 
 \Hypertarget{classimporter_1_1templates_1_1_spotify_template_1_1_spotify_template_a7e5f0e0c63d852add999dce105e57b81}\label{classimporter_1_1templates_1_1_spotify_template_1_1_spotify_template_a7e5f0e0c63d852add999dce105e57b81} 
 \index{importer.templates.SpotifyTemplate.SpotifyTemplate@{importer.templates.SpotifyTemplate.SpotifyTemplate}!preprocessing@{preprocessing}}
@@ -47,10 +58,14 @@ Definition at line \mbox{\hyperlink{_spotify_template_8py_source_l00032}{32}} of
 \doxysubsubsection{\texorpdfstring{preprocessing()}{preprocessing()}}
 {\footnotesize\ttfamily importer.\+templates.\+Spotify\+Template.\+Spotify\+Template.\+preprocessing (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename,  }\item[{}]{features,  }\item[{}]{session,  }\item[{}]{rel\+\_\+col }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}args:
-filename: -str- s3 full path of filename
-features: -dict- which contains delimiter, skip_rows and encoding
-session: -class- s3 connexion 
+\begin{DoxyVerb}Loads file and do some fixes to fit it to our standard and make it able to be processed
+
+Args:
+    filename (str): s3 full path of filename
+    features (dict): contains delimiter, skip_rows and encoding required for current file
+    session (boto3 obj): AWS client connection
+    rel_col (str): column name used to identify upc/release_id
+Returns: df (pandas dataframe)
 \end{DoxyVerb}
  
 
@@ -62,9 +77,15 @@ Definition at line \mbox{\hyperlink{_spotify_template_8py_source_l00005}{5}} of 
 \doxysubsubsection{\texorpdfstring{territoryTrends()}{territoryTrends()}}
 {\footnotesize\ttfamily importer.\+templates.\+Spotify\+Template.\+Spotify\+Template.\+territory\+Trends (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{df,  }\item[{}]{filename }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Sets territory column given the filename (it contains the date)
+Args:
+    df (pandas dataframe): dataframe where changes will applied
+    filename (str): current filename
+Returns: df (pandas dataframe)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_spotify_template_8py_source_l00039}{39}} of file \mbox{\hyperlink{_spotify_template_8py_source}{Spotify\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_spotify_template_8py_source_l00052}{52}} of file \mbox{\hyperlink{_spotify_template_8py_source}{Spotify\+Template.\+py}}.
 
 
 

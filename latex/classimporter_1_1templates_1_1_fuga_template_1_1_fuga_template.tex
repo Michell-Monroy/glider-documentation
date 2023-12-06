@@ -13,7 +13,7 @@
 \item 
 \mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_aebe3afb701d686e826782801e3ee9fd8}{asset\+Type}} (self, df)
 \item 
-\mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_a58dd61a6e519b993ebf644e0c4f00a15}{date}} (self, file\+\_\+name)
+\mbox{\hyperlink{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_a41d2bc5dda02eb1326a088e11d7e9ea9}{date}} (self, filename)
 \end{DoxyCompactItemize}
 
 
@@ -31,9 +31,15 @@ Definition at line \mbox{\hyperlink{_fuga_template_8py_source_l00005}{5}} of fil
 \doxysubsubsection{\texorpdfstring{ArtistPreprocessing()}{ArtistPreprocessing()}}
 {\footnotesize\ttfamily importer.\+templates.\+Fuga\+Template.\+Fuga\+Template.\+Artist\+Preprocessing (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{asset\+\_\+product,  }\item[{}]{asset\+\_\+artist }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Replace the track artist by product artist when the first one is empty value
+Args:
+    asset_product (str): product artist shown in the original file
+    asset_artist (str): track artist shown in the original file
+Returns: asset_artist (str)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_fuga_template_8py_source_l00011}{11}} of file \mbox{\hyperlink{_fuga_template_8py_source}{Fuga\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_fuga_template_8py_source_l00017}{17}} of file \mbox{\hyperlink{_fuga_template_8py_source}{Fuga\+Template.\+py}}.
 
 Here is the caller graph for this function\+:
 % FIG 0
@@ -43,21 +49,32 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{assetType()}{assetType()}}
 {\footnotesize\ttfamily importer.\+templates.\+Fuga\+Template.\+Fuga\+Template.\+asset\+Type (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{df }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Applies type functions to current dataframe
+Args:
+    df (pandas dataframe): dataframe where changes will applied
+Returns: df (pandas dataframe)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_fuga_template_8py_source_l00041}{41}} of file \mbox{\hyperlink{_fuga_template_8py_source}{Fuga\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_fuga_template_8py_source_l00062}{62}} of file \mbox{\hyperlink{_fuga_template_8py_source}{Fuga\+Template.\+py}}.
 
 Here is the call graph for this function\+:
 % FIG 1
-\Hypertarget{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_a58dd61a6e519b993ebf644e0c4f00a15}\label{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_a58dd61a6e519b993ebf644e0c4f00a15} 
+\Hypertarget{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_a41d2bc5dda02eb1326a088e11d7e9ea9}\label{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_a41d2bc5dda02eb1326a088e11d7e9ea9} 
 \index{importer.templates.FugaTemplate.FugaTemplate@{importer.templates.FugaTemplate.FugaTemplate}!date@{date}}
 \index{date@{date}!importer.templates.FugaTemplate.FugaTemplate@{importer.templates.FugaTemplate.FugaTemplate}}
 \doxysubsubsection{\texorpdfstring{date()}{date()}}
-{\footnotesize\ttfamily importer.\+templates.\+Fuga\+Template.\+Fuga\+Template.\+date (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{file\+\_\+name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily importer.\+templates.\+Fuga\+Template.\+Fuga\+Template.\+date (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Sets date column given the filename (it contains the date)
+   For example December2021StatementRun_KepachMusictasCAMJazz-royalty_product_and_asset.csv
+Args:
+    filename (str): current filename
+Returns: date_str (str)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_fuga_template_8py_source_l00046}{46}} of file \mbox{\hyperlink{_fuga_template_8py_source}{Fuga\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_fuga_template_8py_source_l00072}{72}} of file \mbox{\hyperlink{_fuga_template_8py_source}{Fuga\+Template.\+py}}.
 
 \Hypertarget{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_a4cd7467ec3202742cd8affc3edc6efc0}\label{classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_a4cd7467ec3202742cd8affc3edc6efc0} 
 \index{importer.templates.FugaTemplate.FugaTemplate@{importer.templates.FugaTemplate.FugaTemplate}!preprocessing@{preprocessing}}
@@ -65,14 +82,18 @@ Definition at line \mbox{\hyperlink{_fuga_template_8py_source_l00046}{46}} of fi
 \doxysubsubsection{\texorpdfstring{preprocessing()}{preprocessing()}}
 {\footnotesize\ttfamily importer.\+templates.\+Fuga\+Template.\+Fuga\+Template.\+preprocessing (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename,  }\item[{}]{features,  }\item[{}]{session,  }\item[{}]{rel\+\_\+col }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}args:
-filename: -str- s3 full path of filename
-features: -dict- which contains delimiter, skip_rows and encoding
-session: -class- s3 connexion 
+\begin{DoxyVerb}Loads file and do some fixes to fit it to our standard and make it able to be processed
+
+Args:
+    filename (str): s3 full path of filename
+    features (dict): contains delimiter, skip_rows and encoding required for current file
+    session (boto3 obj): AWS client connection
+    rel_col (str): column name used to identify upc/release_id
+Returns: df (pandas dataframe)
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{_fuga_template_8py_source_l00016}{16}} of file \mbox{\hyperlink{_fuga_template_8py_source}{Fuga\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_fuga_template_8py_source_l00028}{28}} of file \mbox{\hyperlink{_fuga_template_8py_source}{Fuga\+Template.\+py}}.
 
 Here is the call graph for this function\+:
 % FIG 2
@@ -82,7 +103,13 @@ Here is the call graph for this function\+:
 \doxysubsubsection{\texorpdfstring{QuantityPreprocessing()}{QuantityPreprocessing()}}
 {\footnotesize\ttfamily importer.\+templates.\+Fuga\+Template.\+Fuga\+Template.\+Quantity\+Preprocessing (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{product\+\_\+quantity,  }\item[{}]{asset\+\_\+quantity }\end{DoxyParamCaption})}
 
-
+\begin{DoxyVerb}Defines the total quantity for tracks and albums 
+Args:
+    product_quantity (int): quantity of products shown in the original file
+    asset_quantity (int): quantity of tracks shown in the original file
+Returns: aux (int)
+\end{DoxyVerb}
+ 
 
 Definition at line \mbox{\hyperlink{_fuga_template_8py_source_l00006}{6}} of file \mbox{\hyperlink{_fuga_template_8py_source}{Fuga\+Template.\+py}}.
 
@@ -94,9 +121,15 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{type()}{type()}}
 {\footnotesize\ttfamily importer.\+templates.\+Fuga\+Template.\+Fuga\+Template.\+type (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{asset\+\_\+product,  }\item[{}]{sale\+\_\+type }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Maps the sale type with the name specified by the client according their requirements
+Args:
+    asset_product (str): sale type (for products) shown in the original file
+    sale_type (str):  sale type (for tracks) shown in the original file
+Returns: (sale type in a single one letter)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_fuga_template_8py_source_l00034}{34}} of file \mbox{\hyperlink{_fuga_template_8py_source}{Fuga\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_fuga_template_8py_source_l00049}{49}} of file \mbox{\hyperlink{_fuga_template_8py_source}{Fuga\+Template.\+py}}.
 
 Here is the caller graph for this function\+:
 % FIG 4

@@ -8,19 +8,22 @@
 \DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00004}00004\ }
 \DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00005}\mbox{\hyperlink{classimporter_1_1templates_1_1_mixcloud_template_1_1_mixcloud_template}{00005}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_mixcloud_template_1_1_mixcloud_template}{MixcloudTemplate}}:}
 \DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00006}\mbox{\hyperlink{classimporter_1_1templates_1_1_mixcloud_template_1_1_mixcloud_template_aaba5420e8d3f3fc5cc755763e4685f7f}{00006}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1_mixcloud_template_1_1_mixcloud_template_aaba5420e8d3f3fc5cc755763e4685f7f}{preprocessing}}(self,\ filename,\ features,\ session,\ rel\_col):}
-\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00007}00007\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00008}00008\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ args:}}
-\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00009}00009\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ filename:\ -\/str-\/\ s3\ full\ path\ of\ filename}}
-\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00010}00010\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ features:\ -\/dict-\/\ which\ contains\ delimiter,\ skip\_rows\ and\ encoding}}
-\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00011}00011\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ session:\ -\/class-\/\ s3\ connexion\ }}
-\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00012}00012\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00013}00013\ \ \ \ \ \ \ \ \ delimiter\ =\ features[\textcolor{stringliteral}{"{}delimiter"{}}]}
-\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00014}00014\ \ \ \ \ \ \ \ \ skip\_rows\ =\ features[\textcolor{stringliteral}{"{}skip\_rows"{}}]}
-\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00015}00015\ \ \ \ \ \ \ \ \ encoding\ =\ features[\textcolor{stringliteral}{"{}encoding"{}}]}
-\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00016}00016\ \ \ \ \ \ \ \ \ df\ =\ wr.s3.read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding,\ dtype=\{rel\_col:str\},\ keep\_default\_na=\textcolor{keyword}{False},\ low\_memory=\textcolor{keyword}{False},\ boto3\_session=session)}
-\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df\ =\ read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding,\ keep\_default\_na=False,\ low\_memory=False)}}
-\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00018}00018\ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}Start\_Date"{}}]\ =\ to\_datetime(df[\textcolor{stringliteral}{"{}Start\_Date"{}}],\ format=\textcolor{stringliteral}{"{}\%d/\%m/\%Y"{}})}
-\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df["{}Units"{}].fillna(0,\ inplace=True)}}
-\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
+\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00007}00007\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Loads\ file\ and\ do\ some\ fixes\ to\ fit\ it\ to\ our\ standard\ and\ make\ it\ able\ to\ be\ processed}}
+\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00008}00008\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00009}00009\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00010}00010\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ filename\ (str):\ s3\ full\ path\ of\ filename}}
+\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00011}00011\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ features\ (dict):\ contains\ delimiter,\ skip\_rows\ and\ encoding\ required\ for\ current\ file}}
+\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00012}00012\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ session\ (boto3\ obj):\ AWS\ client\ connection}}
+\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00013}00013\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ rel\_col\ (str):\ column\ name\ used\ to\ identify\ upc/release\_id}}
+\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00014}00014\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ df\ (pandas\ dataframe)}}
+\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00015}00015\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00016}00016\ \ \ \ \ \ \ \ \ delimiter\ =\ features[\textcolor{stringliteral}{"{}delimiter"{}}]}
+\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00017}00017\ \ \ \ \ \ \ \ \ skip\_rows\ =\ features[\textcolor{stringliteral}{"{}skip\_rows"{}}]}
+\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00018}00018\ \ \ \ \ \ \ \ \ encoding\ =\ features[\textcolor{stringliteral}{"{}encoding"{}}]}
+\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00019}00019\ \ \ \ \ \ \ \ \ df\ =\ wr.s3.read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding,\ dtype=\{rel\_col:str\},\ keep\_default\_na=\textcolor{keyword}{False},\ low\_memory=\textcolor{keyword}{False},\ boto3\_session=session)}
+\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df\ =\ read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding,\ keep\_default\_na=False,\ low\_memory=False)}}
+\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00021}00021\ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}Start\_Date"{}}]\ =\ to\_datetime(df[\textcolor{stringliteral}{"{}Start\_Date"{}}],\ format=\textcolor{stringliteral}{"{}\%d/\%m/\%Y"{}})}
+\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df["{}Units"{}].fillna(0,\ inplace=True)}}
+\DoxyCodeLine{\Hypertarget{_mixcloud_template_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
 
 \end{DoxyCode}

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>glider-full-doc: importer.templates.AudioSaladTemplate.AudioSaladTemplate Class Reference</title>
+<title>Glider: importer.templates.AudioSaladTemplate.AudioSaladTemplate Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">glider-full-doc
+   <div id="projectname">Glider
    </div>
   </td>
  </tr>
@@ -122,8 +122,12 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_audio_salad_template_8py_source.html#l00079">79</a> of file <a class="el" href="_audio_salad_template_8py_source.html">AudioSaladTemplate.py</a>.</p>
+<pre class="fragment">Applies serviceFinder and type functions to current dataframe
+Args:
+    df (pandas dataframe): dataframe where changes will applied
+Returns: df (pandas dataframe)
+</pre> 
+<p class="definition">Definition at line <a class="el" href="_audio_salad_template_8py_source.html#l00102">102</a> of file <a class="el" href="_audio_salad_template_8py_source.html">AudioSaladTemplate.py</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -163,8 +167,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_audio_salad_template_8py_source.html#l00018">18</a> of file <a class="el" href="_audio_salad_template_8py_source.html">AudioSaladTemplate.py</a>.</p>
+<pre class="fragment">Sets date column given the filename (it contains the date)
+   Sometimes just rename the date column to fit to the otto mapping
+   For example AudioSalad_2023_-_M7_GYROstream_Sales_Export.csv
+Args:
+    filename (str): current filename
+    df (pandas dataframe): dataframe where changes will applied
+Returns: date_str (str)
+</pre> 
+<p class="definition">Definition at line <a class="el" href="_audio_salad_template_8py_source.html#l00021">21</a> of file <a class="el" href="_audio_salad_template_8py_source.html">AudioSaladTemplate.py</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -216,10 +227,14 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">args:
-filename: -str- s3 full path of filename
-features: -dict- which contains delimiter, skip_rows and encoding
-session: -class- s3 connexion 
+<pre class="fragment">Loads file and do some fixes to fit it to our standard and make it able to be processed
+
+Args:
+    filename (str): s3 full path of filename
+    features (dict): contains delimiter, skip_rows and encoding required for current file
+    session (boto3 obj): AWS client connection
+    rel_col (str): column name used to identify upc/release_id
+Returns: df (pandas dataframe)
 </pre> 
 <p class="definition">Definition at line <a class="el" href="_audio_salad_template_8py_source.html#l00005">5</a> of file <a class="el" href="_audio_salad_template_8py_source.html">AudioSaladTemplate.py</a>.</p>
 
@@ -250,8 +265,12 @@ session: -class- s3 connexion
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_audio_salad_template_8py_source.html#l00030">30</a> of file <a class="el" href="_audio_salad_template_8py_source.html">AudioSaladTemplate.py</a>.</p>
+<pre class="fragment">Maps the service name with the service specified by the client according their requirements
+Args:
+    service (str): service name
+Returns: (service renamed)
+</pre> 
+<p class="definition">Definition at line <a class="el" href="_audio_salad_template_8py_source.html#l00042">42</a> of file <a class="el" href="_audio_salad_template_8py_source.html">AudioSaladTemplate.py</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -291,8 +310,13 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_audio_salad_template_8py_source.html#l00072">72</a> of file <a class="el" href="_audio_salad_template_8py_source.html">AudioSaladTemplate.py</a>.</p>
+<pre class="fragment">Maps the sale type with the name specified by the client according their requirements
+Args:
+    Type (str): sale type shown in the original file
+    configuration (str):  
+Returns: (sale type in a single one letter)
+</pre> 
+<p class="definition">Definition at line <a class="el" href="_audio_salad_template_8py_source.html#l00089">89</a> of file <a class="el" href="_audio_salad_template_8py_source.html">AudioSaladTemplate.py</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

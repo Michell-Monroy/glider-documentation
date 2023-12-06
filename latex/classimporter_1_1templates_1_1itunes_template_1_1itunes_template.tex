@@ -29,9 +29,14 @@ Definition at line \mbox{\hyperlink{itunes_template_8py_source_l00004}{4}} of fi
 \doxysubsubsection{\texorpdfstring{assetType()}{assetType()}}
 {\footnotesize\ttfamily importer.\+templates.\+itunes\+Template.\+itunes\+Template.\+asset\+Type (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{df }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Applies type functions to current dataframe
+Args:
+    df (pandas dataframe): dataframe where changes will applied
+Returns: df (pandas dataframe)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{itunes_template_8py_source_l00044}{44}} of file \mbox{\hyperlink{itunes_template_8py_source}{itunes\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{itunes_template_8py_source_l00056}{56}} of file \mbox{\hyperlink{itunes_template_8py_source}{itunes\+Template.\+py}}.
 
 Here is the call graph for this function\+:
 % FIG 0
@@ -41,9 +46,15 @@ Here is the call graph for this function\+:
 \doxysubsubsection{\texorpdfstring{date()}{date()}}
 {\footnotesize\ttfamily importer.\+templates.\+itunes\+Template.\+itunes\+Template.\+date (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Sets date column given the filename (it contains the date)
+   For example S1_89680172_0723_ZZ.txt
+Args:
+    filename (str): current filename
+Returns: date_str (str)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{itunes_template_8py_source_l00048}{48}} of file \mbox{\hyperlink{itunes_template_8py_source}{itunes\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{itunes_template_8py_source_l00065}{65}} of file \mbox{\hyperlink{itunes_template_8py_source}{itunes\+Template.\+py}}.
 
 \Hypertarget{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_a857597ab93ec7e5a9e6730eae557ede2}\label{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_a857597ab93ec7e5a9e6730eae557ede2} 
 \index{importer.templates.itunesTemplate.itunesTemplate@{importer.templates.itunesTemplate.itunesTemplate}!preprocessing@{preprocessing}}
@@ -51,10 +62,14 @@ Definition at line \mbox{\hyperlink{itunes_template_8py_source_l00048}{48}} of f
 \doxysubsubsection{\texorpdfstring{preprocessing()}{preprocessing()}}
 {\footnotesize\ttfamily importer.\+templates.\+itunes\+Template.\+itunes\+Template.\+preprocessing (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename,  }\item[{}]{features,  }\item[{}]{session,  }\item[{}]{rel\+\_\+col }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}args:
-filename: -str- s3 full path of filename
-features: -dict- which contains delimiter, skip_rows and encoding
-session: -class- s3 connexion 
+\begin{DoxyVerb}Loads file and do some fixes to fit it to our standard and make it able to be processed
+
+Args:
+    filename (str): s3 full path of filename
+    features (dict): contains delimiter, skip_rows and encoding required for current file
+    session (boto3 obj): AWS client connection
+    rel_col (str): column name used to identify upc/release_id
+Returns: df (pandas dataframe)
 \end{DoxyVerb}
  
 
@@ -66,14 +81,19 @@ Definition at line \mbox{\hyperlink{itunes_template_8py_source_l00005}{5}} of fi
 \doxysubsubsection{\texorpdfstring{preprocessing\_music()}{preprocessing\_music()}}
 {\footnotesize\ttfamily importer.\+templates.\+itunes\+Template.\+itunes\+Template.\+preprocessing\+\_\+music (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename,  }\item[{}]{features,  }\item[{}]{session,  }\item[{}]{rel\+\_\+col }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}args:
-filename: -str- s3 full path of filename
-features: -dict- which contains delimiter, skip_rows and encoding
-session: -class- s3 connexion 
+\begin{DoxyVerb}Loads file and do some fixes to fit it to our standard and make it able to be processed.
+   It's used for a specific itunes version
+
+Args:
+    filename (str): s3 full path of filename
+    features (dict): contains delimiter, skip_rows and encoding required for current file
+    session (boto3 obj): AWS client connection
+    rel_col (str): column name used to identify upc/release_id
+Returns: df (pandas dataframe)
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{itunes_template_8py_source_l00022}{22}} of file \mbox{\hyperlink{itunes_template_8py_source}{itunes\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{itunes_template_8py_source_l00025}{25}} of file \mbox{\hyperlink{itunes_template_8py_source}{itunes\+Template.\+py}}.
 
 \Hypertarget{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_a49806a04a2dd3c1a83cd14a3c9811299}\label{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_a49806a04a2dd3c1a83cd14a3c9811299} 
 \index{importer.templates.itunesTemplate.itunesTemplate@{importer.templates.itunesTemplate.itunesTemplate}!type@{type}}
@@ -81,9 +101,14 @@ Definition at line \mbox{\hyperlink{itunes_template_8py_source_l00022}{22}} of f
 \doxysubsubsection{\texorpdfstring{type()}{type()}}
 {\footnotesize\ttfamily importer.\+templates.\+itunes\+Template.\+itunes\+Template.\+type (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{upc }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Maps the sale type with the name specified by the client according their requirements
+Args:
+    upc (str): sale type (for products) shown in the original file
+Returns: (sale type in a single one letter)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{itunes_template_8py_source_l00039}{39}} of file \mbox{\hyperlink{itunes_template_8py_source}{itunes\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{itunes_template_8py_source_l00046}{46}} of file \mbox{\hyperlink{itunes_template_8py_source}{itunes\+Template.\+py}}.
 
 Here is the caller graph for this function\+:
 % FIG 1

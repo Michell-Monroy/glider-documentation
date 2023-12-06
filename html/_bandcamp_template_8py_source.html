@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>glider-full-doc: /Users/michellmonroy/Documents/dev-glider/glider/src/importer/templates/BandcampTemplate.py Source File</title>
+<title>Glider: /Users/michellmonroy/Documents/dev-glider/glider/src/importer/templates/BandcampTemplate.py Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">glider-full-doc
+   <div id="projectname">Glider
    </div>
   </td>
  </tr>
@@ -87,12 +87,18 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_bandcamp_template_1_1_bandcamp_template.html">    3</a></span><span class="keyword">class </span><a class="code hl_class" href="classimporter_1_1templates_1_1_bandcamp_template_1_1_bandcamp_template.html">BandcampTemplate</a>:</div>
 <div class="foldopen" id="foldopen00004" data-start="" data-end="">
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_bandcamp_template_1_1_bandcamp_template.html#a8e899bee4863e067bd82d816291f68f6">    4</a></span>    <span class="keyword">def </span>date(self, filename):</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>        <span class="comment">#&quot;Fonal-Records_sales_2020-09-23.csv&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>        date = re.findall(<span class="stringliteral">r&#39;_20\d{2}-\d{2}-\d{2}&#39;</span>, filename)[0]</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>        date_str = date.replace(<span class="stringliteral">&quot;_&quot;</span>, <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>        <span class="keywordflow">return</span> date_str</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>        <span class="stringliteral">&quot;&quot;&quot;Sets date column given the filename (it contains the date)</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="stringliteral">           For example Fonal-Records_sales_2020-09-23.csv</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="stringliteral">            filename (str): current filename</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="stringliteral">        Returns: date_str (str)</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <span class="comment">#&quot;Fonal-Records_sales_2020-09-23.csv&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        date = re.findall(<span class="stringliteral">r&#39;_20\d{2}-\d{2}-\d{2}&#39;</span>, filename)[0]</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        date_str = date.replace(<span class="stringliteral">&quot;_&quot;</span>, <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keywordflow">return</span> date_str</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    </div>
 </div>
 </div>
 <div class="ttc" id="aclassimporter_1_1templates_1_1_bandcamp_template_1_1_bandcamp_template_html"><div class="ttname"><a href="classimporter_1_1templates_1_1_bandcamp_template_1_1_bandcamp_template.html">importer.templates.BandcampTemplate.BandcampTemplate</a></div><div class="ttdef"><b>Definition</b> <a href="_bandcamp_template_8py_source.html#l00003">BandcampTemplate.py:3</a></div></div>

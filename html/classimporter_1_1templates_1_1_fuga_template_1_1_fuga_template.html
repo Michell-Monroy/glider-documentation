@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>glider-full-doc: importer.templates.FugaTemplate.FugaTemplate Class Reference</title>
+<title>Glider: importer.templates.FugaTemplate.FugaTemplate Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">glider-full-doc
+   <div id="projectname">Glider
    </div>
   </td>
  </tr>
@@ -92,8 +92,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa03af937ce97b51be3fa17ba2795850a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebe3afb701d686e826782801e3ee9fd8" id="r_aebe3afb701d686e826782801e3ee9fd8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#aebe3afb701d686e826782801e3ee9fd8">assetType</a> (self, df)</td></tr>
 <tr class="separator:aebe3afb701d686e826782801e3ee9fd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58dd61a6e519b993ebf644e0c4f00a15" id="r_a58dd61a6e519b993ebf644e0c4f00a15"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a58dd61a6e519b993ebf644e0c4f00a15">date</a> (self, file_name)</td></tr>
-<tr class="separator:a58dd61a6e519b993ebf644e0c4f00a15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41d2bc5dda02eb1326a088e11d7e9ea9" id="r_a41d2bc5dda02eb1326a088e11d7e9ea9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a41d2bc5dda02eb1326a088e11d7e9ea9">date</a> (self, filename)</td></tr>
+<tr class="separator:a41d2bc5dda02eb1326a088e11d7e9ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -130,8 +130,13 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_fuga_template_8py_source.html#l00011">11</a> of file <a class="el" href="_fuga_template_8py_source.html">FugaTemplate.py</a>.</p>
+<pre class="fragment">Replace the track artist by product artist when the first one is empty value
+Args:
+    asset_product (str): product artist shown in the original file
+    asset_artist (str): track artist shown in the original file
+Returns: asset_artist (str)
+</pre> 
+<p class="definition">Definition at line <a class="el" href="_fuga_template_8py_source.html#l00017">17</a> of file <a class="el" href="_fuga_template_8py_source.html">FugaTemplate.py</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -165,8 +170,12 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_fuga_template_8py_source.html#l00041">41</a> of file <a class="el" href="_fuga_template_8py_source.html">FugaTemplate.py</a>.</p>
+<pre class="fragment">Applies type functions to current dataframe
+Args:
+    df (pandas dataframe): dataframe where changes will applied
+Returns: df (pandas dataframe)
+</pre> 
+<p class="definition">Definition at line <a class="el" href="_fuga_template_8py_source.html#l00062">62</a> of file <a class="el" href="_fuga_template_8py_source.html">FugaTemplate.py</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -175,8 +184,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a58dd61a6e519b993ebf644e0c4f00a15" name="a58dd61a6e519b993ebf644e0c4f00a15"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58dd61a6e519b993ebf644e0c4f00a15">&#9670;&#160;</a></span>date()</h2>
+<a id="a41d2bc5dda02eb1326a088e11d7e9ea9" name="a41d2bc5dda02eb1326a088e11d7e9ea9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41d2bc5dda02eb1326a088e11d7e9ea9">&#9670;&#160;</a></span>date()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -191,7 +200,7 @@ Here is the call graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>file_name</em>&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -200,8 +209,13 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_fuga_template_8py_source.html#l00046">46</a> of file <a class="el" href="_fuga_template_8py_source.html">FugaTemplate.py</a>.</p>
+<pre class="fragment">Sets date column given the filename (it contains the date)
+   For example December2021StatementRun_KepachMusictasCAMJazz-royalty_product_and_asset.csv
+Args:
+    filename (str): current filename
+Returns: date_str (str)
+</pre> 
+<p class="definition">Definition at line <a class="el" href="_fuga_template_8py_source.html#l00072">72</a> of file <a class="el" href="_fuga_template_8py_source.html">FugaTemplate.py</a>.</p>
 
 </div>
 </div>
@@ -248,12 +262,16 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">args:
-filename: -str- s3 full path of filename
-features: -dict- which contains delimiter, skip_rows and encoding
-session: -class- s3 connexion 
+<pre class="fragment">Loads file and do some fixes to fit it to our standard and make it able to be processed
+
+Args:
+    filename (str): s3 full path of filename
+    features (dict): contains delimiter, skip_rows and encoding required for current file
+    session (boto3 obj): AWS client connection
+    rel_col (str): column name used to identify upc/release_id
+Returns: df (pandas dataframe)
 </pre> 
-<p class="definition">Definition at line <a class="el" href="_fuga_template_8py_source.html#l00016">16</a> of file <a class="el" href="_fuga_template_8py_source.html">FugaTemplate.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fuga_template_8py_source.html#l00028">28</a> of file <a class="el" href="_fuga_template_8py_source.html">FugaTemplate.py</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -293,7 +311,12 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<pre class="fragment">Defines the total quantity for tracks and albums 
+Args:
+    product_quantity (int): quantity of products shown in the original file
+    asset_quantity (int): quantity of tracks shown in the original file
+Returns: aux (int)
+</pre> 
 <p class="definition">Definition at line <a class="el" href="_fuga_template_8py_source.html#l00006">6</a> of file <a class="el" href="_fuga_template_8py_source.html">FugaTemplate.py</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -334,8 +357,13 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_fuga_template_8py_source.html#l00034">34</a> of file <a class="el" href="_fuga_template_8py_source.html">FugaTemplate.py</a>.</p>
+<pre class="fragment">Maps the sale type with the name specified by the client according their requirements
+Args:
+    asset_product (str): sale type (for products) shown in the original file
+    sale_type (str):  sale type (for tracks) shown in the original file
+Returns: (sale type in a single one letter)
+</pre> 
+<p class="definition">Definition at line <a class="el" href="_fuga_template_8py_source.html#l00049">49</a> of file <a class="el" href="_fuga_template_8py_source.html">FugaTemplate.py</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

@@ -23,9 +23,15 @@ Definition at line \mbox{\hyperlink{_facebook_template_8py_source_l00005}{5}} of
 \doxysubsubsection{\texorpdfstring{date()}{date()}}
 {\footnotesize\ttfamily importer.\+templates.\+Facebook\+Template.\+Facebook\+Template.\+date (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Sets date column given the filename (it contains the date)
+   For example GYROstream_Pty_Ltd_Facebook-AL-Production_Usage-Report_202203.csv
+Args:
+    filename (str): current filename
+Returns: date_str (str)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_facebook_template_8py_source_l00023}{23}} of file \mbox{\hyperlink{_facebook_template_8py_source}{Facebook\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_facebook_template_8py_source_l00026}{26}} of file \mbox{\hyperlink{_facebook_template_8py_source}{Facebook\+Template.\+py}}.
 
 \Hypertarget{classimporter_1_1templates_1_1_facebook_template_1_1_facebook_template_af9ee31ae6042dcaa3f4e27a68cdfd002}\label{classimporter_1_1templates_1_1_facebook_template_1_1_facebook_template_af9ee31ae6042dcaa3f4e27a68cdfd002} 
 \index{importer.templates.FacebookTemplate.FacebookTemplate@{importer.templates.FacebookTemplate.FacebookTemplate}!preprocessing@{preprocessing}}
@@ -33,10 +39,14 @@ Definition at line \mbox{\hyperlink{_facebook_template_8py_source_l00023}{23}} o
 \doxysubsubsection{\texorpdfstring{preprocessing()}{preprocessing()}}
 {\footnotesize\ttfamily importer.\+templates.\+Facebook\+Template.\+Facebook\+Template.\+preprocessing (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename,  }\item[{}]{features,  }\item[{}]{session,  }\item[{}]{rel\+\_\+col }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}args:
-filename: -str- s3 full path of filename
-features: -dict- which contains delimiter, skip_rows and encoding
-session: -class- s3 connexion 
+\begin{DoxyVerb}Loads file and do some fixes to fit it to our standard and make it able to be processed
+
+Args:
+    filename (str): s3 full path of filename
+    features (dict): contains delimiter, skip_rows and encoding required for current file
+    session (boto3 obj): AWS client connection
+    rel_col (str): column name used to identify upc/release_id
+Returns: df (pandas dataframe)
 \end{DoxyVerb}
  
 

@@ -9,7 +9,7 @@
 \item 
 \mbox{\hyperlink{classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template_a00f9f16319072105bd2e2d86181fe573}{fix\+\_\+date}} (self, start\+\_\+date)
 \item 
-\mbox{\hyperlink{classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template_aa6d6874f9a85d061c796e287ae02e786}{date}} (self, filename, df)
+\mbox{\hyperlink{classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template_a0a6fd94436fe0703427461325b979eff}{date}} (self, df)
 \end{DoxyCompactItemize}
 
 
@@ -21,15 +21,20 @@ Definition at line \mbox{\hyperlink{_tencent_template_8py_source_l00004}{4}} of 
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template_aa6d6874f9a85d061c796e287ae02e786}\label{classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template_aa6d6874f9a85d061c796e287ae02e786} 
+\Hypertarget{classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template_a0a6fd94436fe0703427461325b979eff}\label{classimporter_1_1templates_1_1_tencent_template_1_1_tencent_template_a0a6fd94436fe0703427461325b979eff} 
 \index{importer.templates.TencentTemplate.TencentTemplate@{importer.templates.TencentTemplate.TencentTemplate}!date@{date}}
 \index{date@{date}!importer.templates.TencentTemplate.TencentTemplate@{importer.templates.TencentTemplate.TencentTemplate}}
 \doxysubsubsection{\texorpdfstring{date()}{date()}}
-{\footnotesize\ttfamily importer.\+templates.\+Tencent\+Template.\+Tencent\+Template.\+date (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename,  }\item[{}]{df }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily importer.\+templates.\+Tencent\+Template.\+Tencent\+Template.\+date (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{df }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Applies type functions to current dataframe
+Args:
+    df (pandas dataframe): dataframe where changes will applied
+Returns: df[iso_date] (pandas series)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_tencent_template_8py_source_l00030}{30}} of file \mbox{\hyperlink{_tencent_template_8py_source}{Tencent\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_tencent_template_8py_source_l00043}{43}} of file \mbox{\hyperlink{_tencent_template_8py_source}{Tencent\+Template.\+py}}.
 
 Here is the call graph for this function\+:
 % FIG 0
@@ -39,9 +44,14 @@ Here is the call graph for this function\+:
 \doxysubsubsection{\texorpdfstring{fix\_date()}{fix\_date()}}
 {\footnotesize\ttfamily importer.\+templates.\+Tencent\+Template.\+Tencent\+Template.\+fix\+\_\+date (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{start\+\_\+date }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Fits the date to YYYY-MM-DD format
+Args:
+    start_date (str): sale date shown in the original file
+Returns: start_date_fix (str)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_tencent_template_8py_source_l00024}{24}} of file \mbox{\hyperlink{_tencent_template_8py_source}{Tencent\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_tencent_template_8py_source_l00032}{32}} of file \mbox{\hyperlink{_tencent_template_8py_source}{Tencent\+Template.\+py}}.
 
 Here is the caller graph for this function\+:
 % FIG 1
@@ -51,9 +61,14 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{fix\_upc()}{fix\_upc()}}
 {\footnotesize\ttfamily importer.\+templates.\+Tencent\+Template.\+Tencent\+Template.\+fix\+\_\+upc (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{upc }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Deletes 'UPC-' from each upc in the original file
+Args:
+    upc (str): upc shown in the original file
+Returns: upc (str)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_tencent_template_8py_source_l00020}{20}} of file \mbox{\hyperlink{_tencent_template_8py_source}{Tencent\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_tencent_template_8py_source_l00023}{23}} of file \mbox{\hyperlink{_tencent_template_8py_source}{Tencent\+Template.\+py}}.
 
 Here is the caller graph for this function\+:
 % FIG 2
@@ -63,10 +78,14 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{preprocessing()}{preprocessing()}}
 {\footnotesize\ttfamily importer.\+templates.\+Tencent\+Template.\+Tencent\+Template.\+preprocessing (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename,  }\item[{}]{features,  }\item[{}]{session,  }\item[{}]{rel\+\_\+col }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}args:
-filename: -str- s3 full path of filename
-features: -dict- which contains delimiter, skip_rows and encoding
-session: -class- s3 connexion 
+\begin{DoxyVerb}Loads file and do some fixes to fit it to our standard and make it able to be processed
+
+Args:
+    filename (str): s3 full path of filename
+    features (dict): contains delimiter, skip_rows and encoding required for current file
+    session (boto3 obj): AWS client connection
+    rel_col (str): column name used to identify upc/release_id
+Returns: df (pandas dataframe)
 \end{DoxyVerb}
  
 

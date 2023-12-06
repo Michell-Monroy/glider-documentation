@@ -23,11 +23,17 @@
 \DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
 \DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00020}00020\ }
 \DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00021}\mbox{\hyperlink{classimporter_1_1templates_1_1_deezer_template_1_1_deezer_template_a336435fbefb616431977ec035f6491d1}{00021}}\ \ \ \ \ \textcolor{keyword}{def\ }date(self,\ filename):}
-\DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ "{}Deezer\_GYROstreamMERLIN\_20220201\_20220228.txt"{}}}
-\DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ date\ =\ re.findall(\textcolor{stringliteral}{r'\_\(\backslash\)d\{8\}\_'},\ filename)[0]}
-\DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00024}00024\ \ \ \ \ \ \ \ \ date\ =\ date.replace(\textcolor{stringliteral}{"{}\_"{}},\ \textcolor{stringliteral}{"{}"{}})}
-\DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00025}00025\ \ \ \ \ \ \ \ \ date\_str\ =\ date[:4]+\textcolor{stringliteral}{"{}-\/"{}}+date[4:6]+\textcolor{stringliteral}{"{}-\/"{}}+date[6:]}
-\DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df["{}date\_from\_file"{}]\ =\ date\_str}}
-\DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ date\_str}
+\DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Sets\ date\ column\ given\ the\ filename\ (it\ contains\ the\ date)}}
+\DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00023}00023\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ For\ example\ Deezer\_GYROstreamMERLIN\_20220201\_20220228.txt}}
+\DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00024}00024\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00025}00025\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ filename\ (str):\ current\ filename}}
+\DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00026}00026\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ date\_str\ (str)}}
+\DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00027}00027\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ "{}Deezer\_GYROstreamMERLIN\_20220201\_20220228.txt"{}}}
+\DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ date\ =\ re.findall(\textcolor{stringliteral}{r'\_\(\backslash\)d\{8\}\_'},\ filename)[0]}
+\DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ date\ =\ date.replace(\textcolor{stringliteral}{"{}\_"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ date\_str\ =\ date[:4]+\textcolor{stringliteral}{"{}-\/"{}}+date[4:6]+\textcolor{stringliteral}{"{}-\/"{}}+date[6:]}
+\DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df["{}date\_from\_file"{}]\ =\ date\_str}}
+\DoxyCodeLine{\Hypertarget{_deezer_template_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ date\_str}
 
 \end{DoxyCode}

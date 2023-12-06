@@ -27,9 +27,14 @@ Definition at line \mbox{\hyperlink{_state51_template_8py_source_l00003}{3}} of 
 \doxysubsubsection{\texorpdfstring{assetType()}{assetType()}}
 {\footnotesize\ttfamily importer.\+templates.\+State51\+Template.\+State51\+Template.\+asset\+Type (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{df }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Applies type functions to current dataframe
+Args:
+    df (pandas dataframe): dataframe where changes will applied
+Returns: df (pandas dataframe)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_state51_template_8py_source_l00053}{53}} of file \mbox{\hyperlink{_state51_template_8py_source}{State51\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_state51_template_8py_source_l00058}{58}} of file \mbox{\hyperlink{_state51_template_8py_source}{State51\+Template.\+py}}.
 
 Here is the call graph for this function\+:
 % FIG 0
@@ -39,9 +44,15 @@ Here is the call graph for this function\+:
 \doxysubsubsection{\texorpdfstring{date()}{date()}}
 {\footnotesize\ttfamily importer.\+templates.\+State51\+Template.\+State51\+Template.\+date (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Sets date column given the filename (it contains the date)
+   For example 12822_detail_2021_12_14_982.csv
+Args:
+    filename (str): current filename
+Returns: date_str (str)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_state51_template_8py_source_l00059}{59}} of file \mbox{\hyperlink{_state51_template_8py_source}{State51\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_state51_template_8py_source_l00069}{69}} of file \mbox{\hyperlink{_state51_template_8py_source}{State51\+Template.\+py}}.
 
 \Hypertarget{classimporter_1_1templates_1_1_state51_template_1_1_state51_template_a448f0cd80553a061d5588ddaf319de9f}\label{classimporter_1_1templates_1_1_state51_template_1_1_state51_template_a448f0cd80553a061d5588ddaf319de9f} 
 \index{importer.templates.State51Template.State51Template@{importer.templates.State51Template.State51Template}!serviceFinder@{serviceFinder}}
@@ -61,7 +72,12 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{type()}{type()}}
 {\footnotesize\ttfamily importer.\+templates.\+State51\+Template.\+State51\+Template.\+type (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{service }\end{DoxyParamCaption})}
 
-
+\begin{DoxyVerb}Maps the sale type using the service, according to their requirements
+Args:
+    service (str): service shown in the original file
+Returns: (sale type in a single one letter)
+\end{DoxyVerb}
+ 
 
 Definition at line \mbox{\hyperlink{_state51_template_8py_source_l00048}{48}} of file \mbox{\hyperlink{_state51_template_8py_source}{State51\+Template.\+py}}.
 

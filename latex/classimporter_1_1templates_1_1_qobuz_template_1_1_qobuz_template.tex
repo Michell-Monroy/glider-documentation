@@ -25,9 +25,14 @@ Definition at line \mbox{\hyperlink{_qobuz_template_8py_source_l00005}{5}} of fi
 \doxysubsubsection{\texorpdfstring{assetType()}{assetType()}}
 {\footnotesize\ttfamily importer.\+templates.\+Qobuz\+Template.\+Qobuz\+Template.\+asset\+Type (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{df,  }\item[{}]{filename }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Applies type functions to current dataframe
+Args:
+    df (pandas dataframe): dataframe where changes will applied
+Returns: df (pandas dataframe)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_qobuz_template_8py_source_l00014}{14}} of file \mbox{\hyperlink{_qobuz_template_8py_source}{Qobuz\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_qobuz_template_8py_source_l00020}{20}} of file \mbox{\hyperlink{_qobuz_template_8py_source}{Qobuz\+Template.\+py}}.
 
 Here is the call graph for this function\+:
 % FIG 0
@@ -37,9 +42,15 @@ Here is the call graph for this function\+:
 \doxysubsubsection{\texorpdfstring{date()}{date()}}
 {\footnotesize\ttfamily importer.\+templates.\+Qobuz\+Template.\+Qobuz\+Template.\+date (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Sets date column given the filename (it contains the date)
+   For example qobuz-eu-gyrost-202205-streaming.tsv
+Args:
+    filename (str): current filename
+Returns: date_str (str)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_qobuz_template_8py_source_l00019}{19}} of file \mbox{\hyperlink{_qobuz_template_8py_source}{Qobuz\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_qobuz_template_8py_source_l00030}{30}} of file \mbox{\hyperlink{_qobuz_template_8py_source}{Qobuz\+Template.\+py}}.
 
 \Hypertarget{classimporter_1_1templates_1_1_qobuz_template_1_1_qobuz_template_a6cba05653031b58a1ddf925a796af323}\label{classimporter_1_1templates_1_1_qobuz_template_1_1_qobuz_template_a6cba05653031b58a1ddf925a796af323} 
 \index{importer.templates.QobuzTemplate.QobuzTemplate@{importer.templates.QobuzTemplate.QobuzTemplate}!type@{type}}
@@ -47,7 +58,13 @@ Definition at line \mbox{\hyperlink{_qobuz_template_8py_source_l00019}{19}} of f
 \doxysubsubsection{\texorpdfstring{type()}{type()}}
 {\footnotesize\ttfamily importer.\+templates.\+Qobuz\+Template.\+Qobuz\+Template.\+type (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{asset\+\_\+type,  }\item[{}]{filename }\end{DoxyParamCaption})}
 
-
+\begin{DoxyVerb}Maps the sale type with the name specified by the client according their requirements
+Args:
+    asset_type (str): sale type shown in the original file
+    filename (str):  current filename, it says if file contains streaming or downloads
+Returns: (sale type in a single one letter)
+\end{DoxyVerb}
+ 
 
 Definition at line \mbox{\hyperlink{_qobuz_template_8py_source_l00006}{6}} of file \mbox{\hyperlink{_qobuz_template_8py_source}{Qobuz\+Template.\+py}}.
 

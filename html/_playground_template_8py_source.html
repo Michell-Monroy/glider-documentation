@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>glider-full-doc: /Users/michellmonroy/Documents/dev-glider/glider/src/importer/templates/PlaygroundTemplate.py Source File</title>
+<title>Glider: /Users/michellmonroy/Documents/dev-glider/glider/src/importer/templates/PlaygroundTemplate.py Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">glider-full-doc
+   <div id="projectname">Glider
    </div>
   </td>
  </tr>
@@ -89,52 +89,70 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html">    5</a></span><span class="keyword">class </span><a class="code hl_class" href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html">PlaygroundTemplate</a>:</div>
 <div class="foldopen" id="foldopen00006" data-start="" data-end="">
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#a64ba119c4c179f543c5b12aa8c0445c6">    6</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#a64ba119c4c179f543c5b12aa8c0445c6">preprocessing</a>(self, filename, features, session, rel_col):</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="stringliteral">        args:</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="stringliteral">        filename: -str- s3 full path of filename</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="stringliteral">        features: -dict- which contains delimiter, skip_rows and encoding</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="stringliteral">        session: -class- s3 connexion </span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        delimiter = features[<span class="stringliteral">&quot;delimiter&quot;</span>]</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        skip_rows = features[<span class="stringliteral">&quot;skip_rows&quot;</span>]</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        encoding = features[<span class="stringliteral">&quot;encoding&quot;</span>]</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        df = wr.s3.read_csv(filename, sep=delimiter, skiprows=skip_rows, encoding=encoding, dtype={rel_col:str}, keep_default_na=<span class="keyword">False</span>, boto3_session=session)</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="comment"># df = read_csv(filename, sep=delimiter, skiprows=skip_rows, encoding=encoding, keep_default_na=False)#, engine=openpyxl)</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        TC = <a class="code hl_class" href="classimporter_1_1templates_1_1_territory_code_1_1_territory_code.html">TerritoryCode</a>()</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        TC.territory_code(df)</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordflow">return</span> df</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>        <span class="stringliteral">&quot;&quot;&quot;Loads file and do some fixes to fit it to our standard and make it able to be processed</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="stringliteral">            filename (str): s3 full path of filename</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="stringliteral">            features (dict): contains delimiter, skip_rows and encoding required for current file</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="stringliteral">            session (boto3 obj): AWS client connection</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="stringliteral">            rel_col (str): column name used to identify upc/release_id</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="stringliteral">        Returns: df (pandas dataframe)</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        delimiter = features[<span class="stringliteral">&quot;delimiter&quot;</span>]</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        skip_rows = features[<span class="stringliteral">&quot;skip_rows&quot;</span>]</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        encoding = features[<span class="stringliteral">&quot;encoding&quot;</span>]</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        df = wr.s3.read_csv(filename, sep=delimiter, skiprows=skip_rows, encoding=encoding, dtype={rel_col:str}, keep_default_na=<span class="keyword">False</span>, boto3_session=session)</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="comment"># df = read_csv(filename, sep=delimiter, skiprows=skip_rows, encoding=encoding, keep_default_na=False)#, engine=openpyxl)</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        TC = <a class="code hl_class" href="classimporter_1_1templates_1_1_territory_code_1_1_territory_code.html">TerritoryCode</a>()</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        TC.territory_code(df)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordflow">return</span> df</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 </div>
-<div class="foldopen" id="foldopen00022" data-start="" data-end="">
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#af831e84c1444cd1b022b882f8b93b1ba">   22</a></span>    <span class="keyword">def </span>date(self, filename):</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        date = re.findall(<span class="stringliteral">r&#39;\d{4}\+?-\d{2}&#39;</span>, filename)[0]</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        date = date+<span class="stringliteral">&quot;-01&quot;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="comment"># df[&quot;date_from_file&quot;] = date</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordflow">return</span> date</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="foldopen" id="foldopen00025" data-start="" data-end="">
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#af831e84c1444cd1b022b882f8b93b1ba">   25</a></span>    <span class="keyword">def </span>date(self, filename):</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="stringliteral">&quot;&quot;&quot;Sets date column given the filename (it contains the date)</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="stringliteral">           For example Fonal_2020-08.xlsx</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="stringliteral">            filename (str): current filename</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="stringliteral">        Returns: date (str)</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        date = re.findall(<span class="stringliteral">r&#39;\d{4}\+?-\d{2}&#39;</span>, filename)[0]</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        date = date+<span class="stringliteral">&quot;-01&quot;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="comment"># df[&quot;date_from_file&quot;] = date</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordflow">return</span> date</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
 </div>
-<div class="foldopen" id="foldopen00028" data-start="" data-end="">
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#ae5dc30549271a3e424aa1729e7f88b9c">   28</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#ae5dc30549271a3e424aa1729e7f88b9c">type</a>(self,  Channel, ISRC):</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordflow">if</span> Channel==<span class="stringliteral">&quot;Download&quot;</span> <span class="keywordflow">and</span> len(str(ISRC))==0:</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;A&quot;</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordflow">elif</span> Channel==<span class="stringliteral">&quot;Download&quot;</span> <span class="keywordflow">and</span> len(str(ISRC))==12:</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;T&quot;</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;S&quot;</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="foldopen" id="foldopen00037" data-start="" data-end="">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#ae5dc30549271a3e424aa1729e7f88b9c">   37</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#ae5dc30549271a3e424aa1729e7f88b9c">type</a>(self,  Channel, ISRC):</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="stringliteral">&quot;&quot;&quot;Maps the sale type with the name specified by the client according their requirements</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="stringliteral">            Channel (str): distribution medium shown in the original file</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="stringliteral">            ISRC (str):  unique code used exclusive for tracks shown in the original file</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="stringliteral">        Returns: (sale type in a single one letter)</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">if</span> Channel==<span class="stringliteral">&quot;Download&quot;</span> <span class="keywordflow">and</span> len(str(ISRC))==0:</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;A&quot;</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordflow">elif</span> Channel==<span class="stringliteral">&quot;Download&quot;</span> <span class="keywordflow">and</span> len(str(ISRC))==12:</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;T&quot;</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;S&quot;</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
 </div>
-<div class="foldopen" id="foldopen00035" data-start="" data-end="">
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#ab824af2e802c6f1c997e165d7eb0569f">   35</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#ab824af2e802c6f1c997e165d7eb0569f">assetType</a>(self, df):</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="comment"># Add a new column to insert type</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        df[<span class="stringliteral">&quot;gettypeplayground_dig&quot;</span>] = df.apply(<span class="keyword">lambda</span> Row: self.<a class="code hl_function" href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#ae5dc30549271a3e424aa1729e7f88b9c">type</a>(Row[<span class="stringliteral">&quot;channel&quot;</span>], Row[<span class="stringliteral">&quot;isrc&quot;</span>]), axis=1)</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordflow">return</span> df</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment"># DEBO DE CAMBIAR EL TERRITORIO EN EL PREPROCESAMIENTO</span></div>
+<div class="foldopen" id="foldopen00050" data-start="" data-end="">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#ab824af2e802c6f1c997e165d7eb0569f">   50</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#ab824af2e802c6f1c997e165d7eb0569f">assetType</a>(self, df):</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="stringliteral">&quot;&quot;&quot;Applies type functions to current dataframe</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="stringliteral">            df (pandas dataframe): dataframe where changes will applied</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="stringliteral">        Returns: df (pandas dataframe)</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="comment"># Add a new column to insert type</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        df[<span class="stringliteral">&quot;gettypeplayground_dig&quot;</span>] = df.apply(<span class="keyword">lambda</span> Row: self.<a class="code hl_function" href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#ae5dc30549271a3e424aa1729e7f88b9c">type</a>(Row[<span class="stringliteral">&quot;channel&quot;</span>], Row[<span class="stringliteral">&quot;isrc&quot;</span>]), axis=1)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">return</span> df</div>
 </div>
 </div>
 <div class="ttc" id="aclassimporter_1_1templates_1_1_playground_template_1_1_playground_template_html"><div class="ttname"><a href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html">importer.templates.PlaygroundTemplate.PlaygroundTemplate</a></div><div class="ttdef"><b>Definition</b> <a href="_playground_template_8py_source.html#l00005">PlaygroundTemplate.py:5</a></div></div>
 <div class="ttc" id="aclassimporter_1_1templates_1_1_playground_template_1_1_playground_template_html_a64ba119c4c179f543c5b12aa8c0445c6"><div class="ttname"><a href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#a64ba119c4c179f543c5b12aa8c0445c6">importer.templates.PlaygroundTemplate.PlaygroundTemplate.preprocessing</a></div><div class="ttdeci">preprocessing(self, filename, features, session, rel_col)</div><div class="ttdef"><b>Definition</b> <a href="_playground_template_8py_source.html#l00006">PlaygroundTemplate.py:6</a></div></div>
-<div class="ttc" id="aclassimporter_1_1templates_1_1_playground_template_1_1_playground_template_html_ab824af2e802c6f1c997e165d7eb0569f"><div class="ttname"><a href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#ab824af2e802c6f1c997e165d7eb0569f">importer.templates.PlaygroundTemplate.PlaygroundTemplate.assetType</a></div><div class="ttdeci">assetType(self, df)</div><div class="ttdef"><b>Definition</b> <a href="_playground_template_8py_source.html#l00035">PlaygroundTemplate.py:35</a></div></div>
-<div class="ttc" id="aclassimporter_1_1templates_1_1_playground_template_1_1_playground_template_html_ae5dc30549271a3e424aa1729e7f88b9c"><div class="ttname"><a href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#ae5dc30549271a3e424aa1729e7f88b9c">importer.templates.PlaygroundTemplate.PlaygroundTemplate.type</a></div><div class="ttdeci">type(self, Channel, ISRC)</div><div class="ttdef"><b>Definition</b> <a href="_playground_template_8py_source.html#l00028">PlaygroundTemplate.py:28</a></div></div>
+<div class="ttc" id="aclassimporter_1_1templates_1_1_playground_template_1_1_playground_template_html_ab824af2e802c6f1c997e165d7eb0569f"><div class="ttname"><a href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#ab824af2e802c6f1c997e165d7eb0569f">importer.templates.PlaygroundTemplate.PlaygroundTemplate.assetType</a></div><div class="ttdeci">assetType(self, df)</div><div class="ttdef"><b>Definition</b> <a href="_playground_template_8py_source.html#l00050">PlaygroundTemplate.py:50</a></div></div>
+<div class="ttc" id="aclassimporter_1_1templates_1_1_playground_template_1_1_playground_template_html_ae5dc30549271a3e424aa1729e7f88b9c"><div class="ttname"><a href="classimporter_1_1templates_1_1_playground_template_1_1_playground_template.html#ae5dc30549271a3e424aa1729e7f88b9c">importer.templates.PlaygroundTemplate.PlaygroundTemplate.type</a></div><div class="ttdeci">type(self, Channel, ISRC)</div><div class="ttdef"><b>Definition</b> <a href="_playground_template_8py_source.html#l00037">PlaygroundTemplate.py:37</a></div></div>
 <div class="ttc" id="aclassimporter_1_1templates_1_1_territory_code_1_1_territory_code_html"><div class="ttname"><a href="classimporter_1_1templates_1_1_territory_code_1_1_territory_code.html">importer.templates.TerritoryCode.TerritoryCode</a></div><div class="ttdef"><b>Definition</b> <a href="templates_2_territory_code_8py_source.html#l00044">TerritoryCode.py:44</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

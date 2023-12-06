@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>glider-full-doc: importer.templates.SpotifyTemplate.SpotifyTemplate Class Reference</title>
+<title>Glider: importer.templates.SpotifyTemplate.SpotifyTemplate Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">glider-full-doc
+   <div id="projectname">Glider
    </div>
   </td>
  </tr>
@@ -120,8 +120,13 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_spotify_template_8py_source.html#l00022">22</a> of file <a class="el" href="_spotify_template_8py_source.html">SpotifyTemplate.py</a>.</p>
+<pre class="fragment">Sets date column given the filename (it contains the date)
+   For example SPOTIFY_gyrostream-track-for-breakage-202307.txt
+Args:
+    filename (str): current filename
+Returns: date_str (str)
+</pre> 
+<p class="definition">Definition at line <a class="el" href="_spotify_template_8py_source.html#l00025">25</a> of file <a class="el" href="_spotify_template_8py_source.html">SpotifyTemplate.py</a>.</p>
 
 </div>
 </div>
@@ -150,8 +155,12 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_spotify_template_8py_source.html#l00032">32</a> of file <a class="el" href="_spotify_template_8py_source.html">SpotifyTemplate.py</a>.</p>
+<pre class="fragment">Sets date column given the filename (it contains the date)
+Args:
+    filename (str): current filename
+Returns: date (str)
+</pre> 
+<p class="definition">Definition at line <a class="el" href="_spotify_template_8py_source.html#l00040">40</a> of file <a class="el" href="_spotify_template_8py_source.html">SpotifyTemplate.py</a>.</p>
 
 </div>
 </div>
@@ -198,10 +207,14 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">args:
-filename: -str- s3 full path of filename
-features: -dict- which contains delimiter, skip_rows and encoding
-session: -class- s3 connexion 
+<pre class="fragment">Loads file and do some fixes to fit it to our standard and make it able to be processed
+
+Args:
+    filename (str): s3 full path of filename
+    features (dict): contains delimiter, skip_rows and encoding required for current file
+    session (boto3 obj): AWS client connection
+    rel_col (str): column name used to identify upc/release_id
+Returns: df (pandas dataframe)
 </pre> 
 <p class="definition">Definition at line <a class="el" href="_spotify_template_8py_source.html#l00005">5</a> of file <a class="el" href="_spotify_template_8py_source.html">SpotifyTemplate.py</a>.</p>
 
@@ -238,8 +251,13 @@ session: -class- s3 connexion
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_spotify_template_8py_source.html#l00039">39</a> of file <a class="el" href="_spotify_template_8py_source.html">SpotifyTemplate.py</a>.</p>
+<pre class="fragment">Sets territory column given the filename (it contains the date)
+Args:
+    df (pandas dataframe): dataframe where changes will applied
+    filename (str): current filename
+Returns: df (pandas dataframe)
+</pre> 
+<p class="definition">Definition at line <a class="el" href="_spotify_template_8py_source.html#l00052">52</a> of file <a class="el" href="_spotify_template_8py_source.html">SpotifyTemplate.py</a>.</p>
 
 </div>
 </div>

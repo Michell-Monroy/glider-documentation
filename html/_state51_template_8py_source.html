@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>glider-full-doc: /Users/michellmonroy/Documents/dev-glider/glider/src/importer/templates/State51Template.py Source File</title>
+<title>Glider: /Users/michellmonroy/Documents/dev-glider/glider/src/importer/templates/State51Template.py Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">glider-full-doc
+   <div id="projectname">Glider
    </div>
   </td>
  </tr>
@@ -133,32 +133,48 @@ $(document).ready(function() { init_codefold(0); });
 </div>
 <div class="foldopen" id="foldopen00048" data-start="" data-end="">
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a3dbd44d2de929976cb70389c5424cbd3">   48</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a3dbd44d2de929976cb70389c5424cbd3">type</a>(self, service):</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">if</span> <span class="stringliteral">&quot;Amazon&quot;</span> <span class="keywordflow">in</span> service <span class="keywordflow">or</span> <span class="stringliteral">&quot;Google Play&quot;</span> <span class="keywordflow">in</span> service:</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;T&quot;</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;S&quot;</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="stringliteral">&quot;&quot;&quot;Maps the sale type using the service, according to their requirements</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="stringliteral">            service (str): service shown in the original file</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="stringliteral">        Returns: (sale type in a single one letter)</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">if</span> <span class="stringliteral">&quot;Amazon&quot;</span> <span class="keywordflow">in</span> service <span class="keywordflow">or</span> <span class="stringliteral">&quot;Google Play&quot;</span> <span class="keywordflow">in</span> service:</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;T&quot;</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;S&quot;</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    </div>
 </div>
-<div class="foldopen" id="foldopen00053" data-start="" data-end="">
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a0e3f52256c1e3e2c981794ac44b6ba2f">   53</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a0e3f52256c1e3e2c981794ac44b6ba2f">assetType</a>(self, df):</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        df[<span class="stringliteral">&#39;getservice&#39;</span>] = df.apply(<span class="keyword">lambda</span> Row: self.<a class="code hl_function" href="classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a448f0cd80553a061d5588ddaf319de9f">serviceFinder</a>(Row[<span class="stringliteral">&#39;music service&#39;</span>]), axis=1)</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        df[<span class="stringliteral">&quot;gettypestate51&quot;</span>] = df.apply(<span class="keyword">lambda</span> Row: self.<a class="code hl_function" href="classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a3dbd44d2de929976cb70389c5424cbd3">type</a>(Row[<span class="stringliteral">&#39;getservice&#39;</span>]), axis=1)</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        print(<span class="stringliteral">&quot;type&quot;</span>)</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">return</span> df</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="foldopen" id="foldopen00058" data-start="" data-end="">
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a0e3f52256c1e3e2c981794ac44b6ba2f">   58</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a0e3f52256c1e3e2c981794ac44b6ba2f">assetType</a>(self, df):</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="stringliteral">&quot;&quot;&quot;Applies type functions to current dataframe</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="stringliteral">            df (pandas dataframe): dataframe where changes will applied</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="stringliteral">        Returns: df (pandas dataframe)</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        df[<span class="stringliteral">&#39;getservice&#39;</span>] = df.apply(<span class="keyword">lambda</span> Row: self.<a class="code hl_function" href="classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a448f0cd80553a061d5588ddaf319de9f">serviceFinder</a>(Row[<span class="stringliteral">&#39;music service&#39;</span>]), axis=1)</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        df[<span class="stringliteral">&quot;gettypestate51&quot;</span>] = df.apply(<span class="keyword">lambda</span> Row: self.<a class="code hl_function" href="classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a3dbd44d2de929976cb70389c5424cbd3">type</a>(Row[<span class="stringliteral">&#39;getservice&#39;</span>]), axis=1)</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        print(<span class="stringliteral">&quot;type&quot;</span>)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">return</span> df</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
 </div>
-<div class="foldopen" id="foldopen00059" data-start="" data-end="">
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a837f61cd7adc922b8147cd380f3a455c">   59</a></span>    <span class="keyword">def </span>date(self, filename):</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="comment"># &quot;12822_detail_2021_12_14_982.csv&quot;</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        year = re.findall(<span class="stringliteral">r&#39;_\d{4}_&#39;</span>, filename)[0]</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        month = re.findall(<span class="stringliteral">r&#39;_\d{2}_&#39;</span>, filename)[0]</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        year = year.replace(<span class="stringliteral">&quot;_&quot;</span>, <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        month = month.replace(<span class="stringliteral">&quot;_&quot;</span>, <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        date_str = year+month</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordflow">return</span> date_str</div>
+<div class="foldopen" id="foldopen00069" data-start="" data-end="">
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a837f61cd7adc922b8147cd380f3a455c">   69</a></span>    <span class="keyword">def </span>date(self, filename):</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="stringliteral">&quot;&quot;&quot;Sets date column given the filename (it contains the date)</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="stringliteral">           For example 12822_detail_2021_12_14_982.csv</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="stringliteral">            filename (str): current filename</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="stringliteral">        Returns: date_str (str)</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="comment"># &quot;12822_detail_2021_12_14_982.csv&quot;</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        year = re.findall(<span class="stringliteral">r&#39;_\d{4}_&#39;</span>, filename)[0]</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        month = re.findall(<span class="stringliteral">r&#39;_\d{2}_&#39;</span>, filename)[0]</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        year = year.replace(<span class="stringliteral">&quot;_&quot;</span>, <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        month = month.replace(<span class="stringliteral">&quot;_&quot;</span>, <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        date_str = year+month</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">return</span> date_str</div>
 </div>
 </div>
 <div class="ttc" id="aclassimporter_1_1templates_1_1_state51_template_1_1_state51_template_html"><div class="ttname"><a href="classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html">importer.templates.State51Template.State51Template</a></div><div class="ttdef"><b>Definition</b> <a href="_state51_template_8py_source.html#l00003">State51Template.py:3</a></div></div>
-<div class="ttc" id="aclassimporter_1_1templates_1_1_state51_template_1_1_state51_template_html_a0e3f52256c1e3e2c981794ac44b6ba2f"><div class="ttname"><a href="classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a0e3f52256c1e3e2c981794ac44b6ba2f">importer.templates.State51Template.State51Template.assetType</a></div><div class="ttdeci">assetType(self, df)</div><div class="ttdef"><b>Definition</b> <a href="_state51_template_8py_source.html#l00053">State51Template.py:53</a></div></div>
+<div class="ttc" id="aclassimporter_1_1templates_1_1_state51_template_1_1_state51_template_html_a0e3f52256c1e3e2c981794ac44b6ba2f"><div class="ttname"><a href="classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a0e3f52256c1e3e2c981794ac44b6ba2f">importer.templates.State51Template.State51Template.assetType</a></div><div class="ttdeci">assetType(self, df)</div><div class="ttdef"><b>Definition</b> <a href="_state51_template_8py_source.html#l00058">State51Template.py:58</a></div></div>
 <div class="ttc" id="aclassimporter_1_1templates_1_1_state51_template_1_1_state51_template_html_a3dbd44d2de929976cb70389c5424cbd3"><div class="ttname"><a href="classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a3dbd44d2de929976cb70389c5424cbd3">importer.templates.State51Template.State51Template.type</a></div><div class="ttdeci">type(self, service)</div><div class="ttdef"><b>Definition</b> <a href="_state51_template_8py_source.html#l00048">State51Template.py:48</a></div></div>
 <div class="ttc" id="aclassimporter_1_1templates_1_1_state51_template_1_1_state51_template_html_a448f0cd80553a061d5588ddaf319de9f"><div class="ttname"><a href="classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a448f0cd80553a061d5588ddaf319de9f">importer.templates.State51Template.State51Template.serviceFinder</a></div><div class="ttdeci">serviceFinder(self, service)</div><div class="ttdef"><b>Definition</b> <a href="_state51_template_8py_source.html#l00004">State51Template.py:4</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

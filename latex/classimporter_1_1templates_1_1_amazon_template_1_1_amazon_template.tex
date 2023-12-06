@@ -25,9 +25,16 @@ Definition at line \mbox{\hyperlink{_amazon_template_8py_source_l00004}{4}} of f
 \doxysubsubsection{\texorpdfstring{assetCurrency()}{assetCurrency()}}
 {\footnotesize\ttfamily importer.\+templates.\+Amazon\+Template.\+Amazon\+Template.\+asset\+Currency (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{df,  }\item[{}]{filename }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Sets currency column given the filename (it contains the currency)
+   For example ZQGRO_Monthly_ADS_Usage_202112_EU.txt
+Args:
+    filename (str): current filename
+    df (pandas dataframe): dataframe where changes will applied
+Returns: df (pandas dataframe)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_amazon_template_8py_source_l00021}{21}} of file \mbox{\hyperlink{_amazon_template_8py_source}{Amazon\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_amazon_template_8py_source_l00024}{24}} of file \mbox{\hyperlink{_amazon_template_8py_source}{Amazon\+Template.\+py}}.
 
 \Hypertarget{classimporter_1_1templates_1_1_amazon_template_1_1_amazon_template_a7563489ec75077a036311d40c834e270}\label{classimporter_1_1templates_1_1_amazon_template_1_1_amazon_template_a7563489ec75077a036311d40c834e270} 
 \index{importer.templates.AmazonTemplate.AmazonTemplate@{importer.templates.AmazonTemplate.AmazonTemplate}!date@{date}}
@@ -35,9 +42,15 @@ Definition at line \mbox{\hyperlink{_amazon_template_8py_source_l00021}{21}} of 
 \doxysubsubsection{\texorpdfstring{date()}{date()}}
 {\footnotesize\ttfamily importer.\+templates.\+Amazon\+Template.\+Amazon\+Template.\+date (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Sets date column given the filename (it contains the date)
+   For example ZQGRO_Monthly_ADS_Usage_202112_EU.txt
+Args:
+    filename (str): current filename
+Returns: date_str (str)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_amazon_template_8py_source_l00029}{29}} of file \mbox{\hyperlink{_amazon_template_8py_source}{Amazon\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_amazon_template_8py_source_l00039}{39}} of file \mbox{\hyperlink{_amazon_template_8py_source}{Amazon\+Template.\+py}}.
 
 \Hypertarget{classimporter_1_1templates_1_1_amazon_template_1_1_amazon_template_a14f1b9e389f3363ed53414dda4dd9778}\label{classimporter_1_1templates_1_1_amazon_template_1_1_amazon_template_a14f1b9e389f3363ed53414dda4dd9778} 
 \index{importer.templates.AmazonTemplate.AmazonTemplate@{importer.templates.AmazonTemplate.AmazonTemplate}!preprocessing@{preprocessing}}
@@ -45,10 +58,14 @@ Definition at line \mbox{\hyperlink{_amazon_template_8py_source_l00029}{29}} of 
 \doxysubsubsection{\texorpdfstring{preprocessing()}{preprocessing()}}
 {\footnotesize\ttfamily importer.\+templates.\+Amazon\+Template.\+Amazon\+Template.\+preprocessing (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename,  }\item[{}]{features,  }\item[{}]{session,  }\item[{}]{rel\+\_\+col }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}args:
-filename: -str- s3 full path of filename
-features: -dict- which contains delimiter, skip_rows and encoding
-session: -class- s3 connexion 
+\begin{DoxyVerb}Loads file and do some fixes to fit it to our standard and make it able to be processed
+
+Args:
+    filename (str): s3 full path of filename
+    features (dict): contains delimiter, skip_rows and encoding required for current file
+    session (boto3 obj): AWS client connection
+    rel_col (str): column name used to identify upc/release_id
+Returns: df (pandas dataframe)
 \end{DoxyVerb}
  
 

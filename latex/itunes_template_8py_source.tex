@@ -7,55 +7,78 @@
 \DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00003}00003\ }
 \DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00004}\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template}{00004}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template}{itunesTemplate}}:\ }
 \DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00005}\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_a857597ab93ec7e5a9e6730eae557ede2}{00005}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_a857597ab93ec7e5a9e6730eae557ede2}{preprocessing}}(self,\ filename,\ features,\ session,\ rel\_col):}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00006}00006\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00007}00007\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ args:}}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00008}00008\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ filename:\ -\/str-\/\ s3\ full\ path\ of\ filename}}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00009}00009\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ features:\ -\/dict-\/\ which\ contains\ delimiter,\ skip\_rows\ and\ encoding}}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00010}00010\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ session:\ -\/class-\/\ s3\ connexion\ }}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00011}00011\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00012}00012\ \ \ \ \ \ \ \ \ delimiter\ =\ features[\textcolor{stringliteral}{"{}delimiter"{}}]}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00013}00013\ \ \ \ \ \ \ \ \ skip\_rows\ =\ features[\textcolor{stringliteral}{"{}skip\_rows"{}}]}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00014}00014\ \ \ \ \ \ \ \ \ encoding\ =\ features[\textcolor{stringliteral}{"{}encoding"{}}]}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00015}00015\ \ \ \ \ \ \ \ \ df\ =\ wr.s3.read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding,\ dtype=\{rel\_col:str\},\ low\_memory=\textcolor{keyword}{False},\ boto3\_session=session)}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df\ =\ read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding,\ low\_memory=False)}}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00017}00017\ \ \ \ \ \ \ \ \ total\_rows\ =\ df[\textcolor{stringliteral}{"{}End\ Date"{}}][df[\textcolor{stringliteral}{"{}Start\ Date"{}}]==\textcolor{stringliteral}{"{}Total\_Rows"{}}]}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00018}00018\ \ \ \ \ \ \ \ \ total\_rows\ =\ int(total\_rows)}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00019}00019\ \ \ \ \ \ \ \ \ df.drop(range(total\_rows,\ df.shape[0],\ 1),\ axis=0,\ inplace=\textcolor{keyword}{True})}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00021}00021\ }
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00022}\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_aff2c3b440796ba56ec4c250714bf6211}{00022}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_aff2c3b440796ba56ec4c250714bf6211}{preprocessing\_music}}(self,\ filename,\ features,\ session,\ rel\_col):}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00024}00024\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ args:}}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00025}00025\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ filename:\ -\/str-\/\ s3\ full\ path\ of\ filename}}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00026}00026\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ features:\ -\/dict-\/\ which\ contains\ delimiter,\ skip\_rows\ and\ encoding}}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00027}00027\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ session:\ -\/class-\/\ s3\ connexion\ }}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00028}00028\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ delimiter\ =\ features[\textcolor{stringliteral}{"{}delimiter"{}}]}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ skip\_rows\ =\ features[\textcolor{stringliteral}{"{}skip\_rows"{}}]}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ encoding\ =\ features[\textcolor{stringliteral}{"{}encoding"{}}]}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00032}00032\ \ \ \ \ \ \ \ \ df\ =\ wr.s3.read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding,\ dtype=\{rel\_col:str\},\ low\_memory=\textcolor{keyword}{False},\ boto3\_session=session)}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df\ =\ read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ low\_memory=False)}}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ total\_rows\ =\ df[\textcolor{stringliteral}{"{}Apple\ Identifier"{}}][df[\textcolor{stringliteral}{"{}Storefront\ Name"{}}]==\textcolor{stringliteral}{"{}Row\ Count"{}}]}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00035}00035\ \ \ \ \ \ \ \ \ total\_rows\ =\ int(total\_rows)}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ df.drop(range(total\_rows,\ df.shape[0],\ 1),\ axis=0,\ inplace=\textcolor{keyword}{True})}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00038}00038\ }
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00039}\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_a49806a04a2dd3c1a83cd14a3c9811299}{00039}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_a49806a04a2dd3c1a83cd14a3c9811299}{type}}(self,\ upc):}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ str(upc)\ ==\ \textcolor{stringliteral}{"{}"{}}\ \textcolor{keywordflow}{or}\ str(upc)\ ==\ \textcolor{stringliteral}{"{}nan"{}}:}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}T"{}}}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}A"{}}}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00043}00043\ }
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00044}\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_aa6a02cc8c70eeeb2134e3472c3af9d6c}{00044}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_aa6a02cc8c70eeeb2134e3472c3af9d6c}{assetType}}(self,\ df):}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00045}00045\ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}gettypeitunes"{}}]\ =\ df.apply(\textcolor{keyword}{lambda}\ Row:\ self.\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_a49806a04a2dd3c1a83cd14a3c9811299}{type}}(Row[\textcolor{stringliteral}{'upc'}]),\ axis=1)}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00047}00047\ }
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00048}\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_a30dbbd675b6169cce187096946719938}{00048}}\ \ \ \ \ \textcolor{keyword}{def\ }date(self,\ filename):}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00049}00049\ \ \ \ \ \ \ \ \ date\ =\ re.findall(\textcolor{stringliteral}{r'\_\(\backslash\)d\{4\}\_'},\ filename)[0]}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00050}00050\ \ \ \ \ \ \ \ \ date\ =\ date.replace(\textcolor{stringliteral}{"{}\_"{}},\ \textcolor{stringliteral}{"{}"{}})}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00051}00051\ \ \ \ \ \ \ \ \ month\ =\ date[:2]\ }
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00052}00052\ \ \ \ \ \ \ \ \ year\ =\ \textcolor{stringliteral}{"{}20"{}}+date[2:]\ }
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ date\_str\ =\ year+month+\textcolor{stringliteral}{"{}01"{}}}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df["{}from\_file\_itune"{}]\ =\ date\_str}}
-\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ date\_str}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00006}00006\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Loads\ file\ and\ do\ some\ fixes\ to\ fit\ it\ to\ our\ standard\ and\ make\ it\ able\ to\ be\ processed}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00007}00007\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00008}00008\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00009}00009\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ filename\ (str):\ s3\ full\ path\ of\ filename}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00010}00010\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ features\ (dict):\ contains\ delimiter,\ skip\_rows\ and\ encoding\ required\ for\ current\ file}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00011}00011\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ session\ (boto3\ obj):\ AWS\ client\ connection}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00012}00012\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ rel\_col\ (str):\ column\ name\ used\ to\ identify\ upc/release\_id}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00013}00013\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ df\ (pandas\ dataframe)}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00014}00014\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00015}00015\ \ \ \ \ \ \ \ \ delimiter\ =\ features[\textcolor{stringliteral}{"{}delimiter"{}}]}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00016}00016\ \ \ \ \ \ \ \ \ skip\_rows\ =\ features[\textcolor{stringliteral}{"{}skip\_rows"{}}]}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00017}00017\ \ \ \ \ \ \ \ \ encoding\ =\ features[\textcolor{stringliteral}{"{}encoding"{}}]}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00018}00018\ \ \ \ \ \ \ \ \ df\ =\ wr.s3.read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding,\ dtype=\{rel\_col:str\},\ low\_memory=\textcolor{keyword}{False},\ boto3\_session=session)}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df\ =\ read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding,\ low\_memory=False)}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00020}00020\ \ \ \ \ \ \ \ \ total\_rows\ =\ df[\textcolor{stringliteral}{"{}End\ Date"{}}][df[\textcolor{stringliteral}{"{}Start\ Date"{}}]==\textcolor{stringliteral}{"{}Total\_Rows"{}}]}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00021}00021\ \ \ \ \ \ \ \ \ total\_rows\ =\ int(total\_rows)}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00022}00022\ \ \ \ \ \ \ \ \ df.drop(range(total\_rows,\ df.shape[0],\ 1),\ axis=0,\ inplace=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00025}\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_aff2c3b440796ba56ec4c250714bf6211}{00025}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_aff2c3b440796ba56ec4c250714bf6211}{preprocessing\_music}}(self,\ filename,\ features,\ session,\ rel\_col):}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Loads\ file\ and\ do\ some\ fixes\ to\ fit\ it\ to\ our\ standard\ and\ make\ it\ able\ to\ be\ processed.}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00027}00027\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ It's\ used\ for\ a\ specific\ itunes\ version}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00028}00028\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00029}00029\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00030}00030\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ filename\ (str):\ s3\ full\ path\ of\ filename}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00031}00031\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ features\ (dict):\ contains\ delimiter,\ skip\_rows\ and\ encoding\ required\ for\ current\ file}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00032}00032\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ session\ (boto3\ obj):\ AWS\ client\ connection}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00033}00033\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ rel\_col\ (str):\ column\ name\ used\ to\ identify\ upc/release\_id}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00034}00034\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ df\ (pandas\ dataframe)}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00035}00035\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ delimiter\ =\ features[\textcolor{stringliteral}{"{}delimiter"{}}]}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00037}00037\ \ \ \ \ \ \ \ \ skip\_rows\ =\ features[\textcolor{stringliteral}{"{}skip\_rows"{}}]}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ encoding\ =\ features[\textcolor{stringliteral}{"{}encoding"{}}]}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00039}00039\ \ \ \ \ \ \ \ \ df\ =\ wr.s3.read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ encoding=encoding,\ dtype=\{rel\_col:str\},\ low\_memory=\textcolor{keyword}{False},\ boto3\_session=session)}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df\ =\ read\_csv(filename,\ sep=delimiter,\ skiprows=skip\_rows,\ low\_memory=False)}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ total\_rows\ =\ df[\textcolor{stringliteral}{"{}Apple\ Identifier"{}}][df[\textcolor{stringliteral}{"{}Storefront\ Name"{}}]==\textcolor{stringliteral}{"{}Row\ Count"{}}]}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ total\_rows\ =\ int(total\_rows)}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00043}00043\ \ \ \ \ \ \ \ \ df.drop(range(total\_rows,\ df.shape[0],\ 1),\ axis=0,\ inplace=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00046}\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_a49806a04a2dd3c1a83cd14a3c9811299}{00046}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_a49806a04a2dd3c1a83cd14a3c9811299}{type}}(self,\ upc):}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Maps\ the\ sale\ type\ with\ the\ name\ specified\ by\ the\ client\ according\ their\ requirements}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00048}00048\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00049}00049\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ upc\ (str):\ sale\ type\ (for\ products)\ shown\ in\ the\ original\ file}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00050}00050\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ (sale\ type\ in\ a\ single\ one\ letter)}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00051}00051\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ str(upc)\ ==\ \textcolor{stringliteral}{"{}"{}}\ \textcolor{keywordflow}{or}\ str(upc)\ ==\ \textcolor{stringliteral}{"{}nan"{}}:}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}T"{}}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}A"{}}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00056}\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_aa6a02cc8c70eeeb2134e3472c3af9d6c}{00056}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_aa6a02cc8c70eeeb2134e3472c3af9d6c}{assetType}}(self,\ df):}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Applies\ type\ functions\ to\ current\ dataframe}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00058}00058\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00059}00059\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ df\ (pandas\ dataframe):\ dataframe\ where\ changes\ will\ applied}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00060}00060\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ df\ (pandas\ dataframe)}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00061}00061\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00062}00062\ \ \ \ \ \ \ \ \ df[\textcolor{stringliteral}{"{}gettypeitunes"{}}]\ =\ df.apply(\textcolor{keyword}{lambda}\ Row:\ self.\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_a49806a04a2dd3c1a83cd14a3c9811299}{type}}(Row[\textcolor{stringliteral}{'upc'}]),\ axis=1)}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ df}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00065}\mbox{\hyperlink{classimporter_1_1templates_1_1itunes_template_1_1itunes_template_a30dbbd675b6169cce187096946719938}{00065}}\ \ \ \ \ \textcolor{keyword}{def\ }date(self,\ filename):}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Sets\ date\ column\ given\ the\ filename\ (it\ contains\ the\ date)}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00067}00067\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ For\ example\ S1\_89680172\_0723\_ZZ.txt}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00068}00068\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00069}00069\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ filename\ (str):\ current\ filename}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00070}00070\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ date\_str\ (str)}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00071}00071\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00072}00072\ \ \ \ \ \ \ \ \ date\ =\ re.findall(\textcolor{stringliteral}{r'\_\(\backslash\)d\{4\}\_'},\ filename)[0]}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00073}00073\ \ \ \ \ \ \ \ \ date\ =\ date.replace(\textcolor{stringliteral}{"{}\_"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00074}00074\ \ \ \ \ \ \ \ \ month\ =\ date[:2]\ }
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00075}00075\ \ \ \ \ \ \ \ \ year\ =\ \textcolor{stringliteral}{"{}20"{}}+date[2:]\ }
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00076}00076\ \ \ \ \ \ \ \ \ date\_str\ =\ year+month+\textcolor{stringliteral}{"{}01"{}}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df["{}from\_file\_itune"{}]\ =\ date\_str}}
+\DoxyCodeLine{\Hypertarget{itunes_template_8py_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ date\_str}
 
 \end{DoxyCode}

@@ -27,9 +27,14 @@ Definition at line \mbox{\hyperlink{_playground_template_8py_source_l00005}{5}} 
 \doxysubsubsection{\texorpdfstring{assetType()}{assetType()}}
 {\footnotesize\ttfamily importer.\+templates.\+Playground\+Template.\+Playground\+Template.\+asset\+Type (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{df }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Applies type functions to current dataframe
+Args:
+    df (pandas dataframe): dataframe where changes will applied
+Returns: df (pandas dataframe)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_playground_template_8py_source_l00035}{35}} of file \mbox{\hyperlink{_playground_template_8py_source}{Playground\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_playground_template_8py_source_l00050}{50}} of file \mbox{\hyperlink{_playground_template_8py_source}{Playground\+Template.\+py}}.
 
 Here is the call graph for this function\+:
 % FIG 0
@@ -39,9 +44,15 @@ Here is the call graph for this function\+:
 \doxysubsubsection{\texorpdfstring{date()}{date()}}
 {\footnotesize\ttfamily importer.\+templates.\+Playground\+Template.\+Playground\+Template.\+date (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Sets date column given the filename (it contains the date)
+   For example Fonal_2020-08.xlsx
+Args:
+    filename (str): current filename
+Returns: date (str)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_playground_template_8py_source_l00022}{22}} of file \mbox{\hyperlink{_playground_template_8py_source}{Playground\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_playground_template_8py_source_l00025}{25}} of file \mbox{\hyperlink{_playground_template_8py_source}{Playground\+Template.\+py}}.
 
 \Hypertarget{classimporter_1_1templates_1_1_playground_template_1_1_playground_template_a64ba119c4c179f543c5b12aa8c0445c6}\label{classimporter_1_1templates_1_1_playground_template_1_1_playground_template_a64ba119c4c179f543c5b12aa8c0445c6} 
 \index{importer.templates.PlaygroundTemplate.PlaygroundTemplate@{importer.templates.PlaygroundTemplate.PlaygroundTemplate}!preprocessing@{preprocessing}}
@@ -49,10 +60,14 @@ Definition at line \mbox{\hyperlink{_playground_template_8py_source_l00022}{22}}
 \doxysubsubsection{\texorpdfstring{preprocessing()}{preprocessing()}}
 {\footnotesize\ttfamily importer.\+templates.\+Playground\+Template.\+Playground\+Template.\+preprocessing (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename,  }\item[{}]{features,  }\item[{}]{session,  }\item[{}]{rel\+\_\+col }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}args:
-filename: -str- s3 full path of filename
-features: -dict- which contains delimiter, skip_rows and encoding
-session: -class- s3 connexion 
+\begin{DoxyVerb}Loads file and do some fixes to fit it to our standard and make it able to be processed
+
+Args:
+    filename (str): s3 full path of filename
+    features (dict): contains delimiter, skip_rows and encoding required for current file
+    session (boto3 obj): AWS client connection
+    rel_col (str): column name used to identify upc/release_id
+Returns: df (pandas dataframe)
 \end{DoxyVerb}
  
 
@@ -64,9 +79,15 @@ Definition at line \mbox{\hyperlink{_playground_template_8py_source_l00006}{6}} 
 \doxysubsubsection{\texorpdfstring{type()}{type()}}
 {\footnotesize\ttfamily importer.\+templates.\+Playground\+Template.\+Playground\+Template.\+type (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{Channel,  }\item[{}]{ISRC }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Maps the sale type with the name specified by the client according their requirements
+Args:
+    Channel (str): distribution medium shown in the original file
+    ISRC (str):  unique code used exclusive for tracks shown in the original file
+Returns: (sale type in a single one letter)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_playground_template_8py_source_l00028}{28}} of file \mbox{\hyperlink{_playground_template_8py_source}{Playground\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_playground_template_8py_source_l00037}{37}} of file \mbox{\hyperlink{_playground_template_8py_source}{Playground\+Template.\+py}}.
 
 Here is the caller graph for this function\+:
 % FIG 1

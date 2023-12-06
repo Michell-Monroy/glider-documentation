@@ -3,9 +3,9 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template_af0e0ff4b6503189e26c956e5bdd585e0}{type}} (self, asset\+\_\+type)
-\item 
 \mbox{\hyperlink{classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template_aa7a9d51e3d6d4e3a9f4c2bb7ccc7f254}{preprocessing}} (self, filename, features, session, rel\+\_\+col)
+\item 
+\mbox{\hyperlink{classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template_af0e0ff4b6503189e26c956e5bdd585e0}{type}} (self, asset\+\_\+type)
 \item 
 \mbox{\hyperlink{classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template_a9b830c6f2195be5135534744ed96fd7b}{date}} (self, filename)
 \end{DoxyCompactItemize}
@@ -25,9 +25,15 @@ Definition at line \mbox{\hyperlink{_youtube_template_8py_source_l00005}{5}} of 
 \doxysubsubsection{\texorpdfstring{date()}{date()}}
 {\footnotesize\ttfamily importer.\+templates.\+Youtube\+Template.\+Youtube\+Template.\+date (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Sets date column given the filename (it contains the date)
+   For example YouTube_GSDistroPartners_M_20220801_asset_raw_v1-1.csv
+Args:
+    filename (str): current filename
+Returns: date_str (str)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_youtube_template_8py_source_l00027}{27}} of file \mbox{\hyperlink{_youtube_template_8py_source}{Youtube\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_youtube_template_8py_source_l00041}{41}} of file \mbox{\hyperlink{_youtube_template_8py_source}{Youtube\+Template.\+py}}.
 
 \Hypertarget{classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template_aa7a9d51e3d6d4e3a9f4c2bb7ccc7f254}\label{classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template_aa7a9d51e3d6d4e3a9f4c2bb7ccc7f254} 
 \index{importer.templates.YoutubeTemplate.YoutubeTemplate@{importer.templates.YoutubeTemplate.YoutubeTemplate}!preprocessing@{preprocessing}}
@@ -35,9 +41,18 @@ Definition at line \mbox{\hyperlink{_youtube_template_8py_source_l00027}{27}} of
 \doxysubsubsection{\texorpdfstring{preprocessing()}{preprocessing()}}
 {\footnotesize\ttfamily importer.\+templates.\+Youtube\+Template.\+Youtube\+Template.\+preprocessing (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename,  }\item[{}]{features,  }\item[{}]{session,  }\item[{}]{rel\+\_\+col }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Loads file and do some fixes to fit it to our standard and make it able to be processed
 
+Args:
+    filename (str): s3 full path of filename
+    features (dict): contains delimiter, skip_rows and encoding required for current file
+    session (boto3 obj): AWS client connection
+    rel_col (str): column name used to identify upc/release_id
+Returns: df (pandas dataframe)
+\end{DoxyVerb}
+ 
 
-Definition at line \mbox{\hyperlink{_youtube_template_8py_source_l00013}{13}} of file \mbox{\hyperlink{_youtube_template_8py_source}{Youtube\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_youtube_template_8py_source_l00006}{6}} of file \mbox{\hyperlink{_youtube_template_8py_source}{Youtube\+Template.\+py}}.
 
 Here is the call graph for this function\+:
 % FIG 0
@@ -47,9 +62,14 @@ Here is the call graph for this function\+:
 \doxysubsubsection{\texorpdfstring{type()}{type()}}
 {\footnotesize\ttfamily importer.\+templates.\+Youtube\+Template.\+Youtube\+Template.\+type (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{asset\+\_\+type }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Maps the sale type with the name specified by the client according their requirements
+Args:
+    asset_type (str): sale type shown in the original file
+Returns: (sale type in a single one letter)
+\end{DoxyVerb}
+ 
 
-
-Definition at line \mbox{\hyperlink{_youtube_template_8py_source_l00006}{6}} of file \mbox{\hyperlink{_youtube_template_8py_source}{Youtube\+Template.\+py}}.
+Definition at line \mbox{\hyperlink{_youtube_template_8py_source_l00029}{29}} of file \mbox{\hyperlink{_youtube_template_8py_source}{Youtube\+Template.\+py}}.
 
 Here is the caller graph for this function\+:
 % FIG 1

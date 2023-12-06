@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>glider-full-doc: importer.templates.YoutubeTemplate.YoutubeTemplate Class Reference</title>
+<title>Glider: importer.templates.YoutubeTemplate.YoutubeTemplate Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">glider-full-doc
+   <div id="projectname">Glider
    </div>
   </td>
  </tr>
@@ -82,10 +82,10 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af0e0ff4b6503189e26c956e5bdd585e0" id="r_af0e0ff4b6503189e26c956e5bdd585e0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template.html#af0e0ff4b6503189e26c956e5bdd585e0">type</a> (self, asset_type)</td></tr>
-<tr class="separator:af0e0ff4b6503189e26c956e5bdd585e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7a9d51e3d6d4e3a9f4c2bb7ccc7f254" id="r_aa7a9d51e3d6d4e3a9f4c2bb7ccc7f254"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template.html#aa7a9d51e3d6d4e3a9f4c2bb7ccc7f254">preprocessing</a> (self, filename, features, session, rel_col)</td></tr>
 <tr class="separator:aa7a9d51e3d6d4e3a9f4c2bb7ccc7f254"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0e0ff4b6503189e26c956e5bdd585e0" id="r_af0e0ff4b6503189e26c956e5bdd585e0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template.html#af0e0ff4b6503189e26c956e5bdd585e0">type</a> (self, asset_type)</td></tr>
+<tr class="separator:af0e0ff4b6503189e26c956e5bdd585e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b830c6f2195be5135534744ed96fd7b" id="r_a9b830c6f2195be5135534744ed96fd7b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template.html#a9b830c6f2195be5135534744ed96fd7b">date</a> (self, filename)</td></tr>
 <tr class="separator:a9b830c6f2195be5135534744ed96fd7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -118,8 +118,13 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_youtube_template_8py_source.html#l00027">27</a> of file <a class="el" href="_youtube_template_8py_source.html">YoutubeTemplate.py</a>.</p>
+<pre class="fragment">Sets date column given the filename (it contains the date)
+   For example YouTube_GSDistroPartners_M_20220801_asset_raw_v1-1.csv
+Args:
+    filename (str): current filename
+Returns: date_str (str)
+</pre> 
+<p class="definition">Definition at line <a class="el" href="_youtube_template_8py_source.html#l00041">41</a> of file <a class="el" href="_youtube_template_8py_source.html">YoutubeTemplate.py</a>.</p>
 
 </div>
 </div>
@@ -166,8 +171,16 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<pre class="fragment">Loads file and do some fixes to fit it to our standard and make it able to be processed
 
-<p class="definition">Definition at line <a class="el" href="_youtube_template_8py_source.html#l00013">13</a> of file <a class="el" href="_youtube_template_8py_source.html">YoutubeTemplate.py</a>.</p>
+Args:
+    filename (str): s3 full path of filename
+    features (dict): contains delimiter, skip_rows and encoding required for current file
+    session (boto3 obj): AWS client connection
+    rel_col (str): column name used to identify upc/release_id
+Returns: df (pandas dataframe)
+</pre> 
+<p class="definition">Definition at line <a class="el" href="_youtube_template_8py_source.html#l00006">6</a> of file <a class="el" href="_youtube_template_8py_source.html">YoutubeTemplate.py</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -201,8 +214,12 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_youtube_template_8py_source.html#l00006">6</a> of file <a class="el" href="_youtube_template_8py_source.html">YoutubeTemplate.py</a>.</p>
+<pre class="fragment">Maps the sale type with the name specified by the client according their requirements
+Args:
+    asset_type (str): sale type shown in the original file
+Returns: (sale type in a single one letter)
+</pre> 
+<p class="definition">Definition at line <a class="el" href="_youtube_template_8py_source.html#l00029">29</a> of file <a class="el" href="_youtube_template_8py_source.html">YoutubeTemplate.py</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

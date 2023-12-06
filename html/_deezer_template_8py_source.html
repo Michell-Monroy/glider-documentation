@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>glider-full-doc: /Users/michellmonroy/Documents/dev-glider/glider/src/importer/templates/DeezerTemplate.py Source File</title>
+<title>Glider: /Users/michellmonroy/Documents/dev-glider/glider/src/importer/templates/DeezerTemplate.py Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">glider-full-doc
+   <div id="projectname">Glider
    </div>
   </td>
  </tr>
@@ -106,12 +106,18 @@ $(document).ready(function() { init_codefold(0); });
 </div>
 <div class="foldopen" id="foldopen00021" data-start="" data-end="">
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_deezer_template_1_1_deezer_template.html#a336435fbefb616431977ec035f6491d1">   21</a></span>    <span class="keyword">def </span>date(self, filename):</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="comment"># &quot;Deezer_GYROstreamMERLIN_20220201_20220228.txt&quot;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        date = re.findall(<span class="stringliteral">r&#39;_\d{8}_&#39;</span>, filename)[0]</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        date = date.replace(<span class="stringliteral">&quot;_&quot;</span>, <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        date_str = date[:4]+<span class="stringliteral">&quot;-&quot;</span>+date[4:6]+<span class="stringliteral">&quot;-&quot;</span>+date[6:]</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="comment"># df[&quot;date_from_file&quot;] = date_str</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordflow">return</span> date_str</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="stringliteral">&quot;&quot;&quot;Sets date column given the filename (it contains the date)</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="stringliteral">           For example Deezer_GYROstreamMERLIN_20220201_20220228.txt</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="stringliteral">            filename (str): current filename</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="stringliteral">        Returns: date_str (str)</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="comment"># &quot;Deezer_GYROstreamMERLIN_20220201_20220228.txt&quot;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        date = re.findall(<span class="stringliteral">r&#39;_\d{8}_&#39;</span>, filename)[0]</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        date = date.replace(<span class="stringliteral">&quot;_&quot;</span>, <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        date_str = date[:4]+<span class="stringliteral">&quot;-&quot;</span>+date[4:6]+<span class="stringliteral">&quot;-&quot;</span>+date[6:]</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="comment"># df[&quot;date_from_file&quot;] = date_str</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordflow">return</span> date_str</div>
 </div>
 </div>
 <div class="ttc" id="aclassimporter_1_1templates_1_1_deezer_template_1_1_deezer_template_html"><div class="ttname"><a href="classimporter_1_1templates_1_1_deezer_template_1_1_deezer_template.html">importer.templates.DeezerTemplate.DeezerTemplate</a></div><div class="ttdef"><b>Definition</b> <a href="_deezer_template_8py_source.html#l00005">DeezerTemplate.py:5</a></div></div>

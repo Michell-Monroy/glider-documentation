@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>glider-full-doc: /Users/michellmonroy/Documents/dev-glider/glider/src/importer/templates/FugaTemplate.py Source File</title>
+<title>Glider: /Users/michellmonroy/Documents/dev-glider/glider/src/importer/templates/FugaTemplate.py Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">glider-full-doc
+   <div id="projectname">Glider
    </div>
   </td>
  </tr>
@@ -89,77 +89,110 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html">    5</a></span><span class="keyword">class </span><a class="code hl_class" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html">FugaTemplate</a>:</div>
 <div class="foldopen" id="foldopen00006" data-start="" data-end="">
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a9e1a5af59b6a44271351e153cb96757a">    6</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a9e1a5af59b6a44271351e153cb96757a">QuantityPreprocessing</a>(self, product_quantity, asset_quantity):</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>        <span class="comment"># print(&quot;quantity:&quot;,product_quantity, asset_quantity)</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>        aux = int(product_quantity) + int(asset_quantity)</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        <span class="keywordflow">return</span> aux</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>        <span class="stringliteral">&quot;&quot;&quot;Defines the total quantity for tracks and albums </span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="stringliteral">            product_quantity (int): quantity of products shown in the original file</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="stringliteral">            asset_quantity (int): quantity of tracks shown in the original file</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="stringliteral">        Returns: aux (int)</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="comment"># print(&quot;quantity:&quot;,product_quantity, asset_quantity)</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        aux = int(product_quantity) + int(asset_quantity)</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keywordflow">return</span> aux</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    </div>
 </div>
-<div class="foldopen" id="foldopen00011" data-start="" data-end="">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a57d3fa6ea37887e632babc37d6a41e3d">   11</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a57d3fa6ea37887e632babc37d6a41e3d">ArtistPreprocessing</a>(self, asset_product, asset_artist):</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keywordflow">if</span> str(asset_artist) == <span class="stringliteral">&quot;&quot;</span>:</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>            asset_artist = str(asset_product)</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keywordflow">return</span> asset_artist</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    </div>
+<div class="foldopen" id="foldopen00017" data-start="" data-end="">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a57d3fa6ea37887e632babc37d6a41e3d">   17</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a57d3fa6ea37887e632babc37d6a41e3d">ArtistPreprocessing</a>(self, asset_product, asset_artist):</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="stringliteral">&quot;&quot;&quot;Replace the track artist by product artist when the first one is empty value</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="stringliteral">            asset_product (str): product artist shown in the original file</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="stringliteral">            asset_artist (str): track artist shown in the original file</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="stringliteral">        Returns: asset_artist (str)</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordflow">if</span> str(asset_artist) == <span class="stringliteral">&quot;&quot;</span>:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            asset_artist = str(asset_product)</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordflow">return</span> asset_artist</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    </div>
 </div>
-<div class="foldopen" id="foldopen00016" data-start="" data-end="">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a4cd7467ec3202742cd8affc3edc6efc0">   16</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a4cd7467ec3202742cd8affc3edc6efc0">preprocessing</a>(self, filename, features, session, rel_col):</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="stringliteral">        args:</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="stringliteral">        filename: -str- s3 full path of filename</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="stringliteral">        features: -dict- which contains delimiter, skip_rows and encoding</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="stringliteral">        session: -class- s3 connexion </span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        delimiter = features[<span class="stringliteral">&quot;delimiter&quot;</span>]</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        skip_rows = features[<span class="stringliteral">&quot;skip_rows&quot;</span>]</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        encoding = features[<span class="stringliteral">&quot;encoding&quot;</span>]</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        df = wr.s3.read_csv(filename, sep=delimiter, skiprows=skip_rows, encoding=encoding, dtype={rel_col:str}, boto3_session=session)</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="comment"># df = read_csv(filename, sep=delimiter, skiprows=skip_rows, encoding=encoding)</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        values = {<span class="stringliteral">&quot;Asset Quantity&quot;</span>: 0, <span class="stringliteral">&quot;Product Quantity&quot;</span>: 0, <span class="stringliteral">&quot;Asset Artist&quot;</span>: <span class="stringliteral">&quot;&quot;</span>}</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        df.fillna(value=values, inplace=<span class="keyword">True</span>)</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        df[<span class="stringliteral">&quot;Asset Quantity&quot;</span>] = df.apply(<span class="keyword">lambda</span> Row: self.<a class="code hl_function" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a9e1a5af59b6a44271351e153cb96757a">QuantityPreprocessing</a>(Row[<span class="stringliteral">&#39;Product Quantity&#39;</span>], Row[<span class="stringliteral">&#39;Asset Quantity&#39;</span>]), axis=1)</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        df[<span class="stringliteral">&quot;Asset Artist&quot;</span>] = df.apply(<span class="keyword">lambda</span> Row: self.<a class="code hl_function" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a57d3fa6ea37887e632babc37d6a41e3d">ArtistPreprocessing</a>(Row[<span class="stringliteral">&#39;Product Artist&#39;</span>], Row[<span class="stringliteral">&#39;Asset Artist&#39;</span>]), axis=1)</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordflow">return</span> df</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="foldopen" id="foldopen00028" data-start="" data-end="">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a4cd7467ec3202742cd8affc3edc6efc0">   28</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a4cd7467ec3202742cd8affc3edc6efc0">preprocessing</a>(self, filename, features, session, rel_col):</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="stringliteral">&quot;&quot;&quot;Loads file and do some fixes to fit it to our standard and make it able to be processed</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="stringliteral">            filename (str): s3 full path of filename</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="stringliteral">            features (dict): contains delimiter, skip_rows and encoding required for current file</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="stringliteral">            session (boto3 obj): AWS client connection</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="stringliteral">            rel_col (str): column name used to identify upc/release_id</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="stringliteral">        Returns: df (pandas dataframe)</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        delimiter = features[<span class="stringliteral">&quot;delimiter&quot;</span>]</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        skip_rows = features[<span class="stringliteral">&quot;skip_rows&quot;</span>]</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        encoding = features[<span class="stringliteral">&quot;encoding&quot;</span>]</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        df = wr.s3.read_csv(filename, sep=delimiter, skiprows=skip_rows, encoding=encoding, dtype={rel_col:str}, boto3_session=session)</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="comment"># df = read_csv(filename, sep=delimiter, skiprows=skip_rows, encoding=encoding)</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        values = {<span class="stringliteral">&quot;Asset Quantity&quot;</span>: 0, <span class="stringliteral">&quot;Product Quantity&quot;</span>: 0, <span class="stringliteral">&quot;Asset Artist&quot;</span>: <span class="stringliteral">&quot;&quot;</span>}</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        df.fillna(value=values, inplace=<span class="keyword">True</span>)</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        df[<span class="stringliteral">&quot;Asset Quantity&quot;</span>] = df.apply(<span class="keyword">lambda</span> Row: self.<a class="code hl_function" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a9e1a5af59b6a44271351e153cb96757a">QuantityPreprocessing</a>(Row[<span class="stringliteral">&#39;Product Quantity&#39;</span>], Row[<span class="stringliteral">&#39;Asset Quantity&#39;</span>]), axis=1)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        df[<span class="stringliteral">&quot;Asset Artist&quot;</span>] = df.apply(<span class="keyword">lambda</span> Row: self.<a class="code hl_function" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a57d3fa6ea37887e632babc37d6a41e3d">ArtistPreprocessing</a>(Row[<span class="stringliteral">&#39;Product Artist&#39;</span>], Row[<span class="stringliteral">&#39;Asset Artist&#39;</span>]), axis=1)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordflow">return</span> df</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
 </div>
-<div class="foldopen" id="foldopen00034" data-start="" data-end="">
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#aa03af937ce97b51be3fa17ba2795850a">   34</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#aa03af937ce97b51be3fa17ba2795850a">type</a>(self, asset_product, sale_type):</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordflow">if</span> sale_type==<span class="stringliteral">&quot;Download&quot;</span> <span class="keywordflow">and</span> asset_product == <span class="stringliteral">&quot;Asset&quot;</span>:</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <span class="keywordflow">return</span> <span class="stringliteral">&#39;T&#39;</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordflow">elif</span> sale_type==<span class="stringliteral">&quot;Download&quot;</span> <span class="keywordflow">and</span> asset_product == <span class="stringliteral">&quot;Product&quot;</span>:</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <span class="keywordflow">return</span> <span class="stringliteral">&#39;A&#39;</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordflow">return</span> <span class="stringliteral">&#39;S&#39;</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="foldopen" id="foldopen00049" data-start="" data-end="">
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#aa03af937ce97b51be3fa17ba2795850a">   49</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#aa03af937ce97b51be3fa17ba2795850a">type</a>(self, asset_product, sale_type):</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="stringliteral">&quot;&quot;&quot;Maps the sale type with the name specified by the client according their requirements</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="stringliteral">            asset_product (str): sale type (for products) shown in the original file</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="stringliteral">            sale_type (str):  sale type (for tracks) shown in the original file</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="stringliteral">        Returns: (sale type in a single one letter)</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">if</span> sale_type==<span class="stringliteral">&quot;Download&quot;</span> <span class="keywordflow">and</span> asset_product == <span class="stringliteral">&quot;Asset&quot;</span>:</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <span class="keywordflow">return</span> <span class="stringliteral">&#39;T&#39;</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">elif</span> sale_type==<span class="stringliteral">&quot;Download&quot;</span> <span class="keywordflow">and</span> asset_product == <span class="stringliteral">&quot;Product&quot;</span>:</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keywordflow">return</span> <span class="stringliteral">&#39;A&#39;</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordflow">return</span> <span class="stringliteral">&#39;S&#39;</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
 </div>
-<div class="foldopen" id="foldopen00041" data-start="" data-end="">
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#aebe3afb701d686e826782801e3ee9fd8">   41</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#aebe3afb701d686e826782801e3ee9fd8">assetType</a>(self, df):</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="comment"># Add a new column to insert type</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        df[<span class="stringliteral">&quot;gettypefuga&quot;</span>] = df.apply(<span class="keyword">lambda</span> Row: self.<a class="code hl_function" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#aa03af937ce97b51be3fa17ba2795850a">type</a>(Row[<span class="stringliteral">&#39;asset/product&#39;</span>], Row[<span class="stringliteral">&#39;sale type&#39;</span>]), axis=1)</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">return</span> df</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="foldopen" id="foldopen00062" data-start="" data-end="">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#aebe3afb701d686e826782801e3ee9fd8">   62</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#aebe3afb701d686e826782801e3ee9fd8">assetType</a>(self, df):</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="stringliteral">&quot;&quot;&quot;Applies type functions to current dataframe</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="stringliteral">            df (pandas dataframe): dataframe where changes will applied</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="stringliteral">        Returns: df (pandas dataframe)</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="comment"># Add a new column to insert type</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        df[<span class="stringliteral">&quot;gettypefuga&quot;</span>] = df.apply(<span class="keyword">lambda</span> Row: self.<a class="code hl_function" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#aa03af937ce97b51be3fa17ba2795850a">type</a>(Row[<span class="stringliteral">&#39;asset/product&#39;</span>], Row[<span class="stringliteral">&#39;sale type&#39;</span>]), axis=1)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">return</span> df</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
 </div>
-<div class="foldopen" id="foldopen00046" data-start="" data-end="">
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a58dd61a6e519b993ebf644e0c4f00a15">   46</a></span>    <span class="keyword">def </span>date(self, file_name):</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        file_name = file_name.lower()</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        possible_months = [<span class="stringliteral">&quot;january&quot;</span>, <span class="stringliteral">&quot;february&quot;</span>, <span class="stringliteral">&quot;march&quot;</span>, <span class="stringliteral">&quot;april&quot;</span>, <span class="stringliteral">&quot;may&quot;</span>, <span class="stringliteral">&quot;june&quot;</span>,</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="stringliteral">&quot;july&quot;</span>, <span class="stringliteral">&quot;august&quot;</span>, <span class="stringliteral">&quot;september&quot;</span>, <span class="stringliteral">&quot;october&quot;</span>, <span class="stringliteral">&quot;november&quot;</span>, <span class="stringliteral">&quot;december&quot;</span>]</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">for</span> m <span class="keywordflow">in</span> possible_months:</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keywordflow">if</span> m <span class="keywordflow">in</span> file_name:</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                month = m</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                date = file_name.split(month)</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                <span class="keywordflow">break</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        date = date[-1]</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        year = [str(s) <span class="keywordflow">for</span> s <span class="keywordflow">in</span> re.findall(<span class="stringliteral">r&#39;-?\d+\.?\d*&#39;</span>, date)][0]</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        date_month = datetime.strptime(month, <span class="stringliteral">&quot;%B&quot;</span>)</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        date_month = <span class="stringliteral">&quot;0&quot;</span>+str(date_month.month)</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">return</span> year+date_month</div>
+<div class="foldopen" id="foldopen00072" data-start="" data-end="">
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a41d2bc5dda02eb1326a088e11d7e9ea9">   72</a></span>    <span class="keyword">def </span>date(self, filename):</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="stringliteral">&quot;&quot;&quot;Sets date column given the filename (it contains the date)</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="stringliteral">           For example December2021StatementRun_KepachMusictasCAMJazz-royalty_product_and_asset.csv</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="stringliteral">            filename (str): current filename</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="stringliteral">        Returns: date_str (str)</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        filename = filename.lower()</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        possible_months = [<span class="stringliteral">&quot;january&quot;</span>, <span class="stringliteral">&quot;february&quot;</span>, <span class="stringliteral">&quot;march&quot;</span>, <span class="stringliteral">&quot;april&quot;</span>, <span class="stringliteral">&quot;may&quot;</span>, <span class="stringliteral">&quot;june&quot;</span>,</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="stringliteral">&quot;july&quot;</span>, <span class="stringliteral">&quot;august&quot;</span>, <span class="stringliteral">&quot;september&quot;</span>, <span class="stringliteral">&quot;october&quot;</span>, <span class="stringliteral">&quot;november&quot;</span>, <span class="stringliteral">&quot;december&quot;</span>]</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">for</span> m <span class="keywordflow">in</span> possible_months:</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <span class="keywordflow">if</span> m <span class="keywordflow">in</span> filename:</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                month = m</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                date = filename.split(month)</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                <span class="keywordflow">break</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        date = date[-1]</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        year = [str(s) <span class="keywordflow">for</span> s <span class="keywordflow">in</span> re.findall(<span class="stringliteral">r&#39;-?\d+\.?\d*&#39;</span>, date)][0]</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        date_month = datetime.strptime(month, <span class="stringliteral">&quot;%B&quot;</span>)</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        date_month = <span class="stringliteral">&quot;0&quot;</span>+str(date_month.month)</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        date_str = year+date_month</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordflow">return</span> date_str</div>
 </div>
 </div>
 <div class="ttc" id="aclassimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_html"><div class="ttname"><a href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html">importer.templates.FugaTemplate.FugaTemplate</a></div><div class="ttdef"><b>Definition</b> <a href="_fuga_template_8py_source.html#l00005">FugaTemplate.py:5</a></div></div>
-<div class="ttc" id="aclassimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_html_a4cd7467ec3202742cd8affc3edc6efc0"><div class="ttname"><a href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a4cd7467ec3202742cd8affc3edc6efc0">importer.templates.FugaTemplate.FugaTemplate.preprocessing</a></div><div class="ttdeci">preprocessing(self, filename, features, session, rel_col)</div><div class="ttdef"><b>Definition</b> <a href="_fuga_template_8py_source.html#l00016">FugaTemplate.py:16</a></div></div>
-<div class="ttc" id="aclassimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_html_a57d3fa6ea37887e632babc37d6a41e3d"><div class="ttname"><a href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a57d3fa6ea37887e632babc37d6a41e3d">importer.templates.FugaTemplate.FugaTemplate.ArtistPreprocessing</a></div><div class="ttdeci">ArtistPreprocessing(self, asset_product, asset_artist)</div><div class="ttdef"><b>Definition</b> <a href="_fuga_template_8py_source.html#l00011">FugaTemplate.py:11</a></div></div>
+<div class="ttc" id="aclassimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_html_a4cd7467ec3202742cd8affc3edc6efc0"><div class="ttname"><a href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a4cd7467ec3202742cd8affc3edc6efc0">importer.templates.FugaTemplate.FugaTemplate.preprocessing</a></div><div class="ttdeci">preprocessing(self, filename, features, session, rel_col)</div><div class="ttdef"><b>Definition</b> <a href="_fuga_template_8py_source.html#l00028">FugaTemplate.py:28</a></div></div>
+<div class="ttc" id="aclassimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_html_a57d3fa6ea37887e632babc37d6a41e3d"><div class="ttname"><a href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a57d3fa6ea37887e632babc37d6a41e3d">importer.templates.FugaTemplate.FugaTemplate.ArtistPreprocessing</a></div><div class="ttdeci">ArtistPreprocessing(self, asset_product, asset_artist)</div><div class="ttdef"><b>Definition</b> <a href="_fuga_template_8py_source.html#l00017">FugaTemplate.py:17</a></div></div>
 <div class="ttc" id="aclassimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_html_a9e1a5af59b6a44271351e153cb96757a"><div class="ttname"><a href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a9e1a5af59b6a44271351e153cb96757a">importer.templates.FugaTemplate.FugaTemplate.QuantityPreprocessing</a></div><div class="ttdeci">QuantityPreprocessing(self, product_quantity, asset_quantity)</div><div class="ttdef"><b>Definition</b> <a href="_fuga_template_8py_source.html#l00006">FugaTemplate.py:6</a></div></div>
-<div class="ttc" id="aclassimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_html_aa03af937ce97b51be3fa17ba2795850a"><div class="ttname"><a href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#aa03af937ce97b51be3fa17ba2795850a">importer.templates.FugaTemplate.FugaTemplate.type</a></div><div class="ttdeci">type(self, asset_product, sale_type)</div><div class="ttdef"><b>Definition</b> <a href="_fuga_template_8py_source.html#l00034">FugaTemplate.py:34</a></div></div>
-<div class="ttc" id="aclassimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_html_aebe3afb701d686e826782801e3ee9fd8"><div class="ttname"><a href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#aebe3afb701d686e826782801e3ee9fd8">importer.templates.FugaTemplate.FugaTemplate.assetType</a></div><div class="ttdeci">assetType(self, df)</div><div class="ttdef"><b>Definition</b> <a href="_fuga_template_8py_source.html#l00041">FugaTemplate.py:41</a></div></div>
+<div class="ttc" id="aclassimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_html_aa03af937ce97b51be3fa17ba2795850a"><div class="ttname"><a href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#aa03af937ce97b51be3fa17ba2795850a">importer.templates.FugaTemplate.FugaTemplate.type</a></div><div class="ttdeci">type(self, asset_product, sale_type)</div><div class="ttdef"><b>Definition</b> <a href="_fuga_template_8py_source.html#l00049">FugaTemplate.py:49</a></div></div>
+<div class="ttc" id="aclassimporter_1_1templates_1_1_fuga_template_1_1_fuga_template_html_aebe3afb701d686e826782801e3ee9fd8"><div class="ttname"><a href="classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#aebe3afb701d686e826782801e3ee9fd8">importer.templates.FugaTemplate.FugaTemplate.assetType</a></div><div class="ttdeci">assetType(self, df)</div><div class="ttdef"><b>Definition</b> <a href="_fuga_template_8py_source.html#l00062">FugaTemplate.py:62</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="importer.templates.Nightlife\lTemplate.NightlifeTemplate",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classimporter_1_1templates_1_1_nightlife_template_1_1_nightlife_template.html",tooltip=" "];
+  Node0 [id="Node000000",label="importer.templates.Netease\lTemplate.NeteaseTemplate",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classimporter_1_1templates_1_1_netease_template_1_1_netease_template.html",tooltip=" "];
 }

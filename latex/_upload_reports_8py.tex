@@ -1,0 +1,25 @@
+\doxysection{/\+Users/michellmonroy/\+Documents/dev-\/glider/glider/src/report\+\_\+generation/\+Upload\+Reports.py File Reference}
+\hypertarget{_upload_reports_8py}{}\label{_upload_reports_8py}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/report\_generation/UploadReports.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/report\_generation/UploadReports.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_upload_reports}{Upload\+Reports}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_upload_reports_a66e3bc1fae05ab2aad541cdfbbc8ccb3}{Upload\+Reports.\+create\+\_\+presigned\+\_\+url}} (bucket, object, expiration=86400)
+\item 
+\mbox{\hyperlink{namespace_upload_reports_a561fba467173f7f2009da404a18be6b1}{Upload\+Reports.\+upload\+\_\+files\+\_\+s3}} (bucket, s3\+\_\+path, local\+\_\+path, file)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_upload_reports_ab46f15b65eb438ce47a142af6c22c765}{Upload\+Reports.\+ACCESS\+\_\+\+ID}} = os.\+environ.\+get("{}AWS\+\_\+\+KEY\+\_\+\+ID"{})
+\item 
+\mbox{\hyperlink{namespace_upload_reports_a84a82c43724b54d2cb11fda287741013}{Upload\+Reports.\+ACCESS\+\_\+\+KEY}} = os.\+environ.\+get("{}AWS\+\_\+\+KEY\+\_\+\+SECRET"{})
+\item 
+\mbox{\hyperlink{namespace_upload_reports_add8ace354ff225909eadc2abd41ab2ca}{Upload\+Reports.\+function\+\_\+name}} = os.\+environ.\+get("{}LAMBDA\+\_\+\+FUNCTION"{})
+\item 
+\mbox{\hyperlink{namespace_upload_reports_a41cb7f7c78621001a3dca8fe60589076}{Upload\+Reports.\+s3\+\_\+client}} = boto3.\+client("{}s3"{}, aws\+\_\+access\+\_\+key\+\_\+id=\mbox{\hyperlink{namespace_upload_reports_ab46f15b65eb438ce47a142af6c22c765}{ACCESS\+\_\+\+ID}}, aws\+\_\+secret\+\_\+access\+\_\+key= \mbox{\hyperlink{namespace_upload_reports_a84a82c43724b54d2cb11fda287741013}{ACCESS\+\_\+\+KEY}})
+\end{DoxyCompactItemize}

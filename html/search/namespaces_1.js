@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['downloadfiles_0',['DownloadFiles',['../namespace_download_files.html',1,'']]]
+  ['bodyemail_0',['BodyEmail',['../namespace_body_email.html',1,'']]]
 ];

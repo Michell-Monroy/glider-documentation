@@ -1,0 +1,282 @@
+\chapter{readme}
+\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2readme}{}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2readme}\index{readme@{readme}}
+\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2readme_autotoc_md0}{}\doxysection{\texorpdfstring{Prerrequisites}{Prerrequisites}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2readme_autotoc_md0}
+
+\begin{DoxyItemize}
+\item Python \texorpdfstring{$>$}{>}= 3.\+8
+\item AWS Account
+\item Terraform \href{https://www.terraform.io/downloads}{\texttt{ install}}
+\end{DoxyItemize}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2readme_autotoc_md1}{}\doxysection{\texorpdfstring{How to set env variables and venv}{How to set env variables and venv}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2readme_autotoc_md1}
+There are two kind of variables, to dev and local testing.\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2readme_autotoc_md2}{}\doxysubsection{\texorpdfstring{How to create venv dev}{How to create venv dev}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2readme_autotoc_md2}
+
+\begin{DoxyEnumerate}
+\item Create a new virtual env (if you have created this venv pass to step 4)
+\end{DoxyEnumerate}
+
+{\ttfamily python3 -\/m venv glider\+\_\+dev}
+
+It\textquotesingle{}s important conservate "{}glider\+\_\+dev"{} name
+
+
+\begin{DoxyEnumerate}
+\item Activate venv
+\end{DoxyEnumerate}
+
+{\ttfamily source glider\+\_\+dev/bin/activate}
+
+
+\begin{DoxyEnumerate}
+\item Install requirements
+\end{DoxyEnumerate}
+
+{\ttfamily pip install -\/r src/importer/requirements.\+txt}
+
+
+\begin{DoxyEnumerate}
+\item Activate env variables. You should create two .env files a) .env.\+dev for developing and testing b) .env.\+prod for production Both files have the same format, just add your dev and prod credentials for each file. Here\textquotesingle{}s an example 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{AWS\_KEY\_ID=<YOUR\_AWS\_KEY\_ID>}
+\DoxyCodeLine{AWS\_SECRET\_KEY=<YOUR\_AWS\_SECRET\_KEY>}
+\DoxyCodeLine{SENDER\_EMAIL="{}example@example.me"{}}
+\DoxyCodeLine{SENDER\_PASSWORD=<YOUR\_SENDER\_PASSWORD>}
+\DoxyCodeLine{MONGO\_GLIDER=<MONGO\_CONNECTION\_LINK>}
+\DoxyCodeLine{DB=<YOUR\_DB>}
+\DoxyCodeLine{COLLECTION=<YOUR\_MONGO\_COLLECTION>}
+\DoxyCodeLine{SNAPSHOTS\_DB=<YOUR\_MONGO\_DB\_FOR\_SNAPSHOTS>}
+\DoxyCodeLine{FORMATS=<YOUR\_MONGO\_COLLECTION\_FOR\_FROMATS>}
+\DoxyCodeLine{SNAPSHOTS=<YOUR\_MONGO\_COLLECTION\_FOR\_SNAPSHOTS>}
+\DoxyCodeLine{CAT\_COLLECTION=<YOUR\_MONGO\_COLLECTION\_FOR\_CATALOGUE>}
+\DoxyCodeLine{REGION=<YOUR\_AWS\_REGION>}
+\DoxyCodeLine{AS\_COLLECTION=<YOUR\_MONGO\_COLLECTION\_FOR\_AS\_CATALOGUE>}
+
+\end{DoxyCode}
+
+\item Save and run
+\end{DoxyEnumerate}
+
+{\ttfamily source deploy/dev\+\_\+vars.\+sh} for developing env {\ttfamily source deploy/prod\+\_\+vars.\+sh} for production env
+
+It loads env vars to be used still you change them.\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2readme_autotoc_md3}{}\doxysubsection{\texorpdfstring{How to create venv local testing}{How to create venv local testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2readme_autotoc_md3}
+
+\begin{DoxyEnumerate}
+\item Create a new virtual env (if you have created this venv pass to step 4)
+\end{DoxyEnumerate}
+
+{\ttfamily python3 -\/m venv glider\+\_\+testing}
+
+
+\begin{DoxyEnumerate}
+\item Activate venv
+\end{DoxyEnumerate}
+
+{\ttfamily source glider\+\_\+testing/bin/activate}
+
+
+\begin{DoxyEnumerate}
+\item Install requirements
+\end{DoxyEnumerate}
+
+{\ttfamily pip install -\/r src/importer/requirements.\+txt}
+
+
+\begin{DoxyEnumerate}
+\item Run
+\end{DoxyEnumerate}
+
+{\ttfamily source deploy/dev\+\_\+vars.\+sh}
+
+This command activate glider\+\_\+testing env and loads the env variables in glider/.env file which is useful to deploy infrastructure\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2readme_autotoc_md4}{}\doxysection{\texorpdfstring{How to deploy terraform code}{How to deploy terraform code}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2readme_autotoc_md4}
+
+\begin{DoxyEnumerate}
+\item Load .env file with dev variables
+\end{DoxyEnumerate}
+
+{\ttfamily source deploy/dev\+\_\+vars.\+sh} for developing env {\ttfamily source deploy/prod\+\_\+vars.\+sh} for production env
+
+
+\begin{DoxyEnumerate}
+\item Open a terminal and put it on Glider/infrastructure folder.
+\end{DoxyEnumerate}
+
+{\ttfamily cd infrastructure/}
+
+
+\begin{DoxyEnumerate}
+\item In Glider/infrastructure there are main.\+tf and variables.\+tf files. This is AWS infrastructure and env variables.
+\end{DoxyEnumerate}
+
+The env variables format is the following configure it with your AWS ACCESS KEY ID and AWS SECRET ACCESS KEY (You can copy these values from .env file)
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{variable\ "{}zones"{}\ \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{type\ =\ string}
+\DoxyCodeLine{}
+\DoxyCodeLine{default\ =\ <<aws\_zone>>}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{}
+\DoxyCodeLine{variable\ "{}access\_key"{}\{}
+\DoxyCodeLine{}
+\DoxyCodeLine{type\ =\ string}
+\DoxyCodeLine{}
+\DoxyCodeLine{default\ =\ <<your\_aws\_access\_key\_id>>}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{}
+\DoxyCodeLine{variable\ "{}secret\_key"{}\{}
+\DoxyCodeLine{}
+\DoxyCodeLine{type\ =\ string}
+\DoxyCodeLine{}
+\DoxyCodeLine{default\ =\ <<your\_aws\_secret\_access\_key>>}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item Start terraform env using {\ttfamily terraform init}.
+\item Create a new env to testing or dev\+: {\ttfamily terraform workspace new \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}env\+\_\+name\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}} this command helps us to have a version control.
+\item Verify that you are in the correct env using {\ttfamily terraform workspace list} it should show the current workspace.
+\item To check if the code in main.\+tf is right, use {\ttfamily terraform plan}.
+\item If everytinh is ok, apply infrstructure using {\ttfamily terraform apply} and wait for it.
+\item Go to \href{https://aws.amazon.com/}{\texttt{ AWS}} and confirm that all configuration is created (lambda and step functions).
+\end{DoxyEnumerate}
+
+{\bfseries{WARNING}}\+: To destroy infrastructure, use {\ttfamily terraform destroy}. This destroy all infrastructure indicated in main.\+tf
+
+{\bfseries{More info}}
+
+
+\begin{DoxyItemize}
+\item \href{https://learn.hashicorp.com/collections/terraform/aws-get-started}{\texttt{ Terraform commands}}
+\end{DoxyItemize}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2readme_autotoc_md5}{}\doxysection{\texorpdfstring{Testing}{Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2readme_autotoc_md5}
+\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2readme_autotoc_md6}{}\doxysubsection{\texorpdfstring{Local Testing}{Local Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2readme_autotoc_md6}
+
+\begin{DoxyEnumerate}
+\item Upload one or more valid file in AWS s3 bucket
+\item Activate testing variables
+\end{DoxyEnumerate}
+
+{\ttfamily source deploy/dev\+\_\+vars.\+sh}
+
+
+\begin{DoxyEnumerate}
+\item Into tests/ create a python script following this format\+: test\+\_\+script.\+py
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ sys}
+\DoxyCodeLine{sys.path.insert(1,\ "{}src/importer"{})}
+\DoxyCodeLine{from\ ReceivePath\ import\ receive\_path}
+\DoxyCodeLine{from\ IdentifyFormat\ import\ identify\_format}
+\DoxyCodeLine{from\ ProcessFiles\ import\ process\_files\_parallel}
+\DoxyCodeLine{from\ CreateSnapshots\ import\ results\_grouped}
+\DoxyCodeLine{from\ generator\ import\ lambda\_handler}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{}
+\DoxyCodeLine{test\_data\ =\ \{}
+\DoxyCodeLine{"{}tag"{}:\ <"{}test"{}/"{}prod"{}>,}
+\DoxyCodeLine{"{}cat\_gen"{}:\ <"{}True"{}/"{}False"{}>,\ \#True\ for\ generate\ catalogue\ from\ sales,\ False\ for\ don't}
+\DoxyCodeLine{"{}client\_id"{}:\ <<client\_id>>,\ }
+\DoxyCodeLine{"{}bucket"{}:\ [<<aws\_bucket\_in>>,\ <<aws\_bucket\_out>>],\ }
+\DoxyCodeLine{"{}path"{}:\ [<<aws\_path\_in>>,\ <<aws\_path\_out>>],}
+\DoxyCodeLine{}
+\DoxyCodeLine{"{}currency"{}:\ \{\ \#Currency\ can\ change}
+\DoxyCodeLine{"{}USD"{}:\ 1,}
+\DoxyCodeLine{"{}EUR"{}:\ 1,}
+\DoxyCodeLine{"{}GBP"{}:\ 1}
+\DoxyCodeLine{\},}
+\DoxyCodeLine{}
+\DoxyCodeLine{"{}files"{}:[}
+\DoxyCodeLine{\{"{}file\_id"{}:\ <<file\_id\_1>>,\ "{}file"{}:\ <<file\_1>>\},}
+\DoxyCodeLine{\{"{}file\_id"{}:\ <<file\_id\_2>>,\ "{}file"{}:\ <<file\_2>>\}}
+\DoxyCodeLine{]}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{}
+\DoxyCodeLine{if\ \_\_name\_\_\ ==\ "{}\_\_main\_\_"{}:}
+\DoxyCodeLine{\ \ \ \ try:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ identify\_formats\ =\ identify\_format(input\_data)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ print("{}Formats\ identified:\ "{},identify\_formats)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ files\_processed\ =\ process\_files\_parallel(identify\_formats)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ print("{}Files\ Processed:\ "{},files\_processed)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ snapshots\ =\ results\_grouped(files\_processed,\ None)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ print("{}Snapshots:\ "{},snapshots)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ files\_processed["{}cat\_gen"{}]\ ==\ "{}True"{}:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ catalogue\ =\ generate\_catalogue(snapshots,\ None)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ print("{}Catalogue:\ "{},\ catalogue)}
+\DoxyCodeLine{\ \ \ \ except\ Exception\ as\ e:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ print(sys.exc\_info()[2])}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ print(traceback.format\_exc())}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item Run script
+\end{DoxyEnumerate}
+
+{\ttfamily python tests/test\+\_\+script.\+py}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2readme_autotoc_md7}{}\doxysubsection{\texorpdfstring{AWS Testing}{AWS Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2readme_autotoc_md7}
+When infrastructure is deployed in AWS\+:
+
+
+\begin{DoxyEnumerate}
+\item Go to AWS -\/\texorpdfstring{$>$}{>} Step Functions
+\item Select the step function (importer)
+\item Click on Start execution
+\end{DoxyEnumerate}
+
+(Optional\+: set a testing name)
+
+
+\begin{DoxyEnumerate}
+\item Set json object
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{"{}tag"{}:\ <"{}test"{}/"{}prod"{}>,}
+\DoxyCodeLine{"{}cat\_gen"{}:\ <"{}True"{}/"{}False"{}>,\ \#True\ for\ generate\ catalogue\ from\ sales,\ False\ for\ don't}
+\DoxyCodeLine{"{}client\_id"{}:\ <<client\_id>>,\ }
+\DoxyCodeLine{"{}bucket"{}:\ [<<aws\_bucket\_in>>,\ <<aws\_bucket\_out>>],\ }
+\DoxyCodeLine{"{}path"{}:\ [<<aws\_path\_in>>,\ <<aws\_path\_out>>],}
+\DoxyCodeLine{}
+\DoxyCodeLine{"{}currency"{}:\ \{\ \#Currency\ can\ change}
+\DoxyCodeLine{"{}USD"{}:\ 1,}
+\DoxyCodeLine{"{}EUR"{}:\ 1,}
+\DoxyCodeLine{"{}GBP"{}:\ 1}
+\DoxyCodeLine{\},}
+\DoxyCodeLine{}
+\DoxyCodeLine{"{}files"{}:[}
+\DoxyCodeLine{\{"{}file\_id"{}:\ <<file\_id\_1>>,\ "{}file"{}:\ <<file\_1>>\},}
+\DoxyCodeLine{\{"{}file\_id"{}:\ <<file\_id\_2>>,\ "{}file"{}:\ <<file\_2>>\}}
+\DoxyCodeLine{]}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item Click on Start execution. If the execution is successfully, you can see it in EC2 instance 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ssh\ -\/i\ Glider-\/Postgres.pem\ ubuntu@ec2-\/18-\/133-\/236-\/61.eu-\/west-\/2.compute.amazonaws.com}
+
+\end{DoxyCode}
+ See \href{https://docs.google.com/document/d/1yEcPxPBK8RBpN2z5zJ147FhQOccZWD3ZeglD2RstY-A/edit?usp=sharing}{\texttt{ OTTO Documentation}} for more information about EC2 
+\end{DoxyEnumerate}

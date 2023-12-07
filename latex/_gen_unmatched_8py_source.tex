@@ -1,0 +1,111 @@
+\doxysection{Gen\+Unmatched.\+py}
+\hypertarget{_gen_unmatched_8py_source}{}\label{_gen_unmatched_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/report\_generation/GenUnmatched.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/report\_generation/GenUnmatched.py}}
+\mbox{\hyperlink{_gen_unmatched_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00001}\mbox{\hyperlink{namespace_gen_unmatched}{00001}}\ \textcolor{keyword}{import}\ ssl}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00002}00002\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00003}00003\ \textcolor{keyword}{import}\ csv}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00004}00004\ \textcolor{keyword}{import}\ re}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00005}00005\ \textcolor{keyword}{import}\ sys,\ traceback}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00006}00006\ \textcolor{keyword}{from}\ datetime\ \textcolor{keyword}{import}\ datetime}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00007}00007\ \textcolor{keyword}{from}\ pymongo\ \textcolor{keyword}{import}\ MongoClient}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00008}00008\ \textcolor{keyword}{from}\ dotenv\ \textcolor{keyword}{import}\ load\_dotenv}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00009}00009\ \textcolor{keyword}{from}\ botocore.exceptions\ \textcolor{keyword}{import}\ ClientError}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00010}00010\ \textcolor{keyword}{from}\ SendEmail\ \textcolor{keyword}{import}\ send\_unmatched\_report}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00011}00011\ \textcolor{keyword}{from}\ UploadReports\ \textcolor{keyword}{import}\ upload\_files\_s3}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00012}\mbox{\hyperlink{namespace_gen_unmatched_af8b2d7ebe5e4d1cfa3f0db819b5e7a9f}{00012}}\ f\_path\ =\ \_\_file\_\_}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00013}\mbox{\hyperlink{namespace_gen_unmatched_acfd342b74a2110a477fcc00b7f9b0148}{00013}}\ index\ =\ f\_path.find(\textcolor{stringliteral}{"{}report\_generation/"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00014}00014\ f\_path\ =\ f\_path[:index]}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00015}00015\ sys.path.insert(1,\ f\_path+\textcolor{stringliteral}{'importer'})}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00016}00016\ \textcolor{keyword}{from}\ MongoConnection\ \textcolor{keyword}{import}\ mongo\_connection}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00017}00017\ load\_dotenv()}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00020}\mbox{\hyperlink{namespace_gen_unmatched_a733736938e6956ed970d88d18f9e01ea}{00020}}\ mongo\_conn\ =\ mongo\_connection()}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00022}\mbox{\hyperlink{namespace_gen_unmatched_a6824e103432a0e4e6a92084371a57cea}{00022}}\ collection\ =\ mongo\_conn.mongo\_conn\_sales()}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00025}\mbox{\hyperlink{namespace_gen_unmatched_a0321ba1810c0ad7c45915faa6510de3f}{00025}}\ ROOT\_DIR\ =\ os.path.expanduser(\textcolor{stringliteral}{'\string~'})}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00027}\mbox{\hyperlink{namespace_gen_unmatched_a6ada99225213dfff2234c6b644100879}{00027}}\ path\ =\ ROOT\_DIR+\textcolor{stringliteral}{"{}/Reports/"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00028}00028\ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ os.path.exists(path):}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00029}00029\ \ \ \ \ os.mkdir(path)}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00031}\mbox{\hyperlink{namespace_gen_unmatched_a3a0afb938e1db277570479a49050da32}{00031}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_gen_unmatched_a3a0afb938e1db277570479a49050da32}{get\_month}}(date):}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00032}00032\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00033}00033\ \textcolor{stringliteral}{\ \ \ \ Generate\ the\ filename\ according\ to\ date\ in\ 'MonthYear'\ format.}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00034}00034\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00035}00035\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00036}00036\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ date\ (str):\ accounting\ date,\ i.e\ processing\ files\ date}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00037}00037\ \textcolor{stringliteral}{\ \ \ \ Returns:\ full\_date\ (str)\ }}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00038}00038\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00039}00039\ \ \ \ \ m\ =\ re.findall(\textcolor{stringliteral}{r'-\/\(\backslash\)d\{2\}-\/'},\ date)[0]}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00040}00040\ \ \ \ \ m\ =\ m.replace(\textcolor{stringliteral}{"{}-\/"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00041}00041\ \ \ \ \ month\_dic\ =\ \{\textcolor{stringliteral}{"{}01"{}}:\ \textcolor{stringliteral}{"{}Jan"{}},\ \textcolor{stringliteral}{"{}02"{}}:\ \textcolor{stringliteral}{"{}Feb"{}},\ \textcolor{stringliteral}{"{}03"{}}:\ \textcolor{stringliteral}{"{}Mar"{}},\ \textcolor{stringliteral}{"{}04"{}}:\ \textcolor{stringliteral}{"{}Apr"{}},\ \textcolor{stringliteral}{"{}05"{}}:\ \textcolor{stringliteral}{"{}May"{}},\ \textcolor{stringliteral}{"{}06"{}}:\ \textcolor{stringliteral}{"{}Jun"{}},\ \textcolor{stringliteral}{"{}07"{}}:\ \textcolor{stringliteral}{"{}Jul"{}},\ \textcolor{stringliteral}{"{}08"{}}:\ \textcolor{stringliteral}{"{}Aug"{}},\ \textcolor{stringliteral}{"{}09"{}}:\ \textcolor{stringliteral}{"{}Sep"{}},\ \textcolor{stringliteral}{"{}10"{}}:\ \textcolor{stringliteral}{"{}Oct"{}},\ \textcolor{stringliteral}{"{}11"{}}:\ \textcolor{stringliteral}{"{}Nov"{}},\ \textcolor{stringliteral}{"{}12"{}}:\ \textcolor{stringliteral}{"{}Dec"{}}\}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00042}00042\ \ \ \ \ month\ =\ month\_dic[m]}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00043}00043\ \ \ \ \ year\ =\ re.findall(\textcolor{stringliteral}{r'20\(\backslash\)d\{2\}-\/'},\ date)[0]}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00044}00044\ \ \ \ \ year\ =\ year.replace(\textcolor{stringliteral}{"{}-\/"{}},\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{return}\ (month+year).lower()}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00047}\mbox{\hyperlink{namespace_gen_unmatched_ae7290d868393519f9b28d6efa8fff0ae}{00047}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_gen_unmatched_ae7290d868393519f9b28d6efa8fff0ae}{get\_num\_files}}(csv\_file):}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00048}00048\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00049}00049\ \textcolor{stringliteral}{\ \ \ \ Counts\ the\ total\ files\ which\ contains\ not\ matched\ lines}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00050}00050\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00051}00051\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00052}00052\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ csv\_file\ (str):\ path\ to\ csv\ report}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00053}00053\ \textcolor{stringliteral}{\ \ \ \ Returns:\ num\_files\ (int)\ }}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00054}00054\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00055}00055\ \ \ \ \ files\ =\ set()}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{with}\ open(csv\_file,\ newline=\textcolor{stringliteral}{''})\ \textcolor{keyword}{as}\ f:}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ reader\ =\ csv.reader(f,\ delimiter=\textcolor{stringliteral}{"{},"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ row\ \textcolor{keywordflow}{in}\ reader:}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ files.add(row[0])}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(row)}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00061}00061\ \ \ \ \ num\_files\ =\ len(files)-\/1}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{return}\ num\_files}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00064}\mbox{\hyperlink{namespace_gen_unmatched_a06d75b1f6c59e743db6c08a4c96c8e6d}{00064}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_gen_unmatched_a06d75b1f6c59e743db6c08a4c96c8e6d}{generate\_unmatched\_csv}}(event):}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00065}00065\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00066}00066\ \textcolor{stringliteral}{\ \ \ \ Generates\ the\ unmatched\ lines\ in\ compressed\ csv\ format\ according\ to\ sales\ which\ matches\ with\ 'accounting\_date'\ field}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00067}00067\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00068}00068\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00069}00069\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ date\ (str):\ accounting\_date,\ i.e\ processing\ files\ date}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00070}00070\ \textcolor{stringliteral}{\ \ \ \ Returns\ (str):\ Nothing.}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00071}00071\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00072}00072\ \ \ \ \ date\ =\ event[\textcolor{stringliteral}{"{}date"{}}]}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00073}00073\ \ \ \ \ bucket\ =\ event[\textcolor{stringliteral}{"{}bucket"{}}]\ }
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00074}00074\ \ \ \ \ \textcolor{comment}{\#\ path\ to\ upload\ files,\ each\ month\ it's\ a\ different\ path}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00075}00075\ \ \ \ \ s3\_path\ =\ \textcolor{stringliteral}{"{}\{\}/unmatched\_lines/\{\}/"{}}.format(event[\textcolor{stringliteral}{"{}path"{}}],\ date)}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00076}00076\ \ \ \ \ file\ =\ \mbox{\hyperlink{namespace_gen_unmatched_a3a0afb938e1db277570479a49050da32}{get\_month}}(date)}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00077}00077\ \ \ \ \ filename\ =\ f\textcolor{stringliteral}{"{}unmatched\_lines\_\{file\}.csv"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00078}00078\ \ \ \ \ print(f\textcolor{stringliteral}{"{}Creating\ \{filename\}"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00079}00079\ \ \ \ \ date\ =\ datetime.strptime(date,\ \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%d"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00080}00080\ \ \ \ \ csv\_columns\ =\ [\textcolor{stringliteral}{"{}file"{}},\ \textcolor{stringliteral}{"{}line"{}},\ \textcolor{stringliteral}{"{}release\_id"{}},\ \textcolor{stringliteral}{"{}isrc\_id"{}},\ \textcolor{stringliteral}{"{}release\_title"{}},\ \textcolor{stringliteral}{"{}track\_title"{}},\ \textcolor{stringliteral}{"{}artists"{}},\ \textcolor{stringliteral}{"{}label\_id"{}},\ \textcolor{stringliteral}{"{}service\_id"{}}]}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00081}00081\ \ \ \ \ lines\ =\ 0}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(path+filename,\ \textcolor{stringliteral}{'w'},\ encoding=\textcolor{stringliteral}{'utf-\/8'})\ \textcolor{keyword}{as}\ csvfile:}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ writer\ =\ csv.DictWriter(csvfile,\ fieldnames=csv\_columns)}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ writer.writeheader()}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ fields\ =\ \{\textcolor{stringliteral}{"{}\_id"{}}:0,\ \textcolor{stringliteral}{"{}file"{}}:\ 1,\ \textcolor{stringliteral}{"{}line"{}}:\ 1,\ \textcolor{stringliteral}{"{}release\_id"{}}:\ 1,\ \textcolor{stringliteral}{"{}isrc\_id"{}}:\ 1,\ \textcolor{stringliteral}{"{}release\_title"{}}:\ 1,\ \textcolor{stringliteral}{"{}track\_title"{}}:\ 1,\ \textcolor{stringliteral}{"{}artists"{}}:\ 1,\ \textcolor{stringliteral}{"{}label\_id"{}}:\ 1,\ \textcolor{stringliteral}{"{}service\_id"{}}:\ 1\}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ template\_sales\ =\ collection.find(\{\textcolor{stringliteral}{"{}accounting\_date"{}}:\ \{\textcolor{stringliteral}{"{}\$in"{}}:\ [date]\},\ \textcolor{stringliteral}{"{}client\_id"{}}:\ event[\textcolor{stringliteral}{"{}client\_id"{}}],\ \textcolor{stringliteral}{"{}clean"{}}:\ 0\},fields)}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ post\ \textcolor{keywordflow}{in}\ template\_sales:}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ writer.writerow(post)}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lines+=1}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00092}00092\ \ \ \ \ \ \ \ \ num\_files\ =\ \mbox{\hyperlink{namespace_gen_unmatched_ae7290d868393519f9b28d6efa8fff0ae}{get\_num\_files}}(path+filename)}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00093}00093\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Compressing\ file"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ os.path.isfile(f\textcolor{stringliteral}{"{}\{path+filename\}.gz"{}}):\ \textcolor{comment}{\#\ Delete\ file\ if\ it\ exists\ to\ avoid\ duplicate\ files}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ os.system(\textcolor{stringliteral}{"{}rm\ \{\}.gz"{}}.format(path+filename))}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00096}00096\ \ \ \ \ \ \ \ \ command\ =\ f\textcolor{stringliteral}{"{}gzip\ \{path+filename\}"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00097}00097\ \ \ \ \ \ \ \ \ os.system(command)\ \textcolor{comment}{\#\ Compress\ file\ to\ gzip}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00098}00098\ \ \ \ \ \ \ \ \ filename\ =\ filename+\textcolor{stringliteral}{"{}.gz"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00099}00099\ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}\{filename\}\ is\ ready!"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00100}00100\ \ \ \ \ \ \ \ \ url\_to\_download,\ final\_path\ =\ upload\_files\_s3(bucket,\ s3\_path,\ path,\ filename)}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00101}00101\ \ \ \ \ \ \ \ \ print(send\_unmatched\_report(event[\textcolor{stringliteral}{"{}client\_email"{}}],\ file,\ url\_to\_download,\ lines,\ num\_files))}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00102}00102\ \ \ \ \ \ \ \ \ os.system(\textcolor{stringliteral}{"{}rm\ -\/r\ \{\}"{}}.format(path+filename))}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00103}00103\ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e:}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00104}00104\ \ \ \ \ \ \ \ \ print(sys.exc\_info()[2])}
+\DoxyCodeLine{\Hypertarget{_gen_unmatched_8py_source_l00105}00105\ \ \ \ \ \ \ \ \ print(traceback.format\_exc())}
+
+\end{DoxyCode}

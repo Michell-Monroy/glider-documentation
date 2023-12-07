@@ -1,0 +1,116 @@
+\doxysection{Send\+Email Namespace Reference}
+\hypertarget{namespace_send_email}{}\label{namespace_send_email}\index{SendEmail@{SendEmail}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_send_email_a433b9e5c1276f6956f1492b3bdbda261}{send\+\_\+report}} (receiver\+\_\+email\+\_\+address, link, month)
+\item 
+\mbox{\hyperlink{namespace_send_email_a7acef212da36e9b8f837ac915652e664}{send\+\_\+unmatched\+\_\+report}} (receiver\+\_\+email\+\_\+address, month, link, lines, files)
+\item 
+\mbox{\hyperlink{namespace_send_email_a09bbdce572ff103ad02fe4122b0c92a6}{send\+\_\+statement\+\_\+report}} (receiver\+\_\+email\+\_\+address, month, csv\+\_\+link, pdf\+\_\+link)
+\item 
+\mbox{\hyperlink{namespace_send_email_aca0d9ccfb52ca4878cc41158f973186c}{send\+\_\+email}} (receiver\+\_\+email\+\_\+address, email\+\_\+subject, text)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_send_email_a23c5949729bd987cbe8a4624a69bfd44}{t}} = \mbox{\hyperlink{class_body_email_1_1_body_email}{Body\+Email}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_send_email_aca0d9ccfb52ca4878cc41158f973186c}\label{namespace_send_email_aca0d9ccfb52ca4878cc41158f973186c} 
+\index{SendEmail@{SendEmail}!send\_email@{send\_email}}
+\index{send\_email@{send\_email}!SendEmail@{SendEmail}}
+\doxysubsubsection{\texorpdfstring{send\_email()}{send\_email()}}
+{\footnotesize\ttfamily Send\+Email.\+send\+\_\+email (\begin{DoxyParamCaption}\item[{}]{receiver\+\_\+email\+\_\+address,  }\item[{}]{email\+\_\+subject,  }\item[{}]{text }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Sends the download link via email to client 
+
+Args:
+    receiver_email_address (str): client_email
+    email_subject (str): receiver email
+    text (str): body email
+Returns: response (str)
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_send_email_8py_source_l00054}{54}} of file \mbox{\hyperlink{_send_email_8py_source}{Send\+Email.\+py}}.
+
+Here is the caller graph for this function\+:
+% FIG 0
+\Hypertarget{namespace_send_email_a433b9e5c1276f6956f1492b3bdbda261}\label{namespace_send_email_a433b9e5c1276f6956f1492b3bdbda261} 
+\index{SendEmail@{SendEmail}!send\_report@{send\_report}}
+\index{send\_report@{send\_report}!SendEmail@{SendEmail}}
+\doxysubsubsection{\texorpdfstring{send\_report()}{send\_report()}}
+{\footnotesize\ttfamily Send\+Email.\+send\+\_\+report (\begin{DoxyParamCaption}\item[{}]{receiver\+\_\+email\+\_\+address,  }\item[{}]{link,  }\item[{}]{month }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Build the header and body email for monthly report
+
+Args:
+    receiver_email_address (str): client_email
+    link (str): download link
+    month (str): month and year when sales were processed
+Returns: Nothing
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_send_email_8py_source_l00010}{10}} of file \mbox{\hyperlink{_send_email_8py_source}{Send\+Email.\+py}}.
+
+Here is the call graph for this function\+:
+% FIG 1
+\Hypertarget{namespace_send_email_a09bbdce572ff103ad02fe4122b0c92a6}\label{namespace_send_email_a09bbdce572ff103ad02fe4122b0c92a6} 
+\index{SendEmail@{SendEmail}!send\_statement\_report@{send\_statement\_report}}
+\index{send\_statement\_report@{send\_statement\_report}!SendEmail@{SendEmail}}
+\doxysubsubsection{\texorpdfstring{send\_statement\_report()}{send\_statement\_report()}}
+{\footnotesize\ttfamily Send\+Email.\+send\+\_\+statement\+\_\+report (\begin{DoxyParamCaption}\item[{}]{receiver\+\_\+email\+\_\+address,  }\item[{}]{month,  }\item[{}]{csv\+\_\+link,  }\item[{}]{pdf\+\_\+link }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Builds the body for statements email. The format used is html
+
+Args:
+    period (str): month and year when sales were processed
+    csv_link (str): presigned link to download csv statement
+    pdf_link (str): presigned link to download pdf statement
+Returns: Nothing
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_send_email_8py_source_l00040}{40}} of file \mbox{\hyperlink{_send_email_8py_source}{Send\+Email.\+py}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+\Hypertarget{namespace_send_email_a7acef212da36e9b8f837ac915652e664}\label{namespace_send_email_a7acef212da36e9b8f837ac915652e664} 
+\index{SendEmail@{SendEmail}!send\_unmatched\_report@{send\_unmatched\_report}}
+\index{send\_unmatched\_report@{send\_unmatched\_report}!SendEmail@{SendEmail}}
+\doxysubsubsection{\texorpdfstring{send\_unmatched\_report()}{send\_unmatched\_report()}}
+{\footnotesize\ttfamily Send\+Email.\+send\+\_\+unmatched\+\_\+report (\begin{DoxyParamCaption}\item[{}]{receiver\+\_\+email\+\_\+address,  }\item[{}]{month,  }\item[{}]{link,  }\item[{}]{lines,  }\item[{}]{files }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Build the header and body email for unmatched report
+
+Args:
+    receiver_email_address (str): client_email
+    link (str): download link
+    month (str): month and year when sales were processed
+    lines (int): total lines which don't match with catalogue
+    files (int): files which have lines not matched
+Returns: Nothing
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_send_email_8py_source_l00024}{24}} of file \mbox{\hyperlink{_send_email_8py_source}{Send\+Email.\+py}}.
+
+Here is the call graph for this function\+:
+% FIG 3
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespace_send_email_a23c5949729bd987cbe8a4624a69bfd44}\label{namespace_send_email_a23c5949729bd987cbe8a4624a69bfd44} 
+\index{SendEmail@{SendEmail}!t@{t}}
+\index{t@{t}!SendEmail@{SendEmail}}
+\doxysubsubsection{\texorpdfstring{t}{t}}
+{\footnotesize\ttfamily Send\+Email.\+t = \mbox{\hyperlink{class_body_email_1_1_body_email}{Body\+Email}}}
+
+
+
+Definition at line \mbox{\hyperlink{_send_email_8py_source_l00009}{9}} of file \mbox{\hyperlink{_send_email_8py_source}{Send\+Email.\+py}}.
+

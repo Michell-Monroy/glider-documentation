@@ -43,7 +43,7 @@
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}:}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue}}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00041}00041\ }
-\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00042}\mbox{\hyperlink{namespace_upload_files_s3_ad8ee5fc983089b09c062686f088481f5}{00042}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_upload_files_s3_ad8ee5fc983089b09c062686f088481f5}{upload\_files\_s3}}(bucket,\ s3\_path,\ local\_path,\ file):}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00042}\mbox{\hyperlink{namespace_upload_files_s3_ad8ee5fc983089b09c062686f088481f5}{00042}}\ \textcolor{keyword}{def\ }upload\_files\_s3(bucket,\ s3\_path,\ local\_path,\ file):}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00043}00043\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00044}00044\ \textcolor{stringliteral}{\ \ \ \ Uploads\ all\ files\ to\ s3\ path\ defined\ previously}}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00045}00045\ \textcolor{stringliteral}{}}
@@ -86,7 +86,7 @@
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ z.extract(f,\ local\_path)}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00083}00083\ \ \ \ \ \ \ \ \ file\_upload\ =\ file\_replaced.replace(\textcolor{stringliteral}{"{}.zip"{}},\ \textcolor{stringliteral}{"{}"{}})}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00084}00084\ \ \ \ \ \ \ \ \ print(file\_upload)}
-\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_upload_files_s3_ad8ee5fc983089b09c062686f088481f5}{upload\_files\_s3}}(bucket,\ s3\_path,\ local\_path,\ file\_upload)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ upload\_files\_s3(bucket,\ s3\_path,\ local\_path,\ file\_upload)}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{elif}\ compression\ ==\ \textcolor{stringliteral}{"{}.gz"{}}:}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00087}00087\ \ \ \ \ \ \ \ \ file\_o\ =\ file.replace(\textcolor{stringliteral}{"{}.gz"{}},\ \textcolor{stringliteral}{"{}"{}})}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00088}00088\ \ \ \ \ \ \ \ \ file\_o\ =\ file\_o.replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}\_"{}})}
@@ -94,7 +94,7 @@
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ gzip.open(local\_path+file,\ \textcolor{stringliteral}{'rb'})\ \textcolor{keyword}{as}\ f\_in:}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(local\_path+file\_o,\ \textcolor{stringliteral}{'wb'})\ \textcolor{keyword}{as}\ f\_out:}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shutil.copyfileobj(f\_in,\ f\_out)}
-\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00093}00093\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_upload_files_s3_ad8ee5fc983089b09c062686f088481f5}{upload\_files\_s3}}(bucket,\ s3\_path,\ local\_path,\ file\_o)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00093}00093\ \ \ \ \ \ \ \ \ upload\_files\_s3(bucket,\ s3\_path,\ local\_path,\ file\_o)}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00094}00094\ }
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00095}\mbox{\hyperlink{namespace_upload_files_s3_a57f56cd91f1a76d464bb3b0212658bd8}{00095}}\ \textcolor{keyword}{def\ }clean\_files(event,\ local\_path):}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00096}00096\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
@@ -143,7 +143,7 @@
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(file\_replaced\_1)}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ subprocess.call([\textcolor{stringliteral}{"{}ssconvert"{}},file\_replaced,local\_path+file\_replaced\_1],cwd=local\_path)\ \textcolor{comment}{\#\ path\ to\ your\ file\ must\ contain\ the\ xlsx\ and\ csv\ files}}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file\_replaced\ =\ file\_replaced\_1}
-\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_upload_files_s3_ad8ee5fc983089b09c062686f088481f5}{upload\_files\_s3}}(bucket,\ s3\_path,\ local\_path,\ file\_replaced)}
+\DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ upload\_files\_s3(bucket,\ s3\_path,\ local\_path,\ file\_replaced)}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}:}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}\{\}\ could\ not\ be\ uploaded"{}}.format(file\_replaced))}
 \DoxyCodeLine{\Hypertarget{_upload_files_s3_8py_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ print(sys.exc\_info()[2])}

@@ -1,0 +1,106 @@
+\doxysection{Send\+Email.\+py}
+\hypertarget{_send_email_8py_source}{}\label{_send_email_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/report\_generation/SendEmail.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/report\_generation/SendEmail.py}}
+\mbox{\hyperlink{_send_email_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00001}\mbox{\hyperlink{namespace_send_email}{00001}}\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00002}00002\ \textcolor{keyword}{import}\ smtplib\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00003}00003\ \textcolor{keyword}{import}\ sys,\ traceback}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00004}00004\ \textcolor{keyword}{from}\ email.message\ \textcolor{keyword}{import}\ EmailMessage}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00005}00005\ \textcolor{keyword}{from}\ dotenv\ \textcolor{keyword}{import}\ load\_dotenv}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00006}00006\ \textcolor{keyword}{from}\ BodyEmail\ \textcolor{keyword}{import}\ BodyEmail}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00007}00007\ load\_dotenv()}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00009}\mbox{\hyperlink{namespace_send_email_a23c5949729bd987cbe8a4624a69bfd44}{00009}}\ t\ =\ BodyEmail}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00010}\mbox{\hyperlink{namespace_send_email_a433b9e5c1276f6956f1492b3bdbda261}{00010}}\ \textcolor{keyword}{def\ }send\_report(receiver\_email\_address,\ link,\ month):}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00011}00011\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Build\ the\ header\ and\ body\ email\ for\ monthly\ report}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00012}00012\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00013}00013\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00014}00014\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ receiver\_email\_address\ (str):\ client\_email}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00015}00015\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ link\ (str):\ download\ link}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00016}00016\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ month\ (str):\ month\ and\ year\ when\ sales\ were\ processed}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00017}00017\ \textcolor{stringliteral}{\ \ \ \ Returns:\ Nothing}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00018}00018\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00019}00019\ \ \ \ \ email\_subject\ =\ f\textcolor{stringliteral}{"{}Your\ report\ for\ \{month\}"{}}\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00020}00020\ \ \ \ \ \textcolor{comment}{\#\ Set\ email\ body\ text\ }}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00021}00021\ \ \ \ \ text\ =\ t.report\_email(month,\ link)}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00022}00022\ \ \ \ \ \mbox{\hyperlink{namespace_send_email_aca0d9ccfb52ca4878cc41158f973186c}{send\_email}}(receiver\_email\_address,\ email\_subject,\ text)}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00024}\mbox{\hyperlink{namespace_send_email_a7acef212da36e9b8f837ac915652e664}{00024}}\ \textcolor{keyword}{def\ }send\_unmatched\_report(receiver\_email\_address,\ month,\ link,\ lines,\ files):}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00025}00025\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Build\ the\ header\ and\ body\ email\ for\ unmatched\ report}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00026}00026\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00027}00027\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00028}00028\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ receiver\_email\_address\ (str):\ client\_email}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00029}00029\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ link\ (str):\ download\ link}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00030}00030\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ month\ (str):\ month\ and\ year\ when\ sales\ were\ processed}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00031}00031\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ lines\ (int):\ total\ lines\ which\ don't\ match\ with\ catalogue}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00032}00032\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ files\ (int):\ files\ which\ have\ lines\ not\ matched}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00033}00033\ \textcolor{stringliteral}{\ \ \ \ Returns:\ Nothing}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00034}00034\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00035}00035\ \ \ \ \ email\_subject\ =\ f\textcolor{stringliteral}{"{}Your\ unmatched\ report\ for\ \{month\}"{}}\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00036}00036\ \ \ \ \ \textcolor{comment}{\#\ Set\ email\ body\ text\ }}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00037}00037\ \ \ \ \ text\ =\ t.unmatched\_email(month,\ link,\ lines,\ files)}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00038}00038\ \ \ \ \ print(\mbox{\hyperlink{namespace_send_email_aca0d9ccfb52ca4878cc41158f973186c}{send\_email}}(receiver\_email\_address,\ email\_subject,\ text))}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00040}\mbox{\hyperlink{namespace_send_email_a09bbdce572ff103ad02fe4122b0c92a6}{00040}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_send_email_a09bbdce572ff103ad02fe4122b0c92a6}{send\_statement\_report}}(receiver\_email\_address,\ month,\ csv\_link,\ pdf\_link):}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00041}00041\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Builds\ the\ body\ for\ statements\ email.\ The\ format\ used\ is\ html}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00042}00042\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00043}00043\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00044}00044\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ period\ (str):\ month\ and\ year\ when\ sales\ were\ processed}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00045}00045\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ csv\_link\ (str):\ presigned\ link\ to\ download\ csv\ statement}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00046}00046\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ pdf\_link\ (str):\ presigned\ link\ to\ download\ pdf\ statement}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00047}00047\ \textcolor{stringliteral}{\ \ \ \ Returns:\ Nothing}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00048}00048\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00049}00049\ \ \ \ \ email\_subject\ =\ f\textcolor{stringliteral}{"{}Your\ Statement\ report\ for\ \{month\}"{}}\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00050}00050\ \ \ \ \ \textcolor{comment}{\#\ Set\ email\ body\ text\ }}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00051}00051\ \ \ \ \ text\ =\ t.statement\_email(month,\ csv\_link,\ pdf\_link)}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00052}00052\ \ \ \ \ print(\mbox{\hyperlink{namespace_send_email_aca0d9ccfb52ca4878cc41158f973186c}{send\_email}}(receiver\_email\_address,\ email\_subject,\ text))}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00054}\mbox{\hyperlink{namespace_send_email_aca0d9ccfb52ca4878cc41158f973186c}{00054}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_send_email_aca0d9ccfb52ca4878cc41158f973186c}{send\_email}}(receiver\_email\_address,\ email\_subject,\ text):}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00055}00055\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Sends\ the\ download\ link\ via\ email\ to\ client\ }}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00056}00056\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00057}00057\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00058}00058\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ receiver\_email\_address\ (str):\ client\_email}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00059}00059\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ email\_subject\ (str):\ receiver\ email}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00060}00060\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ text\ (str):\ body\ email}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00061}00061\ \textcolor{stringliteral}{\ \ \ \ Returns:\ response\ (str)}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00062}00062\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00064}00064\ \ \ \ \ message\ =\ EmailMessage()}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00065}00065\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00066}00066\ \ \ \ \ sender\_email\_address\ =\ os.environ.get(\textcolor{stringliteral}{"{}SENDER\_EMAIL"{}})}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00067}00067\ \ \ \ \ email\_password\ =\ os.environ.get(\textcolor{stringliteral}{"{}SENDER\_PASSWORD"{}})}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00069}00069\ \ \ \ \ message.set\_content(text,\ subtype=\textcolor{stringliteral}{'html'})}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00070}00070\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00071}00071\ \ \ \ \ \textcolor{comment}{\#\ Configure\ email\ headers\ }}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00072}00072\ \ \ \ \ message[\textcolor{stringliteral}{'Subject'}]\ =\ email\_subject\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00073}00073\ \ \ \ \ message[\textcolor{stringliteral}{'From'}]\ =\ sender\_email\_address\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00074}00074\ \ \ \ \ message[\textcolor{stringliteral}{'To'}]\ =\ receiver\_email\_address}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00077}00077\ \ \ \ \ \textcolor{comment}{\#\ Set\ smtp\ server\ and\ port}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00078}00078\ \ \ \ \ email\_smtp\ =\ \textcolor{stringliteral}{"{}smtp.gmail.com"{}}\ \ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00079}00079\ \ \ \ \ server\ =\ smtplib.SMTP(email\_smtp,\ \textcolor{stringliteral}{'587'})}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00080}00080\ \ \ \ \ email\_smtp\ =\ \textcolor{stringliteral}{"{}smtp.gmail.com"{}}\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00082}00082\ \ \ \ \ \textcolor{comment}{\#\ Set\ smtp\ server\ and\ port\ }}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00083}00083\ \ \ \ \ server\ =\ smtplib.SMTP(email\_smtp,\ \textcolor{stringliteral}{'587'})\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00085}00085\ \ \ \ \ \textcolor{comment}{\#\ Identify\ this\ client\ to\ the\ SMTP\ server\ }}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00086}00086\ \ \ \ \ server.ehlo()\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00088}00088\ \ \ \ \ \textcolor{comment}{\#\ Secure\ the\ SMTP\ connection\ }}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00089}00089\ \ \ \ \ server.starttls()}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00091}00091\ \ \ \ \ \textcolor{comment}{\#\ Login\ to\ email\ account\ }}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00092}00092\ \ \ \ \ server.login(sender\_email\_address,\ email\_password)\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00094}00094\ \ \ \ \ \textcolor{comment}{\#\ Send\ email\ }}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00095}00095\ \ \ \ \ server.send\_message(message)\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00097}00097\ \ \ \ \ \textcolor{comment}{\#\ Close\ connection\ to\ server\ }}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00098}00098\ \ \ \ \ server.quit()}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00099}00099\ \ \ \ \ response\ =\ f\textcolor{stringliteral}{"{}Link\ sent\ to\ \{receiver\_email\_address\}"{}}}
+\DoxyCodeLine{\Hypertarget{_send_email_8py_source_l00100}00100\ \ \ \ \ \textcolor{keywordflow}{return}\ \ response}
+
+\end{DoxyCode}

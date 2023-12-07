@@ -1,0 +1,82 @@
+\doxysection{Body\+Email.\+Body\+Email Class Reference}
+\hypertarget{class_body_email_1_1_body_email}{}\label{class_body_email_1_1_body_email}\index{BodyEmail.BodyEmail@{BodyEmail.BodyEmail}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_body_email_1_1_body_email_ac8a70b8b63da11e711674a31ccc3939d}{report\+\_\+email}} (period, link)
+\item 
+\mbox{\hyperlink{class_body_email_1_1_body_email_af175b0375aca7179d409918e9911bc58}{unmatched\+\_\+email}} (period, link, lines, files)
+\item 
+\mbox{\hyperlink{class_body_email_1_1_body_email_a902a1ca0673843bfb8fc105db1eb1173}{statement\+\_\+email}} (period, csv\+\_\+link, pdf\+\_\+link)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Builds the body email according to kind of report
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_body_email_8py_source_l00002}{2}} of file \mbox{\hyperlink{_body_email_8py_source}{Body\+Email.\+py}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_body_email_1_1_body_email_ac8a70b8b63da11e711674a31ccc3939d}\label{class_body_email_1_1_body_email_ac8a70b8b63da11e711674a31ccc3939d} 
+\index{BodyEmail.BodyEmail@{BodyEmail.BodyEmail}!report\_email@{report\_email}}
+\index{report\_email@{report\_email}!BodyEmail.BodyEmail@{BodyEmail.BodyEmail}}
+\doxysubsubsection{\texorpdfstring{report\_email()}{report\_email()}}
+{\footnotesize\ttfamily Body\+Email.\+Body\+Email.\+report\+\_\+email (\begin{DoxyParamCaption}\item[{}]{period,  }\item[{}]{link }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Builds the body for reports email. The format used is html
+
+Args:
+    period (str): month and year when sales were processed
+    link (str): presigned link to download report
+Returns: body (str)
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_body_email_8py_source_l00006}{6}} of file \mbox{\hyperlink{_body_email_8py_source}{Body\+Email.\+py}}.
+
+\Hypertarget{class_body_email_1_1_body_email_a902a1ca0673843bfb8fc105db1eb1173}\label{class_body_email_1_1_body_email_a902a1ca0673843bfb8fc105db1eb1173} 
+\index{BodyEmail.BodyEmail@{BodyEmail.BodyEmail}!statement\_email@{statement\_email}}
+\index{statement\_email@{statement\_email}!BodyEmail.BodyEmail@{BodyEmail.BodyEmail}}
+\doxysubsubsection{\texorpdfstring{statement\_email()}{statement\_email()}}
+{\footnotesize\ttfamily Body\+Email.\+Body\+Email.\+statement\+\_\+email (\begin{DoxyParamCaption}\item[{}]{period,  }\item[{}]{csv\+\_\+link,  }\item[{}]{pdf\+\_\+link }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Builds the body for statements email. The format used is html
+
+Args:
+    period (str): month and year when sales were processed
+    csv_link (str): presigned link to download csv statement
+    pdf_link (str): presigned link to download pdf statement
+Returns: body (str)
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_body_email_8py_source_l00079}{79}} of file \mbox{\hyperlink{_body_email_8py_source}{Body\+Email.\+py}}.
+
+\Hypertarget{class_body_email_1_1_body_email_af175b0375aca7179d409918e9911bc58}\label{class_body_email_1_1_body_email_af175b0375aca7179d409918e9911bc58} 
+\index{BodyEmail.BodyEmail@{BodyEmail.BodyEmail}!unmatched\_email@{unmatched\_email}}
+\index{unmatched\_email@{unmatched\_email}!BodyEmail.BodyEmail@{BodyEmail.BodyEmail}}
+\doxysubsubsection{\texorpdfstring{unmatched\_email()}{unmatched\_email()}}
+{\footnotesize\ttfamily Body\+Email.\+Body\+Email.\+unmatched\+\_\+email (\begin{DoxyParamCaption}\item[{}]{period,  }\item[{}]{link,  }\item[{}]{lines,  }\item[{}]{files }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Builds the body for unmatched lines report email. The format used is html
+
+Args:
+    period (str): month and year when sales were processed
+    link (str): presigned link to download report
+    lines (int): total lines which don't match with catalogue
+    files (int): files which have lines not matched 
+Returns: body (str)
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_body_email_8py_source_l00041}{41}} of file \mbox{\hyperlink{_body_email_8py_source}{Body\+Email.\+py}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/michellmonroy/\+Documents/dev-\/glider/glider/src/report\+\_\+generation/\mbox{\hyperlink{_body_email_8py}{Body\+Email.\+py}}\end{DoxyCompactItemize}

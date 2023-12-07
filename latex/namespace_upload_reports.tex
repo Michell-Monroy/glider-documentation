@@ -1,0 +1,105 @@
+\doxysection{Upload\+Reports Namespace Reference}
+\hypertarget{namespace_upload_reports}{}\label{namespace_upload_reports}\index{UploadReports@{UploadReports}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_upload_reports_a66e3bc1fae05ab2aad541cdfbbc8ccb3}{create\+\_\+presigned\+\_\+url}} (bucket, object, expiration=86400)
+\item 
+\mbox{\hyperlink{namespace_upload_reports_a561fba467173f7f2009da404a18be6b1}{upload\+\_\+files\+\_\+s3}} (bucket, s3\+\_\+path, local\+\_\+path, file)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_upload_reports_ab46f15b65eb438ce47a142af6c22c765}{ACCESS\+\_\+\+ID}} = os.\+environ.\+get("{}AWS\+\_\+\+KEY\+\_\+\+ID"{})
+\item 
+\mbox{\hyperlink{namespace_upload_reports_a84a82c43724b54d2cb11fda287741013}{ACCESS\+\_\+\+KEY}} = os.\+environ.\+get("{}AWS\+\_\+\+KEY\+\_\+\+SECRET"{})
+\item 
+\mbox{\hyperlink{namespace_upload_reports_add8ace354ff225909eadc2abd41ab2ca}{function\+\_\+name}} = os.\+environ.\+get("{}LAMBDA\+\_\+\+FUNCTION"{})
+\item 
+\mbox{\hyperlink{namespace_upload_reports_a41cb7f7c78621001a3dca8fe60589076}{s3\+\_\+client}} = boto3.\+client("{}s3"{}, aws\+\_\+access\+\_\+key\+\_\+id=\mbox{\hyperlink{namespace_upload_reports_ab46f15b65eb438ce47a142af6c22c765}{ACCESS\+\_\+\+ID}}, aws\+\_\+secret\+\_\+access\+\_\+key= \mbox{\hyperlink{namespace_upload_reports_a84a82c43724b54d2cb11fda287741013}{ACCESS\+\_\+\+KEY}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_upload_reports_a66e3bc1fae05ab2aad541cdfbbc8ccb3}\label{namespace_upload_reports_a66e3bc1fae05ab2aad541cdfbbc8ccb3} 
+\index{UploadReports@{UploadReports}!create\_presigned\_url@{create\_presigned\_url}}
+\index{create\_presigned\_url@{create\_presigned\_url}!UploadReports@{UploadReports}}
+\doxysubsubsection{\texorpdfstring{create\_presigned\_url()}{create\_presigned\_url()}}
+{\footnotesize\ttfamily Upload\+Reports.\+create\+\_\+presigned\+\_\+url (\begin{DoxyParamCaption}\item[{}]{bucket,  }\item[{}]{object,  }\item[{}]{expiration = {\ttfamily 86400} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Generate a presigned URL to share an S3 object via lambda invoke
+
+Args:
+    bucket (str): bucket where report was uploaded
+    object (str): full report object name 
+    expiration (int): time in seconds for the presigned URL to remain valid
+Returns: response (str): If error, returns None.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_upload_reports_8py_source_l00012}{12}} of file \mbox{\hyperlink{_upload_reports_8py_source}{Upload\+Reports.\+py}}.
+
+Here is the caller graph for this function\+:
+% FIG 0
+\Hypertarget{namespace_upload_reports_a561fba467173f7f2009da404a18be6b1}\label{namespace_upload_reports_a561fba467173f7f2009da404a18be6b1} 
+\index{UploadReports@{UploadReports}!upload\_files\_s3@{upload\_files\_s3}}
+\index{upload\_files\_s3@{upload\_files\_s3}!UploadReports@{UploadReports}}
+\doxysubsubsection{\texorpdfstring{upload\_files\_s3()}{upload\_files\_s3()}}
+{\footnotesize\ttfamily Upload\+Reports.\+upload\+\_\+files\+\_\+s3 (\begin{DoxyParamCaption}\item[{}]{bucket,  }\item[{}]{s3\+\_\+path,  }\item[{}]{local\+\_\+path,  }\item[{}]{file }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Uploads all files to s3 path defined previously
+
+Args:
+    local_path (str): Root path where is saved files
+    files (str): File to upload
+Returns: Nothing.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_upload_reports_8py_source_l00038}{38}} of file \mbox{\hyperlink{_upload_reports_8py_source}{Upload\+Reports.\+py}}.
+
+Here is the call graph for this function\+:
+% FIG 1
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespace_upload_reports_ab46f15b65eb438ce47a142af6c22c765}\label{namespace_upload_reports_ab46f15b65eb438ce47a142af6c22c765} 
+\index{UploadReports@{UploadReports}!ACCESS\_ID@{ACCESS\_ID}}
+\index{ACCESS\_ID@{ACCESS\_ID}!UploadReports@{UploadReports}}
+\doxysubsubsection{\texorpdfstring{ACCESS\_ID}{ACCESS\_ID}}
+{\footnotesize\ttfamily Upload\+Reports.\+ACCESS\+\_\+\+ID = os.\+environ.\+get("{}AWS\+\_\+\+KEY\+\_\+\+ID"{})}
+
+
+
+Definition at line \mbox{\hyperlink{_upload_reports_8py_source_l00007}{7}} of file \mbox{\hyperlink{_upload_reports_8py_source}{Upload\+Reports.\+py}}.
+
+\Hypertarget{namespace_upload_reports_a84a82c43724b54d2cb11fda287741013}\label{namespace_upload_reports_a84a82c43724b54d2cb11fda287741013} 
+\index{UploadReports@{UploadReports}!ACCESS\_KEY@{ACCESS\_KEY}}
+\index{ACCESS\_KEY@{ACCESS\_KEY}!UploadReports@{UploadReports}}
+\doxysubsubsection{\texorpdfstring{ACCESS\_KEY}{ACCESS\_KEY}}
+{\footnotesize\ttfamily Upload\+Reports.\+ACCESS\+\_\+\+KEY = os.\+environ.\+get("{}AWS\+\_\+\+KEY\+\_\+\+SECRET"{})}
+
+
+
+Definition at line \mbox{\hyperlink{_upload_reports_8py_source_l00008}{8}} of file \mbox{\hyperlink{_upload_reports_8py_source}{Upload\+Reports.\+py}}.
+
+\Hypertarget{namespace_upload_reports_add8ace354ff225909eadc2abd41ab2ca}\label{namespace_upload_reports_add8ace354ff225909eadc2abd41ab2ca} 
+\index{UploadReports@{UploadReports}!function\_name@{function\_name}}
+\index{function\_name@{function\_name}!UploadReports@{UploadReports}}
+\doxysubsubsection{\texorpdfstring{function\_name}{function\_name}}
+{\footnotesize\ttfamily Upload\+Reports.\+function\+\_\+name = os.\+environ.\+get("{}LAMBDA\+\_\+\+FUNCTION"{})}
+
+
+
+Definition at line \mbox{\hyperlink{_upload_reports_8py_source_l00009}{9}} of file \mbox{\hyperlink{_upload_reports_8py_source}{Upload\+Reports.\+py}}.
+
+\Hypertarget{namespace_upload_reports_a41cb7f7c78621001a3dca8fe60589076}\label{namespace_upload_reports_a41cb7f7c78621001a3dca8fe60589076} 
+\index{UploadReports@{UploadReports}!s3\_client@{s3\_client}}
+\index{s3\_client@{s3\_client}!UploadReports@{UploadReports}}
+\doxysubsubsection{\texorpdfstring{s3\_client}{s3\_client}}
+{\footnotesize\ttfamily Upload\+Reports.\+s3\+\_\+client = boto3.\+client("{}s3"{}, aws\+\_\+access\+\_\+key\+\_\+id=\mbox{\hyperlink{namespace_upload_reports_ab46f15b65eb438ce47a142af6c22c765}{ACCESS\+\_\+\+ID}}, aws\+\_\+secret\+\_\+access\+\_\+key= \mbox{\hyperlink{namespace_upload_reports_a84a82c43724b54d2cb11fda287741013}{ACCESS\+\_\+\+KEY}})}
+
+
+
+Definition at line \mbox{\hyperlink{_upload_reports_8py_source_l00010}{10}} of file \mbox{\hyperlink{_upload_reports_8py_source}{Upload\+Reports.\+py}}.
+

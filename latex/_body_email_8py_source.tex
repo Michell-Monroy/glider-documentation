@@ -1,0 +1,120 @@
+\doxysection{Body\+Email.\+py}
+\hypertarget{_body_email_8py_source}{}\label{_body_email_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/report\_generation/BodyEmail.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/report\_generation/BodyEmail.py}}
+\mbox{\hyperlink{_body_email_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00001}\mbox{\hyperlink{namespace_body_email}{00001}}\ }
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00002}\mbox{\hyperlink{class_body_email_1_1_body_email}{00002}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_body_email_1_1_body_email}{BodyEmail}}():}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00003}00003\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00004}00004\ \textcolor{stringliteral}{\ \ \ \ Builds\ the\ body\ email\ according\ to\ kind\ of\ report}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00005}00005\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00006}\mbox{\hyperlink{class_body_email_1_1_body_email_ac8a70b8b63da11e711674a31ccc3939d}{00006}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{class_body_email_1_1_body_email_ac8a70b8b63da11e711674a31ccc3939d}{report\_email}}(period,\ link):}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00007}00007\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Builds\ the\ body\ for\ reports\ email.\ The\ format\ used\ is\ html}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00008}00008\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00009}00009\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00010}00010\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ period\ (str):\ month\ and\ year\ when\ sales\ were\ processed}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00011}00011\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ link\ (str):\ presigned\ link\ to\ download\ report}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00012}00012\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ body\ (str)}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00013}00013\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00014}00014\ \ \ \ \ \ \ \ \ body\ =\ \textcolor{stringliteral}{"{}"{}"{}<!DOCTYPE\ html>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00015}00015\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <html>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00016}00016\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <body>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00017}00017\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ style="{}padding:20px\ 0px"{}>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00018}00018\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ style="{}height:\ 600px;width:600px"{}>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00019}00019\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ style="{}text-\/align:left;"{}>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00020}00020\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <img\ src="{}https://encrypted-\/tbn0.gstatic.com/images?q=tbn:ANd9GcRMK6NxbpGlgtJWdMreEPdgJ4sHeCXkF2FQj-\/-\/4Vu4iOA\&s"{}\ style="{}height:\ 153px;"{}>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00021}00021\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <h3>Your\ report\ for\ \{\}\ is\ ready</h3>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00022}00022\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>Hello\ there!\ </p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00023}00023\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>Thanks\ for\ using\ our\ File\ generator\ service.\ Your\ final\ report\ is\ now\ ready\ to\ be\ downloaded.</p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00024}00024\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>Please\ click\ on\ the\ link\ below\ to\ download\ your\ report.</p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00025}00025\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href="{}\{\}"{}><b>Download\ your\ report\ here</b></a>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00026}00026\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00027}00027\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <b>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00028}00028\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <u>NOTE</u>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00029}00029\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </b>:\ the\ link\ will\ expire\ in\ <b\ style="{}color:orange;"{}>24\ hours</b>\ so\ please\ do\ it\ as\ soon\ as\ you\ get\ the\ email.}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00030}00030\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00031}00031\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>If\ you\ have\ any\ issue,\ question\ or\ feature\ request,\ please\ raise\ a\ ticket\ by\ emailing\ us\ at\ <i>support@ottomate.me.</i>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00032}00032\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00033}00033\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>Thanks!</p>\ -\/\ The\ OTTO\ team}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00034}00034\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00035}00035\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00036}00036\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00037}00037\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </body>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00038}00038\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </html>"{}"{}"{}}.format(period,\ link)}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ body}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00041}\mbox{\hyperlink{class_body_email_1_1_body_email_af175b0375aca7179d409918e9911bc58}{00041}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{class_body_email_1_1_body_email_af175b0375aca7179d409918e9911bc58}{unmatched\_email}}(period,\ link,\ lines,\ files):}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Builds\ the\ body\ for\ unmatched\ lines\ report\ email.\ The\ format\ used\ is\ html}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00043}00043\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00044}00044\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00045}00045\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ period\ (str):\ month\ and\ year\ when\ sales\ were\ processed}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00046}00046\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ link\ (str):\ presigned\ link\ to\ download\ report}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00047}00047\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ lines\ (int):\ total\ lines\ which\ don't\ match\ with\ catalogue}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00048}00048\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ files\ (int):\ files\ which\ have\ lines\ not\ matched\ }}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00049}00049\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ body\ (str)}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00050}00050\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00051}00051\ \ \ \ \ \ \ \ \ body\ =\ \textcolor{stringliteral}{"{}"{}"{}<!DOCTYPE\ html>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00052}00052\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <html>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00053}00053\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <body>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00054}00054\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ style="{}padding:20px\ 0px"{}>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00055}00055\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ style="{}height:\ 600px;width:600px"{}>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00056}00056\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ style="{}text-\/align:left;"{}>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00057}00057\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <img\ src="{}https://encrypted-\/tbn0.gstatic.com/images?q=tbn:ANd9GcRMK6NxbpGlgtJWdMreEPdgJ4sHeCXkF2FQj-\/-\/4Vu4iOA\&s"{}\ style="{}height:\ 153px;"{}>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00058}00058\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <h3>Your\ report\ for\ Unmatched\ sales\ for\ \{\}\ is\ ready</h3>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00059}00059\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>Hello\ there!\ </p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00060}00060\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>Thanks\ for\ using\ our\ Unmatched\ File\ generator\ service.\ Your\ final\ file\ is\ now\ ready\ to\ be\ downloaded.</p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00061}00061\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>We\ found\ \{\}\ sales\ contained\ in\ \{\}\ files\ that\ were\ not\ matched\ with\ your\ catalogue.</p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00062}00062\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>Please\ click\ on\ the\ link\ below\ to\ download\ your\ report.</p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00063}00063\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href="{}\{\}"{}><b>Download\ your\ report\ here</b></a>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00064}00064\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00065}00065\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <b>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00066}00066\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <u>NOTE</u>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00067}00067\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </b>:\ the\ link\ will\ expire\ in\ <b\ style="{}color:orange;"{}>24\ hours</b>\ so\ please\ do\ it\ as\ soon\ as\ you\ get\ the\ email.}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00068}00068\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00069}00069\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>If\ you\ have\ any\ issue,\ question\ or\ feature\ request,\ please\ raise\ a\ ticket\ by\ emailing\ us\ at\ <i>support@ottomate.me.</i>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00070}00070\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00071}00071\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>Thanks!</p>\ -\/\ The\ OTTO\ team}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00072}00072\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00073}00073\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00074}00074\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00075}00075\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </body>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00076}00076\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </html>"{}"{}"{}}.format(period,\ lines,\ files,\ link)}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ body}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00079}\mbox{\hyperlink{class_body_email_1_1_body_email_a902a1ca0673843bfb8fc105db1eb1173}{00079}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{class_body_email_1_1_body_email_a902a1ca0673843bfb8fc105db1eb1173}{statement\_email}}(period,\ csv\_link,\ pdf\_link):}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Builds\ the\ body\ for\ statements\ email.\ The\ format\ used\ is\ html}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00081}00081\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00082}00082\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00083}00083\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ period\ (str):\ month\ and\ year\ when\ sales\ were\ processed}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00084}00084\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ csv\_link\ (str):\ presigned\ link\ to\ download\ csv\ statement}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00085}00085\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ pdf\_link\ (str):\ presigned\ link\ to\ download\ pdf\ statement}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00086}00086\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ body\ (str)}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00087}00087\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00088}00088\ \ \ \ \ \ \ \ \ body\ =\ \textcolor{stringliteral}{"{}"{}"{}<!DOCTYPE\ html>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00089}00089\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <html>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00090}00090\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <body>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00091}00091\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ style="{}padding:20px\ 0px"{}>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00092}00092\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ style="{}height:\ 600px;width:600px"{}>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00093}00093\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ style="{}text-\/align:left;"{}>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00094}00094\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <img\ src="{}https://encrypted-\/tbn0.gstatic.com/images?q=tbn:ANd9GcRMK6NxbpGlgtJWdMreEPdgJ4sHeCXkF2FQj-\/-\/4Vu4iOA\&s"{}\ style="{}height:\ 153px;"{}>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00095}00095\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <h3>Your\ Statement\ for\ \{\}\ is\ ready</h3>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00096}00096\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>Hello\ there!\ </p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00097}00097\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>Thanks\ for\ using\ our\ Statement\ generator\ service.\ Your\ CSV\ report\ and\ PDF\ file\ are\ now\ ready\ to\ be\ downloaded.</p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00098}00098\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>Please\ click\ on\ the\ link\ below\ to\ download\ your\ reports.</p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00099}00099\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href="{}\{\}"{}><b>Download\ your\ CSV\ report\ here</b></a>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00100}00100\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p><a\ href="{}\{\}"{}><b>Download\ your\ PDF\ file\ here</b></a><p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00101}00101\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00102}00102\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <b>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00103}00103\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <u>NOTE</u>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00104}00104\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </b>:\ the\ link\ will\ expire\ in\ <b\ style="{}color:orange;"{}>24\ hours</b>\ so\ please\ do\ it\ as\ soon\ as\ you\ get\ the\ email.}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00105}00105\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00106}00106\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>If\ you\ have\ any\ issue,\ question\ or\ feature\ request,\ please\ raise\ a\ ticket\ by\ emailing\ us\ at\ <i>support@ottomate.me.</i>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00107}00107\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00108}00108\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>Thanks!</p>\ -\/\ The\ OTTO\ team}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00109}00109\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00110}00110\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00111}00111\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00112}00112\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </body>}}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00113}00113\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </html>"{}"{}"{}}.format(period,\ csv\_link,\ pdf\_link)}
+\DoxyCodeLine{\Hypertarget{_body_email_8py_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ body}
+
+\end{DoxyCode}

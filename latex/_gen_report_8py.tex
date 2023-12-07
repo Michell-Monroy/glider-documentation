@@ -1,0 +1,29 @@
+\doxysection{/\+Users/michellmonroy/\+Documents/dev-\/glider/glider/src/report\+\_\+generation/\+Gen\+Report.py File Reference}
+\hypertarget{_gen_report_8py}{}\label{_gen_report_8py}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/report\_generation/GenReport.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/report\_generation/GenReport.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_gen_report}{Gen\+Report}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_gen_report_af2f6845773a1f6e29c2c45c92427a7cc}{Gen\+Report.\+get\+\_\+month}} (date)
+\item 
+\mbox{\hyperlink{namespace_gen_report_a08ba747e20c81e3cbc2b2f2597e21d97}{Gen\+Report.\+build\+\_\+csv}} (event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_gen_report_a997a57c14ac3cfa11abd20e4bfe06ea9}{Gen\+Report.\+f\+\_\+path}} = \+\_\+\+\_\+file\+\_\+\+\_\+
+\item 
+\mbox{\hyperlink{namespace_gen_report_a777f5894259137ec5733edfe8884d89b}{Gen\+Report.\+index}} = f\+\_\+path.\+find("{}report\+\_\+generation/"{})
+\item 
+\mbox{\hyperlink{namespace_gen_report_a30d4104310390d9a0868ae447515adae}{Gen\+Report.\+mongo\+\_\+conn}} = mongo\+\_\+connection()
+\begin{DoxyCompactList}\small\item\em Class to connect to mongodb. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_gen_report_aafcd09556274e2ac833187f3296422bf}{Gen\+Report.\+collection}} = mongo\+\_\+conn.\+mongo\+\_\+conn\+\_\+sales()
+\begin{DoxyCompactList}\small\item\em Mongo collection to consult sales. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_gen_report_a7055623ecf06eb8754d21422c0314e7d}{Gen\+Report.\+ROOT\+\_\+\+DIR}} = os.\+path.\+expanduser(\textquotesingle{}\texorpdfstring{$\sim$}{\string~}\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Sets the root path. \end{DoxyCompactList}\item 
+str \mbox{\hyperlink{namespace_gen_report_aba5d3da052125b14ddc828d863ef6d54}{Gen\+Report.\+path}} = \mbox{\hyperlink{namespace_gen_report_a7055623ecf06eb8754d21422c0314e7d}{ROOT\+\_\+\+DIR}}+"{}/Reports/"{}
+\begin{DoxyCompactList}\small\item\em Creates the folder when reports will be saved. \end{DoxyCompactList}\end{DoxyCompactItemize}

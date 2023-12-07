@@ -64,8 +64,10 @@ var searchData=
   ['importer_3a_3atrigger_61',['trigger',['../namespaceimporter_1_1trigger.html',1,'importer']]],
   ['importer_3a_3auploadsales_62',['UploadSales',['../namespaceimporter_1_1_upload_sales.html',1,'importer']]],
   ['importer_3a_3avalidate_63',['Validate',['../namespaceimporter_1_1_validate.html',1,'importer']]],
-  ['index_64',['index',['../namespace_file_cleaning.html#afe4c614d77426d1210eaf7b4de535f95',1,'FileCleaning.index'],['../namespace_amazon_f_t_p.html#a37bda958a4790b32c658d88a723512e5',1,'AmazonFTP.index'],['../namespace_f_t_p_download.html#aee14640768ef624da9e72baeb4276ffc',1,'FTPDownload.index']]],
-  ['isrc_5fvalidation_65',['isrc_validation',['../classimporter_1_1_validate_1_1validate__data.html#aa9f2874229d1b2a12f3daf4bd9180990',1,'importer::Validate::validate_data']]],
-  ['itunestemplate_66',['itunesTemplate',['../classimporter_1_1templates_1_1itunes_template_1_1itunes_template.html',1,'importer::templates::itunesTemplate']]],
-  ['itunestemplate_2epy_67',['itunesTemplate.py',['../itunes_template_8py.html',1,'']]]
+  ['importer_5fworkflow_64',['importer_workflow',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow.html',1,'']]],
+  ['importer_5fworkflow_2emd_65',['importer_workflow.md',['../importer__workflow_8md.html',1,'']]],
+  ['index_66',['index',['../namespace_file_cleaning.html#afe4c614d77426d1210eaf7b4de535f95',1,'FileCleaning.index'],['../namespace_report_snapshot.html#a493ebf6121b88a8b629ddb60e498f503',1,'ReportSnapshot.index'],['../namespace_gen_unmatched.html#acfd342b74a2110a477fcc00b7f9b0148',1,'GenUnmatched.index'],['../namespace_f_t_p_download.html#aee14640768ef624da9e72baeb4276ffc',1,'FTPDownload.index'],['../namespace_amazon_f_t_p.html#a37bda958a4790b32c658d88a723512e5',1,'AmazonFTP.index'],['../namespace_gen_report.html#a777f5894259137ec5733edfe8884d89b',1,'GenReport.index']]],
+  ['isrc_5fvalidation_67',['isrc_validation',['../classimporter_1_1_validate_1_1validate__data.html#aa9f2874229d1b2a12f3daf4bd9180990',1,'importer::Validate::validate_data']]],
+  ['itunestemplate_68',['itunesTemplate',['../classimporter_1_1templates_1_1itunes_template_1_1itunes_template.html',1,'importer::templates::itunesTemplate']]],
+  ['itunestemplate_2epy_69',['itunesTemplate.py',['../itunes_template_8py.html',1,'']]]
 ];

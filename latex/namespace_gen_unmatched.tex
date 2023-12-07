@@ -1,0 +1,162 @@
+\doxysection{Gen\+Unmatched Namespace Reference}
+\hypertarget{namespace_gen_unmatched}{}\label{namespace_gen_unmatched}\index{GenUnmatched@{GenUnmatched}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_gen_unmatched_a3a0afb938e1db277570479a49050da32}{get\+\_\+month}} (date)
+\item 
+\mbox{\hyperlink{namespace_gen_unmatched_ae7290d868393519f9b28d6efa8fff0ae}{get\+\_\+num\+\_\+files}} (csv\+\_\+file)
+\item 
+\mbox{\hyperlink{namespace_gen_unmatched_a06d75b1f6c59e743db6c08a4c96c8e6d}{generate\+\_\+unmatched\+\_\+csv}} (event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_gen_unmatched_af8b2d7ebe5e4d1cfa3f0db819b5e7a9f}{f\+\_\+path}} = \+\_\+\+\_\+file\+\_\+\+\_\+
+\item 
+\mbox{\hyperlink{namespace_gen_unmatched_acfd342b74a2110a477fcc00b7f9b0148}{index}} = f\+\_\+path.\+find("{}report\+\_\+generation/"{})
+\item 
+\mbox{\hyperlink{namespace_gen_unmatched_a733736938e6956ed970d88d18f9e01ea}{mongo\+\_\+conn}} = mongo\+\_\+connection()
+\begin{DoxyCompactList}\small\item\em Class to connect to mongodb. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_gen_unmatched_a6824e103432a0e4e6a92084371a57cea}{collection}} = mongo\+\_\+conn.\+mongo\+\_\+conn\+\_\+sales()
+\begin{DoxyCompactList}\small\item\em Mongo collection to consult sales. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_gen_unmatched_a0321ba1810c0ad7c45915faa6510de3f}{ROOT\+\_\+\+DIR}} = os.\+path.\+expanduser(\textquotesingle{}\texorpdfstring{$\sim$}{\string~}\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Sets the root path. \end{DoxyCompactList}\item 
+str \mbox{\hyperlink{namespace_gen_unmatched_a6ada99225213dfff2234c6b644100879}{path}} = \mbox{\hyperlink{namespace_gen_unmatched_a0321ba1810c0ad7c45915faa6510de3f}{ROOT\+\_\+\+DIR}}+"{}/Reports/"{}
+\begin{DoxyCompactList}\small\item\em Creates the folder when reports will be saved. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_gen_unmatched_a06d75b1f6c59e743db6c08a4c96c8e6d}\label{namespace_gen_unmatched_a06d75b1f6c59e743db6c08a4c96c8e6d} 
+\index{GenUnmatched@{GenUnmatched}!generate\_unmatched\_csv@{generate\_unmatched\_csv}}
+\index{generate\_unmatched\_csv@{generate\_unmatched\_csv}!GenUnmatched@{GenUnmatched}}
+\doxysubsubsection{\texorpdfstring{generate\_unmatched\_csv()}{generate\_unmatched\_csv()}}
+{\footnotesize\ttfamily Gen\+Unmatched.\+generate\+\_\+unmatched\+\_\+csv (\begin{DoxyParamCaption}\item[{}]{event }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Generates the unmatched lines in compressed csv format according to sales which matches with 'accounting_date' field
+
+Args:
+    date (str): accounting_date, i.e processing files date
+Returns (str): Nothing.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_gen_unmatched_8py_source_l00064}{64}} of file \mbox{\hyperlink{_gen_unmatched_8py_source}{Gen\+Unmatched.\+py}}.
+
+Here is the call graph for this function\+:
+% FIG 0
+\Hypertarget{namespace_gen_unmatched_a3a0afb938e1db277570479a49050da32}\label{namespace_gen_unmatched_a3a0afb938e1db277570479a49050da32} 
+\index{GenUnmatched@{GenUnmatched}!get\_month@{get\_month}}
+\index{get\_month@{get\_month}!GenUnmatched@{GenUnmatched}}
+\doxysubsubsection{\texorpdfstring{get\_month()}{get\_month()}}
+{\footnotesize\ttfamily Gen\+Unmatched.\+get\+\_\+month (\begin{DoxyParamCaption}\item[{}]{date }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Generate the filename according to date in 'MonthYear' format.
+
+Args:
+    date (str): accounting date, i.e processing files date
+Returns: full_date (str) 
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_gen_unmatched_8py_source_l00031}{31}} of file \mbox{\hyperlink{_gen_unmatched_8py_source}{Gen\+Unmatched.\+py}}.
+
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{namespace_gen_unmatched_ae7290d868393519f9b28d6efa8fff0ae}\label{namespace_gen_unmatched_ae7290d868393519f9b28d6efa8fff0ae} 
+\index{GenUnmatched@{GenUnmatched}!get\_num\_files@{get\_num\_files}}
+\index{get\_num\_files@{get\_num\_files}!GenUnmatched@{GenUnmatched}}
+\doxysubsubsection{\texorpdfstring{get\_num\_files()}{get\_num\_files()}}
+{\footnotesize\ttfamily Gen\+Unmatched.\+get\+\_\+num\+\_\+files (\begin{DoxyParamCaption}\item[{}]{csv\+\_\+file }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Counts the total files which contains not matched lines
+
+Args:
+    csv_file (str): path to csv report
+Returns: num_files (int) 
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_gen_unmatched_8py_source_l00047}{47}} of file \mbox{\hyperlink{_gen_unmatched_8py_source}{Gen\+Unmatched.\+py}}.
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespace_gen_unmatched_a6824e103432a0e4e6a92084371a57cea}\label{namespace_gen_unmatched_a6824e103432a0e4e6a92084371a57cea} 
+\index{GenUnmatched@{GenUnmatched}!collection@{collection}}
+\index{collection@{collection}!GenUnmatched@{GenUnmatched}}
+\doxysubsubsection{\texorpdfstring{collection}{collection}}
+{\footnotesize\ttfamily Gen\+Unmatched.\+collection = mongo\+\_\+conn.\+mongo\+\_\+conn\+\_\+sales()}
+
+
+
+Mongo collection to consult sales. 
+
+
+
+Definition at line \mbox{\hyperlink{_gen_unmatched_8py_source_l00022}{22}} of file \mbox{\hyperlink{_gen_unmatched_8py_source}{Gen\+Unmatched.\+py}}.
+
+\Hypertarget{namespace_gen_unmatched_af8b2d7ebe5e4d1cfa3f0db819b5e7a9f}\label{namespace_gen_unmatched_af8b2d7ebe5e4d1cfa3f0db819b5e7a9f} 
+\index{GenUnmatched@{GenUnmatched}!f\_path@{f\_path}}
+\index{f\_path@{f\_path}!GenUnmatched@{GenUnmatched}}
+\doxysubsubsection{\texorpdfstring{f\_path}{f\_path}}
+{\footnotesize\ttfamily Gen\+Unmatched.\+f\+\_\+path = \+\_\+\+\_\+file\+\_\+\+\_\+}
+
+
+
+Definition at line \mbox{\hyperlink{_gen_unmatched_8py_source_l00012}{12}} of file \mbox{\hyperlink{_gen_unmatched_8py_source}{Gen\+Unmatched.\+py}}.
+
+\Hypertarget{namespace_gen_unmatched_acfd342b74a2110a477fcc00b7f9b0148}\label{namespace_gen_unmatched_acfd342b74a2110a477fcc00b7f9b0148} 
+\index{GenUnmatched@{GenUnmatched}!index@{index}}
+\index{index@{index}!GenUnmatched@{GenUnmatched}}
+\doxysubsubsection{\texorpdfstring{index}{index}}
+{\footnotesize\ttfamily Gen\+Unmatched.\+index = f\+\_\+path.\+find("{}report\+\_\+generation/"{})}
+
+
+
+Definition at line \mbox{\hyperlink{_gen_unmatched_8py_source_l00013}{13}} of file \mbox{\hyperlink{_gen_unmatched_8py_source}{Gen\+Unmatched.\+py}}.
+
+\Hypertarget{namespace_gen_unmatched_a733736938e6956ed970d88d18f9e01ea}\label{namespace_gen_unmatched_a733736938e6956ed970d88d18f9e01ea} 
+\index{GenUnmatched@{GenUnmatched}!mongo\_conn@{mongo\_conn}}
+\index{mongo\_conn@{mongo\_conn}!GenUnmatched@{GenUnmatched}}
+\doxysubsubsection{\texorpdfstring{mongo\_conn}{mongo\_conn}}
+{\footnotesize\ttfamily Gen\+Unmatched.\+mongo\+\_\+conn = mongo\+\_\+connection()}
+
+
+
+Class to connect to mongodb. 
+
+
+
+Definition at line \mbox{\hyperlink{_gen_unmatched_8py_source_l00020}{20}} of file \mbox{\hyperlink{_gen_unmatched_8py_source}{Gen\+Unmatched.\+py}}.
+
+\Hypertarget{namespace_gen_unmatched_a6ada99225213dfff2234c6b644100879}\label{namespace_gen_unmatched_a6ada99225213dfff2234c6b644100879} 
+\index{GenUnmatched@{GenUnmatched}!path@{path}}
+\index{path@{path}!GenUnmatched@{GenUnmatched}}
+\doxysubsubsection{\texorpdfstring{path}{path}}
+{\footnotesize\ttfamily str Gen\+Unmatched.\+path = \mbox{\hyperlink{namespace_gen_unmatched_a0321ba1810c0ad7c45915faa6510de3f}{ROOT\+\_\+\+DIR}}+"{}/Reports/"{}}
+
+
+
+Creates the folder when reports will be saved. 
+
+
+
+Definition at line \mbox{\hyperlink{_gen_unmatched_8py_source_l00027}{27}} of file \mbox{\hyperlink{_gen_unmatched_8py_source}{Gen\+Unmatched.\+py}}.
+
+\Hypertarget{namespace_gen_unmatched_a0321ba1810c0ad7c45915faa6510de3f}\label{namespace_gen_unmatched_a0321ba1810c0ad7c45915faa6510de3f} 
+\index{GenUnmatched@{GenUnmatched}!ROOT\_DIR@{ROOT\_DIR}}
+\index{ROOT\_DIR@{ROOT\_DIR}!GenUnmatched@{GenUnmatched}}
+\doxysubsubsection{\texorpdfstring{ROOT\_DIR}{ROOT\_DIR}}
+{\footnotesize\ttfamily Gen\+Unmatched.\+ROOT\+\_\+\+DIR = os.\+path.\+expanduser(\textquotesingle{}\texorpdfstring{$\sim$}{\string~}\textquotesingle{})}
+
+
+
+Sets the root path. 
+
+
+
+Definition at line \mbox{\hyperlink{_gen_unmatched_8py_source_l00025}{25}} of file \mbox{\hyperlink{_gen_unmatched_8py_source}{Gen\+Unmatched.\+py}}.
+

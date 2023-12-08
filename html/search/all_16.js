@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['youtubetemplate_0',['YoutubeTemplate',['../classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template.html',1,'importer::templates::YoutubeTemplate']]],
-  ['youtubetemplate_2epy_1',['YoutubeTemplate.py',['../_youtube_template_8py.html',1,'']]]
+  ['workflow_0',['workflow',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow.html',1,'Importer Workflow'],['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow.html#autotoc_md10',1,'Workflow']]]
 ];

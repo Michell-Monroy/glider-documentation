@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Glider: importer_workflow</title>
+<title>Glider: Importer Workflow</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -69,21 +69,29 @@ $(function() {
 
 </div><!-- top -->
 <div><div class="header">
-  <div class="headertitle"><div class="title">importer_workflow</div></div>
+  <div class="headertitle"><div class="title">Importer Workflow</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><img src="https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/tf_aws.png" alt="" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md8"></a>
-Prerrequisites</h1>
-<ul>
-<li>Python &gt;= 3.8</li>
-<li>AWS Account</li>
-<li>Terraform <a href="https://www.terraform.io/downloads">install</a></li>
-</ul>
+<div class="textblock"><p><a class="anchor" id="autotoc_md8"></a> </p>
 <h1><a class="anchor" id="autotoc_md9"></a>
+Description</h1>
+<p>Importer module is composed of these steps:</p>
+<ol type="1">
+<li>Receive usage reports: This step takes two paths from s3 (input path and output path) and takes the files to process. This function must check if the input path is a valid path to continue the process</li>
+<li>Identify formats: Once the file is validated, there is a function which is in charge of searching for its format in a collection called “formats” in MongoDB. The search is carried out as follows:</li>
+<li>Gets the header from each usage report</li>
+<li>Searches into MongoDB some format whose “header” field is the same as the usage report header.</li>
+<li>When the format is identified, the format name is extracted.</li>
+<li>Map columns: Once the format of each usage report is already known, it’s possible to extract the columns, and data type necessary to carry out the mapping. This process is carried out by format and not by file, that is, the format already specifies which columns to use, so these are extracted from the “ottoMapping” field of the json files.</li>
+<li>Generate new data using mapped columns: Once the required columns and their respective values are known, DataFrames are created (one per file) in which the columns are constructed according to the "name" field of "mappingTemplate" field from format.json. When this step is completed, the new usage reports are saved in s3 as parquet and mongoDB.</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md10"></a>
+Workflow</h1>
+<p><img src="https://drive.google.com/uc?id=1UORG4GwOqwp1sdrr1NG5Ml4pCQZXwocJ" alt="" class="inline"/></p>
+<h1><a class="anchor" id="autotoc_md11"></a>
 How to set env variables and venv</h1>
 <p>There are two kind of variables, to dev and local testing.</p>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 How to create venv dev</h2>
 <ol type="1">
 <li>Create a new virtual env (if you have created this venv pass to step 4)</li>
@@ -99,25 +107,32 @@ How to create venv dev</h2>
 </ol>
 <p><code>pip install -r src/importer/requirements.txt</code></p>
 <ol type="1">
-<li>Activate env variables. You should create two .env files a) .env.dev for developing and testing b) .env.prod for production Both files have the same format, just add your dev and prod credentials for each file. Here's an example <div class="fragment"><div class="line">AWS_KEY_ID=&lt;YOUR_AWS_KEY_ID&gt;</div>
+<li>Activate env variables. You should create two .env files a) .env.dev for developing and testing b) .env.prod for production Both files have the same format, just add your dev and prod credentials for each file. Here's an example <div class="fragment"><div class="line">ENVIRONMENT=&lt;Development/Production&gt;</div>
+<div class="line">AWS_KEY_ID=&lt;YOUR_AWS_KEY_ID&gt;</div>
 <div class="line">AWS_SECRET_KEY=&lt;YOUR_AWS_SECRET_KEY&gt;</div>
 <div class="line">SENDER_EMAIL=&quot;example@example.me&quot;</div>
 <div class="line">SENDER_PASSWORD=&lt;YOUR_SENDER_PASSWORD&gt;</div>
 <div class="line">MONGO_GLIDER=&lt;MONGO_CONNECTION_LINK&gt;</div>
+<div class="line">DATABASE_URL=POSTGRES_DATABASE</div>
 <div class="line">DB=&lt;YOUR_DB&gt;</div>
 <div class="line">COLLECTION=&lt;YOUR_MONGO_COLLECTION&gt;</div>
+<div class="line">TRENDS_COLLECTION=&lt;YOUR_MONGO_COLLECTION_FOR_TRENDS&gt;</div>
 <div class="line">SNAPSHOTS_DB=&lt;YOUR_MONGO_DB_FOR_SNAPSHOTS&gt;</div>
-<div class="line">FORMATS=&lt;YOUR_MONGO_COLLECTION_FOR_FROMATS&gt;</div>
+<div class="line">FORMATS=&lt;YOUR_MONGO_COLLECTION_FOR_FORMATS&gt;</div>
 <div class="line">SNAPSHOTS=&lt;YOUR_MONGO_COLLECTION_FOR_SNAPSHOTS&gt;</div>
 <div class="line">CAT_COLLECTION=&lt;YOUR_MONGO_COLLECTION_FOR_CATALOGUE&gt;</div>
 <div class="line">REGION=&lt;YOUR_AWS_REGION&gt;</div>
 <div class="line">AS_COLLECTION=&lt;YOUR_MONGO_COLLECTION_FOR_AS_CATALOGUE&gt;</div>
+<div class="line">LAMBDA_FUNCTION=&lt;LAMDA_FUNTION_TO_GENERATE_PRESIGNED_LINK&gt;</div>
+<div class="line">FTP_ACCESS=&lt;YOUR_MONGO_COLLECTION_FOR_FTP_CREDENTIALS&gt;</div>
+<div class="line">INSTANCE_ID_LITE=&lt;EC2_TO_EXECUTE_LITE_PROCEDURE&gt;</div>
+<div class="line">INSTANCE_ID_PRO==&lt;EC2_TO_EXECUTE_PRO_PROCEDURE&gt;</div>
 </div><!-- fragment --></li>
 <li>Save and run</li>
 </ol>
 <p><code>source deploy/dev_vars.sh</code> for developing env <code>source deploy/prod_vars.sh</code> for production env</p>
 <p>It loads env vars to be used still you change them.</p>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 How to create venv local testing</h2>
 <ol type="1">
 <li>Create a new virtual env (if you have created this venv pass to step 4)</li>
@@ -136,63 +151,9 @@ How to create venv local testing</h2>
 </ol>
 <p><code>source deploy/dev_vars.sh</code></p>
 <p>This command activate glider_testing env and loads the env variables in glider/.env file which is useful to deploy infrastructure</p>
-<h1><a class="anchor" id="autotoc_md12"></a>
-How to deploy terraform code</h1>
-<ol type="1">
-<li>Load .env file with dev variables</li>
-</ol>
-<p><code>source deploy/dev_vars.sh</code> for developing env <code>source deploy/prod_vars.sh</code> for production env</p>
-<ol type="1">
-<li>Open a terminal and put it on Glider/infrastructure folder.</li>
-</ol>
-<p><code>cd infrastructure/</code></p>
-<ol type="1">
-<li>In Glider/infrastructure there are main.tf and variables.tf files. This is AWS infrastructure and env variables.</li>
-</ol>
-<p>The env variables format is the following configure it with your AWS ACCESS KEY ID and AWS SECRET ACCESS KEY (You can copy these values from .env file)</p>
-<div class="fragment"><div class="line">variable &quot;zones&quot; {</div>
-<div class="line"> </div>
-<div class="line">type = string</div>
-<div class="line"> </div>
-<div class="line">default = &lt;&lt;aws_zone&gt;&gt;</div>
-<div class="line"> </div>
-<div class="line">}</div>
-<div class="line"> </div>
-<div class="line">  </div>
-<div class="line"> </div>
-<div class="line">variable &quot;access_key&quot;{</div>
-<div class="line"> </div>
-<div class="line">type = string</div>
-<div class="line"> </div>
-<div class="line">default = &lt;&lt;your_aws_access_key_id&gt;&gt;</div>
-<div class="line"> </div>
-<div class="line">}</div>
-<div class="line"> </div>
-<div class="line">  </div>
-<div class="line"> </div>
-<div class="line">variable &quot;secret_key&quot;{</div>
-<div class="line"> </div>
-<div class="line">type = string</div>
-<div class="line"> </div>
-<div class="line">default = &lt;&lt;your_aws_secret_access_key&gt;&gt;</div>
-<div class="line"> </div>
-<div class="line">}</div>
-</div><!-- fragment --><ol type="1">
-<li>Start terraform env using <code>terraform init</code>.</li>
-<li>Create a new env to testing or dev: <code>terraform workspace new &lt;&lt;env_name&gt;&gt;</code> this command helps us to have a version control.</li>
-<li>Verify that you are in the correct env using <code>terraform workspace list</code> it should show the current workspace.</li>
-<li>To check if the code in main.tf is right, use <code>terraform plan</code>.</li>
-<li>If everytinh is ok, apply infrstructure using <code>terraform apply</code> and wait for it.</li>
-<li>Go to <a href="https://aws.amazon.com/">AWS</a> and confirm that all configuration is created (lambda and step functions).</li>
-</ol>
-<p><b>WARNING</b>: To destroy infrastructure, use <code>terraform destroy</code>. This destroy all infrastructure indicated in main.tf</p>
-<p><b>More info</b></p>
-<ul>
-<li><a href="https://learn.hashicorp.com/collections/terraform/aws-get-started">Terraform commands</a></li>
-</ul>
-<h1><a class="anchor" id="autotoc_md13"></a>
+<h1><a class="anchor" id="autotoc_md14"></a>
 Testing</h1>
-<h2><a class="anchor" id="autotoc_md14"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 Local Testing</h2>
 <ol type="1">
 <li>Upload one or more valid file in AWS s3 bucket</li>
@@ -204,38 +165,43 @@ Local Testing</h2>
 </ol>
 <div class="fragment"><div class="line">import sys</div>
 <div class="line">sys.path.insert(1, &quot;src/importer&quot;)</div>
+<div class="line">sys.path.insert(1, &quot;run&quot;)</div>
 <div class="line">from ReceivePath import receive_path</div>
 <div class="line">from IdentifyFormat import identify_format</div>
 <div class="line">from ProcessFiles import process_files_parallel</div>
 <div class="line">from CreateSnapshots import results_grouped</div>
-<div class="line">from generator import lambda_handler</div>
+<div class="line">from CatalogueGenerator import generate_catalogue</div>
+<div class="line">from SendNotifications import send_importer_notification</div>
+<div class="line">from RunEC2 import stop_ec2</div>
 <div class="line"> </div>
 <div class="line">  </div>
 <div class="line"> </div>
 <div class="line">test_data = {</div>
-<div class="line">&quot;tag&quot;: &lt;&quot;test&quot;/&quot;prod&quot;&gt;,</div>
-<div class="line">&quot;cat_gen&quot;: &lt;&quot;True&quot;/&quot;False&quot;&gt;, #True for generate catalogue from sales, False for don&#39;t</div>
-<div class="line">&quot;client_id&quot;: &lt;&lt;client_id&gt;&gt;, </div>
-<div class="line">&quot;bucket&quot;: [&lt;&lt;aws_bucket_in&gt;&gt;, &lt;&lt;aws_bucket_out&gt;&gt;], </div>
-<div class="line">&quot;path&quot;: [&lt;&lt;aws_path_in&gt;&gt;, &lt;&lt;aws_path_out&gt;&gt;],</div>
-<div class="line"> </div>
-<div class="line">&quot;currency&quot;: { #Currency can change</div>
-<div class="line">&quot;USD&quot;: 1,</div>
-<div class="line">&quot;EUR&quot;: 1,</div>
-<div class="line">&quot;GBP&quot;: 1</div>
-<div class="line">},</div>
-<div class="line"> </div>
-<div class="line">&quot;files&quot;:[</div>
-<div class="line">{&quot;file_id&quot;: &lt;&lt;file_id_1&gt;&gt;, &quot;file&quot;: &lt;&lt;file_1&gt;&gt;},</div>
-<div class="line">{&quot;file_id&quot;: &lt;&lt;file_id_2&gt;&gt;, &quot;file&quot;: &lt;&lt;file_2&gt;&gt;}</div>
-<div class="line">]</div>
+<div class="line">    &quot;module&quot;: &quot;importer&quot;,</div>
+<div class="line">    &quot;tag&quot;: &lt;&quot;test&quot;/&quot;prod&quot;&gt;,</div>
+<div class="line">    &quot;cat_gen&quot;: &lt;&quot;True&quot;/&quot;False&quot;&gt;, #True for generate catalogue from sales, False for don&#39;t</div>
+<div class="line">    &quot;client_id&quot;: &lt;&lt;client_id&gt;&gt;, </div>
+<div class="line">    &quot;bucket&quot;: [&lt;&lt;aws_bucket_in&gt;&gt;, &lt;&lt;aws_bucket_out&gt;&gt;], </div>
+<div class="line">    &quot;path&quot;: [&lt;&lt;aws_path_in&gt;&gt;, &lt;&lt;aws_path_out&gt;&gt;],</div>
+<div class="line">    </div>
+<div class="line">    &quot;currency&quot;: { #Currency can change</div>
+<div class="line">        &quot;USD&quot;: 1,</div>
+<div class="line">        &quot;EUR&quot;: 1,</div>
+<div class="line">        &quot;GBP&quot;: 1</div>
+<div class="line">    },</div>
+<div class="line">    </div>
+<div class="line">    &quot;files&quot;:[</div>
+<div class="line">        {&quot;file_id&quot;: &lt;&lt;file_id_1&gt;&gt;, &quot;file&quot;: &lt;&lt;file_1&gt;&gt;},</div>
+<div class="line">        {&quot;file_id&quot;: &lt;&lt;file_id_2&gt;&gt;, &quot;file&quot;: &lt;&lt;file_2&gt;&gt;}</div>
+<div class="line">    ],</div>
+<div class="line">    &quot;on_finish&quot;: &lt;&lt;webhook.url&gt;&gt;</div>
 <div class="line"> </div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line">  </div>
 <div class="line"> </div>
 <div class="line">if __name__ == &quot;__main__&quot;:</div>
-<div class="line">    try:</div>
+<div class="line">    try: </div>
 <div class="line">        identify_formats = identify_format(input_data)</div>
 <div class="line">        print(&quot;Formats identified: &quot;,identify_formats)</div>
 <div class="line">        files_processed = process_files_parallel(identify_formats)</div>
@@ -245,19 +211,21 @@ Local Testing</h2>
 <div class="line">        if files_processed[&quot;cat_gen&quot;] == &quot;True&quot;:</div>
 <div class="line">            catalogue = generate_catalogue(snapshots, None)</div>
 <div class="line">            print(&quot;Catalogue: &quot;, catalogue)</div>
+<div class="line">        send_importer_notification(&quot;success&quot;, input_data[&quot;module&quot;], input_data[&quot;on_finish&quot;])</div>
+<div class="line">        stop_ec2()</div>
 <div class="line">    except Exception as e:</div>
-<div class="line">        print(sys.exc_info()[2])</div>
-<div class="line">        print(traceback.format_exc())</div>
+<div class="line">        message = str(sys.exc_info()[2]) + str(traceback.format_exc())</div>
+<div class="line">        send_importer_notification(&quot;fail&quot;, input_data[&quot;module&quot;], input_data[&quot;on_finish&quot;], message)</div>
 </div><!-- fragment --><ol type="1">
 <li>Run script</li>
 </ol>
 <p><code>python tests/test_script.py</code></p>
-<h2><a class="anchor" id="autotoc_md15"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 AWS Testing</h2>
 <p>When infrastructure is deployed in AWS:</p>
 <ol type="1">
 <li>Go to AWS -&gt; Step Functions</li>
-<li>Select the step function (importer)</li>
+<li>Select the step function (select_and_execute_module)</li>
 <li>Click on Start execution</li>
 </ol>
 <p>(Optional: set a testing name)</p>
@@ -265,29 +233,32 @@ AWS Testing</h2>
 <li>Set json object</li>
 </ol>
 <div class="fragment"><div class="line">{</div>
-<div class="line">&quot;tag&quot;: &lt;&quot;test&quot;/&quot;prod&quot;&gt;,</div>
-<div class="line">&quot;cat_gen&quot;: &lt;&quot;True&quot;/&quot;False&quot;&gt;, #True for generate catalogue from sales, False for don&#39;t</div>
-<div class="line">&quot;client_id&quot;: &lt;&lt;client_id&gt;&gt;, </div>
-<div class="line">&quot;bucket&quot;: [&lt;&lt;aws_bucket_in&gt;&gt;, &lt;&lt;aws_bucket_out&gt;&gt;], </div>
-<div class="line">&quot;path&quot;: [&lt;&lt;aws_path_in&gt;&gt;, &lt;&lt;aws_path_out&gt;&gt;],</div>
-<div class="line"> </div>
-<div class="line">&quot;currency&quot;: { #Currency can change</div>
-<div class="line">&quot;USD&quot;: 1,</div>
-<div class="line">&quot;EUR&quot;: 1,</div>
-<div class="line">&quot;GBP&quot;: 1</div>
-<div class="line">},</div>
-<div class="line"> </div>
-<div class="line">&quot;files&quot;:[</div>
-<div class="line">{&quot;file_id&quot;: &lt;&lt;file_id_1&gt;&gt;, &quot;file&quot;: &lt;&lt;file_1&gt;&gt;},</div>
-<div class="line">{&quot;file_id&quot;: &lt;&lt;file_id_2&gt;&gt;, &quot;file&quot;: &lt;&lt;file_2&gt;&gt;}</div>
-<div class="line">]</div>
+<div class="line">    &quot;module&quot;: &quot;importer&quot;,</div>
+<div class="line">    &quot;tag&quot;: &lt;&quot;test&quot;/&quot;prod&quot;&gt;,</div>
+<div class="line">    &quot;cat_gen&quot;: &lt;&quot;True&quot;/&quot;False&quot;&gt;, </div>
+<div class="line">    &quot;client_id&quot;: &lt;&lt;client_id&gt;&gt;, </div>
+<div class="line">    &quot;bucket&quot;: [&lt;&lt;aws_bucket_in&gt;&gt;, &lt;&lt;aws_bucket_out&gt;&gt;], </div>
+<div class="line">    &quot;path&quot;: [&lt;&lt;aws_path_in&gt;&gt;, &lt;&lt;aws_path_out&gt;&gt;],</div>
+<div class="line">    </div>
+<div class="line">    &quot;currency&quot;: { </div>
+<div class="line">        &quot;USD&quot;: 1,</div>
+<div class="line">        &quot;EUR&quot;: 1,</div>
+<div class="line">        &quot;GBP&quot;: 1</div>
+<div class="line">    },</div>
+<div class="line">    </div>
+<div class="line">    &quot;files&quot;:[</div>
+<div class="line">        {&quot;file_id&quot;: &lt;&lt;file_id_1&gt;&gt;, &quot;file&quot;: &lt;&lt;file_1&gt;&gt;},</div>
+<div class="line">        {&quot;file_id&quot;: &lt;&lt;file_id_2&gt;&gt;, &quot;file&quot;: &lt;&lt;file_2&gt;&gt;}</div>
+<div class="line">    ],</div>
+<div class="line">    &quot;on_finish&quot;: &lt;&lt;webhook.url&gt;&gt;</div>
 <div class="line"> </div>
 <div class="line">}</div>
 </div><!-- fragment --><ol type="1">
-<li>Click on Start execution. If the execution is successfully, you can see it in EC2 instance <div class="fragment"><div class="line">ssh -i Glider-Postgres.pem ubuntu@ec2-18-133-236-61.eu-west-2.compute.amazonaws.com</div>
-</div><!-- fragment --> See <a href="https://docs.google.com/document/d/1yEcPxPBK8RBpN2z5zJ147FhQOccZWD3ZeglD2RstY-A/edit?usp=sharing">OTTO Documentation</a> for more information about EC2 </li>
+<li>Click on Start execution. If the execution is successfully, you can see it in EC2 instance</li>
 </ol>
-</div></div><!-- contents -->
+<p>a) In glider-lite </p><div class="fragment"><div class="line">ssh -i Glider-Postgres.pem ubuntu@ec2-35-179-24-180.eu-west-2.compute.amazonaws.com</div>
+</div><!-- fragment --><p> b) In glider-pro </p><div class="fragment"><div class="line">ssh -i Glider-Postgres.pem ubuntu@ec2-18-168-188-120.eu-west-2.compute.amazonaws.com</div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

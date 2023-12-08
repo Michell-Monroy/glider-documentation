@@ -1,0 +1,170 @@
+\doxysection{Gen\+Statement.\+py}
+\hypertarget{_gen_statement_8py_source}{}\label{_gen_statement_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/statement\_generation/GenStatement.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/statement\_generation/GenStatement.py}}
+\mbox{\hyperlink{_gen_statement_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00001}\mbox{\hyperlink{namespace_gen_statement}{00001}}\ \textcolor{keyword}{import}\ certifi}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00002}00002\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00003}00003\ \textcolor{keyword}{import}\ csv}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00004}00004\ \textcolor{keyword}{import}\ re}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00005}00005\ \textcolor{keyword}{import}\ sys,\ traceback}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00006}00006\ \textcolor{keyword}{from}\ datetime\ \textcolor{keyword}{import}\ datetime}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00007}00007\ \textcolor{keyword}{from}\ pymongo\ \textcolor{keyword}{import}\ MongoClient}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00008}00008\ \textcolor{keyword}{from}\ pandas\ \textcolor{keyword}{import}\ read\_csv}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00009}00009\ \textcolor{keyword}{from}\ dotenv\ \textcolor{keyword}{import}\ load\_dotenv}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00010}00010\ \textcolor{keyword}{from}\ botocore.exceptions\ \textcolor{keyword}{import}\ ClientError}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00011}00011\ \textcolor{keyword}{from}\ StatementsTemplate\ \textcolor{keyword}{import}\ template\_default}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00012}\mbox{\hyperlink{namespace_gen_statement_a33ee46f5cf9d502dd899740e3fee9701}{00012}}\ f\_path\ =\ \_\_file\_\_}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00013}\mbox{\hyperlink{namespace_gen_statement_afd00c5db8d8127cbf9f4f214c67b377d}{00013}}\ index\ =\ f\_path.find(\textcolor{stringliteral}{"{}statement\_generation/"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00014}00014\ f\_path\ =\ f\_path[:index]}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00015}00015\ sys.path.insert(1,\ f\_path+\textcolor{stringliteral}{'importer'})}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00016}00016\ sys.path.insert(1,\ f\_path+\textcolor{stringliteral}{'report\_generation'})}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00017}00017\ \textcolor{keyword}{from}\ MongoConnection\ \textcolor{keyword}{import}\ mongo\_connection}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00018}00018\ \textcolor{keyword}{from}\ SendEmail\ \textcolor{keyword}{import}\ send\_statement\_report}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00019}00019\ \textcolor{keyword}{from}\ UploadReports\ \textcolor{keyword}{import}\ upload\_files\_s3}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00020}00020\ load\_dotenv()}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00023}\mbox{\hyperlink{namespace_gen_statement_a3a9b53ba14fdabcb7a67696f8f30b1a5}{00023}}\ mongo\_conn\ =\ mongo\_connection()}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00025}\mbox{\hyperlink{namespace_gen_statement_ab2b99cefe8517ac12b3390d18d1790cd}{00025}}\ collection\ =\ mongo\_conn.mongo\_conn\_sales()}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00028}\mbox{\hyperlink{namespace_gen_statement_a852d1a3e6b7f5c003c309c11843530f2}{00028}}\ ROOT\_DIR\ =\ os.path.expanduser(\textcolor{stringliteral}{'\string~'})}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00030}\mbox{\hyperlink{namespace_gen_statement_a0b2df75944913e32adc73b763b993b5b}{00030}}\ path\ =\ ROOT\_DIR+\textcolor{stringliteral}{"{}/Statements/"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00031}00031\ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ os.path.exists(path):}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00032}00032\ \ \ \ \ os.mkdir(path)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00034}\mbox{\hyperlink{namespace_gen_statement_a1a2f0b3b39af67d7b7c3bd87ea04b7d5}{00034}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_gen_statement_a1a2f0b3b39af67d7b7c3bd87ea04b7d5}{get\_royalty}}(client\_id):}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00035}00035\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Gets\ the\ organization\ royalty\ percent\ from\ Postgres\ Database\ }}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00036}00036\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00037}00037\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00038}00038\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ client\_id\ (str):\ client\_id}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00039}00039\ \textcolor{stringliteral}{\ \ \ \ Returns:\ royalty\ (float)}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00040}00040\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00041}00041\ \ \ \ \ \textcolor{keyword}{import}\ psycopg2}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00043}00043\ \ \ \ \ psql\_conn\ =\ os.environ.get(\textcolor{stringliteral}{"{}DATABASE\_URL"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00044}00044\ \ \ \ \ conn\ =\ psycopg2.connect(psql\_conn)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00045}00045\ \ \ \ \ \textcolor{comment}{\#\ client\_id\ =\ "{}organ"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00047}00047\ \ \ \ \ cursor\ =\ conn.cursor()}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00048}00048\ \ \ \ \ royalty\_query\ =\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00049}00049\ \textcolor{stringliteral}{\ \ \ \ SELECT\ royalty\_percent\ FROM\ organisations\_organisation\ WHERE\ slug\ =\ \%s;\ }}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00050}00050\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00051}00051\ \ \ \ \ cursor.execute(royalty\_query,\ (client\_id,))}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00052}00052\ \ \ \ \ royalty\ =\ cursor.fetchone()}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{if}\ royalty:}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ royalty\ =\ float(royalty[0])}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ royalty}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00057}00057\ \ \ \ \ conn.close()}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}USER\ NOT\ FOUND"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00060}\mbox{\hyperlink{namespace_gen_statement_a3a8b1b93667fbe2c9d5acba607340445}{00060}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_gen_statement_a3a8b1b93667fbe2c9d5acba607340445}{replace\_headers}}(in\_file,\ out\_file):}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00061}00061\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Replace\ the\ statement\ headers\ to\ fit\ it\ to\ the\ defined\ standard}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00062}00062\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00063}00063\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00064}00064\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ in\_file\ (str):\ Statement\ just\ created\ (normally\ it's\ a\ temporal\ statement)}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00065}00065\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ out\_file\ (str):\ Definitive\ Statement}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00066}00066\ \textcolor{stringliteral}{\ \ \ \ Returns:\ Nothing}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00067}00067\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00068}00068\ \ \ \ \ header\ =\ [\textcolor{stringliteral}{"{}Sales\ Period"{}},\ \textcolor{stringliteral}{"{}Sales\ Territory"{}},\ \textcolor{stringliteral}{"{}DSP\ Name"{}},\ \textcolor{stringliteral}{"{}Product\ Type"{}},\ \textcolor{stringliteral}{"{}Barcode"{}},\ \textcolor{stringliteral}{"{}ISRC"{}},\ \textcolor{stringliteral}{"{}Label"{}},\ \textcolor{stringliteral}{"{}Catalogue\ Number"{}},\ \textcolor{stringliteral}{"{}Sales\ Date"{}},\ \textcolor{stringliteral}{"{}Artist"{}},\ \textcolor{stringliteral}{"{}Title"{}},\ \textcolor{stringliteral}{"{}Quantity"{}},}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Total\ Local"{}},\ \textcolor{stringliteral}{"{}Label\ Royalty\ Percent"{}},\ \textcolor{stringliteral}{"{}Royalty\ Due"{}}]}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00071}00071\ \ \ \ \ \textcolor{keyword}{with}\ open(in\_file,\ \textcolor{stringliteral}{'r'})\ \textcolor{keyword}{as}\ fp:}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00072}00072\ \ \ \ \ \ \ \ \ reader\ =\ csv.DictReader(fp,\ fieldnames=header)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(out\_file,\ \textcolor{stringliteral}{'w'},\ newline=\textcolor{stringliteral}{''})\ \textcolor{keyword}{as}\ fh:\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ writer\ =\ csv.DictWriter(fh,\ fieldnames=reader.fieldnames)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ writer.writeheader()}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ header\_mapping\ =\ next(reader)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ writer.writerows(reader)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00078}00078\ \ \ \ \ os.remove(in\_file)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00080}\mbox{\hyperlink{namespace_gen_statement_a1fbbd671f438049b40dd8b9b057a7dba}{00080}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_gen_statement_a1fbbd671f438049b40dd8b9b057a7dba}{select\_by\_field}}(client\_id,\ filed,\ value):}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00081}00081\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Generates\ a\ pymongo\ cursor\ which\ contains\ the\ sales\ matches\ with\ some\ selected\ field\ and\ value}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00082}00082\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00083}00083\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00084}00084\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ client\_id\ (str):\ unique\ client\_id\ to\ identify\ just\ their\ sales}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00085}00085\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ field\ (str):\ Criteria\ to\ select/filter\ the\ sales}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00086}00086\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ value\ (str):\ Value\ of\ field\ selected}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00087}00087\ \textcolor{stringliteral}{\ \ \ \ Returns:\ t\ (pymongo\ cursor)}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00088}00088\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00089}00089\ \ \ \ \ fields\ =\ \{\textcolor{stringliteral}{"{}\_id"{}}:0,\ \textcolor{stringliteral}{"{}period"{}}:\ 1,\ \textcolor{stringliteral}{"{}territory\_code"{}}:\ 1,\ \textcolor{stringliteral}{"{}service\_id"{}}:\ 1,\ \textcolor{stringliteral}{"{}full\_type"{}}:1,\ \textcolor{stringliteral}{"{}release\_id"{}}:\ 1,\ \textcolor{stringliteral}{"{}isrc\_id"{}}:\ 1,\ \textcolor{stringliteral}{"{}label\_id"{}}:\ 1,\ \textcolor{stringliteral}{"{}catalogue\_id"{}}:\ 1,\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}date"{}}:1,\ \textcolor{stringliteral}{"{}artists"{}}:\ 1,\ \textcolor{stringliteral}{"{}track\_title"{}}:\ 1,\ \textcolor{stringliteral}{"{}quantity"{}}:\ 1,\ \textcolor{stringliteral}{"{}full\_total\_foreign"{}}:\ 1\}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00091}00091\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}label"{}}\ \textcolor{keywordflow}{in}\ filed:}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00092}00092\ \ \ \ \ \ \ \ \ t\ =\ collection.find(\{\textcolor{stringliteral}{"{}label\_id"{}}:\ value,\ \textcolor{stringliteral}{"{}client\_id"{}}:\ client\_id\},fields)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00093}00093\ \ \ \ \ \textcolor{keywordflow}{elif}\ \textcolor{stringliteral}{"{}service"{}}\ \textcolor{keywordflow}{in}\ filed:}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00094}00094\ \ \ \ \ \ \ \ \ t\ =\ collection.find(\{\textcolor{stringliteral}{"{}service\_id"{}}:\ value,\ \textcolor{stringliteral}{"{}client\_id"{}}:\ client\_id\},fields)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00095}00095\ \ \ \ \ \textcolor{keywordflow}{elif}\ \textcolor{stringliteral}{"{}artist"{}}\ \textcolor{keywordflow}{in}\ filed:}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00096}00096\ \ \ \ \ \ \ \ \ t\ =\ collection.find(\{\textcolor{stringliteral}{"{}artists"{}}:\ value,\ \textcolor{stringliteral}{"{}client\_id"{}}:\ client\_id\},fields)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{elif}\ \textcolor{stringliteral}{"{}date"{}}\ \textcolor{keywordflow}{in}\ filed:}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00098}00098\ \ \ \ \ \ \ \ \ value\ =\ datetime.strptime(value,\ \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%d"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00099}00099\ \ \ \ \ \ \ \ \ t\ =\ collection.find(\{\textcolor{stringliteral}{"{}date"{}}:\ \{\textcolor{stringliteral}{"{}\$in"{}}:\ [value]\},\ \textcolor{stringliteral}{"{}client\_id"{}}:\ client\_id\},fields)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00100}00100\ \ \ \ \ \textcolor{keywordflow}{elif}\ \textcolor{stringliteral}{"{}accounting\_date"{}}\ \textcolor{keywordflow}{in}\ filed:}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00101}00101\ \ \ \ \ \ \ \ \ value\ =\ datetime.strptime(value,\ \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%d"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00102}00102\ \ \ \ \ \ \ \ \ t\ =\ collection.find(\{\textcolor{stringliteral}{"{}accounting\_date"{}}:\ \{\textcolor{stringliteral}{"{}\$in"{}}:\ [value]\},\ \textcolor{stringliteral}{"{}client\_id"{}}:\ client\_id\},fields)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00103}00103\ \ \ \ \ \textcolor{keywordflow}{return}\ t}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00105}\mbox{\hyperlink{namespace_gen_statement_ac949b1e2f6ae268240679aedb6c2aefd}{00105}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_gen_statement_ac949b1e2f6ae268240679aedb6c2aefd}{build\_statement}}(event):}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00106}00106\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ Generates\ the\ statements\ as\ a\ csv\ file\ according\ to\ sales\ which\ matches\ with\ field\ selected}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00107}00107\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00108}00108\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00109}00109\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ event\ (dict):\ Is\ a\ Dictionary\ with\ all\ client\ and\ sales\ information}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00110}00110\ \textcolor{stringliteral}{\ \ \ \ Returns:\ Nothing}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00111}00111\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00112}00112\ \ \ \ \ bucket\ =\ event[\textcolor{stringliteral}{"{}bucket"{}}]\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00113}00113\ \ \ \ \ royalty\ =\ \mbox{\hyperlink{namespace_gen_statement_a1a2f0b3b39af67d7b7c3bd87ea04b7d5}{get\_royalty}}(event[\textcolor{stringliteral}{"{}client\_id"{}}])}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00114}00114\ \ \ \ \ field\ =\ event[\textcolor{stringliteral}{"{}select\_by"{}}]}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00115}00115\ \ \ \ \ values\ =\ event[\textcolor{stringliteral}{"{}field\_value"{}}]}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00116}00116\ \ \ \ \ \textcolor{comment}{\#\ path\ to\ upload\ files,\ each\ month\ it's\ a\ different\ path}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00117}00117\ \ \ \ \ s3\_path\ =\ \textcolor{stringliteral}{"{}\{\}/Statements/\{\}/"{}}.format(event[\textcolor{stringliteral}{"{}path"{}}],\ field)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00118}00118\ \ \ \ \ csv\_columns\ =\ [\textcolor{stringliteral}{"{}period"{}},\ \textcolor{stringliteral}{"{}territory\_code"{}},\ \textcolor{stringliteral}{"{}service\_id"{}},\ \textcolor{stringliteral}{"{}full\_type"{}},\ \textcolor{stringliteral}{"{}release\_id"{}},\ \textcolor{stringliteral}{"{}isrc\_id"{}},\ \textcolor{stringliteral}{"{}label\_id"{}},\ \textcolor{stringliteral}{"{}catalogue\_id"{}},\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}date"{}},\ \textcolor{stringliteral}{"{}artists"{}},\ \textcolor{stringliteral}{"{}track\_title"{}},\ \textcolor{stringliteral}{"{}quantity"{}},\ \textcolor{stringliteral}{"{}full\_total\_foreign"{}},\ \textcolor{stringliteral}{"{}label\_royalty\_percent"{}},\ \textcolor{stringliteral}{"{}royalty\_due"{}}]}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00120}00120\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00121}00121\ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00122}00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ value\ \textcolor{keywordflow}{in}\ values:}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ filetmp\ =\ f\textcolor{stringliteral}{"{}Statement\_\{field\}\_\{value\}\_tmp.csv"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ filetmp\ =\ filetmp.replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}\_"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ filename\ =\ f\textcolor{stringliteral}{"{}Statement\_\{field\}\_\{value\}.csv"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ filename\ =\ filename.replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}\_"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}Creating\ \{filename\}"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ total\ =\ 0}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ period\ =\ \textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(path+filetmp,\ \textcolor{stringliteral}{'w'},\ encoding=\textcolor{stringliteral}{'utf-\/8'})\ \textcolor{keyword}{as}\ csvfile:}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ writer\ =\ csv.DictWriter(csvfile,\ fieldnames=csv\_columns)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ writer.writeheader()}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ template\_sales\ =\ \mbox{\hyperlink{namespace_gen_statement_a1fbbd671f438049b40dd8b9b057a7dba}{select\_by\_field}}(client\_id=event[\textcolor{stringliteral}{"{}client\_id"{}}],\ filed=field,\ value=value)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ template\_sales:}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}No\ sales\ found"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ post\ \textcolor{keywordflow}{in}\ template\_sales:}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ post[\textcolor{stringliteral}{"{}catalogue\_id"{}}]\ ==\ \textcolor{stringliteral}{"{}no\_catalogue\_id"{}}:}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ post[\textcolor{stringliteral}{"{}catalogue\_id"{}}]\ =\ \textcolor{stringliteral}{"{}None"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ post[\textcolor{stringliteral}{"{}label\_royalty\_percent"{}}]\ =\ str(royalty)+\textcolor{stringliteral}{"{}\%"{}}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ post[\textcolor{stringliteral}{"{}royalty\_due"{}}]\ =\ post[\textcolor{stringliteral}{"{}full\_total\_foreign"{}}]\ -\/\ (post[\textcolor{stringliteral}{"{}full\_total\_foreign"{}}]*(royalty/100.))}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ post[\textcolor{stringliteral}{"{}full\_total\_foreign"{}}]\ =\ round(post[\textcolor{stringliteral}{"{}full\_total\_foreign"{}}],\ 8)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ post[\textcolor{stringliteral}{"{}royalty\_due"{}}]\ =\ round(post[\textcolor{stringliteral}{"{}royalty\_due"{}}],\ 8)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ total\ +=\ post[\textcolor{stringliteral}{"{}full\_total\_foreign"{}}]}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ period\ =\ post[\textcolor{stringliteral}{"{}period"{}}]}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ writer.writerow(post)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_gen_statement_a3a8b1b93667fbe2c9d5acba607340445}{replace\_headers}}(path+filetmp,\ path+filename)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ data\_statement\ =\ \{}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}client\_id"{}}:\ event[\textcolor{stringliteral}{"{}client\_id"{}}],}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}type"{}}:\ event[\textcolor{stringliteral}{"{}select\_by"{}}],}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}value"{}}:\ event[\textcolor{stringliteral}{"{}field\_value"{}}],}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}period"{}}:\ period,}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}total"{}}:\ total}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ pdf\_path,\ pdf\_filename\ =\ template\_default(value,\ data\_statement)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ csv\_url\_to\_download,\ \_\ =\ upload\_files\_s3(bucket,\ s3\_path,\ path,\ filename)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ pdf\_url\_to\_download,\ \_\ =\ upload\_files\_s3(bucket,\ s3\_path,\ pdf\_path,\ pdf\_filename)}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ print(send\_statement\_report(event[\textcolor{stringliteral}{"{}client\_email"{}}],\ period,\ csv\_url\_to\_download,\ pdf\_url\_to\_download))}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ os.system(f\textcolor{stringliteral}{"{}rm\ -\/r\ \{path+filename\}"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ os.system(f\textcolor{stringliteral}{"{}rm\ -\/r\ \{pdf\_path\}statement\_for\_*"{}})}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00161}00161\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00162}00162\ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e:}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00163}00163\ \ \ \ \ \ \ \ \ print(sys.exc\_info()[2])}
+\DoxyCodeLine{\Hypertarget{_gen_statement_8py_source_l00164}00164\ \ \ \ \ \ \ \ \ print(traceback.format\_exc())}
+
+\end{DoxyCode}

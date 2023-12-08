@@ -1,0 +1,33 @@
+\doxysection{/\+Users/michellmonroy/\+Documents/dev-\/glider/glider/src/statement\+\_\+generation/\+Gen\+Statement.py File Reference}
+\hypertarget{_gen_statement_8py}{}\label{_gen_statement_8py}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/statement\_generation/GenStatement.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/statement\_generation/GenStatement.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_gen_statement}{Gen\+Statement}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_gen_statement_a1a2f0b3b39af67d7b7c3bd87ea04b7d5}{Gen\+Statement.\+get\+\_\+royalty}} (client\+\_\+id)
+\item 
+\mbox{\hyperlink{namespace_gen_statement_a3a8b1b93667fbe2c9d5acba607340445}{Gen\+Statement.\+replace\+\_\+headers}} (in\+\_\+file, out\+\_\+file)
+\item 
+\mbox{\hyperlink{namespace_gen_statement_a1fbbd671f438049b40dd8b9b057a7dba}{Gen\+Statement.\+select\+\_\+by\+\_\+field}} (client\+\_\+id, filed, value)
+\item 
+\mbox{\hyperlink{namespace_gen_statement_ac949b1e2f6ae268240679aedb6c2aefd}{Gen\+Statement.\+build\+\_\+statement}} (event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_gen_statement_a33ee46f5cf9d502dd899740e3fee9701}{Gen\+Statement.\+f\+\_\+path}} = \+\_\+\+\_\+file\+\_\+\+\_\+
+\item 
+\mbox{\hyperlink{namespace_gen_statement_afd00c5db8d8127cbf9f4f214c67b377d}{Gen\+Statement.\+index}} = f\+\_\+path.\+find("{}statement\+\_\+generation/"{})
+\item 
+\mbox{\hyperlink{namespace_gen_statement_a3a9b53ba14fdabcb7a67696f8f30b1a5}{Gen\+Statement.\+mongo\+\_\+conn}} = mongo\+\_\+connection()
+\begin{DoxyCompactList}\small\item\em Class to connect to mongodb. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_gen_statement_ab2b99cefe8517ac12b3390d18d1790cd}{Gen\+Statement.\+collection}} = mongo\+\_\+conn.\+mongo\+\_\+conn\+\_\+sales()
+\begin{DoxyCompactList}\small\item\em Mongo collection to consult sales. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_gen_statement_a852d1a3e6b7f5c003c309c11843530f2}{Gen\+Statement.\+ROOT\+\_\+\+DIR}} = os.\+path.\+expanduser(\textquotesingle{}\texorpdfstring{$\sim$}{\string~}\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Sets the root path. \end{DoxyCompactList}\item 
+str \mbox{\hyperlink{namespace_gen_statement_a0b2df75944913e32adc73b763b993b5b}{Gen\+Statement.\+path}} = \mbox{\hyperlink{namespace_gen_statement_a852d1a3e6b7f5c003c309c11843530f2}{ROOT\+\_\+\+DIR}}+"{}/Statements/"{}
+\begin{DoxyCompactList}\small\item\em Creates the folder when statements will be saved. \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -1,0 +1,207 @@
+\doxysection{Statements\+Template Namespace Reference}
+\hypertarget{namespace_statements_template}{}\label{namespace_statements_template}\index{StatementsTemplate@{StatementsTemplate}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_statements_template_aff2c2acffa11f36e9ecb29b18f050f9f}{get\+\_\+client\+\_\+info\+\_\+mongo}} (client\+\_\+id)
+\item 
+\mbox{\hyperlink{namespace_statements_template_a78223ecf6e4b3d2d77ca256ce6dfe8f2}{get\+\_\+client\+\_\+info\+\_\+postgres}} (client\+\_\+id)
+\item 
+\mbox{\hyperlink{namespace_statements_template_a6070d0bf97b28e824eefd9138c257617}{q\+\_\+period}} (period)
+\item 
+\mbox{\hyperlink{namespace_statements_template_a9fe4a4984cf45b5554d2eb195f9f11e0}{template\+\_\+default}} (name, event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_statements_template_a989e466cf0ba3e27b752cf919269c11e}{file\+\_\+in}} = join(dirname(\+\_\+\+\_\+file\+\_\+\+\_\+), "{}statement.\+tex"{})
+\item 
+\mbox{\hyperlink{namespace_statements_template_a30d9ea829d1247ee3b336eaeb612fb43}{ROOT\+\_\+\+DIR}} = os.\+path.\+expanduser(\textquotesingle{}\texorpdfstring{$\sim$}{\string~}\textquotesingle{})
+\item 
+str \mbox{\hyperlink{namespace_statements_template_a33d7a9e6fcba22e1c5d1031bf8f25503}{file\+\_\+out}} = \mbox{\hyperlink{namespace_statements_template_a30d9ea829d1247ee3b336eaeb612fb43}{ROOT\+\_\+\+DIR}}+"{}/Statements/PDF/"{}
+\item 
+\mbox{\hyperlink{namespace_statements_template_a851d5bb38b5e628ea77994024344d6be}{date}} = datetime.\+today()
+\item 
+\mbox{\hyperlink{namespace_statements_template_a7f5bc9fe3be5b49d03c8a1c1e2307910}{uri}} = os.\+environ.\+get("{}MONGO\+\_\+\+GLIDER"{})
+\item 
+\mbox{\hyperlink{namespace_statements_template_a215ce41dae07dc8e23421f9631ff0355}{db\+\_\+name}} = os.\+environ.\+get("{}DB"{})
+\item 
+\mbox{\hyperlink{namespace_statements_template_a062c022cb9f911ce401ff2abd42afe28}{collection\+\_\+name}} = os.\+environ.\+get("{}USER\+\_\+\+COLLECTION"{})
+\item 
+\mbox{\hyperlink{namespace_statements_template_a56014be548200e0178574b1d58aef32c}{client}} = Mongo\+Client(\mbox{\hyperlink{namespace_statements_template_a7f5bc9fe3be5b49d03c8a1c1e2307910}{uri}},ssl\+\_\+cert\+\_\+reqs=ssl.\+CERT\+\_\+\+NONE)
+\item 
+\mbox{\hyperlink{namespace_statements_template_aefdff0d1f041b21d24d557e8cfdf05ff}{db}} = \mbox{\hyperlink{namespace_statements_template_a56014be548200e0178574b1d58aef32c}{client}}\mbox{[}\mbox{\hyperlink{namespace_statements_template_a215ce41dae07dc8e23421f9631ff0355}{db\+\_\+name}}\mbox{]}
+\item 
+\mbox{\hyperlink{namespace_statements_template_a4300779eb476c0dc69375ba2d2d7f17b}{collection}} = \mbox{\hyperlink{namespace_statements_template_aefdff0d1f041b21d24d557e8cfdf05ff}{db}}\mbox{[}\mbox{\hyperlink{namespace_statements_template_a062c022cb9f911ce401ff2abd42afe28}{collection\+\_\+name}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_statements_template_aff2c2acffa11f36e9ecb29b18f050f9f}\label{namespace_statements_template_aff2c2acffa11f36e9ecb29b18f050f9f} 
+\index{StatementsTemplate@{StatementsTemplate}!get\_client\_info\_mongo@{get\_client\_info\_mongo}}
+\index{get\_client\_info\_mongo@{get\_client\_info\_mongo}!StatementsTemplate@{StatementsTemplate}}
+\doxysubsubsection{\texorpdfstring{get\_client\_info\_mongo()}{get\_client\_info\_mongo()}}
+{\footnotesize\ttfamily Statements\+Template.\+get\+\_\+client\+\_\+info\+\_\+mongo (\begin{DoxyParamCaption}\item[{}]{client\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_statements_template_8py_source_l00026}{26}} of file \mbox{\hyperlink{_statements_template_8py_source}{Statements\+Template.\+py}}.
+
+\Hypertarget{namespace_statements_template_a78223ecf6e4b3d2d77ca256ce6dfe8f2}\label{namespace_statements_template_a78223ecf6e4b3d2d77ca256ce6dfe8f2} 
+\index{StatementsTemplate@{StatementsTemplate}!get\_client\_info\_postgres@{get\_client\_info\_postgres}}
+\index{get\_client\_info\_postgres@{get\_client\_info\_postgres}!StatementsTemplate@{StatementsTemplate}}
+\doxysubsubsection{\texorpdfstring{get\_client\_info\_postgres()}{get\_client\_info\_postgres()}}
+{\footnotesize\ttfamily Statements\+Template.\+get\+\_\+client\+\_\+info\+\_\+postgres (\begin{DoxyParamCaption}\item[{}]{client\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Gets the organization information from Postgres Database 
+
+Args:
+    client_id (str): client_id, it should exists in database
+Returns: org_info (list)
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_statements_template_8py_source_l00032}{32}} of file \mbox{\hyperlink{_statements_template_8py_source}{Statements\+Template.\+py}}.
+
+Here is the caller graph for this function\+:
+% FIG 0
+\Hypertarget{namespace_statements_template_a6070d0bf97b28e824eefd9138c257617}\label{namespace_statements_template_a6070d0bf97b28e824eefd9138c257617} 
+\index{StatementsTemplate@{StatementsTemplate}!q\_period@{q\_period}}
+\index{q\_period@{q\_period}!StatementsTemplate@{StatementsTemplate}}
+\doxysubsubsection{\texorpdfstring{q\_period()}{q\_period()}}
+{\footnotesize\ttfamily Statements\+Template.\+q\+\_\+period (\begin{DoxyParamCaption}\item[{}]{period }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Takes the date in YYYYMM format and transform it in a quarter format 
+
+    Args:
+        period (str): client_id, it should exists in database
+    Returns: quarter (str)
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_statements_template_8py_source_l00058}{58}} of file \mbox{\hyperlink{_statements_template_8py_source}{Statements\+Template.\+py}}.
+
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{namespace_statements_template_a9fe4a4984cf45b5554d2eb195f9f11e0}\label{namespace_statements_template_a9fe4a4984cf45b5554d2eb195f9f11e0} 
+\index{StatementsTemplate@{StatementsTemplate}!template\_default@{template\_default}}
+\index{template\_default@{template\_default}!StatementsTemplate@{StatementsTemplate}}
+\doxysubsubsection{\texorpdfstring{template\_default()}{template\_default()}}
+{\footnotesize\ttfamily Statements\+Template.\+template\+\_\+default (\begin{DoxyParamCaption}\item[{}]{name,  }\item[{}]{event }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Takes the csv info add it to .tex file to compile in a pdf file using latex 
+
+    Args:
+        name (str): It's the value/name of label/artist who will receive the current statement
+        event (dict): It's a Dictionary with all client and sales information
+    Returns: quarter (str)
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_statements_template_8py_source_l00072}{72}} of file \mbox{\hyperlink{_statements_template_8py_source}{Statements\+Template.\+py}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespace_statements_template_a56014be548200e0178574b1d58aef32c}\label{namespace_statements_template_a56014be548200e0178574b1d58aef32c} 
+\index{StatementsTemplate@{StatementsTemplate}!client@{client}}
+\index{client@{client}!StatementsTemplate@{StatementsTemplate}}
+\doxysubsubsection{\texorpdfstring{client}{client}}
+{\footnotesize\ttfamily Statements\+Template.\+client = Mongo\+Client(\mbox{\hyperlink{namespace_statements_template_a7f5bc9fe3be5b49d03c8a1c1e2307910}{uri}},ssl\+\_\+cert\+\_\+reqs=ssl.\+CERT\+\_\+\+NONE)}
+
+
+
+Definition at line \mbox{\hyperlink{_statements_template_8py_source_l00020}{20}} of file \mbox{\hyperlink{_statements_template_8py_source}{Statements\+Template.\+py}}.
+
+\Hypertarget{namespace_statements_template_a4300779eb476c0dc69375ba2d2d7f17b}\label{namespace_statements_template_a4300779eb476c0dc69375ba2d2d7f17b} 
+\index{StatementsTemplate@{StatementsTemplate}!collection@{collection}}
+\index{collection@{collection}!StatementsTemplate@{StatementsTemplate}}
+\doxysubsubsection{\texorpdfstring{collection}{collection}}
+{\footnotesize\ttfamily Statements\+Template.\+collection = \mbox{\hyperlink{namespace_statements_template_aefdff0d1f041b21d24d557e8cfdf05ff}{db}}\mbox{[}\mbox{\hyperlink{namespace_statements_template_a062c022cb9f911ce401ff2abd42afe28}{collection\+\_\+name}}\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_statements_template_8py_source_l00024}{24}} of file \mbox{\hyperlink{_statements_template_8py_source}{Statements\+Template.\+py}}.
+
+\Hypertarget{namespace_statements_template_a062c022cb9f911ce401ff2abd42afe28}\label{namespace_statements_template_a062c022cb9f911ce401ff2abd42afe28} 
+\index{StatementsTemplate@{StatementsTemplate}!collection\_name@{collection\_name}}
+\index{collection\_name@{collection\_name}!StatementsTemplate@{StatementsTemplate}}
+\doxysubsubsection{\texorpdfstring{collection\_name}{collection\_name}}
+{\footnotesize\ttfamily Statements\+Template.\+collection\+\_\+name = os.\+environ.\+get("{}USER\+\_\+\+COLLECTION"{})}
+
+
+
+Definition at line \mbox{\hyperlink{_statements_template_8py_source_l00018}{18}} of file \mbox{\hyperlink{_statements_template_8py_source}{Statements\+Template.\+py}}.
+
+\Hypertarget{namespace_statements_template_a851d5bb38b5e628ea77994024344d6be}\label{namespace_statements_template_a851d5bb38b5e628ea77994024344d6be} 
+\index{StatementsTemplate@{StatementsTemplate}!date@{date}}
+\index{date@{date}!StatementsTemplate@{StatementsTemplate}}
+\doxysubsubsection{\texorpdfstring{date}{date}}
+{\footnotesize\ttfamily Statements\+Template.\+date = datetime.\+today()}
+
+
+
+Definition at line \mbox{\hyperlink{_statements_template_8py_source_l00015}{15}} of file \mbox{\hyperlink{_statements_template_8py_source}{Statements\+Template.\+py}}.
+
+\Hypertarget{namespace_statements_template_aefdff0d1f041b21d24d557e8cfdf05ff}\label{namespace_statements_template_aefdff0d1f041b21d24d557e8cfdf05ff} 
+\index{StatementsTemplate@{StatementsTemplate}!db@{db}}
+\index{db@{db}!StatementsTemplate@{StatementsTemplate}}
+\doxysubsubsection{\texorpdfstring{db}{db}}
+{\footnotesize\ttfamily Statements\+Template.\+db = \mbox{\hyperlink{namespace_statements_template_a56014be548200e0178574b1d58aef32c}{client}}\mbox{[}\mbox{\hyperlink{namespace_statements_template_a215ce41dae07dc8e23421f9631ff0355}{db\+\_\+name}}\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_statements_template_8py_source_l00023}{23}} of file \mbox{\hyperlink{_statements_template_8py_source}{Statements\+Template.\+py}}.
+
+\Hypertarget{namespace_statements_template_a215ce41dae07dc8e23421f9631ff0355}\label{namespace_statements_template_a215ce41dae07dc8e23421f9631ff0355} 
+\index{StatementsTemplate@{StatementsTemplate}!db\_name@{db\_name}}
+\index{db\_name@{db\_name}!StatementsTemplate@{StatementsTemplate}}
+\doxysubsubsection{\texorpdfstring{db\_name}{db\_name}}
+{\footnotesize\ttfamily Statements\+Template.\+db\+\_\+name = os.\+environ.\+get("{}DB"{})}
+
+
+
+Definition at line \mbox{\hyperlink{_statements_template_8py_source_l00017}{17}} of file \mbox{\hyperlink{_statements_template_8py_source}{Statements\+Template.\+py}}.
+
+\Hypertarget{namespace_statements_template_a989e466cf0ba3e27b752cf919269c11e}\label{namespace_statements_template_a989e466cf0ba3e27b752cf919269c11e} 
+\index{StatementsTemplate@{StatementsTemplate}!file\_in@{file\_in}}
+\index{file\_in@{file\_in}!StatementsTemplate@{StatementsTemplate}}
+\doxysubsubsection{\texorpdfstring{file\_in}{file\_in}}
+{\footnotesize\ttfamily Statements\+Template.\+file\+\_\+in = join(dirname(\+\_\+\+\_\+file\+\_\+\+\_\+), "{}statement.\+tex"{})}
+
+
+
+Definition at line \mbox{\hyperlink{_statements_template_8py_source_l00009}{9}} of file \mbox{\hyperlink{_statements_template_8py_source}{Statements\+Template.\+py}}.
+
+\Hypertarget{namespace_statements_template_a33d7a9e6fcba22e1c5d1031bf8f25503}\label{namespace_statements_template_a33d7a9e6fcba22e1c5d1031bf8f25503} 
+\index{StatementsTemplate@{StatementsTemplate}!file\_out@{file\_out}}
+\index{file\_out@{file\_out}!StatementsTemplate@{StatementsTemplate}}
+\doxysubsubsection{\texorpdfstring{file\_out}{file\_out}}
+{\footnotesize\ttfamily str Statements\+Template.\+file\+\_\+out = \mbox{\hyperlink{namespace_statements_template_a30d9ea829d1247ee3b336eaeb612fb43}{ROOT\+\_\+\+DIR}}+"{}/Statements/PDF/"{}}
+
+
+
+Definition at line \mbox{\hyperlink{_statements_template_8py_source_l00011}{11}} of file \mbox{\hyperlink{_statements_template_8py_source}{Statements\+Template.\+py}}.
+
+\Hypertarget{namespace_statements_template_a30d9ea829d1247ee3b336eaeb612fb43}\label{namespace_statements_template_a30d9ea829d1247ee3b336eaeb612fb43} 
+\index{StatementsTemplate@{StatementsTemplate}!ROOT\_DIR@{ROOT\_DIR}}
+\index{ROOT\_DIR@{ROOT\_DIR}!StatementsTemplate@{StatementsTemplate}}
+\doxysubsubsection{\texorpdfstring{ROOT\_DIR}{ROOT\_DIR}}
+{\footnotesize\ttfamily Statements\+Template.\+ROOT\+\_\+\+DIR = os.\+path.\+expanduser(\textquotesingle{}\texorpdfstring{$\sim$}{\string~}\textquotesingle{})}
+
+
+
+Definition at line \mbox{\hyperlink{_statements_template_8py_source_l00010}{10}} of file \mbox{\hyperlink{_statements_template_8py_source}{Statements\+Template.\+py}}.
+
+\Hypertarget{namespace_statements_template_a7f5bc9fe3be5b49d03c8a1c1e2307910}\label{namespace_statements_template_a7f5bc9fe3be5b49d03c8a1c1e2307910} 
+\index{StatementsTemplate@{StatementsTemplate}!uri@{uri}}
+\index{uri@{uri}!StatementsTemplate@{StatementsTemplate}}
+\doxysubsubsection{\texorpdfstring{uri}{uri}}
+{\footnotesize\ttfamily Statements\+Template.\+uri = os.\+environ.\+get("{}MONGO\+\_\+\+GLIDER"{})}
+
+
+
+Definition at line \mbox{\hyperlink{_statements_template_8py_source_l00016}{16}} of file \mbox{\hyperlink{_statements_template_8py_source}{Statements\+Template.\+py}}.
+

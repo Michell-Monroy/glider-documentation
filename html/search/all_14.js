@@ -4,8 +4,8 @@ var searchData=
   ['unmatched_5femail_1',['unmatched_email',['../class_body_email_1_1_body_email.html#af175b0375aca7179d409918e9911bc58',1,'BodyEmail::BodyEmail']]],
   ['upc_5fvalidation_2',['upc_validation',['../classimporter_1_1_validate_1_1validate__data.html#abaa748913ff8b834898879017f209d7c',1,'importer::Validate::validate_data']]],
   ['update_5fat_3',['update_at',['../namespace_report_snapshot.html#ad1d92ff734086f7f9a1d42f5ae674f59',1,'ReportSnapshot']]],
-  ['update_5fdata_4',['update_data',['../classimporter_1_1generator_1_1_generator.html#aa9c6ca030ec047608b845d41cb5cdbc0',1,'importer.generator.Generator.update_data()'],['../classimporter_1_1_catalogue_generator_1_1_generator.html#a4cf58ea914ec13d4fa35a4585fb1334f',1,'importer.CatalogueGenerator.Generator.update_data(self, line, collection)']]],
-  ['upload_5fcatalog_5',['upload_catalog',['../classimporter_1_1_catalogue_generator_1_1_generator.html#a3e2898a27d7cbc30efa9f4273f1460c4',1,'importer.CatalogueGenerator.Generator.upload_catalog()'],['../classimporter_1_1generator_1_1_generator.html#a0ed6b63f59d6e3341a2ba7a0ed906c94',1,'importer.generator.Generator.upload_catalog()']]],
+  ['update_5fdata_4',['update_data',['../classimporter_1_1generator_1_1_generator.html#aa9c6ca030ec047608b845d41cb5cdbc0',1,'importer.generator.Generator.update_data()'],['../classimporter_1_1_catalogue_generator_1_1_generator.html#a4cf58ea914ec13d4fa35a4585fb1334f',1,'importer.CatalogueGenerator.Generator.update_data()']]],
+  ['upload_5fcatalog_5',['upload_catalog',['../classimporter_1_1generator_1_1_generator.html#a0ed6b63f59d6e3341a2ba7a0ed906c94',1,'importer.generator.Generator.upload_catalog()'],['../classimporter_1_1_catalogue_generator_1_1_generator.html#a3e2898a27d7cbc30efa9f4273f1460c4',1,'importer.CatalogueGenerator.Generator.upload_catalog()']]],
   ['upload_5fdata_5fmongo_6',['upload_data_mongo',['../namespaceimporter_1_1_upload_sales.html#ad521bee3217da21b864556909a608866',1,'importer::UploadSales']]],
   ['upload_5ffiles_5fs3_7',['upload_files_s3',['../namespace_upload_files_s3.html#ad8ee5fc983089b09c062686f088481f5',1,'UploadFilesS3.upload_files_s3()'],['../namespace_upload_reports.html#a561fba467173f7f2009da404a18be6b1',1,'UploadReports.upload_files_s3()']]],
   ['upload_5finfo_5fmongo_8',['upload_info_mongo',['../namespaceimporter_1_1_excel__to__csv.html#a7d7fe2e8609a1de4af3532de4e2a1a11',1,'importer::Excel_to_csv']]],
@@ -19,5 +19,5 @@ var searchData=
   ['uploadreports_16',['UploadReports',['../namespace_upload_reports.html',1,'']]],
   ['uploadreports_2epy_17',['UploadReports.py',['../_upload_reports_8py.html',1,'']]],
   ['uploadsales_2epy_18',['UploadSales.py',['../_upload_sales_8py.html',1,'']]],
-  ['uri_19',['uri',['../namespaceimporter_1_1generate__csv.html#a7bba2ac7affa4c2f2f02ced98f54db32',1,'importer::generate_csv']]]
+  ['uri_19',['uri',['../namespaceimporter_1_1generate__csv.html#a7bba2ac7affa4c2f2f02ced98f54db32',1,'importer.generate_csv.uri'],['../namespace_statements_template.html#a7f5bc9fe3be5b49d03c8a1c1e2307910',1,'StatementsTemplate.uri']]]
 ];

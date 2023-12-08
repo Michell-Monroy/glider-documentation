@@ -1,0 +1,41 @@
+\doxysection{/\+Users/michellmonroy/\+Documents/dev-\/glider/glider/src/statement\+\_\+generation/\+Statements\+Template.py File Reference}
+\hypertarget{_statements_template_8py}{}\label{_statements_template_8py}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/statement\_generation/StatementsTemplate.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/statement\_generation/StatementsTemplate.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_statements_template}{Statements\+Template}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_statements_template_aff2c2acffa11f36e9ecb29b18f050f9f}{Statements\+Template.\+get\+\_\+client\+\_\+info\+\_\+mongo}} (client\+\_\+id)
+\item 
+\mbox{\hyperlink{namespace_statements_template_a78223ecf6e4b3d2d77ca256ce6dfe8f2}{Statements\+Template.\+get\+\_\+client\+\_\+info\+\_\+postgres}} (client\+\_\+id)
+\item 
+\mbox{\hyperlink{namespace_statements_template_a6070d0bf97b28e824eefd9138c257617}{Statements\+Template.\+q\+\_\+period}} (period)
+\item 
+\mbox{\hyperlink{namespace_statements_template_a9fe4a4984cf45b5554d2eb195f9f11e0}{Statements\+Template.\+template\+\_\+default}} (name, event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_statements_template_a989e466cf0ba3e27b752cf919269c11e}{Statements\+Template.\+file\+\_\+in}} = join(dirname(\+\_\+\+\_\+file\+\_\+\+\_\+), "{}statement.\+tex"{})
+\item 
+\mbox{\hyperlink{namespace_statements_template_a30d9ea829d1247ee3b336eaeb612fb43}{Statements\+Template.\+ROOT\+\_\+\+DIR}} = os.\+path.\+expanduser(\textquotesingle{}\texorpdfstring{$\sim$}{\string~}\textquotesingle{})
+\item 
+str \mbox{\hyperlink{namespace_statements_template_a33d7a9e6fcba22e1c5d1031bf8f25503}{Statements\+Template.\+file\+\_\+out}} = \mbox{\hyperlink{namespace_statements_template_a30d9ea829d1247ee3b336eaeb612fb43}{ROOT\+\_\+\+DIR}}+"{}/Statements/PDF/"{}
+\item 
+\mbox{\hyperlink{namespace_statements_template_a851d5bb38b5e628ea77994024344d6be}{Statements\+Template.\+date}} = datetime.\+today()
+\item 
+\mbox{\hyperlink{namespace_statements_template_a7f5bc9fe3be5b49d03c8a1c1e2307910}{Statements\+Template.\+uri}} = os.\+environ.\+get("{}MONGO\+\_\+\+GLIDER"{})
+\item 
+\mbox{\hyperlink{namespace_statements_template_a215ce41dae07dc8e23421f9631ff0355}{Statements\+Template.\+db\+\_\+name}} = os.\+environ.\+get("{}DB"{})
+\item 
+\mbox{\hyperlink{namespace_statements_template_a062c022cb9f911ce401ff2abd42afe28}{Statements\+Template.\+collection\+\_\+name}} = os.\+environ.\+get("{}USER\+\_\+\+COLLECTION"{})
+\item 
+\mbox{\hyperlink{namespace_statements_template_a56014be548200e0178574b1d58aef32c}{Statements\+Template.\+client}} = Mongo\+Client(\mbox{\hyperlink{namespace_statements_template_a7f5bc9fe3be5b49d03c8a1c1e2307910}{uri}},ssl\+\_\+cert\+\_\+reqs=ssl.\+CERT\+\_\+\+NONE)
+\item 
+\mbox{\hyperlink{namespace_statements_template_aefdff0d1f041b21d24d557e8cfdf05ff}{Statements\+Template.\+db}} = \mbox{\hyperlink{namespace_statements_template_a56014be548200e0178574b1d58aef32c}{client}}\mbox{[}\mbox{\hyperlink{namespace_statements_template_a215ce41dae07dc8e23421f9631ff0355}{db\+\_\+name}}\mbox{]}
+\item 
+\mbox{\hyperlink{namespace_statements_template_a4300779eb476c0dc69375ba2d2d7f17b}{Statements\+Template.\+collection}} = \mbox{\hyperlink{namespace_statements_template_aefdff0d1f041b21d24d557e8cfdf05ff}{db}}\mbox{[}\mbox{\hyperlink{namespace_statements_template_a062c022cb9f911ce401ff2abd42afe28}{collection\+\_\+name}}\mbox{]}
+\end{DoxyCompactItemize}

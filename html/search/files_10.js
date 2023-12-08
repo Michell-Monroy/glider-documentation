@@ -9,5 +9,6 @@ var searchData=
   ['soundcloudtemplate_2epy_6',['SoundcloudTemplate.py',['../_soundcloud_template_8py.html',1,'']]],
   ['soundtracktemplate_2epy_7',['SoundtrackTemplate.py',['../_soundtrack_template_8py.html',1,'']]],
   ['spotifytemplate_2epy_8',['SpotifyTemplate.py',['../_spotify_template_8py.html',1,'']]],
-  ['state51template_2epy_9',['State51Template.py',['../_state51_template_8py.html',1,'']]]
+  ['state51template_2epy_9',['State51Template.py',['../_state51_template_8py.html',1,'']]],
+  ['statementstemplate_2epy_10',['StatementsTemplate.py',['../_statements_template_8py.html',1,'']]]
 ];

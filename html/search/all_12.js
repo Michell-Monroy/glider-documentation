@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['s3_5fclient_0',['s3_client',['../namespace_tools.html#a04e8fd646d40750171dd0ec44028966c',1,'Tools.s3_client'],['../namespaceimporter_1_1_identify_format.html#a76469f9a4d8258e4a540abc23edb3a84',1,'importer.IdentifyFormat.s3_client'],['../namespace_upload_reports.html#a41cb7f7c78621001a3dca8fe60589076',1,'UploadReports.s3_client'],['../namespace_upload_files_s3.html#acbf83e060c95b2b1542b22febfde8ec3',1,'UploadFilesS3.s3_client']]],
+  ['s3_5fclient_0',['s3_client',['../namespace_upload_files_s3.html#acbf83e060c95b2b1542b22febfde8ec3',1,'UploadFilesS3.s3_client'],['../namespaceimporter_1_1_identify_format.html#a76469f9a4d8258e4a540abc23edb3a84',1,'importer.IdentifyFormat.s3_client'],['../namespace_upload_reports.html#a41cb7f7c78621001a3dca8fe60589076',1,'UploadReports.s3_client'],['../namespace_tools.html#a04e8fd646d40750171dd0ec44028966c',1,'Tools.s3_client']]],
   ['s3_5ffile_5fobj_1',['s3_file_obj',['../namespaceimporter_1_1_identify_format.html#a1483de9d4129b80e27834d5ab4da3a83',1,'importer.IdentifyFormat.s3_file_obj'],['../namespaceimporter_1_1_catalogue_generator.html#a898f60c62a0f2cdb95ae3eeef4c999ca',1,'importer.CatalogueGenerator.s3_file_obj'],['../namespaceimporter_1_1generator.html#aabc59d504a8eb4802ca38260cef8ecfb',1,'importer.generator.s3_file_obj']]],
   ['s3_5fsession_2',['s3_session',['../namespaceimporter_1_1_create_snapshots.html#ae5850639a2be42e542f26e5ca43165a0',1,'importer.CreateSnapshots.s3_session'],['../namespaceimporter_1_1_process_files.html#a8bf2a18d026c378cc114e4bdc65bf643',1,'importer.ProcessFiles.s3_session']]],
   ['saavntemplate_3',['SaavnTemplate',['../classimporter_1_1templates_1_1_saavn_template_1_1_saavn_template.html',1,'importer::templates::SaavnTemplate']]],
@@ -22,7 +22,7 @@ var searchData=
   ['service_19',['service',['../classimporter_1_1templates_1_1_merlin_template_1_1_merlin_template.html#aa5e7829ef22c9e6da3c42e82a3b47715',1,'importer::templates::MerlinTemplate::MerlinTemplate']]],
   ['servicefinder_20',['servicefinder',['../classimporter_1_1templates_1_1_audio_salad_template_1_1_audio_salad_template.html#a1fb9a250e309eaf260255b0548626ccf',1,'importer.templates.AudioSaladTemplate.AudioSaladTemplate.serviceFinder()'],['../classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a448f0cd80553a061d5588ddaf319de9f',1,'importer.templates.State51Template.State51Template.serviceFinder()']]],
   ['session_21',['session',['../namespace_report_snapshot.html#a24e32d77f91c807604150367b99c10a7',1,'ReportSnapshot']]],
-  ['set_20env_20variables_20and_20venv_22',['set env variables and venv',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow.html#autotoc_md11',1,'How to set env variables and venv'],['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2gdrive_2upload__workflow.html#autotoc_md1',1,'How to set env variables and venv']]],
+  ['set_20env_20variables_20and_20venv_22',['How to set env variables and venv',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow.html#autotoc_md23',1,'']]],
   ['slackertemplate_23',['SlackerTemplate',['../classimporter_1_1templates_1_1_slacker_template_1_1_slacker_template.html',1,'importer::templates::SlackerTemplate']]],
   ['slackertemplate_2epy_24',['SlackerTemplate.py',['../_slacker_template_8py.html',1,'']]],
   ['snap_5fcollection_25',['snap_collection',['../namespaceimporter_1_1_process_files.html#ab4b4e6bb4a9287e85dda41a981b051e9',1,'importer.ProcessFiles.snap_collection'],['../namespace_report_snapshot.html#a934e21a368825fb600d7d4ffe7631953',1,'ReportSnapshot.snap_collection'],['../namespaceimporter_1_1_identify_format.html#abd455f2860dc8e5b571ac1b436dc7171',1,'importer.IdentifyFormat.snap_collection']]],
@@ -39,5 +39,6 @@ var searchData=
   ['statement_5femail_36',['statement_email',['../class_body_email_1_1_body_email.html#a902a1ca0673843bfb8fc105db1eb1173',1,'BodyEmail::BodyEmail']]],
   ['statementstemplate_37',['StatementsTemplate',['../namespace_statements_template.html',1,'']]],
   ['statementstemplate_2epy_38',['StatementsTemplate.py',['../_statements_template_8py.html',1,'']]],
-  ['store_39',['store',['../namespace_gen_token_e_c2.html#a8ff13bdefe9e5af1df96ad31a221991b',1,'GenTokenEC2']]]
+  ['store_39',['store',['../namespace_gen_token_e_c2.html#a8ff13bdefe9e5af1df96ad31a221991b',1,'GenTokenEC2']]],
+  ['submodule_40',['submodule',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow.html#autotoc_md14',1,'FTP Submodule'],['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow.html#autotoc_md2',1,'Google Drive Submodule'],['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow.html#autotoc_md8',1,'Upload File Manually Submodule']]]
 ];

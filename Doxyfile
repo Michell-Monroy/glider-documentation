@@ -943,7 +943,8 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = /Users/michellmonroy/Documents/dev-glider/glider/src/upload_module/ftp \
+INPUT                  = /Users/michellmonroy/Documents/dev-glider/glider/src/upload_module \
+                         /Users/michellmonroy/Documents/dev-glider/glider/src/upload_module/ftp \
                          /Users/michellmonroy/Documents/dev-glider/glider/src/upload_module/gdrive \
                          /Users/michellmonroy/Documents/dev-glider/glider/src/upload_module/common \
                          /Users/michellmonroy/Documents/dev-glider/glider/src/importer \

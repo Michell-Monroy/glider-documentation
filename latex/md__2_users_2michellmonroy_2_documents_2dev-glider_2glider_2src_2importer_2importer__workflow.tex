@@ -1,8 +1,8 @@
 \chapter{Importer Workflow}
 \hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow}{}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow}\index{Importer Workflow@{Importer Workflow}}
-\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md8}%
-\Hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md8}%
- \hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md9}{}\doxysection{\texorpdfstring{Description}{Description}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md9}
+\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md20}%
+\Hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md20}%
+ \hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md21}{}\doxysection{\texorpdfstring{Description}{Description}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md21}
 Importer module is composed of these steps\+:
 
 
@@ -14,9 +14,9 @@ Importer module is composed of these steps\+:
 \item When the format is identified, the format name is extracted.
 \item Map columns\+: Once the format of each usage report is already known, it’s possible to extract the columns, and data type necessary to carry out the mapping. This process is carried out by format and not by file, that is, the format already specifies which columns to use, so these are extracted from the “otto\+Mapping” field of the json files.
 \item Generate new data using mapped columns\+: Once the required columns and their respective values are known, Data\+Frames are created (one per file) in which the columns are constructed according to the "{}name"{} field of "{}mapping\+Template"{} field from format.\+json. When this step is completed, the new usage reports are saved in s3 as parquet and mongo\+DB.
-\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md10}{}\doxysection{\texorpdfstring{Workflow}{Workflow}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md10}
-\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md11}{}\doxysection{\texorpdfstring{How to set env variables and venv}{How to set env variables and venv}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md11}
-There are two kind of variables, to dev and local testing.\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md12}{}\doxysubsection{\texorpdfstring{How to create venv dev}{How to create venv dev}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md12}
+\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md22}{}\doxysection{\texorpdfstring{Workflow}{Workflow}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md22}
+\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md23}{}\doxysection{\texorpdfstring{How to set env variables and venv}{How to set env variables and venv}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md23}
+There are two kind of variables, to dev and local testing.\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md24}{}\doxysubsection{\texorpdfstring{How to create venv dev}{How to create venv dev}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md24}
 
 \begin{DoxyEnumerate}
 \item Create a new virtual env (if you have created this venv pass to step 4)
@@ -24,7 +24,7 @@ There are two kind of variables, to dev and local testing.\hypertarget{md__2_use
 
 {\ttfamily python3 -\/m venv glider\+\_\+dev}
 
-It\textquotesingle{}s important conservate "{}glider\+\_\+dev"{} name
+It\textquotesingle{}s important to keep "{}glider\+\_\+dev"{} name
 
 
 \begin{DoxyEnumerate}
@@ -72,7 +72,7 @@ It\textquotesingle{}s important conservate "{}glider\+\_\+dev"{} name
 
 {\ttfamily source deploy/dev\+\_\+vars.\+sh} for developing env {\ttfamily source deploy/prod\+\_\+vars.\+sh} for production env
 
-It loads env vars to be used still you change them.\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md13}{}\doxysubsection{\texorpdfstring{How to create venv local testing}{How to create venv local testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md13}
+It loads env vars to be used still you change them.\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md25}{}\doxysubsection{\texorpdfstring{How to create venv local testing}{How to create venv local testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md25}
 
 \begin{DoxyEnumerate}
 \item Create a new virtual env (if you have created this venv pass to step 4)
@@ -101,8 +101,8 @@ It loads env vars to be used still you change them.\hypertarget{md__2_users_2mic
 
 {\ttfamily source deploy/dev\+\_\+vars.\+sh}
 
-This command activate glider\+\_\+testing env and loads the env variables in glider/.env file which is useful to deploy infrastructure\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md14}{}\doxysection{\texorpdfstring{Testing}{Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md14}
-\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md15}{}\doxysubsection{\texorpdfstring{Local Testing}{Local Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md15}
+This command activate glider\+\_\+testing env and loads the env variables in glider/.env file which is useful to deploy infrastructure\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md26}{}\doxysection{\texorpdfstring{Testing}{Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md26}
+\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md27}{}\doxysubsection{\texorpdfstring{Local Testing}{Local Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md27}
 
 \begin{DoxyEnumerate}
 \item Upload one or more valid file in AWS s3 bucket
@@ -180,7 +180,7 @@ This command activate glider\+\_\+testing env and loads the env variables in gli
 \item Run script
 \end{DoxyEnumerate}
 
-{\ttfamily python tests/test\+\_\+script.\+py}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md16}{}\doxysubsection{\texorpdfstring{AWS Testing}{AWS Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md16}
+{\ttfamily python tests/test\+\_\+script.\+py}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md28}{}\doxysubsection{\texorpdfstring{AWS Testing}{AWS Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md28}
 When infrastructure is deployed in AWS\+:
 
 

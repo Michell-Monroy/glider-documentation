@@ -20,7 +20,7 @@ var searchData=
   ['sendemail_17',['SendEmail',['../namespace_send_email.html',1,'']]],
   ['sendemail_2epy_18',['SendEmail.py',['../_send_email_8py.html',1,'']]],
   ['service_19',['service',['../classimporter_1_1templates_1_1_merlin_template_1_1_merlin_template.html#aa5e7829ef22c9e6da3c42e82a3b47715',1,'importer::templates::MerlinTemplate::MerlinTemplate']]],
-  ['servicefinder_20',['servicefinder',['../classimporter_1_1templates_1_1_audio_salad_template_1_1_audio_salad_template.html#a1fb9a250e309eaf260255b0548626ccf',1,'importer.templates.AudioSaladTemplate.AudioSaladTemplate.serviceFinder()'],['../classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a448f0cd80553a061d5588ddaf319de9f',1,'importer.templates.State51Template.State51Template.serviceFinder()']]],
+  ['servicefinder_20',['servicefinder',['../classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a448f0cd80553a061d5588ddaf319de9f',1,'importer.templates.State51Template.State51Template.serviceFinder()'],['../classimporter_1_1templates_1_1_audio_salad_template_1_1_audio_salad_template.html#a1fb9a250e309eaf260255b0548626ccf',1,'importer.templates.AudioSaladTemplate.AudioSaladTemplate.serviceFinder()']]],
   ['session_21',['session',['../namespace_report_snapshot.html#a24e32d77f91c807604150367b99c10a7',1,'ReportSnapshot']]],
   ['set_20env_20variables_20and_20venv_22',['How to set env variables and venv',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow.html#autotoc_md23',1,'']]],
   ['slackertemplate_23',['SlackerTemplate',['../classimporter_1_1templates_1_1_slacker_template_1_1_slacker_template.html',1,'importer::templates::SlackerTemplate']]],
@@ -37,8 +37,10 @@ var searchData=
   ['state51template_34',['State51Template',['../classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html',1,'importer::templates::State51Template']]],
   ['state51template_2epy_35',['State51Template.py',['../_state51_template_8py.html',1,'']]],
   ['statement_5femail_36',['statement_email',['../class_body_email_1_1_body_email.html#a902a1ca0673843bfb8fc105db1eb1173',1,'BodyEmail::BodyEmail']]],
-  ['statementstemplate_37',['StatementsTemplate',['../namespace_statements_template.html',1,'']]],
-  ['statementstemplate_2epy_38',['StatementsTemplate.py',['../_statements_template_8py.html',1,'']]],
-  ['store_39',['store',['../namespace_gen_token_e_c2.html#a8ff13bdefe9e5af1df96ad31a221991b',1,'GenTokenEC2']]],
-  ['submodule_40',['submodule',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow.html#autotoc_md14',1,'FTP Submodule'],['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow.html#autotoc_md2',1,'Google Drive Submodule'],['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow.html#autotoc_md8',1,'Upload File Manually Submodule']]]
+  ['statement_5fworkflow_2emd_37',['statement_workflow.md',['../statement__workflow_8md.html',1,'']]],
+  ['statements_20workflow_38',['Statements Workflow',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2statement__generation_2statement__workflow.html',1,'']]],
+  ['statementstemplate_39',['StatementsTemplate',['../namespace_statements_template.html',1,'']]],
+  ['statementstemplate_2epy_40',['StatementsTemplate.py',['../_statements_template_8py.html',1,'']]],
+  ['store_41',['store',['../namespace_gen_token_e_c2.html#a8ff13bdefe9e5af1df96ad31a221991b',1,'GenTokenEC2']]],
+  ['submodule_42',['submodule',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow.html#autotoc_md14',1,'FTP Submodule'],['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow.html#autotoc_md2',1,'Google Drive Submodule'],['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow.html#autotoc_md8',1,'Upload File Manually Submodule']]]
 ];

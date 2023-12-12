@@ -26,28 +26,16 @@ It receives a google drive link, downloads reports in a temporal folder to appli
 
 \begin{DoxyEnumerate}
 \item Create a new virtual env (if you have created this venv pass to step 4)
-\end{DoxyEnumerate}
 
 {\ttfamily python3 -\/m venv glider\+\_\+dev}
 
 It\textquotesingle{}s important to keep "{}glider\+\_\+dev"{} name
-
-
-\begin{DoxyEnumerate}
 \item Activate venv
-\end{DoxyEnumerate}
 
 {\ttfamily source glider\+\_\+dev/bin/activate}
-
-
-\begin{DoxyEnumerate}
 \item Install requirements
-\end{DoxyEnumerate}
 
 {\ttfamily pip install -\/-\/upgrade google-\/api-\/python-\/client google-\/auth-\/httplib2 google-\/auth-\/oauthlib oauth2client}
-
-
-\begin{DoxyEnumerate}
 \item See setup in \href{https://docs.google.com/document/d/19XkFgB-OTEtRcbQtVm4sBJ3wb6uPWDsBZDd3MB89rgs/edit?usp=sharing}{\texttt{ Modules Documentation}} to know how to install specific requirements.
 \item Activate env variables. You should create two .env files
 
@@ -66,27 +54,22 @@ b) .env.\+prod for production You can use either of them, as the variables are t
 \end{DoxyCode}
 
 \item Save and run, remember that you can use either of them
-\end{DoxyEnumerate}
 
 {\ttfamily source deploy/dev\+\_\+vars.\+sh} for developing env
 
-{\ttfamily source deploy/prod\+\_\+vars.\+sh} for production env\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md5}{}\doxysubsection{\texorpdfstring{Testing}{Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md5}
+{\ttfamily source deploy/prod\+\_\+vars.\+sh} for production env
+\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md5}{}\doxysubsection{\texorpdfstring{Testing}{Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md5}
 \hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md6}{}\doxysubsubsection{\texorpdfstring{Local Testing}{Local Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md6}
 
 \begin{DoxyEnumerate}
 \item Activate venv and variables
-\end{DoxyEnumerate}
 
 {\ttfamily source glider\+\_\+dev/bin/activate}
 
 {\ttfamily source deploy/dev\+\_\+vars.\+sh} ~\newline
 
-
-
-\begin{DoxyEnumerate}
 \item Get any link to shared report or folder of reports. See \href{https://support.google.com/drive/answer/2494822?hl=en&co=GENIE.Platform\%3DDesktop\#zippy=\%2Callow-general-access-to-the-file}{\texttt{ How to get a google Drive shared link}}
 \item Into tests/ create a python script following this format\+: test\+\_\+gdrive.\+py
-\end{DoxyEnumerate}
 
 
 \begin{DoxyCode}{0}
@@ -115,13 +98,10 @@ b) .env.\+prod for production You can use either of them, as the variables are t
 
 \end{DoxyCode}
 
-
-
-\begin{DoxyEnumerate}
 \item Run script
-\end{DoxyEnumerate}
 
-{\ttfamily python tests/test\+\_\+gdrive.\+py}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md7}{}\doxysubsubsection{\texorpdfstring{AWS Testing}{AWS Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md7}
+{\ttfamily python tests/test\+\_\+gdrive.\+py}
+\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md7}{}\doxysubsubsection{\texorpdfstring{AWS Testing}{AWS Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md7}
 When infrastructure is deployed in AWS\+:
 
 
@@ -129,14 +109,9 @@ When infrastructure is deployed in AWS\+:
 \item Go to AWS -\/\texorpdfstring{$>$}{>} Step Functions
 \item Select the step function (select\+\_\+and\+\_\+execute\+\_\+module)
 \item Click on Start execution
-\end{DoxyEnumerate}
 
 (Optional\+: set a testing name)
-
-
-\begin{DoxyEnumerate}
 \item Set json object
-\end{DoxyEnumerate}
 
 
 \begin{DoxyCode}{0}
@@ -151,18 +126,15 @@ When infrastructure is deployed in AWS\+:
 
 \end{DoxyCode}
 
-
-
-\begin{DoxyEnumerate}
 \item Click on Start execution. If the execution is successfully, you can see it in EC2 instance
-\end{DoxyEnumerate}
 
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{ssh\ -\/i\ Glider-\/Postgres.pem\ ubuntu@ec2-\/35-\/179-\/24-\/180.eu-\/west-\/2.compute.amazonaws.com}
 
 \end{DoxyCode}
-\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md8}{}\doxysection{\texorpdfstring{Upload File Manually Submodule}{Upload File Manually Submodule}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md8}
+
+\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md8}{}\doxysection{\texorpdfstring{Upload File Manually Submodule}{Upload File Manually Submodule}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md8}
 It receives a file uploaded since OTTITO homepage, downloads reports in a temporal folder to applies the Cleaning Procedure\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md9}{}\doxysubsubsection{\texorpdfstring{Workflow}{Workflow}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md9}
 \hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md10}{}\doxysubsubsection{\texorpdfstring{How to create venv dev}{How to create venv dev}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md10}
 This procedure is the same as Google Drive Submodule just skip step 3\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md11}{}\doxysubsection{\texorpdfstring{Testing}{Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md11}
@@ -172,18 +144,13 @@ This procedure is the same as Google Drive Submodule just skip step 3\hypertarge
 
 \begin{DoxyEnumerate}
 \item Activate venv and variables
-\end{DoxyEnumerate}
 
 {\ttfamily source glider\+\_\+dev/bin/activate}
 
 {\ttfamily source deploy/dev\+\_\+vars.\+sh} ~\newline
 
-
-
-\begin{DoxyEnumerate}
 \item Make sure you have some report in s3. Remember the bucket and path where it\textquotesingle{}s saved
 \item Into tests/ create a python script following this format\+: test\+\_\+manual\+\_\+uploader.\+py
-\end{DoxyEnumerate}
 
 
 \begin{DoxyCode}{0}
@@ -212,13 +179,10 @@ This procedure is the same as Google Drive Submodule just skip step 3\hypertarge
 
 \end{DoxyCode}
 
-
-
-\begin{DoxyEnumerate}
 \item Run script
-\end{DoxyEnumerate}
 
-{\ttfamily python tests/test\+\_\+manual\+\_\+uploader.\+py}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md13}{}\doxysubsubsection{\texorpdfstring{AWS Testing}{AWS Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md13}
+{\ttfamily python tests/test\+\_\+manual\+\_\+uploader.\+py}
+\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md13}{}\doxysubsubsection{\texorpdfstring{AWS Testing}{AWS Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md13}
 When infrastructure is deployed in AWS\+:
 
 
@@ -226,14 +190,9 @@ When infrastructure is deployed in AWS\+:
 \item Go to AWS -\/\texorpdfstring{$>$}{>} Step Functions
 \item Select the step function (select\+\_\+and\+\_\+execute\+\_\+module)
 \item Click on Start execution
-\end{DoxyEnumerate}
 
 (Optional\+: set a testing name)
-
-
-\begin{DoxyEnumerate}
 \item Set json object
-\end{DoxyEnumerate}
 
 
 \begin{DoxyCode}{0}
@@ -248,18 +207,15 @@ When infrastructure is deployed in AWS\+:
 
 \end{DoxyCode}
 
-
-
-\begin{DoxyEnumerate}
 \item Click on Start execution. If the execution is successfully, you can see it in EC2 instance
-\end{DoxyEnumerate}
 
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{ssh\ -\/i\ Glider-\/Postgres.pem\ ubuntu@ec2-\/35-\/179-\/24-\/180.eu-\/west-\/2.compute.amazonaws.com}
 
 \end{DoxyCode}
-\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md14}{}\doxysection{\texorpdfstring{FTP Submodule}{FTP Submodule}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md14}
+
+\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md14}{}\doxysection{\texorpdfstring{FTP Submodule}{FTP Submodule}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md14}
 It uses ftp client to connect with some ftp server where users have their reports. It downloads the reports in a temporal folder to applies the Cleaning Procedure.\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md15}{}\doxysubsubsection{\texorpdfstring{Workflow}{Workflow}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md15}
 \hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md16}{}\doxysubsubsection{\texorpdfstring{How to create venv dev}{How to create venv dev}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md16}
 This procedure is the same as Upload File Manually Submodule\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md17}{}\doxysubsection{\texorpdfstring{Testing}{Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md17}
@@ -269,22 +225,19 @@ This procedure is the same as Upload File Manually Submodule\hypertarget{md__2_u
 
 \begin{DoxyEnumerate}
 \item Activate venv and variables
-\end{DoxyEnumerate}
 
 {\ttfamily source glider\+\_\+dev/bin/activate}
 
 {\ttfamily source deploy/dev\+\_\+vars.\+sh} ~\newline
 
-
-
-\begin{DoxyEnumerate}
 \item Make sure you have ftp credentials for client/server also you must be active on Mongo\+DB as client. It is shown in \href{https://docs.google.com/document/d/19XkFgB-OTEtRcbQtVm4sBJ3wb6uPWDsBZDd3MB89rgs/edit?usp=sharing}{\texttt{ Modules Documentation}}
 \item Into tests/ create a python script following this format\+: test\+\_\+ftp\+\_\+uploader.\+py
-\end{DoxyEnumerate}
 
 
 \begin{DoxyCode}{0}
+\DoxyCodeLine{import\ os}
 \DoxyCodeLine{import\ sys}
+\DoxyCodeLine{import\ traceback}
 \DoxyCodeLine{sys.path.insert(1,\ "{}src/upload\_module/ftp"{})}
 \DoxyCodeLine{sys.path.insert(1,\ "{}run"{})}
 \DoxyCodeLine{from\ FTPModule\ import\ ftp\_execution}
@@ -309,13 +262,10 @@ This procedure is the same as Upload File Manually Submodule\hypertarget{md__2_u
 
 \end{DoxyCode}
 
-
-
-\begin{DoxyEnumerate}
 \item Run script
-\end{DoxyEnumerate}
 
-{\ttfamily python tests/test\+\_\+ftp\+\_\+uploader.\+py}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md19}{}\doxysubsubsection{\texorpdfstring{AWS Testing}{AWS Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md19}
+{\ttfamily python tests/test\+\_\+ftp\+\_\+uploader.\+py}
+\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md19}{}\doxysubsubsection{\texorpdfstring{AWS Testing}{AWS Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2upload__module_2upload__workflow_autotoc_md19}
 When infrastructure is deployed in AWS\+:
 
 
@@ -323,14 +273,9 @@ When infrastructure is deployed in AWS\+:
 \item Go to AWS -\/\texorpdfstring{$>$}{>} Step Functions
 \item Select the step function (select\+\_\+and\+\_\+execute\+\_\+module)
 \item Click on Start execution
-\end{DoxyEnumerate}
 
 (Optional\+: set a testing name)
-
-
-\begin{DoxyEnumerate}
 \item Set json object
-\end{DoxyEnumerate}
 
 
 \begin{DoxyCode}{0}
@@ -345,11 +290,7 @@ When infrastructure is deployed in AWS\+:
 
 \end{DoxyCode}
 
-
-
-\begin{DoxyEnumerate}
 \item Click on Start execution. If the execution is successfully, you can see it in EC2 instance
-\end{DoxyEnumerate}
 
 
 \begin{DoxyCode}{0}
@@ -357,3 +298,4 @@ When infrastructure is deployed in AWS\+:
 
 \end{DoxyCode}
  
+\end{DoxyEnumerate}

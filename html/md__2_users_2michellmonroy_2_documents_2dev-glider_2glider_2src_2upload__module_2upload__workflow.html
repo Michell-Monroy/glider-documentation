@@ -98,19 +98,16 @@ Workflow</h3>
 <h3><a class="anchor" id="autotoc_md4"></a>
 How to create venv dev</h3>
 <ol type="1">
-<li>Create a new virtual env (if you have created this venv pass to step 4)</li>
-</ol>
-<p><code>python3 -m venv glider_dev</code></p>
-<p>It's important to keep "glider_dev" name</p>
-<ol type="1">
-<li>Activate venv</li>
-</ol>
-<p><code>source glider_dev/bin/activate</code></p>
-<ol type="1">
-<li>Install requirements</li>
-</ol>
-<p><code>pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib oauth2client</code></p>
-<ol type="1">
+<li><p class="startli">Create a new virtual env (if you have created this venv pass to step 4)</p>
+<p class="startli"><code>python3 -m venv glider_dev</code></p>
+<p class="startli">It's important to keep "glider_dev" name</p>
+</li>
+<li><p class="startli">Activate venv</p>
+<p class="startli"><code>source glider_dev/bin/activate</code></p>
+</li>
+<li><p class="startli">Install requirements</p>
+<p class="startli"><code>pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib oauth2client</code></p>
+</li>
 <li>See setup in <a href="https://docs.google.com/document/d/19XkFgB-OTEtRcbQtVm4sBJ3wb6uPWDsBZDd3MB89rgs/edit?usp=sharing">Modules Documentation</a> to know how to install specific requirements.</li>
 <li><p class="startli">Activate env variables. You should create two .env files</p>
 <p class="startli">In this case, the variables for any submodule are the same.</p>
@@ -121,24 +118,23 @@ How to create venv dev</h3>
 <div class="line">REGION=&lt;YOUR_AWS_REGION&gt;</div>
 <div class="line">FTP_ACCESS=&lt;YOUR_MONGO_COLLECTION_FOR_FTP_CREDENTIALS&gt;</div>
 </div><!-- fragment --></li>
-<li>Save and run, remember that you can use either of them</li>
+<li><p class="startli">Save and run, remember that you can use either of them</p>
+<p class="startli"><code>source deploy/dev_vars.sh</code> for developing env</p>
+<p class="startli"><code>source deploy/prod_vars.sh</code> for production env</p>
+</li>
 </ol>
-<p><code>source deploy/dev_vars.sh</code> for developing env</p>
-<p><code>source deploy/prod_vars.sh</code> for production env</p>
 <h2><a class="anchor" id="autotoc_md5"></a>
 Testing</h2>
 <h3><a class="anchor" id="autotoc_md6"></a>
 Local Testing</h3>
 <ol type="1">
-<li>Activate venv and variables</li>
-</ol>
-<p><code>source glider_dev/bin/activate</code></p>
-<p><code>source deploy/dev_vars.sh</code> <br  />
+<li><p class="startli">Activate venv and variables</p>
+<p class="startli"><code>source glider_dev/bin/activate</code></p>
+<p class="startli"><code>source deploy/dev_vars.sh</code> <br  />
 </p>
-<ol type="1">
+</li>
 <li>Get any link to shared report or folder of reports. See <a href="https://support.google.com/drive/answer/2494822?hl=en&amp;co=GENIE.Platform%3DDesktop#zippy=%2Callow-general-access-to-the-file">How to get a google Drive shared link</a></li>
-<li>Into tests/ create a python script following this format: test_gdrive.py</li>
-</ol>
+<li><p class="startli">Into tests/ create a python script following this format: test_gdrive.py</p>
 <div class="fragment"><div class="line">import sys</div>
 <div class="line">sys.path.insert(1, &quot;src/upload_module/gdrive&quot;)</div>
 <div class="line">sys.path.insert(1, &quot;run&quot;)</div>
@@ -161,22 +157,21 @@ Local Testing</h3>
 <div class="line">    except Exception as e:</div>
 <div class="line">        message = str(sys.exc_info()[2]) + str(traceback.format_exc())</div>
 <div class="line">        send_uploader_notification(&quot;fail&quot;, input_data[&quot;module&quot;], input_data[&quot;on_finish&quot;], message)</div>
-</div><!-- fragment --><ol type="1">
-<li>Run script</li>
+</div><!-- fragment --></li>
+<li><p class="startli">Run script</p>
+<p class="startli"><code>python tests/test_gdrive.py</code></p>
+</li>
 </ol>
-<p><code>python tests/test_gdrive.py</code></p>
 <h3><a class="anchor" id="autotoc_md7"></a>
 AWS Testing</h3>
 <p>When infrastructure is deployed in AWS:</p>
 <ol type="1">
 <li>Go to AWS -&gt; Step Functions</li>
 <li>Select the step function (select_and_execute_module)</li>
-<li>Click on Start execution</li>
-</ol>
-<p>(Optional: set a testing name)</p>
-<ol type="1">
-<li>Set json object</li>
-</ol>
+<li><p class="startli">Click on Start execution</p>
+<p class="startli">(Optional: set a testing name)</p>
+</li>
+<li><p class="startli">Set json object</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">    &quot;module&quot;: &quot;drive&quot;,</div>
 <div class="line">    &quot;drive_link&quot;: &lt;&lt;shared_gdrive_link&gt;&gt;,</div>
@@ -185,11 +180,12 @@ AWS Testing</h3>
 <div class="line">    &quot;file&quot;: &quot;&quot;,</div>
 <div class="line">    &quot;on_finish&quot;: &lt;&lt;webhook.url&gt;&gt;</div>
 <div class="line">}</div>
-</div><!-- fragment --><ol type="1">
-<li>Click on Start execution. If the execution is successfully, you can see it in EC2 instance</li>
-</ol>
+</div><!-- fragment --></li>
+<li><p class="startli">Click on Start execution. If the execution is successfully, you can see it in EC2 instance</p>
 <div class="fragment"><div class="line">ssh -i Glider-Postgres.pem ubuntu@ec2-35-179-24-180.eu-west-2.compute.amazonaws.com</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md8"></a>
+</div><!-- fragment --></li>
+</ol>
+<h1><a class="anchor" id="autotoc_md8"></a>
 Upload File Manually Submodule</h1>
 <p>It receives a file uploaded since OTTITO homepage, downloads reports in a temporal folder to applies the Cleaning Procedure</p>
 <h3><a class="anchor" id="autotoc_md9"></a>
@@ -204,15 +200,13 @@ Testing</h2>
 Local Testing</h3>
 <p><b>This testing is just to verify code workflow, so the OTTO interface is not considered here.</b></p>
 <ol type="1">
-<li>Activate venv and variables</li>
-</ol>
-<p><code>source glider_dev/bin/activate</code></p>
-<p><code>source deploy/dev_vars.sh</code> <br  />
+<li><p class="startli">Activate venv and variables</p>
+<p class="startli"><code>source glider_dev/bin/activate</code></p>
+<p class="startli"><code>source deploy/dev_vars.sh</code> <br  />
 </p>
-<ol type="1">
+</li>
 <li>Make sure you have some report in s3. Remember the bucket and path where it's saved</li>
-<li>Into tests/ create a python script following this format: test_manual_uploader.py</li>
-</ol>
+<li><p class="startli">Into tests/ create a python script following this format: test_manual_uploader.py</p>
 <div class="fragment"><div class="line">import sys</div>
 <div class="line">sys.path.insert(1, &quot;src/upload_module/gdrive&quot;)</div>
 <div class="line">sys.path.insert(1, &quot;run&quot;)</div>
@@ -235,22 +229,21 @@ Local Testing</h3>
 <div class="line">    except Exception as e:</div>
 <div class="line">        message = str(sys.exc_info()[2]) + str(traceback.format_exc())</div>
 <div class="line">        send_uploader_notification(&quot;fail&quot;, input_data[&quot;module&quot;], input_data[&quot;on_finish&quot;], message)</div>
-</div><!-- fragment --><ol type="1">
-<li>Run script</li>
+</div><!-- fragment --></li>
+<li><p class="startli">Run script</p>
+<p class="startli"><code>python tests/test_manual_uploader.py</code></p>
+</li>
 </ol>
-<p><code>python tests/test_manual_uploader.py</code></p>
 <h3><a class="anchor" id="autotoc_md13"></a>
 AWS Testing</h3>
 <p>When infrastructure is deployed in AWS:</p>
 <ol type="1">
 <li>Go to AWS -&gt; Step Functions</li>
 <li>Select the step function (select_and_execute_module)</li>
-<li>Click on Start execution</li>
-</ol>
-<p>(Optional: set a testing name)</p>
-<ol type="1">
-<li>Set json object</li>
-</ol>
+<li><p class="startli">Click on Start execution</p>
+<p class="startli">(Optional: set a testing name)</p>
+</li>
+<li><p class="startli">Set json object</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">    &quot;module&quot;: &quot;manually&quot;,</div>
 <div class="line">    &quot;drive_link&quot;: &quot;&quot;,</div>
@@ -259,11 +252,12 @@ AWS Testing</h3>
 <div class="line">    &quot;file&quot;: &lt;&lt;file uploaded&gt;&gt;,</div>
 <div class="line">    &quot;on_finish&quot;: &lt;&lt;webhook.url&gt;&gt;</div>
 <div class="line">}</div>
-</div><!-- fragment --><ol type="1">
-<li>Click on Start execution. If the execution is successfully, you can see it in EC2 instance</li>
-</ol>
+</div><!-- fragment --></li>
+<li><p class="startli">Click on Start execution. If the execution is successfully, you can see it in EC2 instance</p>
 <div class="fragment"><div class="line">ssh -i Glider-Postgres.pem ubuntu@ec2-35-179-24-180.eu-west-2.compute.amazonaws.com</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md14"></a>
+</div><!-- fragment --></li>
+</ol>
+<h1><a class="anchor" id="autotoc_md14"></a>
 FTP Submodule</h1>
 <p>It uses ftp client to connect with some ftp server where users have their reports. It downloads the reports in a temporal folder to applies the Cleaning Procedure.</p>
 <h3><a class="anchor" id="autotoc_md15"></a>
@@ -278,16 +272,16 @@ Testing</h2>
 Local Testing</h3>
 <p><b>This testing is just to verify code workflow, so the OTTO interface is not considered here.</b></p>
 <ol type="1">
-<li>Activate venv and variables</li>
-</ol>
-<p><code>source glider_dev/bin/activate</code></p>
-<p><code>source deploy/dev_vars.sh</code> <br  />
+<li><p class="startli">Activate venv and variables</p>
+<p class="startli"><code>source glider_dev/bin/activate</code></p>
+<p class="startli"><code>source deploy/dev_vars.sh</code> <br  />
 </p>
-<ol type="1">
+</li>
 <li>Make sure you have ftp credentials for client/server also you must be active on MongoDB as client. It is shown in <a href="https://docs.google.com/document/d/19XkFgB-OTEtRcbQtVm4sBJ3wb6uPWDsBZDd3MB89rgs/edit?usp=sharing">Modules Documentation</a></li>
-<li>Into tests/ create a python script following this format: test_ftp_uploader.py</li>
-</ol>
-<div class="fragment"><div class="line">import sys</div>
+<li><p class="startli">Into tests/ create a python script following this format: test_ftp_uploader.py</p>
+<div class="fragment"><div class="line">import os</div>
+<div class="line">import sys</div>
+<div class="line">import traceback</div>
 <div class="line">sys.path.insert(1, &quot;src/upload_module/ftp&quot;)</div>
 <div class="line">sys.path.insert(1, &quot;run&quot;)</div>
 <div class="line">from FTPModule import ftp_execution</div>
@@ -309,22 +303,21 @@ Local Testing</h3>
 <div class="line">    except Exception as e:</div>
 <div class="line">        message = str(sys.exc_info()[2]) + str(traceback.format_exc())</div>
 <div class="line">        send_uploader_notification(&quot;fail&quot;, input_data[&quot;module&quot;], input_data[&quot;on_finish&quot;], message)</div>
-</div><!-- fragment --><ol type="1">
-<li>Run script</li>
+</div><!-- fragment --></li>
+<li><p class="startli">Run script</p>
+<p class="startli"><code>python tests/test_ftp_uploader.py</code></p>
+</li>
 </ol>
-<p><code>python tests/test_ftp_uploader.py</code></p>
 <h3><a class="anchor" id="autotoc_md19"></a>
 AWS Testing</h3>
 <p>When infrastructure is deployed in AWS:</p>
 <ol type="1">
 <li>Go to AWS -&gt; Step Functions</li>
 <li>Select the step function (select_and_execute_module)</li>
-<li>Click on Start execution</li>
-</ol>
-<p>(Optional: set a testing name)</p>
-<ol type="1">
-<li>Set json object</li>
-</ol>
+<li><p class="startli">Click on Start execution</p>
+<p class="startli">(Optional: set a testing name)</p>
+</li>
+<li><p class="startli">Set json object</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">    &quot;module&quot;: &quot;ftp&quot;,</div>
 <div class="line">    &quot;client_id&quot;: &lt;&lt;client_id&gt;&gt;,</div>
@@ -333,11 +326,12 @@ AWS Testing</h3>
 <div class="line">    &quot;path&quot;: &lt;&lt;s3 path where files will be uploaded&gt;&gt;,</div>
 <div class="line">    &quot;on_finish&quot;: &lt;&lt;webhook.url&gt;&gt;</div>
 <div class="line">}</div>
-</div><!-- fragment --><ol type="1">
-<li>Click on Start execution. If the execution is successfully, you can see it in EC2 instance</li>
-</ol>
+</div><!-- fragment --></li>
+<li><p class="startli">Click on Start execution. If the execution is successfully, you can see it in EC2 instance</p>
 <div class="fragment"><div class="line">ssh -i Glider-Postgres.pem ubuntu@ec2-35-179-24-180.eu-west-2.compute.amazonaws.com</div>
-</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- fragment --> </li>
+</ol>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -94,20 +94,20 @@ How to set env variables and venv</h1>
 <h2><a class="anchor" id="autotoc_md24"></a>
 How to create venv dev</h2>
 <ol type="1">
-<li>Create a new virtual env (if you have created this venv pass to step 4)</li>
-</ol>
-<p><code>python3 -m venv glider_dev</code></p>
-<p>It's important to keep "glider_dev" name</p>
-<ol type="1">
-<li>Activate venv</li>
-</ol>
-<p><code>source glider_dev/bin/activate</code></p>
-<ol type="1">
-<li>Install requirements</li>
-</ol>
-<p><code>pip install -r src/importer/requirements.txt</code></p>
-<ol type="1">
-<li>Activate env variables. You should create two .env files a) .env.dev for developing and testing b) .env.prod for production Both files have the same format, just add your dev and prod credentials for each file. Here's an example <div class="fragment"><div class="line">ENVIRONMENT=&lt;Development/Production&gt;</div>
+<li><p class="startli">Create a new virtual env (if you have created this venv pass to step 4)</p>
+<p class="startli"><code>python3 -m venv glider_dev</code></p>
+<p class="startli">It's important to keep "glider_dev" name</p>
+</li>
+<li><p class="startli">Activate venv</p>
+<p class="startli"><code>source glider_dev/bin/activate</code></p>
+</li>
+<li><p class="startli">Install requirements</p>
+<p class="startli"><code>pip install -r src/importer/requirements.txt</code></p>
+</li>
+<li><p class="startli">Activate env variables. You should create two .env files</p>
+<p class="startli">a) .env.dev for developing and testing</p>
+<p class="startli">b) .env.prod for production</p>
+<p class="startli">Both files have the same format, just add your dev and prod credentials for each file. Here's an example </p><div class="fragment"><div class="line">ENVIRONMENT=&lt;Development/Production&gt;</div>
 <div class="line">AWS_KEY_ID=&lt;YOUR_AWS_KEY_ID&gt;</div>
 <div class="line">AWS_SECRET_KEY=&lt;YOUR_AWS_SECRET_KEY&gt;</div>
 <div class="line">SENDER_EMAIL=&quot;example@example.me&quot;</div>
@@ -123,47 +123,46 @@ How to create venv dev</h2>
 <div class="line">CAT_COLLECTION=&lt;YOUR_MONGO_COLLECTION_FOR_CATALOGUE&gt;</div>
 <div class="line">REGION=&lt;YOUR_AWS_REGION&gt;</div>
 <div class="line">AS_COLLECTION=&lt;YOUR_MONGO_COLLECTION_FOR_AS_CATALOGUE&gt;</div>
-<div class="line">LAMBDA_FUNCTION=&lt;LAMDA_FUNTION_TO_GENERATE_PRESIGNED_LINK&gt;</div>
+<div class="line">LAMBDA_FUNCTION=&lt;LAMBDA_FUNCTION_TO_GENERATE_PRESIGNED_LINK&gt;</div>
 <div class="line">FTP_ACCESS=&lt;YOUR_MONGO_COLLECTION_FOR_FTP_CREDENTIALS&gt;</div>
 <div class="line">INSTANCE_ID_LITE=&lt;EC2_TO_EXECUTE_LITE_PROCEDURE&gt;</div>
 <div class="line">INSTANCE_ID_PRO==&lt;EC2_TO_EXECUTE_PRO_PROCEDURE&gt;</div>
 </div><!-- fragment --></li>
-<li>Save and run</li>
+<li><p class="startli">Save and run</p>
+<p class="startli"><code>source deploy/dev_vars.sh</code> for developing env <code>source deploy/prod_vars.sh</code> for production env</p>
+<p class="startli">It loads env vars to be used still you change them.</p>
+</li>
 </ol>
-<p><code>source deploy/dev_vars.sh</code> for developing env <code>source deploy/prod_vars.sh</code> for production env</p>
-<p>It loads env vars to be used still you change them.</p>
 <h2><a class="anchor" id="autotoc_md25"></a>
 How to create venv local testing</h2>
 <ol type="1">
-<li>Create a new virtual env (if you have created this venv pass to step 4)</li>
+<li><p class="startli">Create a new virtual env (if you have created this venv pass to step 4)</p>
+<p class="startli"><code>python3 -m venv glider_testing</code></p>
+</li>
+<li><p class="startli">Activate venv</p>
+<p class="startli"><code>source glider_testing/bin/activate</code></p>
+</li>
+<li><p class="startli">Install requirements</p>
+<p class="startli"><code>pip install -r src/importer/requirements.txt</code></p>
+</li>
+<li><p class="startli">Run</p>
+<p class="startli"><code>source deploy/dev_vars.sh</code></p>
+<p class="startli">This command activate glider_testing env and loads the env variables in glider/.env file which is useful to deploy infrastructure</p>
+</li>
 </ol>
-<p><code>python3 -m venv glider_testing</code></p>
-<ol type="1">
-<li>Activate venv</li>
-</ol>
-<p><code>source glider_testing/bin/activate</code></p>
-<ol type="1">
-<li>Install requirements</li>
-</ol>
-<p><code>pip install -r src/importer/requirements.txt</code></p>
-<ol type="1">
-<li>Run</li>
-</ol>
-<p><code>source deploy/dev_vars.sh</code></p>
-<p>This command activate glider_testing env and loads the env variables in glider/.env file which is useful to deploy infrastructure</p>
 <h1><a class="anchor" id="autotoc_md26"></a>
 Testing</h1>
 <h2><a class="anchor" id="autotoc_md27"></a>
 Local Testing</h2>
 <ol type="1">
 <li>Upload one or more valid file in AWS s3 bucket</li>
-<li>Activate testing variables</li>
-</ol>
-<p><code>source deploy/dev_vars.sh</code></p>
-<ol type="1">
-<li>Into tests/ create a python script following this format: test_script.py</li>
-</ol>
-<div class="fragment"><div class="line">import sys</div>
+<li><p class="startli">Activate testing variables</p>
+<p class="startli"><code>source deploy/dev_vars.sh</code></p>
+</li>
+<li><p class="startli">Into tests/ create a python script following this format: test_importer.py</p>
+<div class="fragment"><div class="line">import os</div>
+<div class="line">import sys</div>
+<div class="line">import traceback</div>
 <div class="line">sys.path.insert(1, &quot;src/importer&quot;)</div>
 <div class="line">sys.path.insert(1, &quot;run&quot;)</div>
 <div class="line">from ReceivePath import receive_path</div>
@@ -174,7 +173,7 @@ Local Testing</h2>
 <div class="line">from SendNotifications import send_importer_notification</div>
 <div class="line">from RunEC2 import stop_ec2</div>
 <div class="line"> </div>
-<div class="line">  </div>
+<div class="line"> </div>
 <div class="line"> </div>
 <div class="line">test_data = {</div>
 <div class="line">    &quot;module&quot;: &quot;importer&quot;,</div>
@@ -198,7 +197,7 @@ Local Testing</h2>
 <div class="line"> </div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line">  </div>
+<div class="line"> </div>
 <div class="line"> </div>
 <div class="line">if __name__ == &quot;__main__&quot;:</div>
 <div class="line">    try: </div>
@@ -216,22 +215,21 @@ Local Testing</h2>
 <div class="line">    except Exception as e:</div>
 <div class="line">        message = str(sys.exc_info()[2]) + str(traceback.format_exc())</div>
 <div class="line">        send_importer_notification(&quot;fail&quot;, input_data[&quot;module&quot;], input_data[&quot;on_finish&quot;], message)</div>
-</div><!-- fragment --><ol type="1">
-<li>Run script</li>
+</div><!-- fragment --></li>
+<li><p class="startli">Run script</p>
+<p class="startli"><code>python tests/test_importer.py</code></p>
+</li>
 </ol>
-<p><code>python tests/test_script.py</code></p>
 <h2><a class="anchor" id="autotoc_md28"></a>
 AWS Testing</h2>
 <p>When infrastructure is deployed in AWS:</p>
 <ol type="1">
 <li>Go to AWS -&gt; Step Functions</li>
 <li>Select the step function (select_and_execute_module)</li>
-<li>Click on Start execution</li>
-</ol>
-<p>(Optional: set a testing name)</p>
-<ol type="1">
-<li>Set json object</li>
-</ol>
+<li><p class="startli">Click on Start execution</p>
+<p class="startli">(Optional: set a testing name)</p>
+</li>
+<li><p class="startli">Set json object</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">    &quot;module&quot;: &quot;importer&quot;,</div>
 <div class="line">    &quot;tag&quot;: &lt;&quot;test&quot;/&quot;prod&quot;&gt;,</div>
@@ -253,12 +251,13 @@ AWS Testing</h2>
 <div class="line">    &quot;on_finish&quot;: &lt;&lt;webhook.url&gt;&gt;</div>
 <div class="line"> </div>
 <div class="line">}</div>
-</div><!-- fragment --><ol type="1">
-<li>Click on Start execution. If the execution is successfully, you can see it in EC2 instance</li>
-</ol>
-<p>a) In glider-lite </p><div class="fragment"><div class="line">ssh -i Glider-Postgres.pem ubuntu@ec2-35-179-24-180.eu-west-2.compute.amazonaws.com</div>
+</div><!-- fragment --></li>
+<li><p class="startli">Click on Start execution. If the execution is successfully, you can see it in EC2 instance</p>
+<p class="startli">a) In glider-lite </p><div class="fragment"><div class="line">ssh -i Glider-Postgres.pem ubuntu@ec2-35-179-24-180.eu-west-2.compute.amazonaws.com</div>
 </div><!-- fragment --><p> b) In glider-pro </p><div class="fragment"><div class="line">ssh -i Glider-Postgres.pem ubuntu@ec2-18-168-188-120.eu-west-2.compute.amazonaws.com</div>
-</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- fragment --> </li>
+</ol>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

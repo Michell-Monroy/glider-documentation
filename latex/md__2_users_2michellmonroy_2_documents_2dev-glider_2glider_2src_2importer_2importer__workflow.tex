@@ -20,29 +20,23 @@ There are two kind of variables, to dev and local testing.\hypertarget{md__2_use
 
 \begin{DoxyEnumerate}
 \item Create a new virtual env (if you have created this venv pass to step 4)
-\end{DoxyEnumerate}
 
 {\ttfamily python3 -\/m venv glider\+\_\+dev}
 
 It\textquotesingle{}s important to keep "{}glider\+\_\+dev"{} name
-
-
-\begin{DoxyEnumerate}
 \item Activate venv
-\end{DoxyEnumerate}
 
 {\ttfamily source glider\+\_\+dev/bin/activate}
-
-
-\begin{DoxyEnumerate}
 \item Install requirements
-\end{DoxyEnumerate}
 
 {\ttfamily pip install -\/r src/importer/requirements.\+txt}
+\item Activate env variables. You should create two .env files
 
+a) .env.\+dev for developing and testing
 
-\begin{DoxyEnumerate}
-\item Activate env variables. You should create two .env files a) .env.\+dev for developing and testing b) .env.\+prod for production Both files have the same format, just add your dev and prod credentials for each file. Here\textquotesingle{}s an example 
+b) .env.\+prod for production
+
+Both files have the same format, just add your dev and prod credentials for each file. Here\textquotesingle{}s an example 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{ENVIRONMENT=<Development/Production>}
 \DoxyCodeLine{AWS\_KEY\_ID=<YOUR\_AWS\_KEY\_ID>}
@@ -60,7 +54,7 @@ It\textquotesingle{}s important to keep "{}glider\+\_\+dev"{} name
 \DoxyCodeLine{CAT\_COLLECTION=<YOUR\_MONGO\_COLLECTION\_FOR\_CATALOGUE>}
 \DoxyCodeLine{REGION=<YOUR\_AWS\_REGION>}
 \DoxyCodeLine{AS\_COLLECTION=<YOUR\_MONGO\_COLLECTION\_FOR\_AS\_CATALOGUE>}
-\DoxyCodeLine{LAMBDA\_FUNCTION=<LAMDA\_FUNTION\_TO\_GENERATE\_PRESIGNED\_LINK>}
+\DoxyCodeLine{LAMBDA\_FUNCTION=<LAMBDA\_FUNCTION\_TO\_GENERATE\_PRESIGNED\_LINK>}
 \DoxyCodeLine{FTP\_ACCESS=<YOUR\_MONGO\_COLLECTION\_FOR\_FTP\_CREDENTIALS>}
 \DoxyCodeLine{INSTANCE\_ID\_LITE=<EC2\_TO\_EXECUTE\_LITE\_PROCEDURE>}
 \DoxyCodeLine{INSTANCE\_ID\_PRO==<EC2\_TO\_EXECUTE\_PRO\_PROCEDURE>}
@@ -68,57 +62,42 @@ It\textquotesingle{}s important to keep "{}glider\+\_\+dev"{} name
 \end{DoxyCode}
 
 \item Save and run
-\end{DoxyEnumerate}
 
 {\ttfamily source deploy/dev\+\_\+vars.\+sh} for developing env {\ttfamily source deploy/prod\+\_\+vars.\+sh} for production env
 
-It loads env vars to be used still you change them.\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md25}{}\doxysubsection{\texorpdfstring{How to create venv local testing}{How to create venv local testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md25}
+It loads env vars to be used still you change them.
+\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md25}{}\doxysubsection{\texorpdfstring{How to create venv local testing}{How to create venv local testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md25}
 
 \begin{DoxyEnumerate}
 \item Create a new virtual env (if you have created this venv pass to step 4)
-\end{DoxyEnumerate}
 
 {\ttfamily python3 -\/m venv glider\+\_\+testing}
-
-
-\begin{DoxyEnumerate}
 \item Activate venv
-\end{DoxyEnumerate}
 
 {\ttfamily source glider\+\_\+testing/bin/activate}
-
-
-\begin{DoxyEnumerate}
 \item Install requirements
-\end{DoxyEnumerate}
 
 {\ttfamily pip install -\/r src/importer/requirements.\+txt}
-
-
-\begin{DoxyEnumerate}
 \item Run
-\end{DoxyEnumerate}
 
 {\ttfamily source deploy/dev\+\_\+vars.\+sh}
 
-This command activate glider\+\_\+testing env and loads the env variables in glider/.env file which is useful to deploy infrastructure\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md26}{}\doxysection{\texorpdfstring{Testing}{Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md26}
+This command activate glider\+\_\+testing env and loads the env variables in glider/.env file which is useful to deploy infrastructure
+\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md26}{}\doxysection{\texorpdfstring{Testing}{Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md26}
 \hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md27}{}\doxysubsection{\texorpdfstring{Local Testing}{Local Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md27}
 
 \begin{DoxyEnumerate}
 \item Upload one or more valid file in AWS s3 bucket
 \item Activate testing variables
-\end{DoxyEnumerate}
 
 {\ttfamily source deploy/dev\+\_\+vars.\+sh}
-
-
-\begin{DoxyEnumerate}
-\item Into tests/ create a python script following this format\+: test\+\_\+script.\+py
-\end{DoxyEnumerate}
+\item Into tests/ create a python script following this format\+: test\+\_\+importer.\+py
 
 
 \begin{DoxyCode}{0}
+\DoxyCodeLine{import\ os}
 \DoxyCodeLine{import\ sys}
+\DoxyCodeLine{import\ traceback}
 \DoxyCodeLine{sys.path.insert(1,\ "{}src/importer"{})}
 \DoxyCodeLine{sys.path.insert(1,\ "{}run"{})}
 \DoxyCodeLine{from\ ReceivePath\ import\ receive\_path}
@@ -129,7 +108,7 @@ This command activate glider\+\_\+testing env and loads the env variables in gli
 \DoxyCodeLine{from\ SendNotifications\ import\ send\_importer\_notification}
 \DoxyCodeLine{from\ RunEC2\ import\ stop\_ec2}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ }
+\DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{test\_data\ =\ \{}
 \DoxyCodeLine{\ \ \ \ "{}module"{}:\ "{}importer"{},}
@@ -153,7 +132,7 @@ This command activate glider\+\_\+testing env and loads the env variables in gli
 \DoxyCodeLine{}
 \DoxyCodeLine{\}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ }
+\DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{if\ \_\_name\_\_\ ==\ "{}\_\_main\_\_"{}:}
 \DoxyCodeLine{\ \ \ \ try:\ }
@@ -174,13 +153,10 @@ This command activate glider\+\_\+testing env and loads the env variables in gli
 
 \end{DoxyCode}
 
-
-
-\begin{DoxyEnumerate}
 \item Run script
-\end{DoxyEnumerate}
 
-{\ttfamily python tests/test\+\_\+script.\+py}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md28}{}\doxysubsection{\texorpdfstring{AWS Testing}{AWS Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md28}
+{\ttfamily python tests/test\+\_\+importer.\+py}
+\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md28}{}\doxysubsection{\texorpdfstring{AWS Testing}{AWS Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2importer_2importer__workflow_autotoc_md28}
 When infrastructure is deployed in AWS\+:
 
 
@@ -188,14 +164,9 @@ When infrastructure is deployed in AWS\+:
 \item Go to AWS -\/\texorpdfstring{$>$}{>} Step Functions
 \item Select the step function (select\+\_\+and\+\_\+execute\+\_\+module)
 \item Click on Start execution
-\end{DoxyEnumerate}
 
 (Optional\+: set a testing name)
-
-
-\begin{DoxyEnumerate}
 \item Set json object
-\end{DoxyEnumerate}
 
 
 \begin{DoxyCode}{0}
@@ -223,11 +194,7 @@ When infrastructure is deployed in AWS\+:
 
 \end{DoxyCode}
 
-
-
-\begin{DoxyEnumerate}
 \item Click on Start execution. If the execution is successfully, you can see it in EC2 instance
-\end{DoxyEnumerate}
 
 a) In glider-\/lite 
 \begin{DoxyCode}{0}
@@ -240,3 +207,4 @@ a) In glider-\/lite
 
 \end{DoxyCode}
  
+\end{DoxyEnumerate}

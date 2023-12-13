@@ -34,38 +34,40 @@
 \DoxyCodeLine{\Hypertarget{main_8py_source_l00030}00030\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ options\ (dict)}}
 \DoxyCodeLine{\Hypertarget{main_8py_source_l00031}00031\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
 \DoxyCodeLine{\Hypertarget{main_8py_source_l00032}\mbox{\hyperlink{classmain_1_1catalog__ingest_ab80971a54925ed661ca079be168b5f63}{00032}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classmain_1_1catalog__ingest_ab80971a54925ed661ca079be168b5f63}{parser}}\ =\ OptionParser()}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classmain_1_1catalog__ingest_ab80971a54925ed661ca079be168b5f63}{parser}}.add\_option(\textcolor{stringliteral}{"{}-\/-\/url"{}},\ \textcolor{stringliteral}{"{}-\/-\/url"{}},\ type=\textcolor{stringliteral}{"{}str"{}},\ dest=\textcolor{stringliteral}{"{}url"{}},\ help=\textcolor{stringliteral}{"{}AudioSalad\ API\ url"{}})}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classmain_1_1catalog__ingest_ab80971a54925ed661ca079be168b5f63}{parser}}.add\_option(\textcolor{stringliteral}{"{}-\/-\/u"{}},\ \textcolor{stringliteral}{"{}-\/-\/user"{}},\ type=\textcolor{stringliteral}{"{}str"{}},\ dest=\textcolor{stringliteral}{"{}user"{}},\ help=\textcolor{stringliteral}{"{}AudioSalad\ API\ user\ name"{}})}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00035}00035\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classmain_1_1catalog__ingest_ab80971a54925ed661ca079be168b5f63}{parser}}.add\_option(\textcolor{stringliteral}{"{}-\/-\/p"{}},\ \textcolor{stringliteral}{"{}-\/-\/password"{}},\ type=\textcolor{stringliteral}{"{}str"{}},\ dest=\textcolor{stringliteral}{"{}password"{}},\ help=\textcolor{stringliteral}{"{}AudioSalad\ API\ password"{}})}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classmain_1_1catalog__ingest_ab80971a54925ed661ca079be168b5f63}{parser}}.add\_option(\textcolor{stringliteral}{"{}-\/-\/a"{}},\ \textcolor{stringliteral}{"{}-\/-\/action"{}},\ type=\textcolor{stringliteral}{"{}str"{}},\ dest=\textcolor{stringliteral}{"{}action"{}},\ help=\textcolor{stringliteral}{"{}Action\ to\ do:\ 'update'\ for\ update\ and\ existing\ catalog\ or\ 'insert'\ to\ insert\ a\ new\ catalog"{}})}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00037}00037\ \ \ \ \ \ \ \ \ (options,\ args)\ =\ self.\mbox{\hyperlink{classmain_1_1catalog__ingest_ab80971a54925ed661ca079be168b5f63}{parser}}.parse\_args()}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ options\ =\ vars(options)}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ options}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00040}00040\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00041}\mbox{\hyperlink{namespacemain_a3140e9a5b6a71ffbf498198cfc471b88}{00041}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacemain_a3140e9a5b6a71ffbf498198cfc471b88}{main}}():}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00042}00042\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ Executes\ full\ procedure}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00043}00043\ \textcolor{stringliteral}{\ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00044}00044\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ options\ (dict):\ is\ a\ dictionary\ with\ catalogue\ and\ client\ information}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00045}00045\ \textcolor{stringliteral}{\ \ \ \ Returns:\ Nothing}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00046}00046\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00047}00047\ \ \ \ \ c\ =\ \mbox{\hyperlink{classmain_1_1catalog__ingest}{catalog\_ingest}}()}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00048}00048\ \ \ \ \ options\ =\ c.add\_parser\_options()}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00049}00049\ \ \ \ \ start\_time\ =\ time()}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{try}:}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00051}00051\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}============GETTING\ DATA\ FROM\ AUDIOSALAD\ API============"{}})}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00052}00052\ \ \ \ \ \ \ \ \ get\_releases\_AS(options)\ \textcolor{comment}{\#Download\ data\ from\ AS\ API}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ step1\ =\ time()}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00054}00054\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}*******\ Downloading\ takes\ \{\}\ seconds\ *******"{}}.format(step1-\/start\_time))}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}============UPLOAD\ DATA\ TO\ MongoDB============"{}})}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ upload\_to\_mongo(options)\ \textcolor{comment}{\#Insert\ data\ to\ MongoDB}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ step2\ =\ time()}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}*******\ Uploading\ takes\ \{\}\ seconds\ *******"{}}.format(step2-\/step1))}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e:}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ print(str(e))}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ print(sys.exc\_info()[2])}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ print(traceback.format\_exc())}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ integration\_audiosalad('',\ '')}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00065}00065\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Releases\ have\ been\ uploaded\ to\ SQS\ successfully"{}})}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.parser.add\_option("{}-\/-\/url"{},\ "{}-\/-\/url"{},\ type="{}str"{},\ dest="{}url"{},\ help="{}AudioSalad\ API\ url"{})}}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classmain_1_1catalog__ingest_ab80971a54925ed661ca079be168b5f63}{parser}}.add\_option(\textcolor{stringliteral}{"{}-\/-\/c"{}},\ \textcolor{stringliteral}{"{}-\/-\/collection"{}},\ type=\textcolor{stringliteral}{"{}str"{}},\ dest=\textcolor{stringliteral}{"{}collection"{}},\ help=\textcolor{stringliteral}{"{}Collection\ name\ to\ upload\ releases"{}})}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00035}00035\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classmain_1_1catalog__ingest_ab80971a54925ed661ca079be168b5f63}{parser}}.add\_option(\textcolor{stringliteral}{"{}-\/-\/u"{}},\ \textcolor{stringliteral}{"{}-\/-\/user"{}},\ type=\textcolor{stringliteral}{"{}str"{}},\ dest=\textcolor{stringliteral}{"{}user"{}},\ help=\textcolor{stringliteral}{"{}AudioSalad\ API\ user\ name"{}})}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classmain_1_1catalog__ingest_ab80971a54925ed661ca079be168b5f63}{parser}}.add\_option(\textcolor{stringliteral}{"{}-\/-\/p"{}},\ \textcolor{stringliteral}{"{}-\/-\/password"{}},\ type=\textcolor{stringliteral}{"{}str"{}},\ dest=\textcolor{stringliteral}{"{}password"{}},\ help=\textcolor{stringliteral}{"{}AudioSalad\ API\ password"{}})}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00037}00037\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classmain_1_1catalog__ingest_ab80971a54925ed661ca079be168b5f63}{parser}}.add\_option(\textcolor{stringliteral}{"{}-\/-\/a"{}},\ \textcolor{stringliteral}{"{}-\/-\/action"{}},\ type=\textcolor{stringliteral}{"{}str"{}},\ dest=\textcolor{stringliteral}{"{}action"{}},\ help=\textcolor{stringliteral}{"{}Action\ to\ do:\ 'update'\ for\ update\ and\ existing\ catalog\ or\ 'insert'\ to\ insert\ a\ new\ catalog"{}})}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classmain_1_1catalog__ingest_ab80971a54925ed661ca079be168b5f63}{parser}}.add\_option(\textcolor{stringliteral}{"{}-\/-\/s"{}},\ \textcolor{stringliteral}{"{}-\/-\/sqs"{}},\ type=\textcolor{stringliteral}{"{}str"{}},\ dest=\textcolor{stringliteral}{"{}sqs"{}},\ help=\textcolor{stringliteral}{"{}ARN\ for\ SQS\ to\ use"{}})}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00039}00039\ \ \ \ \ \ \ \ \ (options,\ args)\ =\ self.\mbox{\hyperlink{classmain_1_1catalog__ingest_ab80971a54925ed661ca079be168b5f63}{parser}}.parse\_args()}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00040}00040\ \ \ \ \ \ \ \ \ options\ =\ vars(options)}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ options}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00043}\mbox{\hyperlink{namespacemain_a3140e9a5b6a71ffbf498198cfc471b88}{00043}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacemain_a3140e9a5b6a71ffbf498198cfc471b88}{main}}():}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00044}00044\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ Executes\ full\ procedure}}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00045}00045\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00046}00046\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ options\ (dict):\ is\ a\ dictionary\ with\ catalogue\ and\ client\ information}}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00047}00047\ \textcolor{stringliteral}{\ \ \ \ Returns:\ Nothing}}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00048}00048\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00049}00049\ \ \ \ \ c\ =\ \mbox{\hyperlink{classmain_1_1catalog__ingest}{catalog\_ingest}}()}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00050}00050\ \ \ \ \ options\ =\ c.add\_parser\_options()}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00051}00051\ \ \ \ \ start\_time\ =\ time()}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}============GETTING\ DATA\ FROM\ AUDIOSALAD\ API============"{}})}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00054}00054\ \ \ \ \ \ \ \ \ get\_releases\_AS(options)\ \textcolor{comment}{\#Download\ data\ from\ AS\ API}}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ step1\ =\ time()}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}*******\ Downloading\ takes\ \{\}\ seconds\ *******"{}}.format(step1-\/start\_time))}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}============UPLOAD\ DATA\ TO\ MongoDB============"{}})}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ upload\_to\_mongo(options)\ \textcolor{comment}{\#Insert\ data\ to\ MongoDB}}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00059}00059\ \ \ \ \ \ \ \ \ step2\ =\ time()}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00060}00060\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}*******\ Uploading\ takes\ \{\}\ seconds\ *******"{}}.format(step2-\/step1))}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e:}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ print(str(e))}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ print(sys.exc\_info()[2])}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ print(traceback.format\_exc())}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ integration\_audiosalad('',\ '')}}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00066}00066\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00067}00067\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Releases\ have\ been\ uploaded\ to\ SQS\ successfully"{}})}
 
 \end{DoxyCode}

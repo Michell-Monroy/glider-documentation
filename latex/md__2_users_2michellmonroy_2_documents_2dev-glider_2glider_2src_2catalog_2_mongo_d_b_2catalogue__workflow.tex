@@ -1,0 +1,107 @@
+\chapter{Catalogue Workflow}
+\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow}{}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow}\index{Catalogue Workflow@{Catalogue Workflow}}
+\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md29}%
+\Hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md29}%
+ \hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md30}{}\doxysection{\texorpdfstring{Description}{Description}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md30}
+This module is able to downloads any catalogue from Audio\+Salad and upload to Mongo\+DB using AWS tools.
+
+To do this, it necessary these requirements\+:
+
+
+\begin{DoxyEnumerate}
+\item AWS account to use SQS tool
+\item Audio\+Salad account (user and password)
+\item Mongo\+DB
+\end{DoxyEnumerate}
+
+The general performance is the following\+:
+
+
+\begin{DoxyEnumerate}
+\item Connects with Audio\+Salad endpoint
+\item Downloads release per release
+\item Upload releases to SQS to process them posteriorly
+\item Reviews modified date to determine if current release should be updating ot inserted
+\item Inserts new catalogue/\+Updates the existing catalogue
+\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md31}{}\doxysection{\texorpdfstring{Workflow}{Workflow}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md31}
+\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md32}{}\doxysection{\texorpdfstring{How to create venv dev}{How to create venv dev}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md32}
+
+\begin{DoxyEnumerate}
+\item Create a new virtual env (if you have created this venv pass to step 4)
+
+{\ttfamily python3 -\/m venv glider\+\_\+dev}
+\item Activate venv ~\newline
+
+
+It\textquotesingle{}s important to keep "{}glider\+\_\+dev"{} name
+
+{\ttfamily source glider\+\_\+dev/bin/activate}
+\item Install requirements (only in case that you haven\textquotesingle{}t install requirements yet)
+
+{\ttfamily pip install -\/r src/importer/requirements.\+txt}
+\item Activate env variables. You should create two .env files
+
+In this case, the variables for any submodule are the same.
+
+a) .env.\+dev for developing and testing
+
+b) .env.\+prod for production
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ENVIRONMENT=<Development/Production>}
+\DoxyCodeLine{AWS\_KEY\_ID=<YOUR\_AWS\_KEY\_ID>}
+\DoxyCodeLine{AWS\_SECRET\_KEY=<YOUR\_AWS\_SECRET\_KEY>}
+\DoxyCodeLine{MONGO\_GLIDER=<MONGO\_CONNECTION\_LINK>}
+\DoxyCodeLine{DB=<YOUR\_DB>}
+\DoxyCodeLine{COLLECTION=<YOUR\_MONGO\_COLLECTION>}
+\DoxyCodeLine{CAT\_COLLECTION=<YOUR\_MONGO\_COLLECTION\_FOR\_CATALOGUE>}
+\DoxyCodeLine{REGION=<YOUR\_AWS\_REGION>}
+\DoxyCodeLine{AS\_COLLECTION=<YOUR\_MONGO\_COLLECTION\_FOR\_AS\_CATALOGUE>}
+\DoxyCodeLine{INSTANCE\_ID\_LITE=<EC2\_TO\_EXECUTE\_LITE\_PROCEDURE>}
+\DoxyCodeLine{INSTANCE\_ID\_PRO=<EC2\_TO\_EXECUTE\_PRO\_PROCEDURE>}
+
+\end{DoxyCode}
+
+\item Save and run, remember that you can use either of them
+
+{\ttfamily source deploy/dev\+\_\+vars.\+sh} for developing env
+
+{\ttfamily source deploy/prod\+\_\+vars.\+sh} for production env
+\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md33}{}\doxysection{\texorpdfstring{Testing}{Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md33}
+\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md34}{}\doxysubsection{\texorpdfstring{Local Testing}{Local Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md34}
+
+\begin{DoxyEnumerate}
+\item Activate venv and variables
+
+{\ttfamily source glider\+\_\+dev/bin/activate}
+
+{\ttfamily source deploy/dev\+\_\+vars.\+sh} ~\newline
+
+\item Make sure that you have access to Audio\+Salad API i.\+e. user and password
+\item Set the parameter to use 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{"{}-\/-\/c"{},\ "{}-\/-\/collection"{}:\ Collection\ name\ to\ upload\ releases}
+\DoxyCodeLine{"{}-\/-\/u"{},\ "{}-\/-\/user"{}:\ AudioSalad\ API\ user\ name}
+\DoxyCodeLine{"{}-\/-\/p"{},\ "{}-\/-\/password"{}:\ AudioSalad\ API\ password}
+\DoxyCodeLine{"{}-\/-\/a"{},\ "{}-\/-\/action"{}:\ Action\ to\ do:\ 'update'\ for\ update\ and\ existing\ catalog\ or\ 'insert'\ to\ insert\ a\ new\ catalog}
+\DoxyCodeLine{"{}-\/-\/s"{},\ "{}-\/-\/sqs"{}:\ ARN\ for\ SQS\ to\ use}
+
+\end{DoxyCode}
+
+\item Open a terminal
+\item Go to glider project
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ glider}
+
+\end{DoxyCode}
+
+\item Run \doxylink{main_8py}{main.\+py} script giving the parameters show previously 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{python\ src/catalog/MongoDB/main.py\ -\/c=<YOUR\_MONGO\_COLLECTION\_FOR\_AS\_CATALOGUE>\ -\/u=<YOUR\_AS\_USER>\ -\/p=<YOUR\_AS\_PASSWORD>\ -\/a=<insert/update>\ -\/s=<YOUR\_SQS\_ARN>}
+
+\end{DoxyCode}
+ 
+\end{DoxyEnumerate}

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['main_0',['main',['../namespace_generate_token.html#a751a4c038569c905b3ae8157d9b41244',1,'GenerateToken']]],
+  ['main_0',['main',['../namespacemain.html#a3140e9a5b6a71ffbf498198cfc471b88',1,'main.main()'],['../namespace_generate_token.html#a751a4c038569c905b3ae8157d9b41244',1,'GenerateToken.main()']]],
   ['matching_5fsales_1',['matching_sales',['../namespaceimporter_1_1_sanitization_lines.html#ad3c63c93fd757148baf3ec09623de835',1,'importer::SanitizationLines']]],
   ['mongo_5fconn_2',['mongo_conn',['../classimporter_1_1_mongo_connection_1_1mongo__connection.html#aad633bd7c5f99cfbc30fb2fe6d7c5811',1,'importer::MongoConnection::mongo_connection']]],
   ['mongo_5fconn_5fcatalogue_3',['mongo_conn_catalogue',['../classimporter_1_1_mongo_connection_1_1mongo__connection.html#a0266431c353fbc9912c14717274fab90',1,'importer::MongoConnection::mongo_connection']]],

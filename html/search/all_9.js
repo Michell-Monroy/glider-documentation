@@ -66,9 +66,11 @@ var searchData=
   ['importer_3a_3auploadsales_63',['UploadSales',['../namespaceimporter_1_1_upload_sales.html',1,'importer']]],
   ['importer_3a_3avalidate_64',['Validate',['../namespaceimporter_1_1_validate.html',1,'importer']]],
   ['importer_5fworkflow_2emd_65',['importer_workflow.md',['../importer__workflow_8md.html',1,'']]],
-  ['index_66',['index',['../namespace_gen_report.html#a777f5894259137ec5733edfe8884d89b',1,'GenReport.index'],['../namespace_gen_statement.html#afd00c5db8d8127cbf9f4f214c67b377d',1,'GenStatement.index'],['../namespace_amazon_f_t_p.html#a37bda958a4790b32c658d88a723512e5',1,'AmazonFTP.index'],['../namespace_f_t_p_download.html#aee14640768ef624da9e72baeb4276ffc',1,'FTPDownload.index'],['../namespace_file_cleaning.html#afe4c614d77426d1210eaf7b4de535f95',1,'FileCleaning.index'],['../namespace_report_snapshot.html#a493ebf6121b88a8b629ddb60e498f503',1,'ReportSnapshot.index'],['../namespace_gen_unmatched.html#acfd342b74a2110a477fcc00b7f9b0148',1,'GenUnmatched.index']]],
+  ['index_66',['index',['../namespace_gen_statement.html#afd00c5db8d8127cbf9f4f214c67b377d',1,'GenStatement.index'],['../namespace_report_snapshot.html#a493ebf6121b88a8b629ddb60e498f503',1,'ReportSnapshot.index'],['../namespace_file_cleaning.html#afe4c614d77426d1210eaf7b4de535f95',1,'FileCleaning.index'],['../namespace_gen_unmatched.html#acfd342b74a2110a477fcc00b7f9b0148',1,'GenUnmatched.index'],['../namespace_amazon_f_t_p.html#a37bda958a4790b32c658d88a723512e5',1,'AmazonFTP.index'],['../namespace_f_t_p_download.html#aee14640768ef624da9e72baeb4276ffc',1,'FTPDownload.index'],['../namespace_gen_report.html#a777f5894259137ec5733edfe8884d89b',1,'GenReport.index']]],
   ['infrastructure_67',['How to Deploy AWS Infrastructure',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2_how_deploy_a_w_s.html',1,'']]],
-  ['isrc_5fvalidation_68',['isrc_validation',['../classimporter_1_1_validate_1_1validate__data.html#aa9f2874229d1b2a12f3daf4bd9180990',1,'importer::Validate::validate_data']]],
-  ['itunestemplate_69',['itunesTemplate',['../classimporter_1_1templates_1_1itunes_template_1_1itunes_template.html',1,'importer::templates::itunesTemplate']]],
-  ['itunestemplate_2epy_70',['itunesTemplate.py',['../itunes_template_8py.html',1,'']]]
+  ['insert_5fdatabase_5fmongo_68',['insert_database_mongo',['../class_find_last_date_1_1find__newest.html#a9419ce22f2c2bb614be61898fcc54a7f',1,'FindLastDate::find_newest']]],
+  ['integration_5faudiosalad_69',['integration_audiosalad',['../class_download_catalog_a_s_1_1integration__audiosalad.html',1,'DownloadCatalogAS']]],
+  ['isrc_5fvalidation_70',['isrc_validation',['../classimporter_1_1_validate_1_1validate__data.html#aa9f2874229d1b2a12f3daf4bd9180990',1,'importer::Validate::validate_data']]],
+  ['itunestemplate_71',['itunesTemplate',['../classimporter_1_1templates_1_1itunes_template_1_1itunes_template.html',1,'importer::templates::itunesTemplate']]],
+  ['itunestemplate_2epy_72',['itunesTemplate.py',['../itunes_template_8py.html',1,'']]]
 ];

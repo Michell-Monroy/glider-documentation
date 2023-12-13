@@ -1,0 +1,128 @@
+\doxysection{Upload\+Releases\+Mongo.\+py}
+\hypertarget{_upload_releases_mongo_8py_source}{}\label{_upload_releases_mongo_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/catalog/MongoDB/UploadReleasesMongo.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/catalog/MongoDB/UploadReleasesMongo.py}}
+\mbox{\hyperlink{_upload_releases_mongo_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00001}\mbox{\hyperlink{namespace_upload_releases_mongo}{00001}}\ \textcolor{keyword}{import}\ boto3}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00002}00002\ \textcolor{keyword}{import}\ sys}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00003}00003\ \textcolor{keyword}{import}\ traceback}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00004}00004\ \textcolor{comment}{\#\ import\ mysql.connector\ as\ mysql}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00005}00005\ \textcolor{keyword}{import}\ json}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00006}00006\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00007}00007\ \textcolor{keyword}{from}\ os.path\ \textcolor{keyword}{import}\ join,\ dirname}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00008}00008\ \textcolor{keyword}{from}\ dotenv\ \textcolor{keyword}{import}\ load\_dotenv}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00009}00009\ \textcolor{keyword}{from}\ FindLastDate\ \textcolor{keyword}{import}\ find\_newest}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00011}00011\ load\_dotenv()}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00013}00013\ \textcolor{comment}{\#\ data\_update\ =\ }}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00015}00015\ \textcolor{comment}{\#\ file\_path\ =\ 'fallos\_log.txt'}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00016}00016\ \textcolor{comment}{\#\ sys.stdout\ =\ open(file\_path,\ "{}w"{})}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00018}00018\ \textcolor{keyword}{global}\ find\_date}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00021}\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases}{00021}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases}{upload\_releases}}():}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00022}00022\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00023}00023\ \textcolor{stringliteral}{\ \ \ \ Receives\ releases\ from\ SQS\ and\ uploads\ them\ to\ MongoDB}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00024}00024\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00025}\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a1964d9f7da715c46e569ada1d1798e8b}{00025}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a1964d9f7da715c46e569ada1d1798e8b}{\_\_init\_\_}}(self,\ options):}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00026}\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a3cc41c35eb8222e9606f9271cafe2f48}{00026}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a3cc41c35eb8222e9606f9271cafe2f48}{options}}\ =\ options}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00027}\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a39f43d438b3eb8ecf0a9cef237e5a4c6}{00027}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a39f43d438b3eb8ecf0a9cef237e5a4c6}{sqs}}\ =\ self.\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_af9b471a2ebde954f9ccf59ce06f57598}{create\_sqs}}()}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00028}\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a9931db7b2c29fafc1bafb182f0e7c259}{00028}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a9931db7b2c29fafc1bafb182f0e7c259}{act}}\ =\ self.\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a3cc41c35eb8222e9606f9271cafe2f48}{options}}[\textcolor{stringliteral}{"{}action"{}}]}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00029}00029\ \ \ \ \ \textcolor{comment}{\#Create\ SQS\ client}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00030}\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_af9b471a2ebde954f9ccf59ce06f57598}{00030}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_af9b471a2ebde954f9ccf59ce06f57598}{create\_sqs}}(self):}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ sqs\ =\ boto3.client(}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'sqs'},}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ aws\_access\_key\_id=os.environ.get(\textcolor{stringliteral}{'AWS\_KEY\_ID'}),}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ aws\_secret\_access\_key=os.environ.get(\textcolor{stringliteral}{'AWS\_SECRET\_KEY'}),\ }
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ region\_name=\textcolor{stringliteral}{"{}eu-\/west-\/2"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sqs}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00039}00039\ \ \ \ \ \textcolor{comment}{\#\ mongo\_conn\ =\ os.environ.get('MONGO\_GLIDER')}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00041}\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a0d7ee7926f8a56965c5d7a3c9e4ad128}{00041}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a0d7ee7926f8a56965c5d7a3c9e4ad128}{receive\_messages\_queue}}(self,\ db\_date):}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ Verifies\ the\ date\ of\ each\ release\ and\ decides\ if\ it\ is\ updating\ or\ inserted\ into\ database}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00043}00043\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00044}00044\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ self\ ()}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00045}00045\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ db\_date\ (str):\ last\ updating\ date\ into\ database}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00046}00046\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ Nothing}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00047}00047\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00048}00048\ \ \ \ \ \ \ \ \ find\_date\ =\ \mbox{\hyperlink{class_find_last_date_1_1find__newest}{find\_newest}}(self.\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a3cc41c35eb8222e9606f9271cafe2f48}{options}}[\textcolor{stringliteral}{"{}collection"{}}])}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00049}00049\ \ \ \ \ \ \ \ \ user\ =\ self.\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a3cc41c35eb8222e9606f9271cafe2f48}{options}}[\textcolor{stringliteral}{"{}user"{}}]}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ user\ =\ user.split("{}.audiosalad"{})[0]}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}gyro"{}}\ \textcolor{keywordflow}{in}\ user:}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ user\_id\ =\ 2}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ user\_id\ =\ \textcolor{stringliteral}{"{}gyro"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ user\_id\ =\ user}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ queue\_url\ =\ self.\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a3cc41c35eb8222e9606f9271cafe2f48}{options}}[\textcolor{stringliteral}{"{}sqs"{}}]\ }
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ value\ =\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (value):}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Receive\ message\ from\ SQS\ queue}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response\ =\ self.\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a39f43d438b3eb8ecf0a9cef237e5a4c6}{sqs}}.receive\_message(}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ QueueUrl=queue\_url,}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AttributeNames=[\textcolor{stringliteral}{'SentTimestamp'}],}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MaxNumberOfMessages=\ 10,}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MessageAttributeNames=[\textcolor{stringliteral}{'All'}]}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{assert}\ len(response[\textcolor{stringliteral}{'Messages'}])\ >\ 0,\ \textcolor{stringliteral}{'Not\ more\ elements\ in\ queue'}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ delete\_batch\ =\ []}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ messages\ =\ []}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ messages\_update\ =\ []}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ msg\ \textcolor{keywordflow}{in}\ response[\textcolor{stringliteral}{'Messages'}]:}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ msg\_obj\ =\ json.loads(msg[\textcolor{stringliteral}{'Body'}])}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ msg\_obj[\textcolor{stringliteral}{"{}client"{}}]\ =\ user\_id}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a9931db7b2c29fafc1bafb182f0e7c259}{act}}.lower()\ ==\ \textcolor{stringliteral}{'update'}:}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_date\ =\ find\_date.compare\_data(db\_date,msg\_obj[\textcolor{stringliteral}{'modified'}])}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ m\_date:}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ find\_date.update\_release(msg\_obj)}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ msg\_obj\ not\ in\ messages:}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ messages.append(msg\_obj)}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ msg\_obj\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ messages:}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ delete\_batch.append(\{\textcolor{stringliteral}{'Id'}:\ msg[\textcolor{stringliteral}{'MessageId'}],\ \textcolor{stringliteral}{'ReceiptHandle'}:\ msg[\textcolor{stringliteral}{'ReceiptHandle'}]\})}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ messages.append(msg\_obj)}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value\ +=\ 1}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Delete\ received\ message\ from\ queue}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a9931db7b2c29fafc1bafb182f0e7c259}{act}}.lower()\ ==\ \textcolor{stringliteral}{'insert'}:}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ find\_date.insert\_database\_mongo(messages)}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}:}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Releases\ not\ inserted\ on\ Database"{}})}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(sys.exc\_info()[2])}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(traceback.format\_exc())}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(msg\_obj)}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a39f43d438b3eb8ecf0a9cef237e5a4c6}{sqs}}.delete\_message\_batch(}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ QueueUrl=queue\_url,}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Entries=delete\_batch}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\ }
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print('Received\ and\ deleted\ message\_\ \%s'\ \%\ receipt\_handle)}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e:}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ print(str(e))}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ print(sys.exc\_info()[2])}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ print(traceback.format\_exc())}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ return\ messages}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00109}00109\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00110}\mbox{\hyperlink{namespace_upload_releases_mongo_ad897de364a59903310c82176db313525}{00110}}\ \textcolor{keyword}{def\ }upload\_to\_mongo(options):}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00111}00111\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ Executes\ full\ procedure}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00112}00112\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00113}00113\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ options\ (dict):\ is\ a\ dictionary\ with\ catalogue\ and\ client\ information}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00114}00114\ \textcolor{stringliteral}{\ \ \ \ Returns:\ Nothing}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00115}00115\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00116}00116\ \ \ \ \ find\_date\ =\ \mbox{\hyperlink{class_find_last_date_1_1find__newest}{find\_newest}}(options[\textcolor{stringliteral}{"{}collection"{}}])}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00117}00117\ \ \ \ \ u\ =\ \mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases}{upload\_releases}}(options)}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00118}00118\ \ \ \ \ \textcolor{keywordflow}{if}\ options[\textcolor{stringliteral}{"{}action"{}}]\ ==\ \textcolor{stringliteral}{"{}update"{}}:}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00119}00119\ \ \ \ \ \ \ \ \ db\_date\_client\ =\ find\_date.get\_last\_date(options[\textcolor{stringliteral}{"{}user"{}}])}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00120}00120\ \ \ \ \ \ \ \ \ u.receive\_messages\_queue(db\_date\_client)}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00121}00121\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_upload_releases_mongo_8py_source_l00122}00122\ \ \ \ \ \ \ \ \ u.receive\_messages\_queue(\textcolor{keywordtype}{None})}
+
+\end{DoxyCode}

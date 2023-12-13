@@ -948,6 +948,7 @@ INPUT                  = /Users/michellmonroy/Documents/dev-glider/glider/src/up
                          /Users/michellmonroy/Documents/dev-glider/glider/src/upload_module/gdrive \
                          /Users/michellmonroy/Documents/dev-glider/glider/src/upload_module/common \
                          /Users/michellmonroy/Documents/dev-glider/glider/src/importer \
+                         /Users/michellmonroy/Documents/dev-glider/glider/src/catalog/MongoDB \
                          /Users/michellmonroy/Documents/dev-glider/glider/src/importer/templates \
                          /Users/michellmonroy/Documents/dev-glider/glider/src/report_generation \
                          /Users/michellmonroy/Documents/dev-glider/glider/src/statement_generation \

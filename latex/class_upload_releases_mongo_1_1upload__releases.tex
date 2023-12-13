@@ -1,0 +1,109 @@
+\doxysection{Upload\+Releases\+Mongo.\+upload\+\_\+releases Class Reference}
+\hypertarget{class_upload_releases_mongo_1_1upload__releases}{}\label{class_upload_releases_mongo_1_1upload__releases}\index{UploadReleasesMongo.upload\_releases@{UploadReleasesMongo.upload\_releases}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a1964d9f7da715c46e569ada1d1798e8b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a3cc41c35eb8222e9606f9271cafe2f48}{options}})
+\item 
+\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_af9b471a2ebde954f9ccf59ce06f57598}{create\+\_\+sqs}} (self)
+\item 
+\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a0d7ee7926f8a56965c5d7a3c9e4ad128}{receive\+\_\+messages\+\_\+queue}} (self, db\+\_\+date)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a3cc41c35eb8222e9606f9271cafe2f48}{options}}
+\item 
+\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a39f43d438b3eb8ecf0a9cef237e5a4c6}{sqs}}
+\item 
+\mbox{\hyperlink{class_upload_releases_mongo_1_1upload__releases_a9931db7b2c29fafc1bafb182f0e7c259}{act}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Receives releases from SQS and uploads them to MongoDB
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_upload_releases_mongo_8py_source_l00021}{21}} of file \mbox{\hyperlink{_upload_releases_mongo_8py_source}{Upload\+Releases\+Mongo.\+py}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_upload_releases_mongo_1_1upload__releases_a1964d9f7da715c46e569ada1d1798e8b}\label{class_upload_releases_mongo_1_1upload__releases_a1964d9f7da715c46e569ada1d1798e8b} 
+\index{UploadReleasesMongo.upload\_releases@{UploadReleasesMongo.upload\_releases}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!UploadReleasesMongo.upload\_releases@{UploadReleasesMongo.upload\_releases}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily Upload\+Releases\+Mongo.\+upload\+\_\+releases.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{options }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_upload_releases_mongo_8py_source_l00025}{25}} of file \mbox{\hyperlink{_upload_releases_mongo_8py_source}{Upload\+Releases\+Mongo.\+py}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_upload_releases_mongo_1_1upload__releases_af9b471a2ebde954f9ccf59ce06f57598}\label{class_upload_releases_mongo_1_1upload__releases_af9b471a2ebde954f9ccf59ce06f57598} 
+\index{UploadReleasesMongo.upload\_releases@{UploadReleasesMongo.upload\_releases}!create\_sqs@{create\_sqs}}
+\index{create\_sqs@{create\_sqs}!UploadReleasesMongo.upload\_releases@{UploadReleasesMongo.upload\_releases}}
+\doxysubsubsection{\texorpdfstring{create\_sqs()}{create\_sqs()}}
+{\footnotesize\ttfamily Upload\+Releases\+Mongo.\+upload\+\_\+releases.\+create\+\_\+sqs (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_upload_releases_mongo_8py_source_l00030}{30}} of file \mbox{\hyperlink{_upload_releases_mongo_8py_source}{Upload\+Releases\+Mongo.\+py}}.
+
+\Hypertarget{class_upload_releases_mongo_1_1upload__releases_a0d7ee7926f8a56965c5d7a3c9e4ad128}\label{class_upload_releases_mongo_1_1upload__releases_a0d7ee7926f8a56965c5d7a3c9e4ad128} 
+\index{UploadReleasesMongo.upload\_releases@{UploadReleasesMongo.upload\_releases}!receive\_messages\_queue@{receive\_messages\_queue}}
+\index{receive\_messages\_queue@{receive\_messages\_queue}!UploadReleasesMongo.upload\_releases@{UploadReleasesMongo.upload\_releases}}
+\doxysubsubsection{\texorpdfstring{receive\_messages\_queue()}{receive\_messages\_queue()}}
+{\footnotesize\ttfamily Upload\+Releases\+Mongo.\+upload\+\_\+releases.\+receive\+\_\+messages\+\_\+queue (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{db\+\_\+date }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb} Verifies the date of each release and decides if it is updating or inserted into database
+Args:
+    self ()
+    db_date (str): last updating date into database
+Returns: Nothing
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_upload_releases_mongo_8py_source_l00041}{41}} of file \mbox{\hyperlink{_upload_releases_mongo_8py_source}{Upload\+Releases\+Mongo.\+py}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_upload_releases_mongo_1_1upload__releases_a9931db7b2c29fafc1bafb182f0e7c259}\label{class_upload_releases_mongo_1_1upload__releases_a9931db7b2c29fafc1bafb182f0e7c259} 
+\index{UploadReleasesMongo.upload\_releases@{UploadReleasesMongo.upload\_releases}!act@{act}}
+\index{act@{act}!UploadReleasesMongo.upload\_releases@{UploadReleasesMongo.upload\_releases}}
+\doxysubsubsection{\texorpdfstring{act}{act}}
+{\footnotesize\ttfamily Upload\+Releases\+Mongo.\+upload\+\_\+releases.\+act}
+
+
+
+Definition at line \mbox{\hyperlink{_upload_releases_mongo_8py_source_l00028}{28}} of file \mbox{\hyperlink{_upload_releases_mongo_8py_source}{Upload\+Releases\+Mongo.\+py}}.
+
+\Hypertarget{class_upload_releases_mongo_1_1upload__releases_a3cc41c35eb8222e9606f9271cafe2f48}\label{class_upload_releases_mongo_1_1upload__releases_a3cc41c35eb8222e9606f9271cafe2f48} 
+\index{UploadReleasesMongo.upload\_releases@{UploadReleasesMongo.upload\_releases}!options@{options}}
+\index{options@{options}!UploadReleasesMongo.upload\_releases@{UploadReleasesMongo.upload\_releases}}
+\doxysubsubsection{\texorpdfstring{options}{options}}
+{\footnotesize\ttfamily Upload\+Releases\+Mongo.\+upload\+\_\+releases.\+options}
+
+
+
+Definition at line \mbox{\hyperlink{_upload_releases_mongo_8py_source_l00026}{26}} of file \mbox{\hyperlink{_upload_releases_mongo_8py_source}{Upload\+Releases\+Mongo.\+py}}.
+
+\Hypertarget{class_upload_releases_mongo_1_1upload__releases_a39f43d438b3eb8ecf0a9cef237e5a4c6}\label{class_upload_releases_mongo_1_1upload__releases_a39f43d438b3eb8ecf0a9cef237e5a4c6} 
+\index{UploadReleasesMongo.upload\_releases@{UploadReleasesMongo.upload\_releases}!sqs@{sqs}}
+\index{sqs@{sqs}!UploadReleasesMongo.upload\_releases@{UploadReleasesMongo.upload\_releases}}
+\doxysubsubsection{\texorpdfstring{sqs}{sqs}}
+{\footnotesize\ttfamily Upload\+Releases\+Mongo.\+upload\+\_\+releases.\+sqs}
+
+
+
+Definition at line \mbox{\hyperlink{_upload_releases_mongo_8py_source_l00027}{27}} of file \mbox{\hyperlink{_upload_releases_mongo_8py_source}{Upload\+Releases\+Mongo.\+py}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/michellmonroy/\+Documents/dev-\/glider/glider/src/catalog/\+Mongo\+DB/\mbox{\hyperlink{_upload_releases_mongo_8py}{Upload\+Releases\+Mongo.\+py}}\end{DoxyCompactItemize}

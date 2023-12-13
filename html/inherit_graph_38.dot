@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="importer.templates.Soundcloud\lTemplate.SoundcloudTemplate",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classimporter_1_1templates_1_1_soundcloud_template_1_1_soundcloud_template.html",tooltip=" "];
+  Node0 [id="Node000000",label="importer.templates.Slacker\lTemplate.SlackerTemplate",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classimporter_1_1templates_1_1_slacker_template_1_1_slacker_template.html",tooltip=" "];
 }

@@ -1,0 +1,86 @@
+\doxysection{Find\+Last\+Date.\+py}
+\hypertarget{_find_last_date_8py_source}{}\label{_find_last_date_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/src/catalog/MongoDB/FindLastDate.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/src/catalog/MongoDB/FindLastDate.py}}
+\mbox{\hyperlink{_find_last_date_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00001}\mbox{\hyperlink{namespace_find_last_date}{00001}}\ \textcolor{keyword}{from}\ asyncio\ \textcolor{keyword}{import}\ sslproto}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00002}00002\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00003}00003\ \textcolor{keyword}{import}\ ssl}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00004}00004\ \textcolor{keyword}{from}\ datetime\ \textcolor{keyword}{import}\ datetime}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00005}00005\ \textcolor{keyword}{from}\ pymongo\ \textcolor{keyword}{import}\ MongoClient}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00006}00006\ \textcolor{keyword}{from}\ dotenv\ \textcolor{keyword}{import}\ load\_dotenv}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00008}00008\ load\_dotenv()}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00011}\mbox{\hyperlink{class_find_last_date_1_1find__newest}{00011}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_find_last_date_1_1find__newest}{find\_newest}}():}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00012}00012\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00013}00013\ \textcolor{stringliteral}{\ \ \ \ Verify\ when\ was\ the\ last\ update\ and\ use\ it\ to\ criteria\ to\ update\ existing\ releases\ or\ add\ new\ releases}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00014}00014\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00015}\mbox{\hyperlink{class_find_last_date_1_1find__newest_a573ced5a5fe6939a7408805f735a3d8d}{00015}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{class_find_last_date_1_1find__newest_a573ced5a5fe6939a7408805f735a3d8d}{\_\_init\_\_}}(self,\ collection\_name):}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00016}00016\ \ \ \ \ \ \ \ \ uri\ =\ os.environ.get(\textcolor{stringliteral}{"{}MONGO\_GLIDER"{}})}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00017}00017\ \ \ \ \ \ \ \ \ db\_name\ =\ os.environ.get(\textcolor{stringliteral}{"{}DB"{}})}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00018}00018\ \ \ \ \ \ \ \ \ collection\_name\ =\ os.environ.get(\textcolor{stringliteral}{"{}AS\_COLLECTION"{}})}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ client\ =\ MongoClient(uri,ssl\_cert\_reqs=ssl.CERT\_NONE)}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}:}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ client\ =\ MongoClient(uri)}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ db\ =\ client[db\_name]}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00024}\mbox{\hyperlink{class_find_last_date_1_1find__newest_a2c13821fed3d774183560baf3dbc1bf5}{00024}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{class_find_last_date_1_1find__newest_a2c13821fed3d774183560baf3dbc1bf5}{collection}}\ =\ db[collection\_name]}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00027}\mbox{\hyperlink{class_find_last_date_1_1find__newest_a7e695ac090c86bf1f765e555ac8fdd2d}{00027}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{class_find_last_date_1_1find__newest_a7e695ac090c86bf1f765e555ac8fdd2d}{get\_last\_date}}(self,\ user):}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ Finds\ the\ last\ updating\ date}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00029}00029\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00030}00030\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ self\ ()}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00031}00031\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ user\ (str):\ user\_id\ to\ search\ only\ his\ releases}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00032}00032\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ max\_release\_date\ (datetime)}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00033}00033\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}gyro"{}}\ \textcolor{keywordflow}{in}\ user:}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ user\_id\ =\ 2}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ user\_id\ =\ \textcolor{stringliteral}{"{}gyro"{}}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ user\_id\ =\ user}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ doc\ =\ self.collection.find(\{"{}account"{}:user\_id\}).sort("{}modified"{},-\/1).limit(1)\ }}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00040}00040\ \ \ \ \ \ \ \ \ doc\ =\ self.\mbox{\hyperlink{class_find_last_date_1_1find__newest_a2c13821fed3d774183560baf3dbc1bf5}{collection}}.find(\{\textcolor{stringliteral}{"{}client"{}}:user\_id\}).sort(\textcolor{stringliteral}{"{}modified"{}},-\/1).limit(1)\ }
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ max\_date\_db\ =\ doc[0][\textcolor{stringliteral}{"{}modified"{}}]}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ max\_release\_date\ =\ datetime.strptime(max\_date\_db,\ \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%dT\%H:\%M:\%SZ"{}}).date()\textcolor{comment}{\#T\%H:\%M:\%SZ\ if\ new\_date\ is\ modified\ field}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ max\_release\_date}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00045}\mbox{\hyperlink{class_find_last_date_1_1find__newest_af500898d5187cf437bfa4afea02f9363}{00045}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{class_find_last_date_1_1find__newest_af500898d5187cf437bfa4afea02f9363}{compare\_data}}(self,\ max\_date\_db,\ new\_date):}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ Uses\ max\_date\_db\ to\ determinate\ if\ current\ release\ has\ to\ be\ updated\ or\ inserted}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00047}00047\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00048}00048\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ self\ ()}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00049}00049\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ max\_date\_db\ (datetime):\ last\ updating\ date\ into\ database}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00050}00050\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ new\_date\ (datetime):\ modified\ date\ shown\ in\ the\ current\ release}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00051}00051\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ True/False\ (boolean)}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00052}00052\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ release\_date\ =\ datetime.strptime(new\_date,\ \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%dT\%H:\%M:\%SZ"{}}).date()}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ release\_date\ =\ datetime.strptime(new\_date,\ "{}\%Y-\/\%m-\/\%d"{}).date()\#T\%H:\%M:\%SZ\ if\ new\_date\ is\ modified\ field}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ release\_date\ >\ max\_date\_db:}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00060}\mbox{\hyperlink{class_find_last_date_1_1find__newest_a24af6d745a59e4ccb063b9f0d77c57dd}{00060}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{class_find_last_date_1_1find__newest_a24af6d745a59e4ccb063b9f0d77c57dd}{update\_release}}(self,\ release):}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ Update\ releases\ which\ modified\ date\ is\ later\ than\ last\ updating\ date\ into\ database}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00062}00062\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00063}00063\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ self\ ()}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00064}00064\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ release\ (dict):\ full\ info\ of\ current\ release\ }}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00065}00065\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ Nothing}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00066}00066\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00067}00067\ \ \ \ \ \ \ \ \ result\ =\ self.\mbox{\hyperlink{class_find_last_date_1_1find__newest_a2c13821fed3d774183560baf3dbc1bf5}{collection}}.replace\_one(\{\textcolor{stringliteral}{"{}releaseId"{}}:release[\textcolor{stringliteral}{"{}releaseId"{}}],\ \textcolor{stringliteral}{"{}upc"{}}:\ release[\textcolor{stringliteral}{"{}upc"{}}]\},\ release,\ upsert=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00068}00068\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}UPC:\ \{\}\ updated\ at\ \{\}"{}}.format(release[\textcolor{stringliteral}{"{}upc"{}}],\ datetime.today()))}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ result.matched\_count\ ==\ 0:\ \ \ }
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}UPC:\ \{\}\ inserted\ at\ \{\}"{}}.format(release[\textcolor{stringliteral}{"{}upc"{}}],\ datetime.today()))}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{class_find_last_date_1_1find__newest_a2c13821fed3d774183560baf3dbc1bf5}{collection}}.insert\_one(release)}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00073}\mbox{\hyperlink{class_find_last_date_1_1find__newest_a9419ce22f2c2bb614be61898fcc54a7f}{00073}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{class_find_last_date_1_1find__newest_a9419ce22f2c2bb614be61898fcc54a7f}{insert\_database\_mongo}}(self,\ obj\_list):}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ Uploads\ new\ releases\ }}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00075}00075\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00076}00076\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ self\ ()}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00077}00077\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ obj\_list\ (list):\ list\ of\ new\ releases}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00078}00078\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:\ Nothing}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00079}00079\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{_find_last_date_8py_source_l00080}00080\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{class_find_last_date_1_1find__newest_a2c13821fed3d774183560baf3dbc1bf5}{collection}}.insert\_many(obj\_list)}
+
+\end{DoxyCode}

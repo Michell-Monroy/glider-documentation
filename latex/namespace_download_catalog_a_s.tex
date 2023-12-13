@@ -1,0 +1,61 @@
+\doxysection{Download\+Catalog\+AS Namespace Reference}
+\hypertarget{namespace_download_catalog_a_s}{}\label{namespace_download_catalog_a_s}\index{DownloadCatalogAS@{DownloadCatalogAS}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_download_catalog_a_s_1_1integration__audiosalad}{integration\+\_\+audiosalad}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_download_catalog_a_s_af983eb73f6aec78e1901a53870ab9ce6}{get\+\_\+releases\+\_\+\+AS}} (options)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_download_catalog_a_s_a702623e3aecfe6c58971ec9adbfd518e}{sqs}}
+\begin{DoxyCompactList}\small\item\em Create SQS client to save catalogue items. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_download_catalog_a_s_af983eb73f6aec78e1901a53870ab9ce6}\label{namespace_download_catalog_a_s_af983eb73f6aec78e1901a53870ab9ce6} 
+\index{DownloadCatalogAS@{DownloadCatalogAS}!get\_releases\_AS@{get\_releases\_AS}}
+\index{get\_releases\_AS@{get\_releases\_AS}!DownloadCatalogAS@{DownloadCatalogAS}}
+\doxysubsubsection{\texorpdfstring{get\_releases\_AS()}{get\_releases\_AS()}}
+{\footnotesize\ttfamily Download\+Catalog\+AS.\+get\+\_\+releases\+\_\+\+AS (\begin{DoxyParamCaption}\item[{}]{options }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb} Executes full procedure
+Args:
+    options (dict): is a dictionary with catalogue and client information
+Returns: Nothing
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{_download_catalog_a_s_8py_source_l00114}{114}} of file \mbox{\hyperlink{_download_catalog_a_s_8py_source}{Download\+Catalog\+AS.\+py}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespace_download_catalog_a_s_a702623e3aecfe6c58971ec9adbfd518e}\label{namespace_download_catalog_a_s_a702623e3aecfe6c58971ec9adbfd518e} 
+\index{DownloadCatalogAS@{DownloadCatalogAS}!sqs@{sqs}}
+\index{sqs@{sqs}!DownloadCatalogAS@{DownloadCatalogAS}}
+\doxysubsubsection{\texorpdfstring{sqs}{sqs}}
+{\footnotesize\ttfamily Download\+Catalog\+AS.\+sqs}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ boto3.client(}
+\DoxyCodeLine{00002\ \ \ \ \ \textcolor{stringliteral}{'sqs'},}
+\DoxyCodeLine{00003\ \ \ \ \ aws\_access\_key\_id=os.environ.get(\textcolor{stringliteral}{'AWS\_KEY\_ID'}),}
+\DoxyCodeLine{00004\ \ \ \ \ aws\_secret\_access\_key=os.environ.get(\textcolor{stringliteral}{'AWS\_SECRET\_KEY'}),\ }
+\DoxyCodeLine{00005\ \ \ \ \ region\_name=\textcolor{stringliteral}{"{}eu-\/west-\/2"{}})}
+
+\end{DoxyCode}
+
+
+Create SQS client to save catalogue items. 
+
+
+
+Definition at line \mbox{\hyperlink{_download_catalog_a_s_8py_source_l00021}{21}} of file \mbox{\hyperlink{_download_catalog_a_s_8py_source}{Download\+Catalog\+AS.\+py}}.
+

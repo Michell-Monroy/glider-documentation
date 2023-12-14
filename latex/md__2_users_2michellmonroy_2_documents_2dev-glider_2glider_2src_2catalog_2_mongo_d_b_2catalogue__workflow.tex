@@ -1,11 +1,10 @@
-\chapter{Catalogue Workflow}
-\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow}{}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow}\index{Catalogue Workflow@{Catalogue Workflow}}
+\chapter{Catalogue Modules Workflow}
+\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow}{}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow}\index{Catalogue Modules Workflow@{Catalogue Modules Workflow}}
 \label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md29}%
 \Hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md29}%
  \hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md30}{}\doxysection{\texorpdfstring{Description}{Description}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md30}
-This module is able to downloads any catalogue from Audio\+Salad and upload to Mongo\+DB using AWS tools.
-
-To do this, it necessary these requirements\+:
+This module is able to downloads any catalogue from Audio\+Salad and upload to Mongo\+DB using AWS tools. Also the catalogue can be generated using the usage reports which were processed by importer module.\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md31}{}\doxysection{\texorpdfstring{Catalogue Submodule}{Catalogue Submodule}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md31}
+This submodule needs these requirements\+:
 
 
 \begin{DoxyEnumerate}
@@ -23,8 +22,8 @@ The general performance is the following\+:
 \item Upload releases to SQS to process them posteriorly
 \item Reviews modified date to determine if current release should be updating ot inserted
 \item Inserts new catalogue/\+Updates the existing catalogue
-\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md31}{}\doxysection{\texorpdfstring{Workflow}{Workflow}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md31}
-\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md32}{}\doxysection{\texorpdfstring{How to create venv dev}{How to create venv dev}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md32}
+\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md32}{}\doxysubsubsection{\texorpdfstring{Workflow}{Workflow}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md32}
+\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md33}{}\doxysubsubsection{\texorpdfstring{How to create venv dev}{How to create venv dev}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md33}
 
 \begin{DoxyEnumerate}
 \item Create a new virtual env (if you have created this venv pass to step 4)
@@ -68,8 +67,8 @@ b) .env.\+prod for production
 {\ttfamily source deploy/dev\+\_\+vars.\+sh} for developing env
 
 {\ttfamily source deploy/prod\+\_\+vars.\+sh} for production env
-\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md33}{}\doxysection{\texorpdfstring{Testing}{Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md33}
-\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md34}{}\doxysubsection{\texorpdfstring{Local Testing}{Local Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md34}
+\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md34}{}\doxysubsection{\texorpdfstring{Testing}{Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md34}
+\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md35}{}\doxysubsubsection{\texorpdfstring{Local Testing}{Local Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md35}
 
 \begin{DoxyEnumerate}
 \item Activate venv and variables
@@ -101,6 +100,140 @@ b) .env.\+prod for production
 \item Run \doxylink{main_8py}{main.\+py} script giving the parameters show previously 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{python\ src/catalog/MongoDB/main.py\ -\/-\/c=<YOUR\_MONGO\_COLLECTION\_FOR\_AS\_CATALOGUE>\ -\/-\/u=<YOUR\_AS\_USER>\ -\/-\/p=<YOUR\_AS\_PASSWORD>\ -\/-\/a=<insert/update>\ -\/-\/s=<YOUR\_SQS\_ARN>}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md36}{}\doxysection{\texorpdfstring{Catalogue Generation Submodule}{Catalogue Generation Submodule}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md36}
+The general performance is the following\+:
+
+
+\begin{DoxyEnumerate}
+\item Takes the current sales (processed previously by importer) from Mongo\+DB
+\item Identifies the unique releases\+\_\+id
+\item Once it has the releases, it takes the isrc\+\_\+id and the album/track information to fill the catalogue in json format
+\item The information is uploaded to Mongo\+DB
+\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md37}{}\doxysubsubsection{\texorpdfstring{Workflow}{Workflow}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md37}
+\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md38}{}\doxysubsubsection{\texorpdfstring{How to create venv dev}{How to create venv dev}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md38}
+This module requires the same setup as importer module\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md39}{}\doxysubsection{\texorpdfstring{Testing}{Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md39}
+This module is part of importer module, so if you want to test it, you have to do the same procedure as shown in the importer workflow\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md40}{}\doxysubsubsection{\texorpdfstring{Local Testing}{Local Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md40}
+
+\begin{DoxyEnumerate}
+\item Upload one or more valid file in AWS s3 bucket
+\item Activate testing variables
+
+{\ttfamily source deploy/dev\+\_\+vars.\+sh}
+\item Into tests/ create a python script following this format\+: test\+\_\+importer.\+py To activate catalogue generation make sure that you set "{}cat\+\_\+gen"{} = "{}\+True"{}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ os}
+\DoxyCodeLine{import\ sys}
+\DoxyCodeLine{import\ traceback}
+\DoxyCodeLine{sys.path.insert(1,\ "{}src/importer"{})}
+\DoxyCodeLine{sys.path.insert(1,\ "{}run"{})}
+\DoxyCodeLine{from\ ReceivePath\ import\ receive\_path}
+\DoxyCodeLine{from\ IdentifyFormat\ import\ identify\_format}
+\DoxyCodeLine{from\ ProcessFiles\ import\ process\_files\_parallel}
+\DoxyCodeLine{from\ CreateSnapshots\ import\ results\_grouped}
+\DoxyCodeLine{from\ CatalogueGenerator\ import\ generate\_catalogue}
+\DoxyCodeLine{from\ SendNotifications\ import\ send\_importer\_notification}
+\DoxyCodeLine{from\ RunEC2\ import\ stop\_ec2}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{test\_data\ =\ \{}
+\DoxyCodeLine{\ \ \ \ "{}module"{}:\ "{}importer"{},}
+\DoxyCodeLine{\ \ \ \ "{}tag"{}:\ <"{}test"{}/"{}prod"{}>,}
+\DoxyCodeLine{\ \ \ \ "{}cat\_gen"{}:\ "{}True"{},}
+\DoxyCodeLine{\ \ \ \ "{}client\_id"{}:\ <<client\_id>>,\ }
+\DoxyCodeLine{\ \ \ \ "{}bucket"{}:\ [<<aws\_bucket\_in>>,\ <<aws\_bucket\_out>>],\ }
+\DoxyCodeLine{\ \ \ \ "{}path"{}:\ [<<aws\_path\_in>>,\ <<aws\_path\_out>>],}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ "{}currency"{}:\ \{\ \#Currency\ can\ change}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}USD"{}:\ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}EUR"{}:\ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}GBP"{}:\ 1}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ "{}files"{}:[}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{"{}file\_id"{}:\ <<file\_id\_1>>,\ "{}file"{}:\ <<file\_1>>\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{"{}file\_id"{}:\ <<file\_id\_2>>,\ "{}file"{}:\ <<file\_2>>\}}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ "{}on\_finish"{}:\ <<webhook.url>>}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{if\ \_\_name\_\_\ ==\ "{}\_\_main\_\_"{}:}
+\DoxyCodeLine{\ \ \ \ try:\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ identify\_formats\ =\ identify\_format(input\_data)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ print("{}Formats\ identified:\ "{},identify\_formats)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ files\_processed\ =\ process\_files\_parallel(identify\_formats)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ print("{}Files\ Processed:\ "{},files\_processed)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ snapshots\ =\ results\_grouped(files\_processed,\ None)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ print("{}Snapshots:\ "{},snapshots)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ files\_processed["{}cat\_gen"{}]\ ==\ "{}True"{}:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ catalogue\ =\ generate\_catalogue(snapshots,\ None)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ print("{}Catalogue:\ "{},\ catalogue)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ send\_importer\_notification("{}success"{},\ input\_data["{}module"{}],\ input\_data["{}on\_finish"{}])}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ stop\_ec2()}
+\DoxyCodeLine{\ \ \ \ except\ Exception\ as\ e:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ message\ =\ str(sys.exc\_info()[2])\ +\ str(traceback.format\_exc())}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ send\_importer\_notification("{}fail"{},\ input\_data["{}module"{}],\ input\_data["{}on\_finish"{}],\ message)}
+
+\end{DoxyCode}
+
+\item Run script
+
+{\ttfamily python tests/test\+\_\+importer.\+py}
+\end{DoxyEnumerate}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md41}{}\doxysubsection{\texorpdfstring{AWS Testing}{AWS Testing}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2catalog_2_mongo_d_b_2catalogue__workflow_autotoc_md41}
+This procedure is exactly the same as the importer, but here is the steps to follow\+:
+
+
+\begin{DoxyEnumerate}
+\item Go to AWS -\/\texorpdfstring{$>$}{>} Step Functions
+\item Select the step function (select\+\_\+and\+\_\+execute\+\_\+module)
+\item Click on Start execution
+
+(Optional\+: set a testing name)
+\item Set json object
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ "{}module"{}:\ "{}importer"{},}
+\DoxyCodeLine{\ \ \ \ "{}tag"{}:\ <"{}test"{}/"{}prod"{}>,}
+\DoxyCodeLine{\ \ \ \ "{}cat\_gen"{}:\ "{}True"{},\ }
+\DoxyCodeLine{\ \ \ \ "{}client\_id"{}:\ <<client\_id>>,\ }
+\DoxyCodeLine{\ \ \ \ "{}bucket"{}:\ [<<aws\_bucket\_in>>,\ <<aws\_bucket\_out>>],\ }
+\DoxyCodeLine{\ \ \ \ "{}path"{}:\ [<<aws\_path\_in>>,\ <<aws\_path\_out>>],}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ "{}currency"{}:\ \{\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}USD"{}:\ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}EUR"{}:\ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}GBP"{}:\ 1}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ "{}files"{}:[}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{"{}file\_id"{}:\ <<file\_id\_1>>,\ "{}file"{}:\ <<file\_1>>\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{"{}file\_id"{}:\ <<file\_id\_2>>,\ "{}file"{}:\ <<file\_2>>\}}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ "{}on\_finish"{}:\ <<webhook.url>>}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+\item Click on Start execution. If the execution is successfully, you can see it in EC2 instance
+
+a) In glider-\/lite 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ssh\ -\/i\ Glider-\/Postgres.pem\ ubuntu@ec2-\/35-\/179-\/24-\/180.eu-\/west-\/2.compute.amazonaws.com}
+
+\end{DoxyCode}
+ b) In glider-\/pro 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ssh\ -\/i\ Glider-\/Postgres.pem\ ubuntu@ec2-\/18-\/168-\/188-\/120.eu-\/west-\/2.compute.amazonaws.com}
 
 \end{DoxyCode}
  

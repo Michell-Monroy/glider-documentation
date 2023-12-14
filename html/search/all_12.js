@@ -14,10 +14,11 @@ var searchData=
   ['report_5fworkflow_2emd_11',['report_workflow.md',['../report__workflow_8md.html',1,'']]],
   ['reportsnapshot_12',['ReportSnapshot',['../namespace_report_snapshot.html',1,'']]],
   ['reportsnapshot_2epy_13',['ReportSnapshot.py',['../_report_snapshot_8py.html',1,'']]],
-  ['results_5fgrouped_14',['results_grouped',['../namespaceimporter_1_1_create_snapshots.html#aee5fb2ba3058cce272feb71ff79ffe1a',1,'importer::CreateSnapshots']]],
-  ['root_5fdir_15',['root_dir',['../namespace_gen_statement.html#a852d1a3e6b7f5c003c309c11843530f2',1,'GenStatement.ROOT_DIR'],['../namespace_statements_template.html#a30d9ea829d1247ee3b336eaeb612fb43',1,'StatementsTemplate.ROOT_DIR'],['../namespace_gen_report.html#a7055623ecf06eb8754d21422c0314e7d',1,'GenReport.ROOT_DIR'],['../namespace_gen_unmatched.html#a0321ba1810c0ad7c45915faa6510de3f',1,'GenUnmatched.ROOT_DIR']]],
-  ['roxitemplate_16',['RoxiTemplate',['../classimporter_1_1templates_1_1_roxi_template_1_1_roxi_template.html',1,'importer::templates::RoxiTemplate']]],
-  ['roxitemplate_2epy_17',['RoxiTemplate.py',['../_roxi_template_8py.html',1,'']]],
-  ['run_18',['run',['../class_download_catalog_a_s_1_1integration__audiosalad.html#a69b8c31c3e3e0ebc214cc509d7673693',1,'DownloadCatalogAS::integration_audiosalad']]],
-  ['run_5ffile_5fcleaning_19',['run_file_cleaning',['../namespace_file_cleaning.html#abc5bc9e9571d7d6aef34767ce03e9af9',1,'FileCleaning']]]
+  ['resources_14',['Tech Resources',['../index.html#autotoc_md61',1,'']]],
+  ['results_5fgrouped_15',['results_grouped',['../namespaceimporter_1_1_create_snapshots.html#aee5fb2ba3058cce272feb71ff79ffe1a',1,'importer::CreateSnapshots']]],
+  ['root_5fdir_16',['root_dir',['../namespace_gen_statement.html#a852d1a3e6b7f5c003c309c11843530f2',1,'GenStatement.ROOT_DIR'],['../namespace_gen_report.html#a7055623ecf06eb8754d21422c0314e7d',1,'GenReport.ROOT_DIR'],['../namespace_gen_unmatched.html#a0321ba1810c0ad7c45915faa6510de3f',1,'GenUnmatched.ROOT_DIR'],['../namespace_statements_template.html#a30d9ea829d1247ee3b336eaeb612fb43',1,'StatementsTemplate.ROOT_DIR']]],
+  ['roxitemplate_17',['RoxiTemplate',['../classimporter_1_1templates_1_1_roxi_template_1_1_roxi_template.html',1,'importer::templates::RoxiTemplate']]],
+  ['roxitemplate_2epy_18',['RoxiTemplate.py',['../_roxi_template_8py.html',1,'']]],
+  ['run_19',['run',['../class_download_catalog_a_s_1_1integration__audiosalad.html#a69b8c31c3e3e0ebc214cc509d7673693',1,'DownloadCatalogAS::integration_audiosalad']]],
+  ['run_5ffile_5fcleaning_20',['run_file_cleaning',['../namespace_file_cleaning.html#abc5bc9e9571d7d6aef34767ce03e9af9',1,'FileCleaning']]]
 ];

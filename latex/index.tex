@@ -1,0 +1,98 @@
+\chapter{Glider General Overview}
+\hypertarget{index}{}\label{index}\index{Glider General Overview@{Glider General Overview}}
+\label{index_md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2_general_workflow}%
+\Hypertarget{index_md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2_general_workflow}%
+
+
+\hypertarget{index_autotoc_md60}{}\doxysection{\texorpdfstring{Prerequisites}{Prerequisites}}\label{index_autotoc_md60}
+
+\begin{DoxyItemize}
+\item Python \texorpdfstring{$>$}{>}= 3.\+8
+\item AWS Account
+\item Gcloud Account
+\item Access to glider repository in github
+\item Terraform \href{https://www.terraform.io/downloads}{\texttt{ install}}
+\end{DoxyItemize}\hypertarget{index_autotoc_md61}{}\doxysection{\texorpdfstring{Tech Resources}{Tech Resources}}\label{index_autotoc_md61}
+
+\begin{DoxyItemize}
+\item Google Cloud Console
+\item Google Drive API
+\item AWS EC2
+\item AWS Lambda Function
+\item AWS Step Function
+\item Python
+\item FTP server
+\item FTP client/credentials
+\item Mongo\+DB
+\item Postgre\+SQL
+\item Latex compiler
+\end{DoxyItemize}\hypertarget{index_autotoc_md62}{}\doxysection{\texorpdfstring{Workflow}{Workflow}}\label{index_autotoc_md62}
+\hypertarget{index_autotoc_md63}{}\doxysection{\texorpdfstring{Modules}{Modules}}\label{index_autotoc_md63}
+The modules are explained in "{}\+Related Pages"{} section and they are the following\+:
+\begin{DoxyItemize}
+\item Uploads Module \doxylink{upload__workflow_8md}{See more}
+\item Importer Module \doxylink{importer__workflow_8md}{See more}
+\item Catalogue Module \doxylink{catalogue__workflow_8md}{See more}
+\item Report Module \doxylink{report__workflow_8md}{See more}
+\item Statement Module \doxylink{statement__workflow_8md}{See more}
+\end{DoxyItemize}
+
+For more information you can see
+
+\href{https://docs.google.com/document/d/19XkFgB-OTEtRcbQtVm4sBJ3wb6uPWDsBZDd3MB89rgs/edit?usp=drive_web}{\texttt{ Modules Documentation}}\hypertarget{index_autotoc_md64}{}\doxysection{\texorpdfstring{AWS infrastructure}{AWS infrastructure}}\label{index_autotoc_md64}
+We use a step function to call one lambda function which determines what module should be executed according to input parameters. Once done this, the module is executed in a EC2 instance according to requirements (test/production)
+
+
+
+This infrastructure is created via terraform \doxysectlink{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2_how_deploy_a_w_s}{See more}{0}\hypertarget{index_autotoc_md65}{}\doxysection{\texorpdfstring{How to deploy code}{How to deploy code}}\label{index_autotoc_md65}
+Follow this steps to get and deploy code
+
+
+\begin{DoxyEnumerate}
+\item Open a terminal and clone repository 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ \string~}
+\DoxyCodeLine{git\ clone\ https://github.com/OTTOGlider/glider.git}
+
+\end{DoxyCode}
+ ~\newline
+
+\item Go to glider folder {\ttfamily cd glider}
+\item Install requirements
+
+{\ttfamily pip install -\/r src/importer/requirements.\+txt}
+\item Set env variables. You should create two .env files a) .env.\+dev for developing and testing b) .env.\+prod for production Both files have the same format, just add your dev and prod credentials for each file. Here\textquotesingle{}s an example 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ENVIRONMENT=<Development/Production>}
+\DoxyCodeLine{AWS\_KEY\_ID=<YOUR\_AWS\_KEY\_ID>}
+\DoxyCodeLine{AWS\_SECRET\_KEY=<YOUR\_AWS\_SECRET\_KEY>}
+\DoxyCodeLine{SENDER\_EMAIL="{}example@example.me"{}}
+\DoxyCodeLine{SENDER\_PASSWORD=<YOUR\_SENDER\_PASSWORD>}
+\DoxyCodeLine{MONGO\_GLIDER=<MONGO\_CONNECTION\_LINK>}
+\DoxyCodeLine{DATABASE\_URL=POSTGRES\_DATABASE}
+\DoxyCodeLine{DB=<YOUR\_DB>}
+\DoxyCodeLine{COLLECTION=<YOUR\_MONGO\_COLLECTION>}
+\DoxyCodeLine{TRENDS\_COLLECTION=<YOUR\_MONGO\_COLLECTION\_FOR\_TRENDS>}
+\DoxyCodeLine{SNAPSHOTS\_DB=<YOUR\_MONGO\_DB\_FOR\_SNAPSHOTS>}
+\DoxyCodeLine{FORMATS=<YOUR\_MONGO\_COLLECTION\_FOR\_FORMATS>}
+\DoxyCodeLine{SNAPSHOTS=<YOUR\_MONGO\_COLLECTION\_FOR\_SNAPSHOTS>}
+\DoxyCodeLine{CAT\_COLLECTION=<YOUR\_MONGO\_COLLECTION\_FOR\_CATALOGUE>}
+\DoxyCodeLine{REGION=<YOUR\_AWS\_REGION>}
+\DoxyCodeLine{AS\_COLLECTION=<YOUR\_MONGO\_COLLECTION\_FOR\_AS\_CATALOGUE>}
+\DoxyCodeLine{LAMBDA\_FUNCTION=<LAMBDA\_FUNCTION\_TO\_GENERATE\_PRESIGNED\_LINK>}
+\DoxyCodeLine{FTP\_ACCESS=<YOUR\_MONGO\_COLLECTION\_FOR\_FTP\_CREDENTIALS>}
+\DoxyCodeLine{INSTANCE\_ID\_LITE=<EC2\_TO\_EXECUTE\_LITE\_PROCEDURE>}
+\DoxyCodeLine{INSTANCE\_ID\_PRO=<EC2\_TO\_EXECUTE\_PRO\_PROCEDURE>}
+
+\end{DoxyCode}
+
+\item Save and run
+
+{\ttfamily source deploy/dev\+\_\+vars.\+sh} for developing env {\ttfamily source deploy/prod\+\_\+vars.\+sh} for production env
+
+It loads env vars to be used still you change them.
+\end{DoxyEnumerate}
+
+To test each module, you should see "{}\+Related Pages"{} section.
+
+Tech documentation here\+: \href{https://docs.google.com/document/d/1NTvEQUU9-z4CT6vZSEsSdW-u_YzKv3AMAei2RQz5Ssk/edit?usp=sharing}{\texttt{ OTTO Glider Overview}} 

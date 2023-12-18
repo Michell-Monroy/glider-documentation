@@ -169,7 +169,7 @@ Local Testing</h2>
 <div class="line">sys.path.insert(1, &#39;src/report_generation&#39;)</div>
 <div class="line">sys.path.insert(1, &#39;run&#39;)</div>
 <div class="line">from GenReport import build_csv</div>
-<div class="line">from SendNotification import send_report_notification</div>
+<div class="line">from SendNotifications import send_report_notification</div>
 <div class="line"> </div>
 <div class="line">input_data = {</div>
 <div class="line">        &quot;module&quot;: &quot;reporting&quot;,</div>
@@ -185,7 +185,7 @@ Local Testing</h2>
 <div class="line"> </div>
 <div class="line">if __name__ == &quot;__main__&quot;:</div>
 <div class="line">    try: </div>
-<div class="line">        run_file_cleaning(input_data)</div>
+<div class="line">        build_csv(input_data)</div>
 <div class="line">        send_report_notification(&quot;success&quot;, input_data[&quot;module&quot;], input_data[&quot;on_finish&quot;], input_data[&quot;client_email&quot;])</div>
 <div class="line">    except Exception as e:</div>
 <div class="line">        message = str(sys.exc_info()[2]) + str(traceback.format_exc())</div>

@@ -110,7 +110,7 @@ b) .env.\+prod for production
 \DoxyCodeLine{sys.path.insert(1,\ 'src/report\_generation')}
 \DoxyCodeLine{sys.path.insert(1,\ 'run')}
 \DoxyCodeLine{from\ GenReport\ import\ build\_csv}
-\DoxyCodeLine{from\ SendNotification\ import\ send\_report\_notification}
+\DoxyCodeLine{from\ SendNotifications\ import\ send\_report\_notification}
 \DoxyCodeLine{}
 \DoxyCodeLine{input\_data\ =\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ "{}module"{}:\ "{}reporting"{},}
@@ -126,7 +126,7 @@ b) .env.\+prod for production
 \DoxyCodeLine{}
 \DoxyCodeLine{if\ \_\_name\_\_\ ==\ "{}\_\_main\_\_"{}:}
 \DoxyCodeLine{\ \ \ \ try:\ }
-\DoxyCodeLine{\ \ \ \ \ \ \ \ run\_file\_cleaning(input\_data)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ build\_csv(input\_data)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ send\_report\_notification("{}success"{},\ input\_data["{}module"{}],\ input\_data["{}on\_finish"{}],\ input\_data["{}client\_email"{}])}
 \DoxyCodeLine{\ \ \ \ except\ Exception\ as\ e:}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ message\ =\ str(sys.exc\_info()[2])\ +\ str(traceback.format\_exc())}

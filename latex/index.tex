@@ -40,7 +40,8 @@ The modules are explained in "{}\+Related Pages"{} section and they are the foll
 For more information you can see
 
 \href{https://docs.google.com/document/d/19XkFgB-OTEtRcbQtVm4sBJ3wb6uPWDsBZDd3MB89rgs/edit?usp=drive_web}{\texttt{ Modules Documentation}}\hypertarget{index_autotoc_md64}{}\doxysection{\texorpdfstring{AWS infrastructure}{AWS infrastructure}}\label{index_autotoc_md64}
-We use a step function to call one lambda function which determines what module should be executed according to input parameters. Once done this, the module is executed in a EC2 instance according to requirements (test/production)
+We use a step function to call one lambda function which determines what module should be executed according to input parameters. ~\newline
+ Once done this, the module is executed in a EC2 instance according to requirements (test/production)
 
 
 
@@ -57,11 +58,17 @@ Follow this steps to get and deploy code
 \end{DoxyCode}
  ~\newline
 
-\item Go to glider folder {\ttfamily cd glider}
+\item Go to glider folder
+
+{\ttfamily cd glider}
 \item Install requirements
 
 {\ttfamily pip install -\/r src/importer/requirements.\+txt}
-\item Set env variables. You should create two .env files a) .env.\+dev for developing and testing b) .env.\+prod for production Both files have the same format, just add your dev and prod credentials for each file. Here\textquotesingle{}s an example 
+\item Set env variables. You should create two .env files
+
+a) .env.\+dev for developing and testing ~\newline
+ b) .env.\+prod for production ~\newline
+ Both files have the same format, just add your dev and prod credentials for each file. Here\textquotesingle{}s an example 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{ENVIRONMENT=<Development/Production>}
 \DoxyCodeLine{AWS\_KEY\_ID=<YOUR\_AWS\_KEY\_ID>}
@@ -88,7 +95,9 @@ Follow this steps to get and deploy code
 
 \item Save and run
 
-{\ttfamily source deploy/dev\+\_\+vars.\+sh} for developing env {\ttfamily source deploy/prod\+\_\+vars.\+sh} for production env
+{\ttfamily source deploy/dev\+\_\+vars.\+sh} for developing env
+
+{\ttfamily source deploy/prod\+\_\+vars.\+sh} for production env
 
 It loads env vars to be used still you change them.
 \end{DoxyEnumerate}

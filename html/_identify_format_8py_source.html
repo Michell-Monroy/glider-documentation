@@ -244,7 +244,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <span class="keyword">global</span> encoding</div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    event = receive_path(event, s3_client)</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    print(<span class="stringliteral">&quot;Status=&quot;</span>,event[<span class="stringliteral">&quot;status&quot;</span>])</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    print(<span class="stringliteral">&quot;Status={}&quot;</span>.format(event[<span class="stringliteral">&quot;status&quot;</span>]))</div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    status = <span class="stringliteral">&quot;OK&quot;</span></div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    not_identified = dict() </div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    csv_formats = dict()</div>

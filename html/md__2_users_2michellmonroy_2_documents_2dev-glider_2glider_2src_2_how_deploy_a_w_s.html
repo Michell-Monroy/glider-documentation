@@ -73,17 +73,18 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md56"></a></p>
-<p><img src="https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/tf_aws.png" alt="" style="width:900px;height:350px;" class="inline"/></p>
+<p><img src="https://drive.google.com/uc?id=1c6aEqbtZw6jrF34doGJmcH81o7UcMLFm" alt="" style="width:900px;height:350px;" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md57"></a>
 Prerequisites</h1>
 <ul>
-<li>Python &gt;= 3.8</li>
+<li>Python &gt;= 3.9</li>
 <li>AWS Account</li>
 <li>Terraform <a href="https://www.terraform.io/downloads">install</a></li>
 </ul>
 <h1><a class="anchor" id="autotoc_md58"></a>
 How to deploy terraform code</h1>
-<p><b>Note</b>: There exists a file called "main.tf" it contains entire infrastructure and it <b>NEVER WOULD BE CHANGED</b> because source code is connected to it. Any type of editing in this file could cause the entire project to stop working as intended.</p>
+<p><b>Note</b>: There exists a file called "main.tf" it contains entire infrastructure and it <b>NEVER WOULD BE CHANGED</b> because source code is connected to it. <br  />
+ Any type of editing in this file could cause the entire project to stop working as intended.</p>
 <ol type="1">
 <li><p class="startli">Open a terminal in the glider project and put it on infrastructure folder.</p>
 <p class="startli"><code>cd infrastructure/</code></p>
@@ -115,11 +116,24 @@ How to deploy terraform code</h1>
 <div class="line">    default = &lt;&lt;your_aws_ip_ec2_pro&gt;&gt;</div>
 <div class="line">}</div>
 </div><!-- fragment --></li>
-<li>Start terraform env using <code>terraform init</code>.</li>
-<li>Create a new env to testing or dev: <code>terraform workspace new &lt;&lt;env_name&gt;&gt;</code> this command helps us to have a version control.</li>
-<li>Verify that you are in the correct env using <code>terraform workspace list</code> it should show the current workspace.</li>
-<li>To check if the code in main.tf is right, use <code>terraform plan</code>.</li>
-<li>If everything is ok, apply infrastructure using <code>terraform apply</code> and wait for it.</li>
+<li><p class="startli">Start terraform env using:</p>
+<p class="startli"><code>terraform init</code></p>
+</li>
+<li><p class="startli">Create a new env to testing or dev:</p>
+<p class="startli"><code>terraform workspace new &lt;&lt;env_name&gt;&gt;</code></p>
+<p class="startli">This command helps us to have a version control.</p>
+</li>
+<li><p class="startli">Verify that you are in the correct env using:</p>
+<p class="startli"><code>terraform workspace list</code></p>
+<p class="startli">It should show the current workspace.</p>
+</li>
+<li><p class="startli">To check if the code in main.tf is right use:</p>
+<p class="startli"><code>terraform plan</code></p>
+</li>
+<li><p class="startli">If everything is ok, apply infrastructure use:</p>
+<p class="startli"><code>terraform apply</code></p>
+<p class="startli">Wait for it.</p>
+</li>
 <li>Go to <a href="https://aws.amazon.com/">AWS</a> and confirm that entire configuration is created successfully (lambda and step functions).</li>
 </ol>
 <p><b>WARNING</b>: To destroy infrastructure, use <code>terraform destroy</code>. This destroy all infrastructure indicated in main.tf</p>

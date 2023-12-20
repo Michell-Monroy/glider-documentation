@@ -73,7 +73,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2_general_workflow"></a></p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/AmazonWebservices_Logo.svg/2560px-AmazonWebservices_Logo.svg.png" alt="" style="width:900px;height:250px;" class="inline"/></p>
+<p><img src="https://drive.google.com/uc?id=1MqXgSPp6arQYA2fc_Kn0-Lhb3XZk7aqM" alt="" style="width:900px;height:350px;" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md60"></a>
 Prerequisites</h1>
 <ul>
@@ -114,7 +114,8 @@ Modules</h1>
 <p><a href="https://docs.google.com/document/d/19XkFgB-OTEtRcbQtVm4sBJ3wb6uPWDsBZDd3MB89rgs/edit?usp=drive_web">Modules Documentation</a></p>
 <h1><a class="anchor" id="autotoc_md64"></a>
 AWS infrastructure</h1>
-<p>We use a step function to call one lambda function which determines what module should be executed according to input parameters. Once done this, the module is executed in a EC2 instance according to requirements (test/production)</p>
+<p>We use a step function to call one lambda function which determines what module should be executed according to input parameters. <br  />
+ Once done this, the module is executed in a EC2 instance according to requirements (test/production)</p>
 <p><img src="https://drive.google.com/uc?id=1uIlFTm1KeXNxjGnUBlhZUZd5WIDxh3Ve" alt="" style="width:780px;height:950px;" class="inline"/></p>
 <p>This infrastructure is created via terraform <a class="el" href="md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2_how_deploy_a_w_s.html">See more</a></p>
 <h1><a class="anchor" id="autotoc_md65"></a>
@@ -125,11 +126,16 @@ How to deploy code</h1>
 <div class="line">git clone https://github.com/OTTOGlider/glider.git</div>
 </div><!-- fragment --> <br  />
 </li>
-<li>Go to glider folder <code>cd glider</code></li>
+<li><p class="startli">Go to glider folder</p>
+<p class="startli"><code>cd glider</code></p>
+</li>
 <li><p class="startli">Install requirements</p>
 <p class="startli"><code>pip install -r src/importer/requirements.txt</code></p>
 </li>
-<li>Set env variables. You should create two .env files a) .env.dev for developing and testing b) .env.prod for production Both files have the same format, just add your dev and prod credentials for each file. Here's an example <div class="fragment"><div class="line">ENVIRONMENT=&lt;Development/Production&gt;</div>
+<li><p class="startli">Set env variables. You should create two .env files</p>
+<p class="startli">a) .env.dev for developing and testing <br  />
+ b) .env.prod for production <br  />
+ Both files have the same format, just add your dev and prod credentials for each file. Here's an example </p><div class="fragment"><div class="line">ENVIRONMENT=&lt;Development/Production&gt;</div>
 <div class="line">AWS_KEY_ID=&lt;YOUR_AWS_KEY_ID&gt;</div>
 <div class="line">AWS_SECRET_KEY=&lt;YOUR_AWS_SECRET_KEY&gt;</div>
 <div class="line">SENDER_EMAIL=&quot;example@example.me&quot;</div>
@@ -151,7 +157,8 @@ How to deploy code</h1>
 <div class="line">INSTANCE_ID_PRO=&lt;EC2_TO_EXECUTE_PRO_PROCEDURE&gt;</div>
 </div><!-- fragment --></li>
 <li><p class="startli">Save and run</p>
-<p class="startli"><code>source deploy/dev_vars.sh</code> for developing env <code>source deploy/prod_vars.sh</code> for production env</p>
+<p class="startli"><code>source deploy/dev_vars.sh</code> for developing env</p>
+<p class="startli"><code>source deploy/prod_vars.sh</code> for production env</p>
 <p class="startli">It loads env vars to be used still you change them.</p>
 </li>
 </ol>

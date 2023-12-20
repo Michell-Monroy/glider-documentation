@@ -7,11 +7,12 @@
 \hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2_how_deploy_a_w_s_autotoc_md57}{}\doxysection{\texorpdfstring{Prerequisites}{Prerequisites}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2_how_deploy_a_w_s_autotoc_md57}
 
 \begin{DoxyItemize}
-\item Python \texorpdfstring{$>$}{>}= 3.\+8
+\item Python \texorpdfstring{$>$}{>}= 3.\+9
 \item AWS Account
 \item Terraform \href{https://www.terraform.io/downloads}{\texttt{ install}}
 \end{DoxyItemize}\hypertarget{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2_how_deploy_a_w_s_autotoc_md58}{}\doxysection{\texorpdfstring{How to deploy terraform code}{How to deploy terraform code}}\label{md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2_how_deploy_a_w_s_autotoc_md58}
-{\bfseries{Note}}\+: There exists a file called "{}main.\+tf"{} it contains entire infrastructure and it {\bfseries{NEVER WOULD BE CHANGED}} because source code is connected to it. Any type of editing in this file could cause the entire project to stop working as intended.
+{\bfseries{Note}}\+: There exists a file called "{}main.\+tf"{} it contains entire infrastructure and it {\bfseries{NEVER WOULD BE CHANGED}} because source code is connected to it. ~\newline
+ Any type of editing in this file could cause the entire project to stop working as intended.
 
 
 \begin{DoxyEnumerate}
@@ -51,11 +52,27 @@ The env variables format is the following configure it with your AWS ACCESS KEY 
 
 \end{DoxyCode}
 
-\item Start terraform env using {\ttfamily terraform init}.
-\item Create a new env to testing or dev\+: {\ttfamily terraform workspace new \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}env\+\_\+name\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}} this command helps us to have a version control.
-\item Verify that you are in the correct env using {\ttfamily terraform workspace list} it should show the current workspace.
-\item To check if the code in main.\+tf is right, use {\ttfamily terraform plan}.
-\item If everything is ok, apply infrastructure using {\ttfamily terraform apply} and wait for it.
+\item Start terraform env using\+:
+
+{\ttfamily terraform init}
+\item Create a new env to testing or dev\+:
+
+{\ttfamily terraform workspace new \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}env\+\_\+name\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}}
+
+This command helps us to have a version control.
+\item Verify that you are in the correct env using\+:
+
+{\ttfamily terraform workspace list}
+
+It should show the current workspace.
+\item To check if the code in main.\+tf is right use\+:
+
+{\ttfamily terraform plan}
+\item If everything is ok, apply infrastructure use\+:
+
+{\ttfamily terraform apply}
+
+Wait for it.
 \item Go to \href{https://aws.amazon.com/}{\texttt{ AWS}} and confirm that entire configuration is created successfully (lambda and step functions).
 \end{DoxyEnumerate}
 

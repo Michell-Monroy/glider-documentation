@@ -82,12 +82,14 @@ Description</h1>
 <li>Gets the header from each usage report</li>
 <li>Searches into MongoDB some format whose “header” field is the same as the usage report header.</li>
 <li>When the format is identified, the format name is extracted.</li>
-<li>Map columns: Once the format of each usage report is already known, it’s possible to extract the columns, and data type necessary to carry out the mapping. This process is carried out by format and not by file, that is, the format already specifies which columns to use, so these are extracted from the “ottoMapping” field of the json files.</li>
-<li>Generate new data using mapped columns: Once the required columns and their respective values are known, DataFrames are created (one per file) in which the columns are constructed according to the "name" field of "mappingTemplate" field from format.json. When this step is completed, the new usage reports are saved in s3 as parquet and mongoDB.</li>
+<li>Map columns: Once the format of each usage report is already known, it’s possible to extract the columns, and data type necessary to carry out the mapping. <br  />
+ This process is carried out by format and not by file, that is, the format already specifies which columns to use, so these are extracted from the “ottoMapping” field of the json files.</li>
+<li>Generate new data using mapped columns: Once the required columns and their respective values are known, DataFrames are created (one per file) in which the columns are constructed according to the "name" field of "mappingTemplate" field from format.json. <br  />
+ When this step is completed, the new usage reports are saved in s3 as parquet and mongoDB.</li>
 </ol>
 <h1><a class="anchor" id="autotoc_md22"></a>
 Workflow</h1>
-<p><img src="https://drive.google.com/uc?id=1UORG4GwOqwp1sdrr1NG5Ml4pCQZXwocJ" alt="" class="inline"/></p>
+<p><img src="https://drive.google.com/uc?id=1M8pZ7EQzlc_KihEEvpaN-16ORQ1_IB6Y" alt="" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md23"></a>
 How to set env variables and venv</h1>
 <p>There are two kind of variables, to dev and local testing.</p>

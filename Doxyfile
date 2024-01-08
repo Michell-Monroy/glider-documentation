@@ -952,6 +952,9 @@ INPUT                  = /Users/michellmonroy/Documents/dev-glider/glider/src/up
                          /Users/michellmonroy/Documents/dev-glider/glider/src/importer/templates \
                          /Users/michellmonroy/Documents/dev-glider/glider/src/report_generation \
                          /Users/michellmonroy/Documents/dev-glider/glider/src/statement_generation \
+                         /Users/michellmonroy/Documents/dev-glider/glider/catalogue_api \
+                         /Users/michellmonroy/Documents/dev-glider/glider/catalogue_api/services \
+                         /Users/michellmonroy/Documents/dev-glider/glider/catalogue_api/db \
                          /Users/michellmonroy/Documents/dev-glider/glider/src/HowDeployAWS.md \
                          /Users/michellmonroy/Documents/dev-glider/glider/src/GeneralWorkflow.md
 

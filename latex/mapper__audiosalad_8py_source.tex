@@ -1,0 +1,126 @@
+\doxysection{mapper\+\_\+audiosalad.\+py}
+\hypertarget{mapper__audiosalad_8py_source}{}\label{mapper__audiosalad_8py_source}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/catalogue\_api/services/mapper\_audiosalad.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/catalogue\_api/services/mapper\_audiosalad.py}}
+\mbox{\hyperlink{mapper__audiosalad_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00001}\mbox{\hyperlink{namespacemapper__audiosalad}{00001}}\ \textcolor{keyword}{from}\ datetime\ \textcolor{keyword}{import}\ date}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00002}00002\ \textcolor{keyword}{from}\ db.mysql\ \textcolor{keyword}{import}\ get\_connection\_mysql}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00003}00003\ \textcolor{keyword}{from}\ db.media\_release\ \textcolor{keyword}{import}\ Release}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00005}\mbox{\hyperlink{namespacemapper__audiosalad_ac885c204d34e3ec245e3fbf4147a6d4c}{00005}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacemapper__audiosalad_ac885c204d34e3ec245e3fbf4147a6d4c}{mapper\_audiosalad\_to\_db}}(release):}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00006}00006\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00007}00007\ \textcolor{stringliteral}{\ \ \ \ Maps\ the\ release\ info\ (in\ json\ format)\ to\ sql\ query\ in\ insert\ it\ in\ Mysql\ database}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00008}00008\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00009}00009\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00010}00010\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ release\ (json):\ Release\ info\ extracted\ from\ Audiosalad\ API\ }}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00011}00011\ \textcolor{stringliteral}{\ \ \ \ Returns:\ Nothing}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00012}00012\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00013}00013\ \ \ \ \ id\_genre\ =\ \mbox{\hyperlink{namespacemapper__audiosalad_a93f4e00728c159175cc3302f961641fd}{get\_genre\_by\_name}}(release[\textcolor{stringliteral}{'categories'}][0])}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00014}00014\ \ \ \ \ id\_label\ =\ \mbox{\hyperlink{namespacemapper__audiosalad_abdc5916fbcdc60f474fbfc79afd3ba82}{get\_label\_by\_name}}(release[\textcolor{stringliteral}{'label'}])}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00015}00015\ \ \ \ \ \textcolor{keywordflow}{if}\ id\_genre\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00016}00016\ \ \ \ \ \ \ \ \ id\_genre\ =\ \mbox{\hyperlink{namespacemapper__audiosalad_a44568152e595cc52e2c65e996d3c3137}{insert\_genre}}(release[\textcolor{stringliteral}{'categories'}][0])}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00018}00018\ \ \ \ \ \ \ \ \ id\_genre\ =\ id\_genre[0]}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{if}\ id\_label\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00020}00020\ \ \ \ \ \ \ \ \ id\_label\ =\ \mbox{\hyperlink{namespacemapper__audiosalad_a64c87bc3e4c571eb2e92901a924a0515}{insert\_organisation}}(release[\textcolor{stringliteral}{'label'}])}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00022}00022\ \ \ \ \ \ \ \ \ id\_genre\ =\ id\_genre[0]}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00024}00024\ \ \ \ \ media\_release\ =\ Release(release[\textcolor{stringliteral}{'upc'}],\ release[\textcolor{stringliteral}{'title'}],\ release[\textcolor{stringliteral}{'artist'}],\ release[\textcolor{stringliteral}{'catalogId'}],\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{None},\ \textcolor{keywordtype}{None},\ release[\textcolor{stringliteral}{'explicit'}],\ release[\textcolor{stringliteral}{'releaseDate'}],\ release[\textcolor{stringliteral}{'releaseDate'}],\ \textcolor{keyword}{True},\ \textcolor{keywordtype}{None},\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00026}00026\ \ \ \ \ \ \ \ \ release[\textcolor{stringliteral}{'label'}],\ \textcolor{keywordtype}{None},\ release[\textcolor{stringliteral}{'label'}],\ \textcolor{keywordtype}{None},\ \textcolor{keywordtype}{None},\ release[\textcolor{stringliteral}{'images'}][0][\textcolor{stringliteral}{'urlLarge'}],\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ release[\textcolor{stringliteral}{'images'}][0][\textcolor{stringliteral}{'urlSmall'}],\ release[\textcolor{stringliteral}{'images'}][0][\textcolor{stringliteral}{'urlMedium'}],\ id\_label,\ id\_genre,\ \textcolor{keywordtype}{None},\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ date.today(),\ \textcolor{keywordtype}{None},\ \textcolor{keywordtype}{None},\ \textcolor{stringliteral}{'audiosalad'})}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{namespacemapper__audiosalad_a4aad5f0788b6f2b3a967849bb81f5db9}{insert\_release}}(media\_release)}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00031}\mbox{\hyperlink{namespacemapper__audiosalad_a93f4e00728c159175cc3302f961641fd}{00031}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacemapper__audiosalad_a93f4e00728c159175cc3302f961641fd}{get\_genre\_by\_name}}(name):}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00032}00032\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00033}00033\ \textcolor{stringliteral}{\ \ \ \ Searches\ the\ genre\ of\ some\ release/track\ using\ the\ title}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00034}00034\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00035}00035\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00036}00036\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ name\ (str):\ Name\ of\ track/release}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00037}00037\ \textcolor{stringliteral}{\ \ \ \ Returns:\ id\_genre\ (str)}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00038}00038\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00039}00039\ \ \ \ \ conn\ =\ get\_connection\_mysql()}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00040}00040\ \ \ \ \ id\_genre\ =\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00041}00041\ \ \ \ \ \textcolor{keyword}{with}\ conn.cursor()\ \textcolor{keyword}{as}\ c:}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ c.execute(\textcolor{stringliteral}{"{}SELECT\ id\ FROM\ oba.media\_genre\ WHERE\ name\ =\ \%s;"{}},\ (name))}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00043}00043\ \ \ \ \ \ \ \ \ id\_genre\ =\ c.fetchone()}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00044}00044\ \ \ \ \ conn.close()}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{return}\ id\_genre}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00047}\mbox{\hyperlink{namespacemapper__audiosalad_abdc5916fbcdc60f474fbfc79afd3ba82}{00047}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacemapper__audiosalad_abdc5916fbcdc60f474fbfc79afd3ba82}{get\_label\_by\_name}}(name):}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00048}00048\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00049}00049\ \textcolor{stringliteral}{\ \ \ \ Searches\ the\ label\ of\ some\ release/track\ using\ the\ title}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00050}00050\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00051}00051\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00052}00052\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ name\ (str):\ Name\ of\ track/release}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00053}00053\ \textcolor{stringliteral}{\ \ \ \ Returns:\ id\_label\ (str)}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00054}00054\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00055}00055\ \ \ \ \ conn\ =\ get\_connection\_mysql()}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00056}00056\ \ \ \ \ id\_label\ =\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00057}00057\ \ \ \ \ \textcolor{keyword}{with}\ conn.cursor()\ \textcolor{keyword}{as}\ c:}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ c.execute(\textcolor{stringliteral}{"{}SELECT\ id\ FROM\ oba.media\_organisation\ WHERE\ name\ =\ \%s;"{}},\ (name))}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00059}00059\ \ \ \ \ \ \ \ \ id\_label\ =\ c.fetchone()}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00060}00060\ \ \ \ \ conn.close()}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{return}\ id\_label}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00063}\mbox{\hyperlink{namespacemapper__audiosalad_a44568152e595cc52e2c65e996d3c3137}{00063}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacemapper__audiosalad_a44568152e595cc52e2c65e996d3c3137}{insert\_genre}}(name):}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00064}00064\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00065}00065\ \textcolor{stringliteral}{\ \ \ \ Inserts\ the\ genre\ info\ of\ some\ release/track\ using\ the\ title}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00066}00066\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00067}00067\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00068}00068\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ name\ (str):\ Name\ of\ track/release}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00069}00069\ \textcolor{stringliteral}{\ \ \ \ Returns:\ id\_genre\ (int)}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00070}00070\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00071}00071\ \ \ \ \ conn\ =\ get\_connection\_mysql()}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00072}00072\ \ \ \ \ id\_genre\ =\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00073}00073\ \ \ \ \ slug\ =\ name.lower()+\textcolor{stringliteral}{'-\/1'}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00074}00074\ \ \ \ \ \textcolor{keyword}{with}\ conn.cursor()\ \textcolor{keyword}{as}\ c:\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00075}00075\ \ \ \ \ \ \ \ \ c.execute(\textcolor{stringliteral}{"{}INSERT\ INTO\ oba.media\_genre(name,\ type,\ created\_at,\ updated\_at,\ slug)\ VALUES\ (\%s,\ \%s,\ \%s,\ \%s,\ \%s)"{}},\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ (name,\ 1,\ date.today(),\ date.today(),\ slug))}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00077}00077\ \ \ \ \ \ \ \ \ id\_genre\ =\ c.lastrowid}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00078}00078\ \ \ \ \ conn.commit()}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00079}00079\ \ \ \ \ conn.close()}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00080}00080\ \ \ \ \ \textcolor{keywordflow}{return}\ id\_genre}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00083}\mbox{\hyperlink{namespacemapper__audiosalad_a64c87bc3e4c571eb2e92901a924a0515}{00083}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacemapper__audiosalad_a64c87bc3e4c571eb2e92901a924a0515}{insert\_organisation}}(name):}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00084}00084\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00085}00085\ \textcolor{stringliteral}{\ \ \ \ Inserts\ the\ organization\ info\ of\ some\ release/track\ using\ the\ title}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00086}00086\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00087}00087\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00088}00088\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ name\ (str):\ Name\ of\ track/release}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00089}00089\ \textcolor{stringliteral}{\ \ \ \ Returns:\ id\_label\ (int)}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00090}00090\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00091}00091\ \ \ \ \ conn\ =\ get\_connection\_mysql()}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00092}00092\ \ \ \ \ id\_label\ =\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00093}00093\ \ \ \ \ slug\ =\ name.lower()+\textcolor{stringliteral}{'-\/2'}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00094}00094\ \ \ \ \ \textcolor{keyword}{with}\ conn.cursor()\ \textcolor{keyword}{as}\ c:\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00095}00095\ \ \ \ \ \ \ \ \ c.execute(\textcolor{stringliteral}{"{}INSERT\ INTO\ oba.media\_organisation(name,\ description,\ address,\ website,\ group\_id,\ created\_at,\ updated\_at,\ slug,\ dsp\_payment\_status\_flag,\ forward\_email)\ VALUES\ (\%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s)"{}},\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ (name,\ 2,\ date.today(),\ date.today(),\ slug,\ 1,\ 1))}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00097}00097\ \ \ \ \ \ \ \ \ id\_label\ =\ c.lastrowid}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00098}00098\ \ \ \ \ conn.commit()}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00099}00099\ \ \ \ \ conn.close()}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00100}00100\ \ \ \ \ \textcolor{keywordflow}{return}\ id\_label}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00102}\mbox{\hyperlink{namespacemapper__audiosalad_a4aad5f0788b6f2b3a967849bb81f5db9}{00102}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacemapper__audiosalad_a4aad5f0788b6f2b3a967849bb81f5db9}{insert\_release}}(rel):}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00103}00103\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00104}00104\ \textcolor{stringliteral}{\ \ \ \ Inserts\ the\ release\ info\ into\ Mysql}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00105}00105\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00106}00106\ \textcolor{stringliteral}{\ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00107}00107\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ name\ (str):\ Name\ of\ track/release}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00108}00108\ \textcolor{stringliteral}{\ \ \ \ Returns:\ id\_label\ (int)}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00109}00109\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00110}00110\ \ \ \ \ conn\ =\ get\_connection\_mysql()}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00111}00111\ \ \ \ \ \textcolor{keyword}{with}\ conn.cursor()\ \textcolor{keyword}{as}\ c:\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00112}00112\ \ \ \ \ \ \ \ \ c.execute(\textcolor{stringliteral}{"{}INSERT\ INTO\ oba.media\_release(barcode,\ title,\ display\_artist,\ catalogue\_number,\ to\_check,\ release\_type,\ explicit\_content,\ digital\_release\_date,\ physical\_release\_date,"{}}\ +}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}is\_digital\_version\_authorized,\ is\_various\_artist,\ c\_copy\_holder,\ c\_copy\_year,\ p\_copy\_holder,\ p\_copy\_year,\ status,\ packshot\_full\_url,\ packshot\_small\_url,\ packshot\_medium\_url,"{}}+\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}label\_id,\ genre\_id,\ sub\_genre\_id,\ created\_at,\ updated\_at,\ slug,\ source)\ VALUES\ (\%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s,\ \%s)"{}},}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ (rel.barcode,\ rel.title,\ rel.display\_artist,\ rel.catalogue\_number,\ rel.to\_check,\ rel.release\_type,\ rel.explicit\_content,\ rel.digital\_release\_date,\ rel.physical\_release\_date,}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rel.is\_digital\_version\_authorized,\ rel.is\_various\_artist,\ rel.c\_copy\_holder,\ rel.c\_copy\_year,\ rel.p\_copy\_holder,\ rel.p\_copy\_year,\ rel.status,\ rel.packshot\_full\_url,\ rel.packshot\_small\_url,\ }
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rel.packshot\_medium\_url,\ rel.label\_id,\ rel.genre\_id,\ rel.subgenre\_id,\ rel.created\_at,\ rel.updated\_at,\ rel.slug,\ rel.source))}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00118}00118\ \ \ \ \ conn.commit()}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00119}00119\ \ \ \ \ conn.close()}
+\DoxyCodeLine{\Hypertarget{mapper__audiosalad_8py_source_l00120}00120\ \ \ \ \ \ \ \ \ }
+
+\end{DoxyCode}

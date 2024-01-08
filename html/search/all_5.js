@@ -8,5 +8,6 @@ var searchData=
   ['excel_5fto_5fcsv_2epy_5',['Excel_to_csv.py',['../_excel__to__csv_8py.html',1,'']]],
   ['exchange_5frates_6',['exchange_rates',['../namespaceimporter_1_1glider__upload.html#a6bcb36fe27fbcbd56dc3bbe1569bddb0',1,'importer::glider_upload']]],
   ['exist_5fok_7',['exist_ok',['../namespace_amazon_f_t_p.html#a98dbd1c20dbda5ebe95b0400726eaf4f',1,'AmazonFTP']]],
-  ['extract_5ffile_8',['extract_file',['../namespace_upload_files_s3.html#af6778a0907dfbfa936478ee4fab9e8be',1,'UploadFilesS3']]]
+  ['explicit_5fcontent_8',['explicit_content',['../classmedia__release_1_1_release.html#ae080ca1c23005bcc7f95d12a782c197f',1,'media_release.Release.explicit_content'],['../classmedia__track_1_1_track.html#a1f7c5d1aacdace06c798eb7194582c6c',1,'media_track.Track.explicit_content']]],
+  ['extract_5ffile_9',['extract_file',['../namespace_upload_files_s3.html#af6778a0907dfbfa936478ee4fab9e8be',1,'UploadFilesS3']]]
 ];

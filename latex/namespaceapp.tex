@@ -1,0 +1,222 @@
+\doxysection{app Namespace Reference}
+\hypertarget{namespaceapp}{}\label{namespaceapp}\index{app@{app}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classapp_1_1_release}{Release}}
+\item 
+class \mbox{\hyperlink{classapp_1_1_releases}{Releases}}
+\item 
+class \mbox{\hyperlink{classapp_1_1_releases_v2}{Releases\+V2}}
+\item 
+class \mbox{\hyperlink{classapp_1_1_release_v2}{Release\+V2}}
+\item 
+class \mbox{\hyperlink{classapp_1_1_sync}{Sync}}
+\item 
+class \mbox{\hyperlink{classapp_1_1_webhook}{Webhook}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceapp_a675b4ea702c13dc4b8c05f985a25b496}{app}} = Flask(\+\_\+\+\_\+name\+\_\+\+\_\+)
+\begin{DoxyCompactList}\small\item\em Generates a app using Flask method. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_ad9d60e80bf017ab8134bdebe276d4ff0}{cors}} = CORS(\mbox{\hyperlink{namespaceapp_a675b4ea702c13dc4b8c05f985a25b496}{app}})
+\item 
+\mbox{\hyperlink{namespaceapp_a4f6539932c83e167669e366f14d835e3}{dotenv\+\_\+path}} = join(dirname(\+\_\+\+\_\+file\+\_\+\+\_\+), \textquotesingle{}.env\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Loads path where env variables are. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_a5f263adad63fdda0ce8ef1b823f34941}{username}} = os.\+environ.\+get(\textquotesingle{}USERNAME\+\_\+\+OPENPLAY\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Get Open\+Play username. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_abde1fa8e3eeaff0de0672e1606b72a02}{password}} = os.\+environ.\+get(\textquotesingle{}PASSWORD\+\_\+\+OPENPLAY\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Get Open\+Play password. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_a8779f3c61eff59e49607de730541217b}{mongodb}} = os.\+environ.\+get(\textquotesingle{}MONGO\+\_\+\+RELEASES\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Mongo\+DB uri to connect with database. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_a7b9bfbd466c994e876199358201d908e}{mongodb\+\_\+client}} = Py\+Mongo(\mbox{\hyperlink{namespaceapp_a675b4ea702c13dc4b8c05f985a25b496}{app}}, uri=\mbox{\hyperlink{namespaceapp_a8779f3c61eff59e49607de730541217b}{mongodb}}, ssl\+\_\+cert\+\_\+reqs=ssl.\+CERT\+\_\+\+NONE, connect=False)
+\begin{DoxyCompactList}\small\item\em Connection to Mongo Client. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_a75341a4bc0e8e239f299316136af3466}{db}} = mongodb\+\_\+client.\+db
+\begin{DoxyCompactList}\small\item\em Connection to Database. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_a0aac1cbb8342575f6a19ff1deea9bd74}{api}} = Api(\mbox{\hyperlink{namespaceapp_a675b4ea702c13dc4b8c05f985a25b496}{app}}, version=\textquotesingle{}1.\+0\textquotesingle{}, title=\textquotesingle{}Glider API\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Builds the API. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_a95d53ea19a5fef79c1e60dde2c1255d8}{model\+\_\+sync}}
+\begin{DoxyCompactList}\small\item\em Sets the sync model for API. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_a4e3583bf66f7036531c204f79b3c3d0d}{model\+\_\+release}}
+\begin{DoxyCompactList}\small\item\em Sets the releases model for API. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_ab4a362027d4aa3246e0e0f57ebf177b0}{debug}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespaceapp_a0aac1cbb8342575f6a19ff1deea9bd74}\label{namespaceapp_a0aac1cbb8342575f6a19ff1deea9bd74} 
+\index{app@{app}!api@{api}}
+\index{api@{api}!app@{app}}
+\doxysubsubsection{\texorpdfstring{api}{api}}
+{\footnotesize\ttfamily app.\+api = Api(\mbox{\hyperlink{namespaceapp_a675b4ea702c13dc4b8c05f985a25b496}{app}}, version=\textquotesingle{}1.\+0\textquotesingle{}, title=\textquotesingle{}Glider API\textquotesingle{})}
+
+
+
+Builds the API. 
+
+
+
+Definition at line \mbox{\hyperlink{app_8py_source_l00047}{47}} of file \mbox{\hyperlink{app_8py_source}{app.\+py}}.
+
+\Hypertarget{namespaceapp_a675b4ea702c13dc4b8c05f985a25b496}\label{namespaceapp_a675b4ea702c13dc4b8c05f985a25b496} 
+\index{app@{app}!app@{app}}
+\index{app@{app}!app@{app}}
+\doxysubsubsection{\texorpdfstring{app}{app}}
+{\footnotesize\ttfamily app.\+app = Flask(\+\_\+\+\_\+name\+\_\+\+\_\+)}
+
+
+
+Generates a app using Flask method. 
+
+
+
+Definition at line \mbox{\hyperlink{app_8py_source_l00024}{24}} of file \mbox{\hyperlink{app_8py_source}{app.\+py}}.
+
+\Hypertarget{namespaceapp_ad9d60e80bf017ab8134bdebe276d4ff0}\label{namespaceapp_ad9d60e80bf017ab8134bdebe276d4ff0} 
+\index{app@{app}!cors@{cors}}
+\index{cors@{cors}!app@{app}}
+\doxysubsubsection{\texorpdfstring{cors}{cors}}
+{\footnotesize\ttfamily app.\+cors = CORS(\mbox{\hyperlink{namespaceapp_a675b4ea702c13dc4b8c05f985a25b496}{app}})}
+
+
+
+Definition at line \mbox{\hyperlink{app_8py_source_l00025}{25}} of file \mbox{\hyperlink{app_8py_source}{app.\+py}}.
+
+\Hypertarget{namespaceapp_a75341a4bc0e8e239f299316136af3466}\label{namespaceapp_a75341a4bc0e8e239f299316136af3466} 
+\index{app@{app}!db@{db}}
+\index{db@{db}!app@{app}}
+\doxysubsubsection{\texorpdfstring{db}{db}}
+{\footnotesize\ttfamily app.\+db = mongodb\+\_\+client.\+db}
+
+
+
+Connection to Database. 
+
+
+
+Definition at line \mbox{\hyperlink{app_8py_source_l00044}{44}} of file \mbox{\hyperlink{app_8py_source}{app.\+py}}.
+
+\Hypertarget{namespaceapp_ab4a362027d4aa3246e0e0f57ebf177b0}\label{namespaceapp_ab4a362027d4aa3246e0e0f57ebf177b0} 
+\index{app@{app}!debug@{debug}}
+\index{debug@{debug}!app@{app}}
+\doxysubsubsection{\texorpdfstring{debug}{debug}}
+{\footnotesize\ttfamily app.\+debug}
+
+
+
+Definition at line \mbox{\hyperlink{app_8py_source_l00467}{467}} of file \mbox{\hyperlink{app_8py_source}{app.\+py}}.
+
+\Hypertarget{namespaceapp_a4f6539932c83e167669e366f14d835e3}\label{namespaceapp_a4f6539932c83e167669e366f14d835e3} 
+\index{app@{app}!dotenv\_path@{dotenv\_path}}
+\index{dotenv\_path@{dotenv\_path}!app@{app}}
+\doxysubsubsection{\texorpdfstring{dotenv\_path}{dotenv\_path}}
+{\footnotesize\ttfamily app.\+dotenv\+\_\+path = join(dirname(\+\_\+\+\_\+file\+\_\+\+\_\+), \textquotesingle{}.env\textquotesingle{})}
+
+
+
+Loads path where env variables are. 
+
+
+
+Definition at line \mbox{\hyperlink{app_8py_source_l00028}{28}} of file \mbox{\hyperlink{app_8py_source}{app.\+py}}.
+
+\Hypertarget{namespaceapp_a4e3583bf66f7036531c204f79b3c3d0d}\label{namespaceapp_a4e3583bf66f7036531c204f79b3c3d0d} 
+\index{app@{app}!model\_release@{model\_release}}
+\index{model\_release@{model\_release}!app@{app}}
+\doxysubsubsection{\texorpdfstring{model\_release}{model\_release}}
+{\footnotesize\ttfamily app.\+model\+\_\+release}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ api.model(\textcolor{stringliteral}{'Release\ get\ batch'},\ \{}
+\DoxyCodeLine{00002\ \ \ \ \ \textcolor{stringliteral}{'upcs'}:\ fields.List(fields.String(description=\textcolor{stringliteral}{'Upc\ code'}))}
+\DoxyCodeLine{00003\ \})}
+
+\end{DoxyCode}
+
+
+Sets the releases model for API. 
+
+
+
+Definition at line \mbox{\hyperlink{app_8py_source_l00056}{56}} of file \mbox{\hyperlink{app_8py_source}{app.\+py}}.
+
+\Hypertarget{namespaceapp_a95d53ea19a5fef79c1e60dde2c1255d8}\label{namespaceapp_a95d53ea19a5fef79c1e60dde2c1255d8} 
+\index{app@{app}!model\_sync@{model\_sync}}
+\index{model\_sync@{model\_sync}!app@{app}}
+\doxysubsubsection{\texorpdfstring{model\_sync}{model\_sync}}
+{\footnotesize\ttfamily app.\+model\+\_\+sync}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ api.model(\textcolor{stringliteral}{'Sync'},\ \{}
+\DoxyCodeLine{00002\ \ \ \ \ \textcolor{stringliteral}{'upc'}:\ fields.String(description=\textcolor{stringliteral}{'Upc\ code'}),}
+\DoxyCodeLine{00003\ \ \ \ \ \textcolor{stringliteral}{'provider'}:\ fields.String(description=\textcolor{stringliteral}{'Provieder\ of\ release\ (openplay,\ audiosalad)'}),}
+\DoxyCodeLine{00004\ \})}
+
+\end{DoxyCode}
+
+
+Sets the sync model for API. 
+
+
+
+Definition at line \mbox{\hyperlink{app_8py_source_l00050}{50}} of file \mbox{\hyperlink{app_8py_source}{app.\+py}}.
+
+\Hypertarget{namespaceapp_a8779f3c61eff59e49607de730541217b}\label{namespaceapp_a8779f3c61eff59e49607de730541217b} 
+\index{app@{app}!mongodb@{mongodb}}
+\index{mongodb@{mongodb}!app@{app}}
+\doxysubsubsection{\texorpdfstring{mongodb}{mongodb}}
+{\footnotesize\ttfamily app.\+mongodb = os.\+environ.\+get(\textquotesingle{}MONGO\+\_\+\+RELEASES\textquotesingle{})}
+
+
+
+Mongo\+DB uri to connect with database. 
+
+
+
+Definition at line \mbox{\hyperlink{app_8py_source_l00038}{38}} of file \mbox{\hyperlink{app_8py_source}{app.\+py}}.
+
+\Hypertarget{namespaceapp_a7b9bfbd466c994e876199358201d908e}\label{namespaceapp_a7b9bfbd466c994e876199358201d908e} 
+\index{app@{app}!mongodb\_client@{mongodb\_client}}
+\index{mongodb\_client@{mongodb\_client}!app@{app}}
+\doxysubsubsection{\texorpdfstring{mongodb\_client}{mongodb\_client}}
+{\footnotesize\ttfamily app.\+mongodb\+\_\+client = Py\+Mongo(\mbox{\hyperlink{namespaceapp_a675b4ea702c13dc4b8c05f985a25b496}{app}}, uri=\mbox{\hyperlink{namespaceapp_a8779f3c61eff59e49607de730541217b}{mongodb}}, ssl\+\_\+cert\+\_\+reqs=ssl.\+CERT\+\_\+\+NONE, connect=False)}
+
+
+
+Connection to Mongo Client. 
+
+
+
+Definition at line \mbox{\hyperlink{app_8py_source_l00041}{41}} of file \mbox{\hyperlink{app_8py_source}{app.\+py}}.
+
+\Hypertarget{namespaceapp_abde1fa8e3eeaff0de0672e1606b72a02}\label{namespaceapp_abde1fa8e3eeaff0de0672e1606b72a02} 
+\index{app@{app}!password@{password}}
+\index{password@{password}!app@{app}}
+\doxysubsubsection{\texorpdfstring{password}{password}}
+{\footnotesize\ttfamily app.\+password = os.\+environ.\+get(\textquotesingle{}PASSWORD\+\_\+\+OPENPLAY\textquotesingle{})}
+
+
+
+Get Open\+Play password. 
+
+
+
+Definition at line \mbox{\hyperlink{app_8py_source_l00036}{36}} of file \mbox{\hyperlink{app_8py_source}{app.\+py}}.
+
+\Hypertarget{namespaceapp_a5f263adad63fdda0ce8ef1b823f34941}\label{namespaceapp_a5f263adad63fdda0ce8ef1b823f34941} 
+\index{app@{app}!username@{username}}
+\index{username@{username}!app@{app}}
+\doxysubsubsection{\texorpdfstring{username}{username}}
+{\footnotesize\ttfamily app.\+username = os.\+environ.\+get(\textquotesingle{}USERNAME\+\_\+\+OPENPLAY\textquotesingle{})}
+
+
+
+Get Open\+Play username. 
+
+
+
+Definition at line \mbox{\hyperlink{app_8py_source_l00034}{34}} of file \mbox{\hyperlink{app_8py_source}{app.\+py}}.
+

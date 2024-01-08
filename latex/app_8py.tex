@@ -1,0 +1,49 @@
+\doxysection{/\+Users/michellmonroy/\+Documents/dev-\/glider/glider/catalogue\+\_\+api/app.py File Reference}
+\hypertarget{app_8py}{}\label{app_8py}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/catalogue\_api/app.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/catalogue\_api/app.py}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classapp_1_1_release}{app.\+Release}}
+\item 
+class \mbox{\hyperlink{classapp_1_1_releases}{app.\+Releases}}
+\item 
+class \mbox{\hyperlink{classapp_1_1_sync}{app.\+Sync}}
+\item 
+class \mbox{\hyperlink{classapp_1_1_release_v2}{app.\+Release\+V2}}
+\item 
+class \mbox{\hyperlink{classapp_1_1_releases_v2}{app.\+Releases\+V2}}
+\item 
+class \mbox{\hyperlink{classapp_1_1_webhook}{app.\+Webhook}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceapp}{app}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceapp_a675b4ea702c13dc4b8c05f985a25b496}{app.\+app}} = Flask(\+\_\+\+\_\+name\+\_\+\+\_\+)
+\begin{DoxyCompactList}\small\item\em Generates a app using Flask method. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_ad9d60e80bf017ab8134bdebe276d4ff0}{app.\+cors}} = CORS(\mbox{\hyperlink{namespaceapp_a675b4ea702c13dc4b8c05f985a25b496}{app}})
+\item 
+\mbox{\hyperlink{namespaceapp_a4f6539932c83e167669e366f14d835e3}{app.\+dotenv\+\_\+path}} = join(dirname(\+\_\+\+\_\+file\+\_\+\+\_\+), \textquotesingle{}.env\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Loads path where env variables are. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_a5f263adad63fdda0ce8ef1b823f34941}{app.\+username}} = os.\+environ.\+get(\textquotesingle{}USERNAME\+\_\+\+OPENPLAY\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Get Open\+Play username. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_abde1fa8e3eeaff0de0672e1606b72a02}{app.\+password}} = os.\+environ.\+get(\textquotesingle{}PASSWORD\+\_\+\+OPENPLAY\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Get Open\+Play password. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_a8779f3c61eff59e49607de730541217b}{app.\+mongodb}} = os.\+environ.\+get(\textquotesingle{}MONGO\+\_\+\+RELEASES\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Mongo\+DB uri to connect with database. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_a7b9bfbd466c994e876199358201d908e}{app.\+mongodb\+\_\+client}} = Py\+Mongo(\mbox{\hyperlink{namespaceapp_a675b4ea702c13dc4b8c05f985a25b496}{app}}, uri=\mbox{\hyperlink{namespaceapp_a8779f3c61eff59e49607de730541217b}{mongodb}}, ssl\+\_\+cert\+\_\+reqs=ssl.\+CERT\+\_\+\+NONE, connect=False)
+\begin{DoxyCompactList}\small\item\em Connection to Mongo Client. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_a75341a4bc0e8e239f299316136af3466}{app.\+db}} = mongodb\+\_\+client.\+db
+\begin{DoxyCompactList}\small\item\em Connection to Database. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_a0aac1cbb8342575f6a19ff1deea9bd74}{app.\+api}} = Api(\mbox{\hyperlink{namespaceapp_a675b4ea702c13dc4b8c05f985a25b496}{app}}, version=\textquotesingle{}1.\+0\textquotesingle{}, title=\textquotesingle{}Glider API\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Builds the API. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_a95d53ea19a5fef79c1e60dde2c1255d8}{app.\+model\+\_\+sync}}
+\begin{DoxyCompactList}\small\item\em Sets the sync model for API. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_a4e3583bf66f7036531c204f79b3c3d0d}{app.\+model\+\_\+release}}
+\begin{DoxyCompactList}\small\item\em Sets the releases model for API. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_ab4a362027d4aa3246e0e0f57ebf177b0}{app.\+debug}}
+\end{DoxyCompactItemize}

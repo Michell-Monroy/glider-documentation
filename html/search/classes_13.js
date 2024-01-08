@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['youtubetemplate_0',['YoutubeTemplate',['../classimporter_1_1templates_1_1_youtube_template_1_1_youtube_template.html',1,'importer::templates::YoutubeTemplate']]]
+  ['webhook_0',['Webhook',['../classapp_1_1_webhook.html',1,'app']]]
 ];

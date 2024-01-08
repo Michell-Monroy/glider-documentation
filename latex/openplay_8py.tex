@@ -1,0 +1,29 @@
+\doxysection{/\+Users/michellmonroy/\+Documents/dev-\/glider/glider/catalogue\+\_\+api/services/openplay.py File Reference}
+\hypertarget{openplay_8py}{}\label{openplay_8py}\index{/Users/michellmonroy/Documents/dev-\/glider/glider/catalogue\_api/services/openplay.py@{/Users/michellmonroy/Documents/dev-\/glider/glider/catalogue\_api/services/openplay.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceopenplay}{openplay}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceopenplay_a87a826aeca86973967a930fc4c3a1ad3}{openplay.\+get\+\_\+release\+\_\+by\+\_\+upc\+\_\+openplay}} (upc)
+\item 
+\mbox{\hyperlink{namespaceopenplay_ad4056ecb65c885bd433229007161bf80}{openplay.\+get\+\_\+release\+\_\+by\+\_\+isrc\+\_\+openplay}} (isrc)
+\item 
+\mbox{\hyperlink{namespaceopenplay_a4c4194aac56672dab34c1dc4b25a5c12}{openplay.\+get\+\_\+list\+\_\+releases\+\_\+upc\+\_\+openplay}} (upcs)
+\item 
+\mbox{\hyperlink{namespaceopenplay_ae1f141158cdc8c573777b43c63ce70e8}{openplay.\+get\+\_\+list\+\_\+releases\+\_\+isrc\+\_\+openplay}} (isrcs)
+\item 
+\mbox{\hyperlink{namespaceopenplay_a6bfd00e04365f2021ec0a62b73483bd5}{openplay.\+get\+\_\+list\+\_\+release\+\_\+openplay}} (upcs)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceopenplay_a24d60d078a1afe7a91d94cec2b780e53}{openplay.\+mongo\+\_\+conn}} = os.\+environ.\+get(\textquotesingle{}MONGO\+\_\+\+GLIDER\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Mongo\+DB uri to connect with database. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceopenplay_a3b9a92bf75dd523628c4f79e6727e1ef}{openplay.\+client}} = Mongo\+Client(\mbox{\hyperlink{namespaceopenplay_a24d60d078a1afe7a91d94cec2b780e53}{mongo\+\_\+conn}}, ssl\+\_\+cert\+\_\+reqs=ssl.\+CERT\+\_\+\+NONE, connect=False)
+\begin{DoxyCompactList}\small\item\em Connection to Mongo Client. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceopenplay_a9c646671bb03a1f97822bbbb6d9d7a16}{openplay.\+db}} = client.\+releases
+\begin{DoxyCompactList}\small\item\em Connection to Database. \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -7,5 +7,6 @@ var searchData=
   ['soundcloudtemplate_4',['SoundcloudTemplate',['../classimporter_1_1templates_1_1_soundcloud_template_1_1_soundcloud_template.html',1,'importer::templates::SoundcloudTemplate']]],
   ['soundtracktemplate_5',['SoundtrackTemplate',['../classimporter_1_1templates_1_1_soundtrack_template_1_1_soundtrack_template.html',1,'importer::templates::SoundtrackTemplate']]],
   ['spotifytemplate_6',['SpotifyTemplate',['../classimporter_1_1templates_1_1_spotify_template_1_1_spotify_template.html',1,'importer::templates::SpotifyTemplate']]],
-  ['state51template_7',['State51Template',['../classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html',1,'importer::templates::State51Template']]]
+  ['state51template_7',['State51Template',['../classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html',1,'importer::templates::State51Template']]],
+  ['sync_8',['Sync',['../classapp_1_1_sync.html',1,'app']]]
 ];

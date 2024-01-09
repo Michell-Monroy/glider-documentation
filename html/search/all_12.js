@@ -20,7 +20,7 @@ var searchData=
   ['report_5fworkflow_2emd_17',['report_workflow.md',['../report__workflow_8md.html',1,'']]],
   ['reportsnapshot_18',['ReportSnapshot',['../namespace_report_snapshot.html',1,'']]],
   ['reportsnapshot_2epy_19',['ReportSnapshot.py',['../_report_snapshot_8py.html',1,'']]],
-  ['resources_20',['Tech Resources',['../index.html#autotoc_md61',1,'']]],
+  ['resources_20',['Tech Resources',['../index.html#autotoc_md69',1,'']]],
   ['results_5fgrouped_21',['results_grouped',['../namespaceimporter_1_1_create_snapshots.html#aee5fb2ba3058cce272feb71ff79ffe1a',1,'importer::CreateSnapshots']]],
   ['root_5fdir_22',['root_dir',['../namespace_gen_report.html#a7055623ecf06eb8754d21422c0314e7d',1,'GenReport.ROOT_DIR'],['../namespace_statements_template.html#a30d9ea829d1247ee3b336eaeb612fb43',1,'StatementsTemplate.ROOT_DIR'],['../namespace_gen_unmatched.html#a0321ba1810c0ad7c45915faa6510de3f',1,'GenUnmatched.ROOT_DIR'],['../namespace_gen_statement.html#a852d1a3e6b7f5c003c309c11843530f2',1,'GenStatement.ROOT_DIR']]],
   ['roxitemplate_23',['RoxiTemplate',['../classimporter_1_1templates_1_1_roxi_template_1_1_roxi_template.html',1,'importer::templates::RoxiTemplate']]],

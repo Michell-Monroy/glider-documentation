@@ -3,7 +3,7 @@ var searchData=
   ['bandcamptemplate_0',['BandcampTemplate',['../classimporter_1_1templates_1_1_bandcamp_template_1_1_bandcamp_template.html',1,'importer::templates::BandcampTemplate']]],
   ['bandcamptemplate_2epy_1',['BandcampTemplate.py',['../_bandcamp_template_8py.html',1,'']]],
   ['barcode_2',['barcode',['../classmedia__release_1_1_release.html#ac261a3f0f798bcd03a7950703afb27d5',1,'media_release::Release']]],
-  ['bodyemail_3',['bodyemail',['../class_body_email_1_1_body_email.html',1,'BodyEmail.BodyEmail'],['../namespace_body_email.html',1,'BodyEmail']]],
+  ['bodyemail_3',['BodyEmail',['../class_body_email_1_1_body_email.html',1,'BodyEmail.BodyEmail'],['../namespace_body_email.html',1,'BodyEmail']]],
   ['bodyemail_2epy_4',['BodyEmail.py',['../_body_email_8py.html',1,'']]],
   ['boomplaytemplate_5',['BoomplayTemplate',['../classimporter_1_1templates_1_1_boomplay_template_1_1_boomplay_template.html',1,'importer::templates::BoomplayTemplate']]],
   ['boomplaytemplate_2epy_6',['BoomplayTemplate.py',['../_boomplay_template_8py.html',1,'']]],

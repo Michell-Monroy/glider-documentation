@@ -24,10 +24,10 @@ var indexSectionLabels =
 {
   0: "All",
   1: "Classes",
-  2: "Namespaces",
+  2: "Modules",
   3: "Files",
-  4: "Functions",
-  5: "Variables",
+  4: "Operations",
+  5: "Constants",
   6: "Pages"
 };
 

@@ -10,7 +10,7 @@ var searchData=
   ['soundtracktemplate_2epy_7',['SoundtrackTemplate.py',['../_soundtrack_template_8py.html',1,'']]],
   ['spotifytemplate_2epy_8',['SpotifyTemplate.py',['../_spotify_template_8py.html',1,'']]],
   ['state51template_2epy_9',['State51Template.py',['../_state51_template_8py.html',1,'']]],
-  ['statemen_5fworkflow_2epng_10',['Statemen_workflow.png',['../_statemen__workflow_8png.html',1,'']]],
-  ['statement_5fworkflow_2emd_11',['statement_workflow.md',['../statement__workflow_8md.html',1,'']]],
+  ['statement_5fworkflow_2emd_10',['statement_workflow.md',['../statement__workflow_8md.html',1,'']]],
+  ['statement_5fworkflow_2epng_11',['Statement_workflow.png',['../_statement__workflow_8png.html',1,'']]],
   ['statementstemplate_2epy_12',['StatementsTemplate.py',['../_statements_template_8py.html',1,'']]]
 ];

@@ -25,7 +25,7 @@ var searchData=
   ['get_5fmonth_22',['get_month',['../namespace_gen_report.html#af2f6845773a1f6e29c2c45c92427a7cc',1,'GenReport.get_month()'],['../namespace_gen_unmatched.html#a3a0afb938e1db277570479a49050da32',1,'GenUnmatched.get_month(date)']]],
   ['get_5fnum_5ffiles_23',['get_num_files',['../namespace_gen_unmatched.html#ae7290d868393519f9b28d6efa8fff0ae',1,'GenUnmatched']]],
   ['get_5fpath_24',['get_path',['../namespace_file_cleaning.html#ad78133ddf067d6287b92b99b1a3d9ded',1,'FileCleaning']]],
-  ['get_5fperiod_25',['get_period',['../namespaceimporter_1_1_process_files.html#a365a82dd6c067872b31b5745387b967a',1,'importer::ProcessFiles']]],
+  ['get_5fperiod_25',['get_period',['../namespaceimporter_1_1_process_files.html#a6bd870703b22e6c618ab2984ee622cc3',1,'importer::ProcessFiles']]],
   ['get_5frelease_5fby_5fisrc_5faudiosalad_26',['get_release_by_isrc_audiosalad',['../namespaceaudiosalad.html#a414929486bbc3f48298c0d4435e950f7',1,'audiosalad']]],
   ['get_5frelease_5fby_5fisrc_5fopenplay_27',['get_release_by_isrc_openplay',['../namespaceopenplay.html#ad4056ecb65c885bd433229007161bf80',1,'openplay']]],
   ['get_5frelease_5fby_5fupc_28',['get_release_by_upc',['../namespaceaudiosalad.html#adb8bac860462166dbf99aae7301a5ebb',1,'audiosalad']]],

@@ -7,9 +7,9 @@ digraph "UploadFilesS3.clean_files"
   rankdir="LR";
   Node1 [id="Node000001",label="UploadFilesS3.clean\l_files",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="UploadFilesS3.extract_file",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespace_upload_files_s3.html#af6778a0907dfbfa936478ee4fab9e8be",tooltip=" "];
+  Node2 [id="Node000002",label="UploadFilesS3.extract_file",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespace_upload_files_s3.html#a99b56a8f9f50c0ff9824e78aa1cb91a3",tooltip=" "];
   Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
   Node3 [id="Node000003",label="UploadFilesS3.folder\l_or_file",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespace_upload_files_s3.html#a53527bad53ef51b87eaa9a615234915f",tooltip=" "];
   Node1 -> Node4 [id="edge3_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
-  Node4 [id="Node000004",label="UploadFilesS3.transform\l_fx_rates_file",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespace_upload_files_s3.html#a5e54705d1df269ba071186263a8ba47b",tooltip=" "];
+  Node4 [id="Node000004",label="UploadFilesS3.transform\l_xls_file",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespace_upload_files_s3.html#aa6329541f1d42dbba6744caf637ae4de",tooltip=" "];
 }

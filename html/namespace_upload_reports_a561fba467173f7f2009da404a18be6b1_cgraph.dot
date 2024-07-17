@@ -8,4 +8,6 @@ digraph "UploadReports.upload_files_s3"
   Node1 [id="Node000001",label="UploadReports.upload\l_files_s3",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
   Node2 [id="Node000002",label="UploadReports.create\l_presigned_url",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespace_upload_reports.html#a66e3bc1fae05ab2aad541cdfbbc8ccb3",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="UploadReports.shorten_url",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespace_upload_reports.html#ab95e0cdbcb69df2f571edeef90a1cdf7",tooltip=" "];
 }

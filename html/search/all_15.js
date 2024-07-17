@@ -7,10 +7,10 @@ var searchData=
   ['update_5fdata_4',['update_data',['../classimporter_1_1_catalogue_generator_1_1_generator.html#a4cf58ea914ec13d4fa35a4585fb1334f',1,'importer.CatalogueGenerator.Generator.update_data()'],['../classimporter_1_1generator_1_1_generator.html#aa9c6ca030ec047608b845d41cb5cdbc0',1,'importer.generator.Generator.update_data()']]],
   ['update_5frelease_5',['update_release',['../class_find_last_date_1_1find__newest.html#a24af6d745a59e4ccb063b9f0d77c57dd',1,'FindLastDate::find_newest']]],
   ['updated_5fat_6',['updated_at',['../classmedia__release_1_1_release.html#a0d564a32560cc5d263661aaf91a7fae2',1,'media_release.Release.updated_at'],['../classmedia__track_1_1_track.html#a31314eb46fd3380330c3781142017372',1,'media_track.Track.updated_at']]],
-  ['upload_20file_20manually_20submodule_7',['Upload File Manually Submodule',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2upload__workflow.html#autotoc_md62',1,'']]],
+  ['upload_20file_20manually_20submodule_7',['Upload File Manually Submodule',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2upload__workflow.html#autotoc_md66',1,'']]],
   ['upload_5fcatalog_8',['upload_catalog',['../classimporter_1_1_catalogue_generator_1_1_generator.html#a3e2898a27d7cbc30efa9f4273f1460c4',1,'importer.CatalogueGenerator.Generator.upload_catalog()'],['../classimporter_1_1generator_1_1_generator.html#a0ed6b63f59d6e3341a2ba7a0ed906c94',1,'importer.generator.Generator.upload_catalog()']]],
   ['upload_5fdata_5fmongo_9',['upload_data_mongo',['../namespaceimporter_1_1_upload_sales.html#ad521bee3217da21b864556909a608866',1,'importer::UploadSales']]],
-  ['upload_5ffiles_5fs3_10',['upload_files_s3',['../namespace_upload_files_s3.html#ad8ee5fc983089b09c062686f088481f5',1,'UploadFilesS3.upload_files_s3()'],['../namespace_upload_reports.html#a561fba467173f7f2009da404a18be6b1',1,'UploadReports.upload_files_s3()']]],
+  ['upload_5ffiles_5fs3_10',['upload_files_s3',['../namespace_upload_files_s3.html#afbef4d5d6f51c7c9cd27419b1f24f939',1,'UploadFilesS3.upload_files_s3()'],['../namespace_upload_reports.html#a561fba467173f7f2009da404a18be6b1',1,'UploadReports.upload_files_s3()']]],
   ['upload_5finfo_5fmongo_11',['upload_info_mongo',['../namespaceimporter_1_1_excel__to__csv.html#a7d7fe2e8609a1de4af3532de4e2a1a11',1,'importer::Excel_to_csv']]],
   ['upload_5fmain_12',['upload_main',['../namespaceimporter_1_1_upload_sales.html#a76844e23af72d88d7fefd49bf1428ad7',1,'importer::UploadSales']]],
   ['upload_5fmongo_13',['upload_mongo',['../namespaceimporter_1_1_create_snapshots.html#a071e9ae52b38709ce3c8bd02a9bd9c29',1,'importer.CreateSnapshots.upload_mongo()'],['../namespace_report_snapshot.html#a402838bb70b79753510e72c4a34fc154',1,'ReportSnapshot.upload_mongo()']]],
@@ -26,6 +26,6 @@ var searchData=
   ['uploadreports_2epy_23',['UploadReports.py',['../_upload_reports_8py.html',1,'']]],
   ['uploads_20modules_20workflow_24',['Uploads Modules Workflow',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2upload__workflow.html',1,'']]],
   ['uploadsales_2epy_25',['UploadSales.py',['../_upload_sales_8py.html',1,'']]],
-  ['uri_26',['uri',['../namespaceimporter_1_1generate__csv.html#a7bba2ac7affa4c2f2f02ced98f54db32',1,'importer.generate_csv.uri'],['../namespace_statements_template.html#a7f5bc9fe3be5b49d03c8a1c1e2307910',1,'StatementsTemplate.uri']]],
+  ['uri_26',['uri',['../namespaceimporter_1_1_catalogue_generator_v2.html#ac7fb64038b1be49d839488e03450cca6',1,'importer.CatalogueGeneratorV2.uri'],['../namespaceimporter_1_1generate__csv.html#a7bba2ac7affa4c2f2f02ced98f54db32',1,'importer.generate_csv.uri'],['../namespace_statements_template.html#a7f5bc9fe3be5b49d03c8a1c1e2307910',1,'StatementsTemplate.uri']]],
   ['username_27',['username',['../namespaceapp.html#a5f263adad63fdda0ce8ef1b823f34941',1,'app']]]
 ];

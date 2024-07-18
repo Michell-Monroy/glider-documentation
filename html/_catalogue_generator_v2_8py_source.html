@@ -122,10 +122,10 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            <span class="stringliteral">&quot;$group&quot;</span>: {</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                <span class="stringliteral">&quot;_id&quot;</span>: <span class="stringliteral">&quot;$release_id&quot;</span>,</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                <span class="stringliteral">&#39;client_id&#39;</span>:{<span class="stringliteral">&#39;$first&#39;</span>: <span class="stringliteral">&#39;$client_id&#39;</span>}, </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>                <span class="comment"># &quot;_client_id&quot;: &quot;$client_id&quot;,</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>                <span class="stringliteral">&quot;release_title&quot;</span>: {<span class="stringliteral">&#39;$first&#39;</span>: <span class="stringliteral">&quot;$release_title&quot;</span>},</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>                <span class="stringliteral">&quot;tracks&quot;</span>: { <span class="stringliteral">&quot;$addToSet&quot;</span>: {</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                    <span class="stringliteral">&quot;isrc_id&quot;</span>: <span class="stringliteral">&quot;$isrc_id&quot;</span>, </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                    <span class="stringliteral">&quot;release_title&quot;</span>: <span class="stringliteral">&quot;$release_title&quot;</span>, </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                    <span class="comment"># &quot;release_title&quot;: &quot;$release_title&quot;, </span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                    <span class="stringliteral">&quot;track_title&quot;</span>: <span class="stringliteral">&quot;$track_title&quot;</span>,</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                    <span class="stringliteral">&quot;label_id&quot;</span>: <span class="stringliteral">&quot;$label_id&quot;</span>, </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                    <span class="stringliteral">&quot;artists&quot;</span>: <span class="stringliteral">&quot;$artists&quot;</span>},</div>
@@ -136,22 +136,23 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="stringliteral">&quot;$project&quot;</span>: {</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                <span class="stringliteral">&quot;_id&quot;</span>: 0,</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                <span class="stringliteral">&quot;release_id&quot;</span>: <span class="stringliteral">&quot;$_id&quot;</span>,</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                <span class="stringliteral">&quot;client_id&quot;</span>: 1,</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                <span class="stringliteral">&quot;tracks&quot;</span>: 1</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            }</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        }</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    ]</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    files = collection.aggregate(pipeline)</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">for</span> doc <span class="keywordflow">in</span> files:</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        existing_doc = cat.find_one({<span class="stringliteral">&quot;release_id&quot;</span>: doc[<span class="stringliteral">&quot;release_id&quot;</span>]})</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">if</span> existing_doc: </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            new_values = doc[<span class="stringliteral">&quot;tracks&quot;</span>]</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            [cat.update_one({<span class="stringliteral">&quot;release_id&quot;</span>:doc[<span class="stringliteral">&quot;release_id&quot;</span>], <span class="stringliteral">&quot;client_id&quot;</span>: doc[<span class="stringliteral">&quot;client_id&quot;</span>]}, {<span class="stringliteral">&quot;$addToSet&quot;</span>: {<span class="stringliteral">&quot;tracks&quot;</span>: i}}) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> new_values]</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">else</span>:</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            cat.insert_one(doc)</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    print(f<span class="stringliteral">&quot;Catalogue generated in {cat_collection}&quot;</span>)</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                <span class="stringliteral">&quot;release_title&quot;</span>: 1,</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                <span class="stringliteral">&quot;client_id&quot;</span>: 1,</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                <span class="stringliteral">&quot;tracks&quot;</span>: 1</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    ]</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    files = collection.aggregate(pipeline)</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordflow">for</span> doc <span class="keywordflow">in</span> files:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        existing_doc = cat.find_one({<span class="stringliteral">&quot;release_id&quot;</span>: doc[<span class="stringliteral">&quot;release_id&quot;</span>]})</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordflow">if</span> existing_doc: </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            new_values = doc[<span class="stringliteral">&quot;tracks&quot;</span>]</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            [cat.update_one({<span class="stringliteral">&quot;release_id&quot;</span>:doc[<span class="stringliteral">&quot;release_id&quot;</span>], <span class="stringliteral">&quot;client_id&quot;</span>: doc[<span class="stringliteral">&quot;client_id&quot;</span>]}, {<span class="stringliteral">&quot;$addToSet&quot;</span>: {<span class="stringliteral">&quot;tracks&quot;</span>: i}}) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> new_values]</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">else</span>:</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            cat.insert_one(doc)</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    print(f<span class="stringliteral">&quot;Catalogue generated in {cat_collection}&quot;</span>)</div>
 </div>
 <div class="ttc" id="anamespaceimporter_1_1_catalogue_generator_v2_html_a08e4af9e033f5b0be2d7339a2664ba75"><div class="ttname"><a href="namespaceimporter_1_1_catalogue_generator_v2.html#a08e4af9e033f5b0be2d7339a2664ba75">importer.CatalogueGeneratorV2.catalogue_generation</a></div><div class="ttdeci">catalogue_generation(date, client_id)</div><div class="ttdef"><b>Definition</b> <a href="#l00023">CatalogueGeneratorV2.py:23</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

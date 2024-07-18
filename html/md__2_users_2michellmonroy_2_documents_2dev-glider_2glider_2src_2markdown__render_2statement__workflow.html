@@ -136,7 +136,7 @@ Description</h1>
 </ol>
 <h1><a class="anchor" id="autotoc_md52"></a>
 Workflow</h1>
-<p><img src="https://github.com/Michell-Monroy/glider-documentation/blob/images-dev/images/Statement_workflow.png?raw=true" alt="" style="width:900px;height:550px;" class="inline"/></p>
+<p><img src="https://github.com/Michell-Monroy/glider-documentation/blob/images-dev/images/Statement_workflow.png?raw=true" alt="" style="width:850px;height:850px;" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md53"></a>
 How to create venv dev</h1>
 <ol type="1">
@@ -145,7 +145,6 @@ How to create venv dev</h1>
 </li>
 <li><p class="startli">Activate venv <br  />
 </p>
-<p class="startli">It's important to keep "glider_dev" name</p>
 <p class="startli"><code>source glider_dev/bin/activate</code></p>
 </li>
 <li><p class="startli">Install requirements (only in case that you haven't install requirements yet)</p>
@@ -155,9 +154,9 @@ How to create venv dev</h1>
 <p class="startli">In this case, the variables for any submodule are the same.</p>
 <p class="startli">a) .env.dev for developing and testing</p>
 <p class="startli">b) .env.prod for production</p>
-<div class="fragment"><div class="line">ENVIRONMENT=&lt;Development/Production&gt;</div>
+<div class="fragment"><div class="line">ENVIRONMENT=&lt;STAGING/PRODUCTION&gt;</div>
 <div class="line">AWS_KEY_ID=&lt;YOUR_AWS_KEY_ID&gt;</div>
-<div class="line">AWS_SECRET_KEY=&lt;YOUR_AWS_SECRET_KEY&gt;</div>
+<div class="line">AWS_KEY_SECRET=&lt;YOUR_AWS_SECRET_KEY&gt;</div>
 <div class="line">SENDER_EMAIL=&quot;example@example.me&quot;</div>
 <div class="line">SENDER_PASSWORD=&lt;YOUR_SENDER_PASSWORD&gt;</div>
 <div class="line">MONGO_GLIDER=&lt;MONGO_CONNECTION_LINK&gt;</div>
@@ -169,13 +168,10 @@ How to create venv dev</h1>
 <div class="line">CAT_COLLECTION=&lt;YOUR_MONGO_COLLECTION_FOR_CATALOGUE&gt;</div>
 <div class="line">REGION=&lt;YOUR_AWS_REGION&gt;</div>
 <div class="line">AS_COLLECTION=&lt;YOUR_MONGO_COLLECTION_FOR_AS_CATALOGUE&gt;</div>
-<div class="line">LAMBDA_FUNCTION=&lt;LAMBDA_FUNCTION_TO_GENERATE_PRESIGNED_LINK&gt;</div>
-<div class="line">INSTANCE_ID_LITE=&lt;EC2_TO_EXECUTE_LITE_PROCEDURE&gt;</div>
-<div class="line">INSTANCE_ID_PRO=&lt;EC2_TO_EXECUTE_PRO_PROCEDURE&gt;</div>
 </div><!-- fragment --></li>
 <li><p class="startli">Save and run, remember that you can use either of them</p>
-<p class="startli"><code>source deploy/dev_vars.sh</code> for developing env</p>
-<p class="startli"><code>source deploy/prod_vars.sh</code> for production env</p>
+<p class="startli"><code>cp .env.dev .env</code> for developing env</p>
+<p class="startli"><code>cp .env.prod .env</code> for production env</p>
 </li>
 </ol>
 <h1><a class="anchor" id="autotoc_md54"></a>
@@ -185,11 +181,11 @@ Local Testing</h2>
 <ol type="1">
 <li><p class="startli">Activate venv and variables</p>
 <p class="startli"><code>source glider_dev/bin/activate</code></p>
-<p class="startli"><code>source deploy/dev_vars.sh</code> <br  />
+<p class="startli"><code>cp .env.dev .env</code> <br  />
 </p>
 </li>
 <li>Make sure you have at less one processed file in MongoDB. If don't, use importer module to process it</li>
-<li><p class="startli">Into tests/ create a python script following this format: test_reports.py</p>
+<li><p class="startli">Into tests/ create a python script following this format: test_statements.py</p>
 <div class="fragment"><div class="line">import os</div>
 <div class="line">import sys</div>
 <div class="line">import traceback</div>
@@ -212,43 +208,80 @@ Local Testing</h2>
 <div class="line"> </div>
 <div class="line">if __name__ == &quot;__main__&quot;:</div>
 <div class="line">    try: </div>
-<div class="line">        build_statement(input_data)</div>
-<div class="line">        send_statement_notification(&quot;success&quot;, input_data[&quot;module&quot;], input_data[&quot;on_finish&quot;], input_data[&quot;client_email&quot;])</div>
+<div class="line">        files_links = build_statement(input_data)</div>
+<div class="line">        send_statement_notification(input_data, &quot;success&quot;, files_links, &quot;&quot;)</div>
 <div class="line">    except Exception as e:</div>
 <div class="line">        message = str(sys.exc_info()[2]) + str(traceback.format_exc())</div>
-<div class="line">        send_statement_notification(&quot;fail&quot;, input_data[&quot;module&quot;], input_data[&quot;on_finish&quot;], input_data[&quot;client_email&quot;], message)</div>
+<div class="line">        send_statement_notification(input_data, &quot;fail&quot;, None, &quot;&quot;, message)</div>
 </div><!-- fragment --></li>
 <li><p class="startli">Run script</p>
-<p class="startli"><code>python tests/test_reports.py</code></p>
+<p class="startli"><code>python tests/test_statements.py</code></p>
 </li>
 </ol>
+<p>This procedure works to see carefully each step of the procedure, but if you want to test the route funcionality, following these steps:</p>
 <h2><a class="anchor" id="autotoc_md56"></a>
-AWS Testing</h2>
-<p>When infrastructure is deployed in AWS:</p>
+Routes Testing</h2>
 <ol type="1">
-<li>Go to AWS -&gt; Step Functions</li>
-<li>Select the step function (select_and_execute_module)</li>
-<li><p class="startli">Click on Start execution</p>
-<p class="startli">(Optional: set a testing name)</p>
+<li><p class="startli">Load testing variables and enviroment</p>
+<p class="startli"><code>cp .env.dev .env</code></p>
 </li>
-<li><p class="startli">Set json object</p>
+<li><p class="startli">Run flask server locally</p>
+<p class="startli"><code>python <a class="el" href="app_8py.html">app.py</a></code></p>
+<p class="startli">It runs a local sever in 5000 port. If you request a GET to <a href="http://127.0.0.1:5000">http://127.0.0.1:5000</a> you would have this response</p>
 <div class="fragment"><div class="line">{</div>
-<div class="line">    &quot;module&quot;: &quot;statement&quot;,</div>
-<div class="line">    &quot;tag&quot;: &lt;&lt;&quot;test&quot;/&quot;prod&quot;&gt;&gt;,</div>
-<div class="line">    &quot;select_by&quot;: &lt;&lt;field to filter&gt;&gt;,</div>
-<div class="line">    &quot;field_value&quot;: &lt;&lt;list of value(s)&gt;&gt;</div>
-<div class="line">    &quot;client_id&quot;: &lt;&lt;client id&gt;&gt;,</div>
-<div class="line">    &quot;bucket&quot;: &lt;&lt;s3 bucket where files will be uploaded&gt;&gt;,</div>
-<div class="line">    &quot;path&quot;: &lt;&lt;s3 path where files will be uploaded&gt;&gt;,</div>
-<div class="line">    &quot;client_email&quot;: &lt;&lt;user@email.example&gt;&gt;,</div>
-<div class="line">    &quot;on_finish&quot;: &lt;&lt;webhook.url&gt;&gt;</div>
+<div class="line">    &quot;date&quot;: CURRENT_DATE,</div>
+<div class="line">    &quot;env&quot;: CURRENT_ENV,</div>
+<div class="line">    &quot;message&quot;: &quot;Welcome to Glider Project&quot;,</div>
+<div class="line">    &quot;status&quot;: 200</div>
 <div class="line">}</div>
 </div><!-- fragment --></li>
-<li><p class="startli">Click on Start execution. If the execution is successfully, you can see it in EC2 instance</p>
-<div class="fragment"><div class="line">ssh -i Glider-Postgres.pem ubuntu@ec2-35-179-24-180.eu-west-2.compute.amazonaws.com</div>
-</div><!-- fragment --> </li>
+<li><p class="startli">Into tests/ create a python script following this format: test_routes_statements.py</p>
+<div class="fragment"><div class="line">import os</div>
+<div class="line">import sys</div>
+<div class="line">import traceback</div>
+<div class="line">import requests</div>
+<div class="line"> </div>
+<div class="line">if __name__ == &quot;__main__&quot;:</div>
+<div class="line">    input_data = {</div>
+<div class="line">        &quot;module&quot;: &quot;statement&quot;,</div>
+<div class="line">        &quot;tag&quot;: &lt;&lt;&quot;test&quot;/&quot;prod&quot;&gt;&gt;,</div>
+<div class="line">        &quot;select_by&quot;: &lt;&lt;field to filter&gt;&gt;,</div>
+<div class="line">        &quot;field_value&quot;: &lt;&lt;list of value(s)&gt;&gt;</div>
+<div class="line">        &quot;client_id&quot;: &lt;&lt;client id&gt;&gt;,</div>
+<div class="line">        &quot;bucket&quot;: &lt;&lt;s3 bucket where files will be uploaded&gt;&gt;,</div>
+<div class="line">        &quot;path&quot;: &lt;&lt;s3 path where files will be uploaded&gt;&gt;,</div>
+<div class="line">        &quot;client_email&quot;: &lt;&lt;user@email.example&gt;&gt;,</div>
+<div class="line">        &quot;on_finish&quot;: &lt;&lt;webhook.url&gt;&gt;</div>
+<div class="line">        }</div>
+<div class="line">    response = requests.post(&#39;http://127.0.0.1:5000/statements&#39;, json=input_data)</div>
+<div class="line">    print(response.json())</div>
+</div><!-- fragment --></li>
+<li><p class="startli">Run script</p>
+<p class="startli"><code>python tests/test_routes_statements.py</code></p>
+<p class="startli">If everything is ok, it returns the following:</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">    &#39;date&#39;: CURRENT_DATE, </div>
+<div class="line">    &#39;message&#39;: &#39;Module procedure will start immediately&#39;, </div>
+<div class="line">    &#39;module&#39;: &#39;statements&#39;, </div>
+<div class="line">    &#39;status&#39;: 200</div>
+<div class="line">}</div>
+</div><!-- fragment --><p class="startli">If a field is missing or it's wrong, it returns:</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">    &#39;date&#39;: &#39;Tue, 16 Jul 2024 17:11:48 GMT&#39;, </div>
+<div class="line">    &#39;error_in_field&#39;: [&#39;client_id&#39;], </div>
+<div class="line">    &#39;error_message&#39;: &#39;Field required&#39;, </div>
+<div class="line">    &#39;module&#39;: &#39;statements&#39;, </div>
+<div class="line">    &#39;status&#39;: 500</div>
+<div class="line">}</div>
+</div><!-- fragment --></li>
 </ol>
-</div></div><!-- contents -->
+<h2><a class="anchor" id="autotoc_md57"></a>
+AWS Testing</h2>
+<p>When infrastructure is deployed in AWS (ECS, ECR):</p>
+<p>Repeat all steps shown in Routes Testing, just change the link to server</p>
+<p>a) For glider-staging </p><div class="fragment"><div class="line">http://glider-staging-lb-676133308.us-east-1.elb.amazonaws.com/statements</div>
+</div><!-- fragment --><p> b) For glider-production </p><div class="fragment"><div class="line">http://glider-production-lb-120036359.us-east-1.elb.amazonaws.com/statements</div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

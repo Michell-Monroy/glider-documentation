@@ -113,7 +113,6 @@ How to create venv dev</h2>
 <ol type="1">
 <li><p class="startli">Create a new virtual env (if you have created this venv pass to step 4)</p>
 <p class="startli"><code>python3 -m venv glider_dev</code></p>
-<p class="startli">It's important to keep "glider_dev" name</p>
 </li>
 <li><p class="startli">Activate venv</p>
 <p class="startli"><code>source glider_dev/bin/activate</code></p>
@@ -185,7 +184,7 @@ Local Testing</h2>
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line">test_data = {</div>
+<div class="line">input_data = {</div>
 <div class="line">    &quot;module&quot;: &quot;importer&quot;,</div>
 <div class="line">    &quot;tag&quot;: &lt;&quot;test&quot;/&quot;prod&quot;&gt;,</div>
 <div class="line">    &quot;cat_gen&quot;: &lt;&quot;True&quot;/&quot;False&quot;&gt;, #True for generate catalogue from sales, False for don&#39;t</div>
@@ -218,13 +217,13 @@ Local Testing</h2>
 <div class="line">        print(&quot;Files Processed: &quot;,files_processed)</div>
 <div class="line">        snapshots = results_grouped(files_processed, None)</div>
 <div class="line">        print(&quot;Snapshots: &quot;,snapshots)</div>
-<div class="line">        if files_processed[&quot;cat_gen&quot;] == &quot;True&quot;:</div>
+<div class="line">        if input_data[&quot;cat_gen&quot;] == &quot;True&quot;:</div>
 <div class="line">            catalogue = generate_catalogue(snapshots, None)</div>
 <div class="line">            print(&quot;Catalogue: &quot;, catalogue)</div>
-<div class="line">        send_importer_notification(&quot;success&quot;, input_data[&quot;module&quot;], input_data[&quot;on_finish&quot;])</div>
+<div class="line">        send_importer_notification(input_data, &quot;success&quot;, &quot;&quot;)</div>
 <div class="line">    except Exception as e:</div>
 <div class="line">        message = str(sys.exc_info()[2]) + str(traceback.format_exc())</div>
-<div class="line">        send_importer_notification(&quot;fail&quot;, input_data[&quot;module&quot;], input_data[&quot;on_finish&quot;], message)</div>
+<div class="line">        send_importer_notification(input_data, &quot;fail&quot;, &quot;&quot;, message)</div>
 </div><!-- fragment --></li>
 <li><p class="startli">Run script</p>
 <p class="startli"><code>python tests/test_importer.py</code></p>
@@ -254,7 +253,7 @@ Routes Testing</h2>
 <div class="line">import requests</div>
 <div class="line"> </div>
 <div class="line">if __name__ == &quot;__main__&quot;:</div>
-<div class="line">    test_data = {</div>
+<div class="line">    input_data = {</div>
 <div class="line">        &quot;module&quot;: &quot;importer&quot;,</div>
 <div class="line">        &quot;tag&quot;: &lt;&quot;test&quot;/&quot;prod&quot;&gt;,</div>
 <div class="line">        &quot;cat_gen&quot;: &lt;&quot;True&quot;/&quot;False&quot;&gt;, #True for generate catalogue from sales, False for don&#39;t</div>
@@ -276,7 +275,7 @@ Routes Testing</h2>
 <div class="line">        &quot;on_finish&quot;: &lt;&lt;webhook.url&gt;&gt;</div>
 <div class="line"> </div>
 <div class="line">    }</div>
-<div class="line">    response = requests.post(&#39;http://127.0.0.1:5000/importer&#39;, json=test_data)</div>
+<div class="line">    response = requests.post(&#39;http://127.0.0.1:5000/importer&#39;, json=input_data)</div>
 <div class="line">    print(response.json())</div>
 </div><!-- fragment --></li>
 <li><p class="startli">Run script</p>

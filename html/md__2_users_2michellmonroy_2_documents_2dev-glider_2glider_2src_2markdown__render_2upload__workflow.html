@@ -87,8 +87,8 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">Uploads Modules Workflow</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md57"></a> </p>
-<h1><a class="anchor" id="autotoc_md58"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md58"></a> </p>
+<h1><a class="anchor" id="autotoc_md59"></a>
 Description</h1>
 <p>Uploads module is composed of these submodules:</p>
 <ul>
@@ -103,13 +103,13 @@ Description</h1>
 <li>Fits csv, xls reports to csv standard</li>
 <li>Uploads reports to s3 The 2-5 steps will called **"Cleaning Procedure"**</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md59"></a>
+<h1><a class="anchor" id="autotoc_md60"></a>
 Google Drive Submodule</h1>
 <p>It receives a google drive link, downloads reports in a temporal folder to applies the Cleaning Procedure</p>
-<h3><a class="anchor" id="autotoc_md60"></a>
+<h3><a class="anchor" id="autotoc_md61"></a>
 Workflow</h3>
 <p><img src="https://github.com/Michell-Monroy/glider-documentation/blob/images-dev/images/GDrive_Module.png?raw=true" alt="" style="width:900px;height:850px;" class="inline"/></p>
-<h3><a class="anchor" id="autotoc_md61"></a>
+<h3><a class="anchor" id="autotoc_md62"></a>
 How to create venv dev</h3>
 <ol type="1">
 <li><p class="startli">Create a new virtual env (if you have created this venv pass to step 4)</p>
@@ -138,9 +138,9 @@ How to create venv dev</h3>
 <p class="startli"><code>cp .env.prod .env</code> for production env</p>
 </li>
 </ol>
-<h2><a class="anchor" id="autotoc_md62"></a>
+<h2><a class="anchor" id="autotoc_md63"></a>
 Testing</h2>
-<h3><a class="anchor" id="autotoc_md63"></a>
+<h3><a class="anchor" id="autotoc_md64"></a>
 Local Testing</h3>
 <ol type="1">
 <li><p class="startli">Activate venv and variables</p>
@@ -173,14 +173,14 @@ Local Testing</h3>
 <div class="line">        send_uploader_notification(input_data, &quot;success&quot;, &quot;&quot;, rute=ruta, files=files)</div>
 <div class="line">    except Exception as e:</div>
 <div class="line">        message = str(sys.exc_info()[2]) + str(traceback.format_exc())</div>
-<div class="line">        send_uploader_notification(&quot;fail&quot;, input_data[&quot;module&quot;], input_data[&quot;on_finish&quot;], message)</div>
+<div class="line">        send_uploader_notification(input_data, &quot;fail&quot;, &quot;&quot;, None, message)</div>
 </div><!-- fragment --></li>
 <li><p class="startli">Run script</p>
 <p class="startli"><code>python tests/test_uploads.py</code></p>
 </li>
 </ol>
 <p>This procedure works to see carefully each step of the procedure, but if you want to test the route funcionality, following these steps:</p>
-<h3><a class="anchor" id="autotoc_md64"></a>
+<h3><a class="anchor" id="autotoc_md65"></a>
 Routes Testing</h3>
 <ol type="1">
 <li><p class="startli">Load testing variables and enviroment</p>
@@ -235,24 +235,24 @@ Routes Testing</h3>
 <div class="line">}</div>
 </div><!-- fragment --></li>
 </ol>
-<h3><a class="anchor" id="autotoc_md65"></a>
+<h3><a class="anchor" id="autotoc_md66"></a>
 AWS Testing</h3>
 <p>When infrastructure is deployed in AWS (ECS, ECR):</p>
 <p>Repeat all steps shown in Routes Testing, just change the link to server</p>
 <p>a) For glider-staging </p><div class="fragment"><div class="line">http://glider-staging-lb-676133308.us-east-1.elb.amazonaws.com/uploads</div>
 </div><!-- fragment --><p> b) For glider-production </p><div class="fragment"><div class="line">http://glider-production-lb-120036359.us-east-1.elb.amazonaws.com/uploads</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md66"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md67"></a>
 Upload File Manually Submodule</h1>
 <p>It receives a file uploaded since OTTITO homepage, downloads reports in a temporal folder to applies the Cleaning Procedure</p>
-<h3><a class="anchor" id="autotoc_md67"></a>
+<h3><a class="anchor" id="autotoc_md68"></a>
 Workflow</h3>
 <p><img src="https://github.com/Michell-Monroy/glider-documentation/blob/images-dev/images/Manual_uploader.png?raw=true" alt="" style="width:800px;height:850px;" class="inline"/></p>
-<h3><a class="anchor" id="autotoc_md68"></a>
+<h3><a class="anchor" id="autotoc_md69"></a>
 How to create venv dev</h3>
 <p>This procedure is the same as Google Drive Submodule just skip step 3</p>
-<h2><a class="anchor" id="autotoc_md69"></a>
+<h2><a class="anchor" id="autotoc_md70"></a>
 Testing</h2>
-<h3><a class="anchor" id="autotoc_md70"></a>
+<h3><a class="anchor" id="autotoc_md71"></a>
 Local Testing</h3>
 <p><b>This testing is just to verify code workflow, so the OTTO interface is not considered here.</b></p>
 <ol type="1">
@@ -292,7 +292,7 @@ Local Testing</h3>
 <p class="startli"><code>python tests/test_manual_uploader.py</code></p>
 </li>
 </ol>
-<h3><a class="anchor" id="autotoc_md71"></a>
+<h3><a class="anchor" id="autotoc_md72"></a>
 Routes Testing</h3>
 <ol type="1">
 <li><p class="startli">Load testing variables and enviroment</p>
@@ -347,7 +347,7 @@ Routes Testing</h3>
 <div class="line">}</div>
 </div><!-- fragment --></li>
 </ol>
-<h3><a class="anchor" id="autotoc_md72"></a>
+<h3><a class="anchor" id="autotoc_md73"></a>
 AWS Testing</h3>
 <p>When infrastructure is deployed in AWS (ECS, ECR):</p>
 <p>Repeat all steps shown in Routes Testing, just change the link to server</p>

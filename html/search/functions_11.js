@@ -12,5 +12,6 @@ var searchData=
   ['upload_5fmain_9',['upload_main',['../namespaceimporter_1_1_upload_sales.html#a76844e23af72d88d7fefd49bf1428ad7',1,'importer::UploadSales']]],
   ['upload_5fmongo_10',['upload_mongo',['../namespaceimporter_1_1_create_snapshots.html#a071e9ae52b38709ce3c8bd02a9bd9c29',1,'importer.CreateSnapshots.upload_mongo()'],['../namespace_report_snapshot.html#a402838bb70b79753510e72c4a34fc154',1,'ReportSnapshot.upload_mongo()']]],
   ['upload_5fto_5fmongo_11',['upload_to_mongo',['../namespace_upload_releases_mongo.html#ad897de364a59903310c82176db313525',1,'UploadReleasesMongo']]],
-  ['upload_5fto_5fs3_12',['upload_to_s3',['../namespaceimporter_1_1glider__upload.html#a4132e751bbe980882edea7d8dd5f0168',1,'importer::glider_upload']]]
+  ['upload_5fto_5fs3_12',['upload_to_s3',['../namespaceimporter_1_1glider__upload.html#a4132e751bbe980882edea7d8dd5f0168',1,'importer::glider_upload']]],
+  ['uploads_13',['uploads',['../namespaceapp.html#ad597d7a4dbe7850e3622597bb9bc205e',1,'app']]]
 ];

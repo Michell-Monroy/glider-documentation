@@ -6,8 +6,8 @@ var searchData=
   ['date_5ffor_5fpath_3',['date_for_path',['../namespace_upload_files_s3.html#ac4a6fbb6b0c8a9c699722ac2c717efc2',1,'UploadFilesS3']]],
   ['date_5fphy_4',['date_phy',['../classimporter_1_1templates_1_1_secretly_canadian_template_1_1_secretly_canadian_template.html#ab1372868894d85f0faaff8b50ab4f466',1,'importer::templates::SecretlyCanadianTemplate::SecretlyCanadianTemplate']]],
   ['datetrends_5',['dateTrends',['../classimporter_1_1templates_1_1_spotify_template_1_1_spotify_template.html#a508c90410f6649afeb8cd7226997a71b',1,'importer::templates::SpotifyTemplate::SpotifyTemplate']]],
-  ['db_6',['db',['../namespaceimporter_1_1_catalogue_generator_v2.html#a4f032f0605f373d07a4f792f23afe6c4',1,'importer.CatalogueGeneratorV2.db'],['../namespaceimporter_1_1generate__csv.html#a2dfb975983a6211c978c3a54e7f2ccd6',1,'importer.generate_csv.db'],['../namespace_statements_template.html#aefdff0d1f041b21d24d557e8cfdf05ff',1,'StatementsTemplate.db'],['../namespaceapp.html#a75341a4bc0e8e239f299316136af3466',1,'app.db'],['../namespaceopenplay.html#a9c646671bb03a1f97822bbbb6d9d7a16',1,'openplay.db']]],
-  ['db_5fname_7',['db_name',['../namespaceimporter_1_1_catalogue_generator_v2.html#aa9e63eb5ea2c9b3b5488f27f5933e60c',1,'importer.CatalogueGeneratorV2.db_name'],['../namespaceimporter_1_1generate__csv.html#ab7be433ed6a5daf30fd5904116ee01c0',1,'importer.generate_csv.db_name'],['../namespace_statements_template.html#a215ce41dae07dc8e23421f9631ff0355',1,'StatementsTemplate.db_name']]],
+  ['db_6',['db',['../namespaceimporter_1_1generate__csv.html#a2dfb975983a6211c978c3a54e7f2ccd6',1,'importer.generate_csv.db'],['../namespace_statements_template.html#aefdff0d1f041b21d24d557e8cfdf05ff',1,'StatementsTemplate.db'],['../namespaceapp.html#a75341a4bc0e8e239f299316136af3466',1,'app.db'],['../namespaceopenplay.html#a9c646671bb03a1f97822bbbb6d9d7a16',1,'openplay.db']]],
+  ['db_5fname_7',['db_name',['../namespaceimporter_1_1generate__csv.html#ab7be433ed6a5daf30fd5904116ee01c0',1,'importer.generate_csv.db_name'],['../namespace_statements_template.html#a215ce41dae07dc8e23421f9631ff0355',1,'StatementsTemplate.db_name']]],
   ['debug_8',['debug',['../namespaceapp.html#ab4a362027d4aa3246e0e0f57ebf177b0',1,'app']]],
   ['deezertemplate_9',['DeezerTemplate',['../classimporter_1_1templates_1_1_deezer_template_1_1_deezer_template.html',1,'importer::templates::DeezerTemplate']]],
   ['deezertemplate_2epy_10',['DeezerTemplate.py',['../_deezer_template_8py.html',1,'']]],
@@ -40,6 +40,7 @@ var searchData=
   ['downloadcatalogas_2epy_37',['DownloadCatalogAS.py',['../_download_catalog_a_s_8py.html',1,'']]],
   ['downloadfiles_38',['DownloadFiles',['../namespace_download_files.html',1,'']]],
   ['downloadfiles_2epy_39',['DownloadFiles.py',['../_download_files_8py.html',1,'']]],
-  ['drive_20submodule_40',['Google Drive Submodule',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2upload__workflow.html#autotoc_md60',1,'']]],
-  ['drive_5fservice_41',['drive_service',['../namespace_gen_token_e_c2.html#a6ea89a64af9b71ec162df66d7353b7bf',1,'GenTokenEC2']]]
+  ['drive_40',['drive',['../class_validation_1_1_upload_type.html#ad308806b804984113f3c230ef2c68708',1,'Validation::UploadType']]],
+  ['drive_20submodule_41',['Google Drive Submodule',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2upload__workflow.html#autotoc_md60',1,'']]],
+  ['drive_5fservice_42',['drive_service',['../namespace_gen_token_e_c2.html#a6ea89a64af9b71ec162df66d7353b7bf',1,'GenTokenEC2']]]
 ];

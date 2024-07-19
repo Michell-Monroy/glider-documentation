@@ -9,9 +9,11 @@ digraph "importer.MongoConnection.mongo_connection.mongo_conn"
   Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node2 [id="Node000002",label="importer.MongoConnection.mongo\l_connection.mongo_conn_catalogue",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classimporter_1_1_mongo_connection_1_1mongo__connection.html#a0266431c353fbc9912c14717274fab90",tooltip=" "];
   Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node3 [id="Node000003",label="importer.MongoConnection.mongo\l_connection.mongo_conn_formats",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classimporter_1_1_mongo_connection_1_1mongo__connection.html#aa97641c8736fd3276e6f4795cef0efee",tooltip=" "];
+  Node3 [id="Node000003",label="importer.MongoConnection.mongo\l_connection.mongo_conn_catalogue_gen",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classimporter_1_1_mongo_connection_1_1mongo__connection.html#a9f2b50033ea02bf107d4fa6faf86f1a6",tooltip=" "];
   Node1 -> Node4 [id="edge3_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node4 [id="Node000004",label="importer.MongoConnection.mongo\l_connection.mongo_conn_ftp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classimporter_1_1_mongo_connection_1_1mongo__connection.html#a9b80df879d9934de9a133103b296a001",tooltip=" "];
+  Node4 [id="Node000004",label="importer.MongoConnection.mongo\l_connection.mongo_conn_formats",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classimporter_1_1_mongo_connection_1_1mongo__connection.html#aa97641c8736fd3276e6f4795cef0efee",tooltip=" "];
   Node1 -> Node5 [id="edge4_Node000001_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node5 [id="Node000005",label="importer.MongoConnection.mongo\l_connection.mongo_conn_snapshots",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classimporter_1_1_mongo_connection_1_1mongo__connection.html#a9c2473d09d1f936e039217b3d02fe3de",tooltip=" "];
+  Node5 [id="Node000005",label="importer.MongoConnection.mongo\l_connection.mongo_conn_ftp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classimporter_1_1_mongo_connection_1_1mongo__connection.html#a9b80df879d9934de9a133103b296a001",tooltip=" "];
+  Node1 -> Node6 [id="edge5_Node000001_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="importer.MongoConnection.mongo\l_connection.mongo_conn_snapshots",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classimporter_1_1_mongo_connection_1_1mongo__connection.html#a9c2473d09d1f936e039217b3d02fe3de",tooltip=" "];
 }

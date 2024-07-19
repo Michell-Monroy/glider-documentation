@@ -11,6 +11,8 @@ var searchData=
   ['send_5funmatched_5freport_8',['send_unmatched_report',['../namespace_send_email.html#a7acef212da36e9b8f837ac915652e664',1,'SendEmail']]],
   ['service_9',['service',['../classimporter_1_1templates_1_1_merlin_template_1_1_merlin_template.html#aa5e7829ef22c9e6da3c42e82a3b47715',1,'importer::templates::MerlinTemplate::MerlinTemplate']]],
   ['servicefinder_10',['serviceFinder',['../classimporter_1_1templates_1_1_audio_salad_template_1_1_audio_salad_template.html#a1fb9a250e309eaf260255b0548626ccf',1,'importer.templates.AudioSaladTemplate.AudioSaladTemplate.serviceFinder()'],['../classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html#a448f0cd80553a061d5588ddaf319de9f',1,'importer.templates.State51Template.State51Template.serviceFinder()']]],
-  ['shorten_5furl_11',['shorten_url',['../namespace_upload_reports.html#ab95e0cdbcb69df2f571edeef90a1cdf7',1,'UploadReports']]],
-  ['statement_5femail_12',['statement_email',['../class_body_email_1_1_body_email.html#a902a1ca0673843bfb8fc105db1eb1173',1,'BodyEmail::BodyEmail']]]
+  ['set_5fpath_5fbased_5fon_5ftag_11',['set_path_based_on_tag',['../class_validation_1_1_uploads.html#a18f0f3c0c67491bd87a57a34612569b4',1,'Validation.Uploads.set_path_based_on_tag()'],['../class_validation_1_1_importer.html#a71267061f049d135c6b992ae19649ea1',1,'Validation.Importer.set_path_based_on_tag()'],['../class_validation_1_1_reports.html#a434ebcad7ba35a083308f86fe83ca9c1',1,'Validation.Reports.set_path_based_on_tag()'],['../class_validation_1_1_statements.html#ade28181d6d37f9474e45ae9cd930b12c',1,'Validation.Statements.set_path_based_on_tag()']]],
+  ['shorten_5furl_12',['shorten_url',['../namespace_upload_reports.html#ab95e0cdbcb69df2f571edeef90a1cdf7',1,'UploadReports']]],
+  ['statement_5femail_13',['statement_email',['../class_body_email_1_1_body_email.html#a902a1ca0673843bfb8fc105db1eb1173',1,'BodyEmail::BodyEmail']]],
+  ['statements_14',['statements',['../namespaceapp.html#ab56528fb11f02f7bd31a60f28feedf42',1,'app']]]
 ];

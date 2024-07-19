@@ -4,7 +4,7 @@ var searchData=
   ['amazontemplate_2epy_1',['AmazonTemplate.py',['../_amazon_template_8py.html',1,'']]],
   ['anghamitemplate_2epy_2',['AnghamiTemplate.py',['../_anghami_template_8py.html',1,'']]],
   ['api_5fworkflow_2emd_3',['api_workflow.md',['../api__workflow_8md.html',1,'']]],
-  ['app_2epy_4',['app.py',['../app_8py.html',1,'']]],
+  ['app_2epy_4',['app.py',['../app_8py.html',1,'(Global Namespace)'],['../catalogue__api_2app_8py.html',1,'(Global Namespace)']]],
   ['audiomacktemplate_2epy_5',['AudioMackTemplate.py',['../_audio_mack_template_8py.html',1,'']]],
   ['audiosalad_2epy_6',['audiosalad.py',['../audiosalad_8py.html',1,'']]],
   ['audiosaladtemplate_2epy_7',['AudioSaladTemplate.py',['../_audio_salad_template_8py.html',1,'']]],

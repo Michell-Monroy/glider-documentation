@@ -19,7 +19,7 @@ var searchData=
   ['api_20module_20workflow_16',['API Module Workflow',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2api__workflow.html',1,'']]],
   ['api_5fworkflow_2emd_17',['api_workflow.md',['../api__workflow_8md.html',1,'']]],
   ['app_18',['app',['../namespaceapp.html',1,'app'],['../namespaceapp.html#a675b4ea702c13dc4b8c05f985a25b496',1,'app.app']]],
-  ['app_2epy_19',['app.py',['../app_8py.html',1,'']]],
+  ['app_2epy_19',['app.py',['../app_8py.html',1,'(Global Namespace)'],['../catalogue__api_2app_8py.html',1,'(Global Namespace)']]],
   ['args_20',['args',['../namespace_gen_token_e_c2.html#af4950311c9dc8c2f62aa6365000ff1e6',1,'GenTokenEC2']]],
   ['artistpreprocessing_21',['ArtistPreprocessing',['../classimporter_1_1templates_1_1_fuga_template_1_1_fuga_template.html#a57d3fa6ea37887e632babc37d6a41e3d',1,'importer::templates::FugaTemplate::FugaTemplate']]],
   ['assetcurrency_22',['assetCurrency',['../classimporter_1_1templates_1_1_amazon_template_1_1_amazon_template.html#a6d04f9a137e891aafac7d0041c82093c',1,'importer::templates::AmazonTemplate::AmazonTemplate']]],

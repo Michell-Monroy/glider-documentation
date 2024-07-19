@@ -8,5 +8,6 @@ var searchData=
   ['soundtracktemplate_5',['SoundtrackTemplate',['../classimporter_1_1templates_1_1_soundtrack_template_1_1_soundtrack_template.html',1,'importer::templates::SoundtrackTemplate']]],
   ['spotifytemplate_6',['SpotifyTemplate',['../classimporter_1_1templates_1_1_spotify_template_1_1_spotify_template.html',1,'importer::templates::SpotifyTemplate']]],
   ['state51template_7',['State51Template',['../classimporter_1_1templates_1_1_state51_template_1_1_state51_template.html',1,'importer::templates::State51Template']]],
-  ['sync_8',['Sync',['../classapp_1_1_sync.html',1,'app']]]
+  ['statements_8',['Statements',['../class_validation_1_1_statements.html',1,'Validation']]],
+  ['sync_9',['Sync',['../classapp_1_1_sync.html',1,'app']]]
 ];

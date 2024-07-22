@@ -88,7 +88,7 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2_general_workflow"></a> <img src="https://github.com/Michell-Monroy/glider-documentation/blob/images-dev/images/aws.png?raw=true" alt="" style="width:900px;height:350px;" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md22"></a>
+<h1><a class="anchor" id="autotoc_md23"></a>
 Prerequisites</h1>
 <ul>
 <li>Python &gt;= <b>3.10</b></li>
@@ -98,7 +98,7 @@ Prerequisites</h1>
 <li>Access to glider repository in github</li>
 <li>Terraform <a href="https://www.terraform.io/downloads">install</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md23"></a>
+<h1><a class="anchor" id="autotoc_md24"></a>
 Tech Resources</h1>
 <ul>
 <li>Google Cloud Console</li>
@@ -113,10 +113,10 @@ Tech Resources</h1>
 <li>PostgreSQL</li>
 <li>Latex compiler</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md24"></a>
+<h1><a class="anchor" id="autotoc_md25"></a>
 Workflow</h1>
 <p><img src="https://github.com/Michell-Monroy/glider-documentation/blob/images-dev/images/full-workflow.png?raw=true" alt="" style="width:1080px;height:950px;" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md25"></a>
+<h1><a class="anchor" id="autotoc_md26"></a>
 Modules</h1>
 <p>The modules are explained in "Related Pages" section and they are the following:</p><ul>
 <li>Uploads Module See more</li>
@@ -127,14 +127,14 @@ Modules</h1>
 </ul>
 <p>For more information you can see</p>
 <p><a href="https://docs.google.com/document/d/19XkFgB-OTEtRcbQtVm4sBJ3wb6uPWDsBZDd3MB89rgs/edit?usp=drive_web">Modules Documentation</a></p>
-<h1><a class="anchor" id="autotoc_md26"></a>
+<h1><a class="anchor" id="autotoc_md27"></a>
 AWS infrastructure</h1>
 <p>We use ECS (Fargate) which contains several routes (one per module). Each module should be executed according to input parameters and the route called by FE. <br  />
  Fargate is a serverless service, so when the modules are called, it are executed via Docker container. <br  />
  This container is saved in a private repository in ECR and used via ECS tasks. More information in <a href="https://docs.google.com/document/d/1qf7KB7v85rolt0IUu6okfR7tkXgGmZX87TXQlHVR_Os/edit?usp=sharing">OTTO: AWS Fargate Installation</a></p>
 <p><img src="https://github.com/Michell-Monroy/glider-documentation/blob/images-dev/images/AWS-Full_infrastructure.png?raw=true" alt="" style="width:780px;height:700px;" class="inline"/></p>
 <p>This infrastructure is created via terraform <a class="el" href="md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2_how_deploy_a_w_s.html">See more</a></p>
-<h1><a class="anchor" id="autotoc_md27"></a>
+<h1><a class="anchor" id="autotoc_md28"></a>
 How to deploy code</h1>
 <p>Follow this steps to get and deploy code</p>
 <ol type="1">
@@ -172,7 +172,7 @@ How to deploy code</h1>
 <p class="startli">It loads env vars to be used still you change them.</p>
 </li>
 </ol>
-<h2><a class="anchor" id="autotoc_md28"></a>
+<h2><a class="anchor" id="autotoc_md29"></a>
 How to deploy code in docker</h2>
 <ol type="1">
 <li><p class="startli">Create a Dockerfile (if it doesn't exist) and copy this format</p>

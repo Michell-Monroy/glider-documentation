@@ -174,10 +174,12 @@ Local Testing</h3>
 Catalogue Generation Submodule</h1>
 <p>The general performance is the following:</p>
 <ol type="1">
-<li>Takes the current sales (processed previously by importer) from MongoDB</li>
-<li>Identifies the unique releases_id</li>
-<li>Once it has the releases, it takes the isrc_id and the album/track information to fill the catalogue in json format</li>
-<li>The information is uploaded to MongoDB</li>
+<li>Takes the current sales (processed previously by importer) from MongoDB. It is carried out using the accounting date to identify the sales just processed</li>
+<li>Identifies the unique releases_id (UPC)</li>
+<li>Once it has the releases, it takes all isrc releated to the current release_id and add them into a list, this list contains the track_title, label_id, artists of each isrc releated to upc.</li>
+<li>Finally the release_title and client_id are added to releases_id info</li>
+<li>If any release_id is not in the database yet, the information is uploaded to MongoDB. <br  />
+ Else, it is updated according new information added</li>
 </ol>
 <h3><a class="anchor" id="autotoc_md16"></a>
 Workflow</h3>
@@ -192,29 +194,30 @@ Testing</h2>
 Local Testing</h3>
 <ol type="1">
 <li>Upload one or more valid file in AWS s3 bucket</li>
-<li><p class="startli">Activate testing variables</p>
-<p class="startli"><code>source deploy/dev_vars.sh</code></p>
+<li><p class="startli">Load testing variables</p>
+<p class="startli"><code>cp .env.dev .env</code></p>
 </li>
-<li><p class="startli">Into tests/ create a python script following this format: test_importer.py To activate catalogue generation make sure that you set "cat_gen" = "True".</p>
+<li><p class="startli">Into tests/ create a python script following this format: test_catalogue.py</p>
 <div class="fragment"><div class="line">import os</div>
 <div class="line">import sys</div>
 <div class="line">import traceback</div>
+<div class="line">from datetime import datetime</div>
 <div class="line">sys.path.insert(1, &quot;src/importer&quot;)</div>
 <div class="line">sys.path.insert(1, &quot;run&quot;)</div>
 <div class="line">from ReceivePath import receive_path</div>
 <div class="line">from IdentifyFormat import identify_format</div>
 <div class="line">from ProcessFiles import process_files_parallel</div>
 <div class="line">from CreateSnapshots import results_grouped</div>
-<div class="line">from CatalogueGenerator import generate_catalogue</div>
+<div class="line">from CatalogueGeneratorV2 import catalogue_generation</div>
 <div class="line">from SendNotifications import send_importer_notification</div>
-<div class="line">from RunEC2 import stop_ec2</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line"> </div>
-<div class="line">test_data = {</div>
+<div class="line">now = datetime.now()</div>
+<div class="line">input_data = {</div>
 <div class="line">    &quot;module&quot;: &quot;importer&quot;,</div>
 <div class="line">    &quot;tag&quot;: &lt;&quot;test&quot;/&quot;prod&quot;&gt;,</div>
-<div class="line">    &quot;cat_gen&quot;: &quot;True&quot;,</div>
+<div class="line">    &quot;cat_gen&quot;: &lt;&quot;True&quot;/&quot;False&quot;&gt;, #True for generate catalogue from sales, False for don&#39;t</div>
+<div class="line">    &quot;cat_match&quot;: &lt;&quot;True&quot;/&quot;False&quot;&gt;, #True for generate catalogue from sales, False for don&#39;t</div>
 <div class="line">    &quot;client_id&quot;: &lt;&lt;client_id&gt;&gt;, </div>
 <div class="line">    &quot;bucket&quot;: [&lt;&lt;aws_bucket_in&gt;&gt;, &lt;&lt;aws_bucket_out&gt;&gt;], </div>
 <div class="line">    &quot;path&quot;: [&lt;&lt;aws_path_in&gt;&gt;, &lt;&lt;aws_path_out&gt;&gt;],</div>
@@ -234,6 +237,7 @@ Local Testing</h3>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"> </div>
+<div class="line"> </div>
 <div class="line">if __name__ == &quot;__main__&quot;:</div>
 <div class="line">    try: </div>
 <div class="line">        identify_formats = identify_format(input_data)</div>
@@ -242,57 +246,92 @@ Local Testing</h3>
 <div class="line">        print(&quot;Files Processed: &quot;,files_processed)</div>
 <div class="line">        snapshots = results_grouped(files_processed, None)</div>
 <div class="line">        print(&quot;Snapshots: &quot;,snapshots)</div>
-<div class="line">        if files_processed[&quot;cat_gen&quot;] == &quot;True&quot;:</div>
-<div class="line">            catalogue = generate_catalogue(snapshots, None)</div>
+<div class="line">        if input_data[&quot;cat_gen&quot;] == &quot;True&quot;:</div>
+<div class="line">            catalogue = catalogue_generation(now, input_data[&quot;client_id&quot;])</div>
 <div class="line">            print(&quot;Catalogue: &quot;, catalogue)</div>
-<div class="line">        send_importer_notification(&quot;success&quot;, input_data[&quot;module&quot;], input_data[&quot;on_finish&quot;])</div>
-<div class="line">        stop_ec2()</div>
+<div class="line">        send_importer_notification(input_data, &quot;success&quot;, &quot;&quot;)</div>
 <div class="line">    except Exception as e:</div>
 <div class="line">        message = str(sys.exc_info()[2]) + str(traceback.format_exc())</div>
-<div class="line">        send_importer_notification(&quot;fail&quot;, input_data[&quot;module&quot;], input_data[&quot;on_finish&quot;], message)</div>
+<div class="line">        send_importer_notification(input_data, &quot;fail&quot;, &quot;&quot;, message)</div>
 </div><!-- fragment --></li>
 <li><p class="startli">Run script</p>
-<p class="startli"><code>python tests/test_importer.py</code></p>
+<p class="startli"><code>python tests/test_catalogue.py</code></p>
 </li>
 </ol>
-<h2><a class="anchor" id="autotoc_md20"></a>
-AWS Testing</h2>
-<p>This procedure is exactly the same as the importer, but here is the steps to follow:</p>
+<h3><a class="anchor" id="autotoc_md20"></a>
+Routes Testing</h3>
 <ol type="1">
-<li>Go to AWS -&gt; Step Functions</li>
-<li>Select the step function (select_and_execute_module)</li>
-<li><p class="startli">Click on Start execution</p>
-<p class="startli">(Optional: set a testing name)</p>
+<li><p class="startli">Load testing variables and enviroment</p>
+<p class="startli"><code>cp .env.dev .env</code></p>
 </li>
-<li><p class="startli">Set json object</p>
+<li><p class="startli">Run flask server locally</p>
+<p class="startli"><code>python app.py</code></p>
+<p class="startli">It runs a local sever in 5000 port. If you request a GET to <a href="http://127.0.0.1:5000">http://127.0.0.1:5000</a> you would have this response</p>
 <div class="fragment"><div class="line">{</div>
-<div class="line">    &quot;module&quot;: &quot;importer&quot;,</div>
-<div class="line">    &quot;tag&quot;: &lt;&quot;test&quot;/&quot;prod&quot;&gt;,</div>
-<div class="line">    &quot;cat_gen&quot;: &quot;True&quot;, </div>
-<div class="line">    &quot;client_id&quot;: &lt;&lt;client_id&gt;&gt;, </div>
-<div class="line">    &quot;bucket&quot;: [&lt;&lt;aws_bucket_in&gt;&gt;, &lt;&lt;aws_bucket_out&gt;&gt;], </div>
-<div class="line">    &quot;path&quot;: [&lt;&lt;aws_path_in&gt;&gt;, &lt;&lt;aws_path_out&gt;&gt;],</div>
-<div class="line">    </div>
-<div class="line">    &quot;currency&quot;: { </div>
-<div class="line">        &quot;USD&quot;: 1,</div>
-<div class="line">        &quot;EUR&quot;: 1,</div>
-<div class="line">        &quot;GBP&quot;: 1</div>
-<div class="line">    },</div>
-<div class="line">    </div>
-<div class="line">    &quot;files&quot;:[</div>
-<div class="line">        {&quot;file_id&quot;: &lt;&lt;file_id_1&gt;&gt;, &quot;file&quot;: &lt;&lt;file_1&gt;&gt;},</div>
-<div class="line">        {&quot;file_id&quot;: &lt;&lt;file_id_2&gt;&gt;, &quot;file&quot;: &lt;&lt;file_2&gt;&gt;}</div>
-<div class="line">    ],</div>
-<div class="line">    &quot;on_finish&quot;: &lt;&lt;webhook.url&gt;&gt;</div>
-<div class="line"> </div>
+<div class="line">    &quot;date&quot;: CURRENT_DATE,</div>
+<div class="line">    &quot;env&quot;: CURRENT_ENV,</div>
+<div class="line">    &quot;message&quot;: &quot;Welcome to Glider Project&quot;,</div>
+<div class="line">    &quot;status&quot;: 200</div>
 <div class="line">}</div>
 </div><!-- fragment --></li>
-<li><p class="startli">Click on Start execution. If the execution is successfully, you can see it in EC2 instance</p>
-<p class="startli">a) In glider-lite </p><div class="fragment"><div class="line">ssh -i Glider-Postgres.pem ubuntu@ec2-35-179-24-180.eu-west-2.compute.amazonaws.com</div>
-</div><!-- fragment --><p> b) In glider-pro </p><div class="fragment"><div class="line">ssh -i Glider-Postgres.pem ubuntu@ec2-18-168-188-120.eu-west-2.compute.amazonaws.com</div>
-</div><!-- fragment --> </li>
+<li><p class="startli">Into tests/ create a python script following this format: test_route_importer.py</p>
+<div class="fragment"><div class="line">import os</div>
+<div class="line">import sys</div>
+<div class="line">import traceback</div>
+<div class="line">import requests</div>
+<div class="line"> </div>
+<div class="line">if __name__ == &quot;__main__&quot;:</div>
+<div class="line">    input_data = {</div>
+<div class="line">        &quot;module&quot;: &quot;importer&quot;,</div>
+<div class="line">        &quot;tag&quot;: &lt;&quot;test&quot;/&quot;prod&quot;&gt;,</div>
+<div class="line">        &quot;cat_gen&quot;: &lt;&quot;True&quot;/&quot;False&quot;&gt;, #True for generate catalogue from sales, False for don&#39;t</div>
+<div class="line">        &quot;cat_match&quot;: &lt;&quot;True&quot;/&quot;False&quot;&gt;, #True for generate catalogue from sales, False for don&#39;t</div>
+<div class="line">        &quot;client_id&quot;: &lt;&lt;client_id&gt;&gt;, </div>
+<div class="line">        &quot;bucket&quot;: [&lt;&lt;aws_bucket_in&gt;&gt;, &lt;&lt;aws_bucket_out&gt;&gt;], </div>
+<div class="line">        &quot;path&quot;: [&lt;&lt;aws_path_in&gt;&gt;, &lt;&lt;aws_path_out&gt;&gt;],</div>
+<div class="line">        </div>
+<div class="line">        &quot;currency&quot;: { #Currency can change</div>
+<div class="line">            &quot;USD&quot;: 1,</div>
+<div class="line">            &quot;EUR&quot;: 1,</div>
+<div class="line">            &quot;GBP&quot;: 1</div>
+<div class="line">        },</div>
+<div class="line">        </div>
+<div class="line">        &quot;files&quot;:[</div>
+<div class="line">            {&quot;file_id&quot;: &lt;&lt;file_id_1&gt;&gt;, &quot;file&quot;: &lt;&lt;file_1&gt;&gt;},</div>
+<div class="line">            {&quot;file_id&quot;: &lt;&lt;file_id_2&gt;&gt;, &quot;file&quot;: &lt;&lt;file_2&gt;&gt;}</div>
+<div class="line">        ],</div>
+<div class="line">        &quot;on_finish&quot;: &lt;&lt;webhook.url&gt;&gt;</div>
+<div class="line"> </div>
+<div class="line">    }</div>
+<div class="line">    response = requests.post(&#39;http://127.0.0.1:5000/importer&#39;, json=input_data)</div>
+<div class="line">    print(response.json())</div>
+</div><!-- fragment --></li>
+<li><p class="startli">Run script</p>
+<p class="startli"><code>python tests/test_route_importer.py</code></p>
+<p class="startli">If everything is ok, it returns the following:</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">    &#39;date&#39;: CURRENT_DATE, </div>
+<div class="line">    &#39;message&#39;: &#39;Module procedure will start immediately&#39;, </div>
+<div class="line">    &#39;module&#39;: &#39;importer&#39;, </div>
+<div class="line">    &#39;status&#39;: 200</div>
+<div class="line">}</div>
+</div><!-- fragment --><p class="startli">If a field is missing or it's wrong, it returns:</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">    &#39;date&#39;: &#39;Tue, 16 Jul 2024 17:11:48 GMT&#39;, </div>
+<div class="line">    &#39;error_in_field&#39;: [&#39;client_id&#39;], </div>
+<div class="line">    &#39;error_message&#39;: &#39;Field required&#39;, </div>
+<div class="line">    &#39;module&#39;: &#39;importer&#39;, </div>
+<div class="line">    &#39;status&#39;: 500</div>
+<div class="line">}</div>
+</div><!-- fragment --></li>
 </ol>
-</div></div><!-- contents -->
+<h3><a class="anchor" id="autotoc_md21"></a>
+AWS Testing</h3>
+<p>When infrastructure is deployed in AWS (ECS, ECR):</p>
+<p>Repeat all steps shown in Routes Testing, just change the link to server</p>
+<p>a) For glider-staging </p><div class="fragment"><div class="line">http://glider-staging-lb-676133308.us-east-1.elb.amazonaws.com/importer</div>
+</div><!-- fragment --><p> b) For glider-production </p><div class="fragment"><div class="line">http://glider-production-lb-120036359.us-east-1.elb.amazonaws.com/importer</div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

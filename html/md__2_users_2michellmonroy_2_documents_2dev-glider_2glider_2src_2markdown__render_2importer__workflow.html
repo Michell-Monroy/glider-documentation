@@ -87,8 +87,8 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">Importer Workflow</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md32"></a> </p>
-<h1><a class="anchor" id="autotoc_md33"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md33"></a> </p>
+<h1><a class="anchor" id="autotoc_md34"></a>
 Description</h1>
 <p>Importer module is composed of these steps:</p>
 <ol type="1">
@@ -102,13 +102,13 @@ Description</h1>
 <li>Generate new data using mapped columns: Once the required columns and their respective values are known, DataFrames are created (one per file) in which the columns are constructed according to the "name" field of "mappingTemplate" field from format.json. <br  />
  When this step is completed, the new usage reports are saved in s3 as parquet and mongoDB.</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md34"></a>
+<h1><a class="anchor" id="autotoc_md35"></a>
 Workflow</h1>
 <p><img src="https://github.com/Michell-Monroy/glider-documentation/blob/images-dev/images/Importer_Workflow.png?raw=true" alt="" style="width:700px;height:900px;" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md35"></a>
+<h1><a class="anchor" id="autotoc_md36"></a>
 How to set env variables and venv</h1>
 <p>There are two kind of variables, to dev and local testing.</p>
-<h2><a class="anchor" id="autotoc_md36"></a>
+<h2><a class="anchor" id="autotoc_md37"></a>
 How to create venv dev</h2>
 <ol type="1">
 <li><p class="startli">Create a new virtual env (if you have created this venv pass to step 4)</p>
@@ -146,7 +146,7 @@ How to create venv dev</h2>
 <p class="startli">It loads env vars to be used still you change them.</p>
 </li>
 </ol>
-<h2><a class="anchor" id="autotoc_md37"></a>
+<h2><a class="anchor" id="autotoc_md38"></a>
 How to create venv local testing</h2>
 <ol type="1">
 <li><p class="startli">Create a new virtual env (if you have created this venv pass to step 4)</p>
@@ -160,9 +160,9 @@ How to create venv local testing</h2>
 </li>
 <li>Loads the env variables in glider/.env file which is useful to deploy infrastructure (see previous section)</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md38"></a>
+<h1><a class="anchor" id="autotoc_md39"></a>
 Testing</h1>
-<h2><a class="anchor" id="autotoc_md39"></a>
+<h2><a class="anchor" id="autotoc_md40"></a>
 Local Testing</h2>
 <ol type="1">
 <li>Upload one or more valid file in AWS s3 bucket</li>
@@ -173,17 +173,18 @@ Local Testing</h2>
 <div class="fragment"><div class="line">import os</div>
 <div class="line">import sys</div>
 <div class="line">import traceback</div>
+<div class="line">from datetime import datetime</div>
 <div class="line">sys.path.insert(1, &quot;src/importer&quot;)</div>
 <div class="line">sys.path.insert(1, &quot;run&quot;)</div>
 <div class="line">from ReceivePath import receive_path</div>
 <div class="line">from IdentifyFormat import identify_format</div>
 <div class="line">from ProcessFiles import process_files_parallel</div>
 <div class="line">from CreateSnapshots import results_grouped</div>
-<div class="line">from CatalogueGenerator import generate_catalogue</div>
+<div class="line">from CatalogueGeneratorV2 import catalogue_generation</div>
 <div class="line">from SendNotifications import send_importer_notification</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line"> </div>
+<div class="line">now = datetime.now()</div>
 <div class="line">input_data = {</div>
 <div class="line">    &quot;module&quot;: &quot;importer&quot;,</div>
 <div class="line">    &quot;tag&quot;: &lt;&quot;test&quot;/&quot;prod&quot;&gt;,</div>
@@ -218,7 +219,7 @@ Local Testing</h2>
 <div class="line">        snapshots = results_grouped(files_processed, None)</div>
 <div class="line">        print(&quot;Snapshots: &quot;,snapshots)</div>
 <div class="line">        if input_data[&quot;cat_gen&quot;] == &quot;True&quot;:</div>
-<div class="line">            catalogue = generate_catalogue(snapshots, None)</div>
+<div class="line">            catalogue = catalogue_generation(now, input_data[&quot;client_id&quot;])</div>
 <div class="line">            print(&quot;Catalogue: &quot;, catalogue)</div>
 <div class="line">        send_importer_notification(input_data, &quot;success&quot;, &quot;&quot;)</div>
 <div class="line">    except Exception as e:</div>
@@ -230,7 +231,7 @@ Local Testing</h2>
 </li>
 </ol>
 <p>This procedure works to see carefully each step of the procedure, but if you want to test the route funcionality, following these steps:</p>
-<h2><a class="anchor" id="autotoc_md40"></a>
+<h2><a class="anchor" id="autotoc_md41"></a>
 Routes Testing</h2>
 <ol type="1">
 <li><p class="startli">Load testing variables and enviroment</p>
@@ -297,7 +298,7 @@ Routes Testing</h2>
 <div class="line">}</div>
 </div><!-- fragment --></li>
 </ol>
-<h2><a class="anchor" id="autotoc_md41"></a>
+<h2><a class="anchor" id="autotoc_md42"></a>
 AWS Testing</h2>
 <p>When infrastructure is deployed in AWS (ECS, ECR):</p>
 <p>Repeat all steps shown in Routes Testing, just change the link to server</p>

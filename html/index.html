@@ -87,16 +87,10 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">Glider General Overview </div></div>
 </div><!--header-->
 <div class="contents">
-<<<<<<< HEAD
-<div class="textblock"><p><a class="anchor" id="md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2_general_workflow"></a> <img src="https://github.com/Michell-Monroy/glider-documentation/blob/images-dev/images/aws.png?raw=true" alt="" style="width:900px;height:350px;" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md22"></a>
-Prerequisites</h1>
-=======
 <div class="textblock"><p><a class="anchor" id="md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2_general_workflow"></a></p>
 <p><img src="aws.png" alt="" style="width:900px;height:350px;" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Technology stack</h1>
->>>>>>> 4d6acd55a96da5cbf13e5842eae0fed6acfe4019
 <ul>
 <li>Python &gt;= <b>3.10</b></li>
 <li>Docker &gt;= <b>26.1.4</b></li>
@@ -105,14 +99,8 @@ Technology stack</h1>
 <li>AWS ECR</li>
 <li>Terraform <a href="https://www.terraform.io/downloads">install</a></li>
 </ul>
-<<<<<<< HEAD
-<h1><a class="anchor" id="autotoc_md23"></a>
-Tech Resources</h1>
-<ul>
-=======
 </li>
 <li>Gcloud<ul>
->>>>>>> 4d6acd55a96da5cbf13e5842eae0fed6acfe4019
 <li>Google Cloud Console</li>
 <li>Google Drive API</li>
 </ul>
@@ -123,18 +111,6 @@ Tech Resources</h1>
 <li>Latex compiler</li>
 <li>Access to glider repository in github</li>
 </ul>
-<<<<<<< HEAD
-<h1><a class="anchor" id="autotoc_md24"></a>
-Workflow</h1>
-<p><img src="https://github.com/Michell-Monroy/glider-documentation/blob/images-dev/images/full-workflow.png?raw=true" alt="" style="width:1080px;height:950px;" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md25"></a>
-Modules</h1>
-<p>The modules are explained in "Related Pages" section and they are the following:</p><ul>
-<li>Uploads Module See more</li>
-<li>Importer Module See more</li>
-<li>Catalogue Module See more</li>
-<li>Report Module See more</li>
-=======
 <h1><a class="anchor" id="autotoc_md2"></a>
 Workflow</h1>
 <p><img src="full-workflow.png" alt="" width="1080" height="950" class="inline"/></p>
@@ -145,22 +121,10 @@ Modules</h1>
 <li>Importer Module <a class="el" href="md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2importer__workflow.html">See more</a></li>
 <li>Catalogue Module See more</li>
 <li>Report Module <a class="el" href="md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2report__workflow.html">See more</a></li>
->>>>>>> 4d6acd55a96da5cbf13e5842eae0fed6acfe4019
 <li>Statement Module See more</li>
 </ul>
 <p>For more information you can see</p>
 <p><a href="https://docs.google.com/document/d/19XkFgB-OTEtRcbQtVm4sBJ3wb6uPWDsBZDd3MB89rgs/edit?usp=drive_web">Modules Documentation</a></p>
-<<<<<<< HEAD
-<h1><a class="anchor" id="autotoc_md26"></a>
-AWS infrastructure</h1>
-<p>We use a step function to call one lambda function which determines what module should be executed according to input parameters. <br  />
- Once done this, the module is executed in a EC2 instance according to requirements (test/production)</p>
-<p><img src="https://github.com/Michell-Monroy/glider-documentation/blob/images-dev/images/aws-full-infrastructure.png?raw=true" alt="" style="width:780px;height:950px;" class="inline"/></p>
-<p>This infrastructure is created via terraform <a class="el" href="md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2_how_deploy_a_w_s.html">See more</a></p>
-<h1><a class="anchor" id="autotoc_md27"></a>
-How to deploy code</h1>
-<p>Follow this steps to get and deploy code</p>
-=======
 <h1><a class="anchor" id="autotoc_md4"></a>
 AWS infrastructure</h1>
 <p>We use ECS (Fargate) which contains several routes (one per module). Each module should be executed according to input parameters and the route called by FE. <br  />
@@ -170,7 +134,6 @@ AWS infrastructure</h1>
 <p>This infrastructure is created via terraform <a class="el" href="md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2_how_deploy_a_w_s.html">See more</a></p>
 <h2><a class="anchor" id="autotoc_md5"></a>
 How to deploy</h2>
->>>>>>> 4d6acd55a96da5cbf13e5842eae0fed6acfe4019
 <ol type="1">
 <li><p class="startli">Set env variables. You should create two .env files</p>
 <p class="startli">a) .env.dev for developing and testing <br  />

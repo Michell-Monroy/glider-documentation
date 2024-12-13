@@ -2,4 +2,8 @@ latex
 .DS_Store
 Doxyfile
 Doxyfile.bak
+<<<<<<< HEAD
 others
+=======
+venv
+>>>>>>> 4d6acd55a96da5cbf13e5842eae0fed6acfe4019

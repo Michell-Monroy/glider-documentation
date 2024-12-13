@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="importer.ErrorHandler.Error\lHandler",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classimporter_1_1_error_handler_1_1_error_handler.html",tooltip=" "];
+  Node0 [id="Node000000",label="src.importer.MongoConnection.mongo\l_connection",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsrc_1_1importer_1_1_mongo_connection_1_1mongo__connection.html",tooltip=" "];
 }

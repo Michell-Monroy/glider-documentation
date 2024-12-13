@@ -1,13 +1,11 @@
 var searchData=
 [
-  ['change_5fperiod_0',['change_period',['../namespace_amazon_f_t_p.html#adaa915732ac8ab2ebefaad64dc64ac6a',1,'AmazonFTP.change_period()'],['../namespace_f_t_p_tools.html#a80ef4ee2efd0854d53caa22f06b0ee5a',1,'FTPTools.change_period()']]],
-  ['clean_5ffiles_1',['clean_files',['../namespace_upload_files_s3.html#a57f56cd91f1a76d464bb3b0212658bd8',1,'UploadFilesS3']]],
-  ['cols_5fotto_2',['cols_otto',['../namespaceimporter_1_1_identify_format.html#a3371091bd79a1894f162950d7b3326aa',1,'importer::IdentifyFormat']]],
-  ['compare_5fdata_3',['compare_data',['../class_find_last_date_1_1find__newest.html#af500898d5187cf437bfa4afea02f9363',1,'FindLastDate::find_newest']]],
-  ['create_5fnew_5fdf_4',['create_new_df',['../namespaceimporter_1_1_process_files.html#a1f2ae01869726e78c97cb8e1da4cf0ec',1,'importer::ProcessFiles']]],
-  ['create_5fpresigned_5furl_5',['create_presigned_url',['../namespace_upload_reports.html#a66e3bc1fae05ab2aad541cdfbbc8ccb3',1,'UploadReports']]],
-  ['create_5fsnapshot_6',['create_snapshot',['../namespace_report_snapshot.html#ab4de627686be8f3a33a079e7e7e60520',1,'ReportSnapshot']]],
-  ['create_5fsqs_7',['create_sqs',['../class_upload_releases_mongo_1_1upload__releases.html#af9b471a2ebde954f9ccf59ce06f57598',1,'UploadReleasesMongo::upload_releases']]],
-  ['csvheaders_8',['csvHeaders',['../namespaceimporter_1_1_identify_format.html#a31efc6bbc9f3ec7c500a3a756efaad8d',1,'importer::IdentifyFormat']]],
-  ['currency_5ftype_9',['currency_type',['../classimporter_1_1_columns_manager_1_1get___d_f__otto.html#a0511c1e6478357ce131e2892ee3352b9',1,'importer::ColumnsManager::get_DF_otto']]]
+  ['catalogue_5fgeneration_0',['catalogue_generation',['../namespacesrc_1_1importer_1_1_catalogue_generator_v2.html#ae37b5134dd0d73a494031872a1cef226',1,'src::importer::CatalogueGeneratorV2']]],
+  ['clean_5ffiles_1',['clean_files',['../namespacesrc_1_1upload__module_1_1common_1_1_upload_files_s3.html#abaa87e0495b3b66c533c32fca73d14ef',1,'src::upload_module::common::UploadFilesS3']]],
+  ['cols_5fotto_2',['cols_otto',['../namespacesrc_1_1importer_1_1_identify_format.html#a04d4baf7c691f804a8a537877b6466f0',1,'src::importer::IdentifyFormat']]],
+  ['create_5fnew_5fdf_3',['create_new_df',['../namespacesrc_1_1importer_1_1_process_files.html#a7106eded5ab663ced2a72534418f49ee',1,'src::importer::ProcessFiles']]],
+  ['create_5fpresigned_5furl_4',['create_presigned_url',['../namespacesrc_1_1report__generation_1_1_upload_reports.html#a38d8d70d990090005db6bb2a5b75e313',1,'src::report_generation::UploadReports']]],
+  ['create_5fsnapshot_5',['create_snapshot',['../namespacesrc_1_1report__generation_1_1_report_snapshot.html#a5cfb3883411c1f43b3b038ab1adfd756',1,'src::report_generation::ReportSnapshot']]],
+  ['csvheaders_6',['csvHeaders',['../namespacesrc_1_1importer_1_1_identify_format.html#a2c12b3fb24ff749d815269272c5f22e0',1,'src::importer::IdentifyFormat']]],
+  ['currency_5ftype_7',['currency_type',['../classsrc_1_1importer_1_1_columns_manager_1_1_build_otto_data.html#a56aa8ac2aad9f30acea9d3bec478f3e0',1,'src::importer::ColumnsManager::BuildOttoData']]]
 ];

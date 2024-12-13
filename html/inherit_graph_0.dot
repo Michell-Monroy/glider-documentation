@@ -5,5 +5,19 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="BodyEmail.BodyEmail",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_body_email_1_1_body_email.html",tooltip=" "];
+  Node0 [id="Node000000",label="Exception",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node0 -> Node1 [id="edge1_Node000000_Node000001",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 [id="Node000001",label="src.importer.CatalogueGenerator.\lEmptyException",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsrc_1_1importer_1_1_catalogue_generator_1_1_empty_exception.html",tooltip=" "];
+  Node0 -> Node2 [id="edge2_Node000000_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="src.importer.ErrorHandler.\lCurrencyNotFound",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsrc_1_1importer_1_1_error_handler_1_1_currency_not_found.html",tooltip=" "];
+  Node0 -> Node3 [id="edge3_Node000000_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="src.importer.ErrorHandler.\lFileNotLoaded",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsrc_1_1importer_1_1_error_handler_1_1_file_not_loaded.html",tooltip=" "];
+  Node0 -> Node4 [id="edge4_Node000000_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="src.importer.ErrorHandler.\lFileNotSupported",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsrc_1_1importer_1_1_error_handler_1_1_file_not_supported.html",tooltip=" "];
+  Node0 -> Node5 [id="edge5_Node000000_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="src.importer.ErrorHandler.\lValidationFailed",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsrc_1_1importer_1_1_error_handler_1_1_validation_failed.html",tooltip=" "];
+  Node0 -> Node6 [id="edge6_Node000000_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="src.importer.generator.Empty\lException",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsrc_1_1importer_1_1generator_1_1_empty_exception.html",tooltip=" "];
+  Node0 -> Node7 [id="edge7_Node000000_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="src.importer.templates.Template\lError.TemplateError",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsrc_1_1importer_1_1templates_1_1_template_error_1_1_template_error.html",tooltip=" "];
 }

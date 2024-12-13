@@ -1,5 +1,6 @@
 var searchData=
 [
+<<<<<<< HEAD
   ['gdrive_5fmodule_2epng_0',['GDrive_Module.png',['../_g_drive___module_8png.html',1,'']]],
   ['gen_5ffile_5flist_5fdrive_1',['gen_file_list_drive',['../namespace_tools.html#a662180edd0dcdf7c3c40e323bd403e32',1,'Tools']]],
   ['gen_5ffile_5flist_5fevent_2',['gen_file_list_event',['../namespace_tools.html#ade912b615c9fe6084d5613970ea2c697',1,'Tools']]],
@@ -61,4 +62,34 @@ var searchData=
   ['glider_5fupload_2epy_58',['glider_upload.py',['../glider__upload_8py.html',1,'']]],
   ['google_20drive_20submodule_59',['Google Drive Submodule',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2upload__workflow.html#autotoc_md56',1,'']]],
   ['group_5fby_5ffield_60',['group_by_field',['../namespaceimporter_1_1_create_snapshots.html#a56f0db3e03f459fc489bfc65e34fae47',1,'importer.CreateSnapshots.group_by_field()'],['../namespace_report_snapshot.html#a0a15f5df30b9169ee9e6c75baf35dc38',1,'ReportSnapshot.group_by_field()']]]
+=======
+  ['gen_5ffile_5flist_5fdrive_0',['gen_file_list_drive',['../namespacesrc_1_1upload__module_1_1common_1_1_tools.html#aff5c13793c1d8b324407d966df15e78b',1,'src::upload_module::common::Tools']]],
+  ['gen_5ffile_5flist_5fevent_1',['gen_file_list_event',['../namespacesrc_1_1upload__module_1_1common_1_1_tools.html#aa56190aa9b41ead6ccec4ecdd4ad87d5',1,'src::upload_module::common::Tools']]],
+  ['general_20overview_2',['Glider General Overview',['../index.html',1,'']]],
+  ['generalworkflow_2emd_3',['GeneralWorkflow.md',['../_general_workflow_8md.html',1,'']]],
+  ['generate_4',['generate',['../classsrc_1_1importer_1_1_catalogue_generator_1_1_generator.html#a3922657b56f46ac87b09e74477e9c8ba',1,'src.importer.CatalogueGenerator.Generator.generate()'],['../classsrc_1_1importer_1_1generator_1_1_generator.html#a25f24e96b77530165b58faf243b440bb',1,'src.importer.generator.Generator.generate()']]],
+  ['generate_5fcatalogue_5',['generate_catalogue',['../namespacesrc_1_1importer_1_1_catalogue_generator.html#a3bcae61cd8d000519d9e6b8821c13f65',1,'src::importer::CatalogueGenerator']]],
+  ['generate_5fcsv_2epy_6',['generate_csv.py',['../generate__csv_8py.html',1,'']]],
+  ['generate_5funmatched_5fcsv_7',['generate_unmatched_csv',['../namespacesrc_1_1report__generation_1_1_gen_unmatched.html#a144854294ea454fa83ad5d6655d473a8',1,'src::report_generation::GenUnmatched']]],
+  ['generatetoken_2epy_8',['GenerateToken.py',['../_generate_token_8py.html',1,'']]],
+  ['generator_9',['Generator',['../classsrc_1_1importer_1_1_catalogue_generator_1_1_generator.html',1,'src.importer.CatalogueGenerator.Generator'],['../classsrc_1_1importer_1_1generator_1_1_generator.html',1,'src.importer.generator.Generator']]],
+  ['generator_2epy_10',['generator.py',['../generator_8py.html',1,'']]],
+  ['genreport_2epy_11',['GenReport.py',['../_gen_report_8py.html',1,'']]],
+  ['gentokenec2_2epy_12',['GenTokenEC2.py',['../_gen_token_e_c2_8py.html',1,'']]],
+  ['genunmatched_2epy_13',['GenUnmatched.py',['../_gen_unmatched_8py.html',1,'']]],
+  ['get_5fdata_14',['get_data',['../classsrc_1_1importer_1_1_catalogue_generator_1_1_generator.html#afbfc9e92514802aa1e63eb3b9f6f6fb4',1,'src.importer.CatalogueGenerator.Generator.get_data()'],['../classsrc_1_1importer_1_1generator_1_1_generator.html#a1389ec4b4f7619b0745658ad4373ea1a',1,'src.importer.generator.Generator.get_data()'],['../namespacesrc_1_1importer_1_1_create_snapshots.html#acd0576cb3ba5fc1f1f9037d96e4eeffa',1,'src.importer.CreateSnapshots.get_data()']]],
+  ['get_5fhuman_5ferror_15',['get_human_error',['../classsrc_1_1importer_1_1_error_handler_1_1_error_handler.html#a5c20d598e145477c59140e67a82f9c6b',1,'src::importer::ErrorHandler::ErrorHandler']]],
+  ['get_5fmonth_16',['get_month',['../namespacesrc_1_1report__generation_1_1_gen_report.html#ab28b2befa79dbc5f1c9d80659028ec6b',1,'src.report_generation.GenReport.get_month()'],['../namespacesrc_1_1report__generation_1_1_gen_unmatched.html#a65e6e4fe2a5642422343ececd2d669da',1,'src.report_generation.GenUnmatched.get_month(date)']]],
+  ['get_5fnum_5ffiles_17',['get_num_files',['../namespacesrc_1_1report__generation_1_1_gen_unmatched.html#a6f9bc41dbf8eda1ec20483e5e1ea4596',1,'src::report_generation::GenUnmatched']]],
+  ['get_5fpath_18',['get_path',['../namespacesrc_1_1upload__module_1_1gdrive_1_1_file_cleaning.html#a27f7452d19f2250f5552984ef58be1ad',1,'src::upload_module::gdrive::FileCleaning']]],
+  ['get_5fperiod_19',['get_period',['../namespacesrc_1_1importer_1_1_process_files.html#a6d5e66bdb9a9da39d1a02a5c8061bbbf',1,'src::importer::ProcessFiles']]],
+  ['get_5frels_20',['get_rels',['../namespacesrc_1_1importer_1_1generate__csv.html#adb0966a14bfcb101e5f5ace9d2110dfb',1,'src::importer::generate_csv']]],
+  ['getdate_21',['getDate',['../classsrc_1_1importer_1_1_template_manager_1_1_template_manager.html#ae46c5bc4a96e0c5f71ced28f06c2123f',1,'src::importer::TemplateManager::TemplateManager']]],
+  ['getdf_22',['getDf',['../classsrc_1_1importer_1_1_catalogue_generator_1_1_generator.html#a750e7087e217ab94ce23c845a214d3c4',1,'src.importer.CatalogueGenerator.Generator.getDf()'],['../classsrc_1_1importer_1_1generator_1_1_generator.html#ad6e20b14dc6c3b685bc90ec5df425cb4',1,'src.importer.generator.Generator.getDf()']]],
+  ['gettype_23',['getType',['../classsrc_1_1importer_1_1_template_manager_1_1_template_manager.html#ade29e97a99691cc2670432f5ad2af857',1,'src::importer::TemplateManager::TemplateManager']]],
+  ['glider_20general_20overview_24',['Glider General Overview',['../index.html',1,'']]],
+  ['glider_5fupload_2epy_25',['glider_upload.py',['../glider__upload_8py.html',1,'']]],
+  ['google_20drive_20submodule_26',['Google Drive Submodule',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2upload__workflow.html#autotoc_md36',1,'']]],
+  ['group_5fby_5ffield_27',['group_by_field',['../namespacesrc_1_1importer_1_1_create_snapshots.html#a4e0241a7b8f1ff15e38a4298b20292ae',1,'src.importer.CreateSnapshots.group_by_field()'],['../namespacesrc_1_1report__generation_1_1_report_snapshot.html#a9850634d0a9b60b60f08e0fda3a486e0',1,'src.report_generation.ReportSnapshot.group_by_field()']]]
+>>>>>>> 4d6acd55a96da5cbf13e5842eae0fed6acfe4019
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
+<<<<<<< HEAD
   ['c_5fcopy_5fholder_0',['c_copy_holder',['../classmedia__release_1_1_release.html#ad40a9d88d2574f7219072c796d676925',1,'media_release::Release']]],
   ['c_5fcopy_5fyear_1',['c_copy_year',['../classmedia__release_1_1_release.html#ac1d9ef4016f85a46bb5b33d0576a1e88',1,'media_release::Release']]],
   ['catalog_5fingest_2',['catalog_ingest',['../classmain_1_1catalog__ingest.html',1,'main']]],
@@ -37,4 +38,32 @@ var searchData=
   ['csvmanager_34',['csvManager',['../classimporter_1_1_format_manager_1_1csv_manager.html',1,'importer::FormatManager']]],
   ['currency_5ftype_35',['currency_type',['../classimporter_1_1_columns_manager_1_1get___d_f__otto.html#a0511c1e6478357ce131e2892ee3352b9',1,'importer::ColumnsManager::get_DF_otto']]],
   ['currencynotfound_36',['CurrencyNotFound',['../classimporter_1_1_error_handler_1_1_currency_not_found.html',1,'importer::ErrorHandler']]]
+=======
+  ['cat_5fcollection_0',['cat_collection',['../namespacesrc_1_1importer_1_1_catalogue_generator_v2.html#acfb500607056a0b7c7ad8a62e9efd357',1,'src::importer::CatalogueGeneratorV2']]],
+  ['catalogue_5fcollection_1',['catalogue_collection',['../namespacesrc_1_1importer_1_1_upload_sales.html#a285694897496fa6d21d6e98763273b3e',1,'src::importer::UploadSales']]],
+  ['catalogue_5fgeneration_2',['catalogue_generation',['../namespacesrc_1_1importer_1_1_catalogue_generator_v2.html#ae37b5134dd0d73a494031872a1cef226',1,'src::importer::CatalogueGeneratorV2']]],
+  ['cataloguegenerator_2epy_3',['CatalogueGenerator.py',['../_catalogue_generator_8py.html',1,'']]],
+  ['cataloguegeneratorv2_2epy_4',['CatalogueGeneratorV2.py',['../_catalogue_generator_v2_8py.html',1,'']]],
+  ['clean_5ffiles_5',['clean_files',['../namespacesrc_1_1upload__module_1_1common_1_1_upload_files_s3.html#abaa87e0495b3b66c533c32fca73d14ef',1,'src::upload_module::common::UploadFilesS3']]],
+  ['client_6',['client',['../namespacesrc_1_1importer_1_1generate__csv.html#a54f708fd87e7bc038c47fe2d31f0a216',1,'src::importer::generate_csv']]],
+  ['client_5fid_7',['client_id',['../namespacesrc_1_1importer_1_1glider__upload.html#a4be2edb75fcfd790c44b8076573d191d',1,'src::importer::glider_upload']]],
+  ['client_5fsecret_8',['CLIENT_SECRET',['../namespacesrc_1_1upload__module_1_1gdrive_1_1_gen_token_e_c2.html#a8163096d3fab5c9e86449c20996ca2a0',1,'src::upload_module::gdrive::GenTokenEC2']]],
+  ['code_9',['How to deploy terraform code',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2_how_deploy_a_w_s.html#autotoc_md8',1,'']]],
+  ['collection_10',['collection',['../namespacesrc_1_1importer_1_1_catalogue_generator_v2.html#a4e5530180e50086c040b351cbbd8da97',1,'src.importer.CatalogueGeneratorV2.collection'],['../namespacesrc_1_1importer_1_1_create_snapshots.html#a3e8366629eff66b10c8497491f7ddf01',1,'src.importer.CreateSnapshots.collection'],['../namespacesrc_1_1importer_1_1generate__csv.html#acfcdd4a44bd4749eec1f939645a76b51',1,'src.importer.generate_csv.collection'],['../namespacesrc_1_1importer_1_1_identify_format.html#a5b6b682d45cf44e0d857f9bd7169d5cd',1,'src.importer.IdentifyFormat.collection'],['../namespacesrc_1_1importer_1_1_process_files.html#a04132c3ebecd8b2102d01cc7481c84bd',1,'src.importer.ProcessFiles.collection'],['../namespacesrc_1_1importer_1_1_upload_sales.html#ad029044b8c80039bb987a91822e90e90',1,'src.importer.UploadSales.collection'],['../namespacesrc_1_1report__generation_1_1_gen_report.html#a56c1f599c35b76ec469a6d3f7c12f955',1,'src.report_generation.GenReport.collection'],['../namespacesrc_1_1report__generation_1_1_gen_unmatched.html#aeff283ee0e6808a5ae9b721a81248383',1,'src.report_generation.GenUnmatched.collection']]],
+  ['collection_5fname_11',['collection_name',['../namespacesrc_1_1importer_1_1generate__csv.html#a7c51b5d4128ac42bd8ee30b116e099c9',1,'src.importer.generate_csv.collection_name'],['../namespacesrc_1_1importer_1_1_process_files.html#a7cbe91fa3a42678d0110775f225ce24d',1,'src.importer.ProcessFiles.collection_name'],['../namespacesrc_1_1importer_1_1_upload_sales.html#a532c61590fa81522ee6fbdfaa5c87316',1,'src.importer.UploadSales.collection_name']]],
+  ['cols_5fotto_12',['cols_otto',['../namespacesrc_1_1importer_1_1_identify_format.html#a04d4baf7c691f804a8a537877b6466f0',1,'src::importer::IdentifyFormat']]],
+  ['columnsmanager_2epy_13',['ColumnsManager.py',['../_columns_manager_8py.html',1,'']]],
+  ['could_20not_20be_20loaded_14',['File could not be loaded',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2importer__workflow.html#autotoc_md23',1,'']]],
+  ['create_5fnew_5fdf_15',['create_new_df',['../namespacesrc_1_1importer_1_1_process_files.html#a7106eded5ab663ced2a72534418f49ee',1,'src::importer::ProcessFiles']]],
+  ['create_5fpresigned_5furl_16',['create_presigned_url',['../namespacesrc_1_1report__generation_1_1_upload_reports.html#a38d8d70d990090005db6bb2a5b75e313',1,'src::report_generation::UploadReports']]],
+  ['create_5fsnapshot_17',['create_snapshot',['../namespacesrc_1_1report__generation_1_1_report_snapshot.html#a5cfb3883411c1f43b3b038ab1adfd756',1,'src::report_generation::ReportSnapshot']]],
+  ['createsnapshots_2epy_18',['CreateSnapshots.py',['../_create_snapshots_8py.html',1,'']]],
+  ['creds_19',['creds',['../namespacesrc_1_1upload__module_1_1gdrive_1_1_gen_token_e_c2.html#a4203599f898be3635db1568baab6cfba',1,'src::upload_module::gdrive::GenTokenEC2']]],
+  ['csvheaders_20',['csvHeaders',['../namespacesrc_1_1importer_1_1_identify_format.html#a2c12b3fb24ff749d815269272c5f22e0',1,'src::importer::IdentifyFormat']]],
+  ['csvmanager_21',['csvManager',['../classsrc_1_1importer_1_1_format_manager_1_1csv_manager.html',1,'src::importer::FormatManager']]],
+  ['curl_22',['CURL',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2importer__workflow.html#autotoc_md16',1,'Example using CURL'],['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2report__workflow.html#autotoc_md30',1,'Example using CURL'],['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2upload__workflow.html#autotoc_md41',1,'Example using CURL'],['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2upload__workflow.html#autotoc_md49',1,'Example using CURL']]],
+  ['currency_20not_20found_20error_23',['Currency not found error',['../md__2_users_2michellmonroy_2_documents_2dev-glider_2glider_2src_2markdown__render_2importer__workflow.html#autotoc_md22',1,'']]],
+  ['currency_5ftype_24',['currency_type',['../classsrc_1_1importer_1_1_columns_manager_1_1_build_otto_data.html#a56aa8ac2aad9f30acea9d3bec478f3e0',1,'src::importer::ColumnsManager::BuildOttoData']]],
+  ['currencynotfound_25',['CurrencyNotFound',['../classsrc_1_1importer_1_1_error_handler_1_1_currency_not_found.html',1,'src::importer::ErrorHandler']]]
+>>>>>>> 4d6acd55a96da5cbf13e5842eae0fed6acfe4019
 ];

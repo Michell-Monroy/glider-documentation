@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['t_0',['t',['../namespace_send_email.html#a23c5949729bd987cbe8a4624a69bfd44',1,'SendEmail']]],
-  ['territory_5fiso_5fcode_1',['territory_iso_code',['../namespaceimporter_1_1_territory_code.html#a60be8696291864fe281d22fd426dcca8',1,'importer.TerritoryCode.territory_iso_code'],['../namespaceimporter_1_1templates_1_1_territory_code.html#a6e892e5e5b9c5f62e9a9bb26f8a37c68',1,'importer.templates.TerritoryCode.territory_iso_code']]],
-  ['title_2',['title',['../classmedia__release_1_1_release.html#a074e106dc290a422a1032b4b0d97dd62',1,'media_release.Release.title'],['../classmedia__track_1_1_track.html#a6dc77fcf54bf465432f6d8017acc1b60',1,'media_track.Track.title']]],
-  ['to_5fcheck_3',['to_check',['../classmedia__release_1_1_release.html#a3818dde8270316831cd9fde10e2dc63c',1,'media_release.Release.to_check'],['../classmedia__track_1_1_track.html#a3d00706d031f8b269061b304669d628a',1,'media_track.Track.to_check']]],
-  ['total_5flocal_4',['total_local',['../namespace_report_snapshot.html#a5076344f8f3c921e9d877dad90a54a84',1,'ReportSnapshot']]],
-  ['total_5frows_5',['total_rows',['../namespace_report_snapshot.html#a60747d9e82279ba6a019e6e737f66ca0',1,'ReportSnapshot']]]
+  ['update_5fat_0',['update_at',['../namespacesrc_1_1report__generation_1_1_report_snapshot.html#a206bb1e76983002dee1a66d074fe836d',1,'src::report_generation::ReportSnapshot']]],
+  ['updated_5fat_1',['updated_at',['../classmedia__release_1_1_release.html#a0d564a32560cc5d263661aaf91a7fae2',1,'media_release.Release.updated_at'],['../classmedia__track_1_1_track.html#a31314eb46fd3380330c3781142017372',1,'media_track.Track.updated_at']]],
+  ['uri_2',['uri',['../namespacesrc_1_1importer_1_1generate__csv.html#aff89ba54c828130c4d7e71e20badb8da',1,'src.importer.generate_csv.uri'],['../namespacesrc_1_1statement__generation_1_1_statements_template.html#ac07553743997fd3992c979153aa30ca3',1,'src.statement_generation.StatementsTemplate.uri']]],
+  ['username_3',['username',['../namespaceapp.html#a5f263adad63fdda0ce8ef1b823f34941',1,'app']]]
 ];

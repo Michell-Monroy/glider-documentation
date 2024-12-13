@@ -1,0 +1,15 @@
+digraph "src.report_generation.SendEmail.send_email"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="src.report_generation.Send\lEmail.send_email",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="src.report_generation.Send\lEmail.send_report",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespacesrc_1_1report__generation_1_1_send_email.html#a1866393e7239f24713baff92528de59d",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="src.report_generation.Send\lEmail.send_statement_report",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespacesrc_1_1report__generation_1_1_send_email.html#a8b32a05b60645b8a9d4b2edaacd59b01",tooltip=" "];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="src.report_generation.Send\lEmail.send_unmatched_report",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespacesrc_1_1report__generation_1_1_send_email.html#a751a1695c7914199823c95db3e42aa98",tooltip=" "];
+}

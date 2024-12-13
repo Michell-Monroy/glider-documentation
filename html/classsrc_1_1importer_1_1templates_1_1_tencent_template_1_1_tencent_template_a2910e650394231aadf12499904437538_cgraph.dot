@@ -1,0 +1,11 @@
+digraph "src.importer.templates.TencentTemplate.TencentTemplate.date"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="src.importer.templates.Tencent\lTemplate.TencentTemplate.date",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="src.importer.templates.Tencent\lTemplate.TencentTemplate.fix_date",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsrc_1_1importer_1_1templates_1_1_tencent_template_1_1_tencent_template.html#ac0d199fdd503fa3b34c155d0326ffff4",tooltip=" "];
+}

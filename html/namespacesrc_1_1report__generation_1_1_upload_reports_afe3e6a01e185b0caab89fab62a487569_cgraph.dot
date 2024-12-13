@@ -1,0 +1,13 @@
+digraph "src.report_generation.UploadReports.upload_files_s3"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="src.report_generation.Upload\lReports.upload_files_s3",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="src.report_generation.Upload\lReports.create_presigned_url",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespacesrc_1_1report__generation_1_1_upload_reports.html#a38d8d70d990090005db6bb2a5b75e313",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="src.report_generation.Upload\lReports.shorten_url",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespacesrc_1_1report__generation_1_1_upload_reports.html#a9fb4a1815f9be024f676e708d8ed2513",tooltip=" "];
+}

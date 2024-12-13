@@ -1,0 +1,13 @@
+digraph "src.importer.TerritoryCode.TerritoryCode.terr_iso"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="src.importer.TerritoryCode.\lTerritoryCode.terr_iso",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="src.importer.templates.Territory\lCode.TerritoryCode.territory_code",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsrc_1_1importer_1_1templates_1_1_territory_code_1_1_territory_code.html#aec3db4fad8efb6ab25721db792900a53",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="src.importer.TerritoryCode.\lTerritoryCode.territory_code",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsrc_1_1importer_1_1_territory_code_1_1_territory_code.html#aad0bd03662379784ac6cd2c17ee796fc",tooltip=" "];
+}

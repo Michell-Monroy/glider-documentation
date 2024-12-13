@@ -1,0 +1,13 @@
+digraph "src.statement_generation.StatementsTemplate.template_default"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="src.statement_generation.\lStatementsTemplate.template\l_default",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="src.statement_generation.\lStatementsTemplate.get\l_client_info_postgres",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespacesrc_1_1statement__generation_1_1_statements_template.html#ae043426380f1d346b4e56c9a0214a453",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="src.statement_generation.\lStatementsTemplate.q_period",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespacesrc_1_1statement__generation_1_1_statements_template.html#a5270a7134b30c75fc46cd12045829bdb",tooltip=" "];
+}

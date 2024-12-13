@@ -1,0 +1,11 @@
+digraph "src.report_generation.SendEmail.send_unmatched_report"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="src.report_generation.Send\lEmail.send_unmatched_report",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="src.report_generation.Send\lEmail.send_email",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespacesrc_1_1report__generation_1_1_send_email.html#ac904281a1a103c9d7097d438d225d2c9",tooltip=" "];
+}

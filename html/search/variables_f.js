@@ -1,15 +1,10 @@
 var searchData=
 [
-  ['s3_5fclient_0',['s3_client',['../namespace_tools.html#a04e8fd646d40750171dd0ec44028966c',1,'Tools.s3_client'],['../namespace_upload_files_s3.html#acbf83e060c95b2b1542b22febfde8ec3',1,'UploadFilesS3.s3_client'],['../namespaceimporter_1_1_identify_format.html#a76469f9a4d8258e4a540abc23edb3a84',1,'importer.IdentifyFormat.s3_client'],['../namespace_upload_reports.html#a41cb7f7c78621001a3dca8fe60589076',1,'UploadReports.s3_client']]],
-  ['s3_5ffile_5fobj_1',['s3_file_obj',['../namespaceimporter_1_1_catalogue_generator.html#a898f60c62a0f2cdb95ae3eeef4c999ca',1,'importer.CatalogueGenerator.s3_file_obj'],['../namespaceimporter_1_1generator.html#aabc59d504a8eb4802ca38260cef8ecfb',1,'importer.generator.s3_file_obj'],['../namespaceimporter_1_1_identify_format.html#a1483de9d4129b80e27834d5ab4da3a83',1,'importer.IdentifyFormat.s3_file_obj']]],
-  ['s3_5fsession_2',['s3_session',['../namespaceimporter_1_1_create_snapshots.html#ae5850639a2be42e542f26e5ca43165a0',1,'importer.CreateSnapshots.s3_session'],['../namespaceimporter_1_1_process_files.html#a8bf2a18d026c378cc114e4bdc65bf643',1,'importer.ProcessFiles.s3_session']]],
-  ['scopes_3',['SCOPES',['../namespace_generate_token.html#a806b7eaca7eba30d5077cab4fe8af939',1,'GenerateToken.SCOPES'],['../namespace_gen_token_e_c2.html#a755802a3153d3fb4a730c2b5875bdae0',1,'GenTokenEC2.SCOPES']]],
-  ['session_4',['session',['../namespace_report_snapshot.html#a24e32d77f91c807604150367b99c10a7',1,'ReportSnapshot']]],
-  ['slug_5',['slug',['../classmedia__release_1_1_release.html#a49f93a83b3b08c7d1f162cc8150c97ca',1,'media_release.Release.slug'],['../classmedia__track_1_1_track.html#ad95d304d7241de4ef2feef2696d3df38',1,'media_track.Track.slug']]],
-  ['snap_5fcollection_6',['snap_collection',['../namespaceimporter_1_1_identify_format.html#abd455f2860dc8e5b571ac1b436dc7171',1,'importer.IdentifyFormat.snap_collection'],['../namespaceimporter_1_1_process_files.html#ab4b4e6bb4a9287e85dda41a981b051e9',1,'importer.ProcessFiles.snap_collection'],['../namespace_report_snapshot.html#a934e21a368825fb600d7d4ffe7631953',1,'ReportSnapshot.snap_collection']]],
-  ['source_7',['source',['../classmedia__release_1_1_release.html#a2eb731c5e284f9d5d76b8c55b46adebb',1,'media_release::Release']]],
-  ['sqs_8',['sqs',['../class_upload_releases_mongo_1_1upload__releases.html#a39f43d438b3eb8ecf0a9cef237e5a4c6',1,'UploadReleasesMongo.upload_releases.sqs'],['../namespace_download_catalog_a_s.html#a702623e3aecfe6c58971ec9adbfd518e',1,'DownloadCatalogAS.sqs']]],
-  ['status_9',['status',['../classmedia__release_1_1_release.html#abd1a754d94b1f7fbc504054264913276',1,'media_release::Release']]],
-  ['store_10',['store',['../namespace_gen_token_e_c2.html#a8ff13bdefe9e5af1df96ad31a221991b',1,'GenTokenEC2']]],
-  ['sub_5fgenre_5fid_11',['sub_genre_id',['../classmedia__release_1_1_release.html#a65e96ddd6704caebc67d1e403fb54154',1,'media_release::Release']]]
+  ['t_0',['t',['../namespacesrc_1_1report__generation_1_1_send_email.html#a6a1449904bfc75aa64c482e712809674',1,'src::report_generation::SendEmail']]],
+  ['territory_5fiso_5fcode_1',['territory_iso_code',['../namespacesrc_1_1importer_1_1_territory_code.html#a56b34b27051c5e6a6a9c17a258978ef6',1,'src.importer.TerritoryCode.territory_iso_code'],['../namespacesrc_1_1importer_1_1templates_1_1_territory_code.html#ae3fb9f6e08cd37b9c2c4296460a2069d',1,'src.importer.templates.TerritoryCode.territory_iso_code']]],
+  ['text_2',['text',['../namespacesrc_1_1statement__generation_1_1_gen_la_tex.html#aabaf34093aacd2ba1db6a3257a9321c6',1,'src::statement_generation::GenLaTex']]],
+  ['title_3',['title',['../classmedia__release_1_1_release.html#a074e106dc290a422a1032b4b0d97dd62',1,'media_release.Release.title'],['../classmedia__track_1_1_track.html#a6dc77fcf54bf465432f6d8017acc1b60',1,'media_track.Track.title']]],
+  ['to_5fcheck_4',['to_check',['../classmedia__release_1_1_release.html#a3818dde8270316831cd9fde10e2dc63c',1,'media_release.Release.to_check'],['../classmedia__track_1_1_track.html#a3d00706d031f8b269061b304669d628a',1,'media_track.Track.to_check']]],
+  ['total_5flocal_5',['total_local',['../namespacesrc_1_1report__generation_1_1_report_snapshot.html#a82b069651bfcb60a54d12a1939b95b68',1,'src::report_generation::ReportSnapshot']]],
+  ['total_5frows_6',['total_rows',['../namespacesrc_1_1report__generation_1_1_report_snapshot.html#a18adbc0dde6653b19c30da66585039a7',1,'src::report_generation::ReportSnapshot']]]
 ];
